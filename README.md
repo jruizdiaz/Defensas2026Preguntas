@@ -1,29 +1,25 @@
-# Dashboard de defensas TFI · TUCEMD — versión GitHub
+# Dashboard Defensas TFI · TUCEMD — Integrantes y notas
 
-## Publicación
-Subir juntos a la raíz del repositorio:
+Actualización basada en:
+- `Cruce_defensas.xlsx`: integrantes asociados a cada grupo.
+- `Grupos_Notas.xlsx`: nota grupal.
+
+## Regla de prioridad de notas
+1. Se usa `Examen Final Julio` cuando existe una nota para el grupo.
+2. Si esa celda está vacía, se usa `Entrega Final`.
+
+Resultado:
+- 77 grupos en el dashboard.
+- 76 grupos con integrantes cargados.
+- 326 integrantes asociados.
+- 76 notas tomadas de `Examen Final Julio`.
+- 1 nota(s) tomadas de `Entrega Final`.
+- Grupo 62: nota 6 de `Entrega Final`, porque `Examen Final Julio` está vacío.
+- Grupo 62: sin integrantes en `Cruce_defensas.xlsx`.
+
+## Publicación en GitHub Pages
+Subir en la raíz:
 - `index.html`
 - `grupos.js`
 
-Activar **Settings → Pages → Deploy from a branch → main / root**.
-
-## Base integrada
-- Total esperado: 77 fichas (25 originales + 52 nuevas).
-- Nuevos DOC procesados: 52.
-- Grupos sin material en la carpeta TIF y por lo tanto omitidos: 22, 52, 54, 57 y 66.
-- Grupos especiales preservados: 13bis y 62bis.
-- Para duplicados se seleccionó la versión más reciente disponible (caso grupo 55).
-
-Cada ficha conserva:
-- nivel;
-- síntesis / qué es;
-- fortalezas;
-- puntos a interrogar;
-- dónde apretar;
-- 5 bloques × 3 preguntas;
-- qué buscamos y evasiva;
-- enlace al TIF;
-- enlace al DOC de preguntas.
-
-## Notas
-La constante `API` continúa vacía. La carga de notas funciona en vivo pero sólo persiste si se conecta un backend de Google Apps Script.
+`validacion.json` es opcional y sirve para auditoría del cruce.

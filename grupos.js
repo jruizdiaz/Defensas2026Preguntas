@@ -8,11 +8,13 @@
    ============================================================ */
 
 const GRUPOS = [
-  {
+{
     id: "1",
     proyecto: "Huella Natural",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 8,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Rodrigo Franco","doc":"585228"},{"nombre":"Estefania Alegre","doc":"156897"},{"nombre":"Yamila Castro","doc":"601507"},{"nombre":"Eliana Edith Paz","doc":"633512"},{"nombre":"Debora Lopez","doc":"605581"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1O1E6_Y81yA-Nyo88zByOdRq4nzF9ziMt/preview",
     linkPreguntas: "https://drive.google.com/file/d/1N67HRsmMf7FCFN3GYLxPdr17Xe6J64Wk/preview",
@@ -59,11 +61,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "2",
     proyecto: "Etherea",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 8,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Genesis Marcano","doc":"613787"},{"nombre":"Tania Jazmin Rodriguez Sepulveda","doc":"616639"},{"nombre":"Lucila Esteves De Sousa","doc":"634319"},{"nombre":"Mercedes Itati Diaz","doc":"555627"},{"nombre":"Victoria Maldonado","doc":"633234"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/10fBPPLYmSXa0gAvwsS5xvQaxWvuicG8a/preview",
     linkPreguntas: "https://drive.google.com/file/d/1OriCV2Rmjc0dDuoy0F6K0xKAE4JheFIF/preview",
@@ -110,11 +114,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "3",
     proyecto: "EduDigital Pro",
     nivel: "Regular",
-    integrantes: [],
+    nota: 7,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Florencia Gonzalez","doc":"631390"},{"nombre":"Melina Daversa","doc":"153623"},{"nombre":"Martina Ailen  San Pedro","doc":"642920"},{"nombre":"Franco Rossi","doc":"595181"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1SZdxl2oXVrKpLfu3DbrpBd9NNkag-K2x/preview",
     linkPreguntas: "https://drive.google.com/file/d/1X_3ovbaqAaAJ_UltbSMg3ZYuJ71f4S3S/preview",
@@ -161,11 +167,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "4",
     proyecto: "NUNA",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 8.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Silvia Acuña","doc":"645021"},{"nombre":"Maria Belucci","doc":"630382"},{"nombre":"Jorge De Gaetano","doc":"612676"},{"nombre":"Mariana Di Pilla","doc":"611033"},{"nombre":"Cynthia Williams","doc":"636777"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1Co72d9BYjaOcK5Aou9XKS0IvTmysYpkH/preview",
     linkPreguntas: "https://drive.google.com/file/d/1LAz0CRTvs81vZ9e8pCv42LUYcdAtuttg/preview",
@@ -212,11 +220,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "5",
     proyecto: "NEXO SOLUTIONS",
     nivel: "Regular",
-    integrantes: [],
+    nota: 8,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Silvia Micaela Herrera","doc":"644333"},{"nombre":"Florencia Ailen Noguera","doc":"622291"},{"nombre":"María Belén Muñoz","doc":"633854"},{"nombre":"Gonzalo Yoel Ortiz","doc":"44313"},{"nombre":"Pablo Orsi","doc":"162852"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/17_HrF5iwmt6gmkXipGvT1su79e2YKjxV/preview",
     linkPreguntas: "https://drive.google.com/file/d/14NoTR1wP1aPS6uiELIaPDYSc1H33Ns2-/preview",
@@ -263,11 +273,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "6",
     proyecto: "FitnessGO",
     nivel: "Regular",
-    integrantes: [],
+    nota: 7,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Jose Castillo","doc":""},{"nombre":"Dylan Meyer","doc":""},{"nombre":"Florencia Mansilla","doc":"601014"},{"nombre":"Martin Frizza","doc":""},{"nombre":"Ian Marco Manfredi","doc":"637985"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1Zdzav7wPsQpwUcbYo7auBK5q2TVO1TxC/preview",
     linkPreguntas: "https://drive.google.com/file/d/175dMvALv-ERLVsIcS3ROL0J33erpfPw2/preview",
@@ -314,11 +326,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "7",
     proyecto: "NooMind — Agencia Alto Impacto",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 6,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Bodor, Maxim","doc":""},{"nombre":"Lara Krajcir","doc":"601177"},{"nombre":"Larrainzar Agustín","doc":""},{"nombre":"Eugenia Prado","doc":"616011"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1-z463DPsvaapZ5ojUcluoAMqSbDZLpyL/preview",
     linkPreguntas: "https://drive.google.com/file/d/1ft9Nt-dsKkLRiKgQl-o5PhgJYLjwQeoI/preview",
@@ -365,11 +379,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "8",
     proyecto: "Sinergia MKT — Viñaterra Boutique Hotel & Spa",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 9,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Sofia Carla Legorburu","doc":"612385"},{"nombre":"Adriana Linfozzi","doc":"593333"},{"nombre":"Noelia Locatelli","doc":"594389"},{"nombre":"María Marta Fernández","doc":""}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1OUmaYpPu15aUuUYZ1_D08PmnIzBJweol/preview",
     linkPreguntas: "https://drive.google.com/file/d/1Mx_wUQXrSLisM_9knxEe1frvozy5yiFn/preview",
@@ -416,11 +432,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "9",
     proyecto: "Pintuarq",
     nivel: "Regular",
-    integrantes: [],
+    nota: 6,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Lara Plok","doc":"624448"},{"nombre":"Ana Paula Gimenez","doc":"637328"},{"nombre":"Camila Priore","doc":"645362"},{"nombre":"Maria Victoria Pordomingo","doc":"604659"},{"nombre":"Yamila Vanesa Taliano","doc":"109894"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1MKLdYXub8kJN5WyMNnl3yA49IHHwxWZR/preview",
     linkPreguntas: "https://drive.google.com/file/d/1nnxUcmysUuW6tSe-AU7QyXzWTwVfBn2g/preview",
@@ -467,11 +485,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "10",
     proyecto: "Mimo Animal",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 7.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Camila Del Federico","doc":"607424"},{"nombre":"Juan Manuel Gonzalez","doc":"600486"},{"nombre":"Yamir Godoy","doc":"573223"},{"nombre":"Mayra Benitez Maggio","doc":"618346"},{"nombre":"Narella Sosa","doc":"618927"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1HSzq9zQlnBbGj6-hs7JoLA9qPDHsdPZs/preview",
     linkPreguntas: "https://drive.google.com/file/d/1pEnLazWuKp_0xbNvpnMO_yv8tba9HZGz/preview",
@@ -518,11 +538,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "11",
     proyecto: "Pintumix",
     nivel: "Regular",
-    integrantes: [],
+    nota: 7.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"pablo morales","doc":""},{"nombre":"Leandro Ricca","doc":"593782"},{"nombre":"Noemi Puddini","doc":"636997"},{"nombre":"Nicolas Perez Verde","doc":"629470"},{"nombre":"Tamara Soto","doc":"601003"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1K8kUt5FDUC_9IlPJCn6ARj6AHFq_7neN/preview",
     linkPreguntas: "https://drive.google.com/file/d/1gL7_YATj0fG8dT0cUPH7S1NleyKUdwa9/preview",
@@ -569,11 +591,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "12",
     proyecto: "Olivia Diseños",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 9,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Camila Ayelen Arriola Veccar","doc":"555588"},{"nombre":"Naara Ayelen Baez","doc":"623855"},{"nombre":"Romina Bohacec","doc":"611012"},{"nombre":"Alex Jimenez","doc":"598249"},{"nombre":"Julieta Taffarel","doc":"639477"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1h4HPYjToOlyH-Eu8w_nuMlNjdMpXQ5rk/preview",
     linkPreguntas: "https://drive.google.com/file/d/1x6ygrpRNPAZz0YqfoxFRlOAIyQ7CQtjr/preview",
@@ -620,10 +644,12 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "13",
     proyecto: "Mecanix",
     nivel: "Regular",
+    nota: 9,
+    notaFuente: "Examen Final Julio",
     integrantes: [
       { nombre: "Batsilas, Penélope Melina", doc: "" },
       { nombre: "Toloza, Ayelen", doc: "" }
@@ -674,11 +700,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "13bis",
     proyecto: "MOTRIA",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 8,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Franco Ezequiel Depetris","doc":"623923"},{"nombre":"Claudio Daniel Pascua","doc":"645741"},{"nombre":"Ignacio Pollicelli","doc":"623612"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1jSsxxtoiYsLzvPv7NOVukzNCK7hvkUT5/preview",
     linkPreguntas: "https://drive.google.com/file/d/1YukP2lhmfc_mBTpIhjdOFgZBT3x8jpeI/preview",
@@ -725,11 +753,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "14",
     proyecto: "MUNDÍA — Glow Lab Agency",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 8,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Eliana Florencia Audino","doc":"639525"},{"nombre":"Gabriela Benedetti","doc":"71376"},{"nombre":"Paula Carrizo","doc":"114379"},{"nombre":"Ingrid Mariel Dominguez Alberti","doc":"625817"},{"nombre":"Mariana Plenazio","doc":"608360"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1ADeDW7QiFtaL7sqTpnoLoJrTFf-2fnIt/preview",
     linkPreguntas: "https://drive.google.com/file/d/1Csj55Us0ixzvGzT7W0b0hFwfn8Wzox7M/preview",
@@ -776,11 +806,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "15",
     proyecto: "Bridge: Academia de Inglés",
     nivel: "Regular",
-    integrantes: [],
+    nota: 8,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Javier Agustin Lopez","doc":"608229"},{"nombre":"Lopez Mesoraca Moira","doc":""},{"nombre":"Ludmila Trezza","doc":"593096"},{"nombre":"Samirah Vera","doc":"636896"},{"nombre":"Maxima Zurita","doc":"625105"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/13uskJK6Z3itNwAiB_zvnlrD9uCLBU1Hp/preview",
     linkPreguntas: "https://drive.google.com/file/d/1oZgcqHxK544l8g2MeQv_zcJV-LRWAtKf/preview",
@@ -827,11 +859,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "16",
     proyecto: "ReWear",
     nivel: "Regular",
-    integrantes: [],
+    nota: 7.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Celeste Soledad Caia","doc":"410813"},{"nombre":"Iara Camil Peña","doc":"625141"},{"nombre":"Martin  Burgos","doc":"641005"},{"nombre":"Julieta Castro","doc":"624924"},{"nombre":"Camila Uhrig","doc":"642355"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/13DKx_nhzAq-rcZtqg6-bmZdcZ4x8bLQN/preview",
     linkPreguntas: "https://drive.google.com/file/d/1GCRykOYdWHZ5Y_vKDtxt326kXIYdng6V/preview",
@@ -878,11 +912,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "17",
     proyecto: "CHE NEXO",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 7.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Florencia Agostina Altieri","doc":"634083"},{"nombre":"Maria Eugenia Arena","doc":"621899"},{"nombre":"Lorena Alvarez","doc":"581421"},{"nombre":"Julia Helena  Eastman","doc":"533452"},{"nombre":"Gabriel Antonio Suarez.","doc":"495028"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1dKdP8JB_tEQS0rttDasPFsTnpxhi7sMU/preview",
     linkPreguntas: "https://drive.google.com/file/d/1XDjvn8D-h5W537Sp7Ewj65IvojDSCfAm/preview",
@@ -929,11 +965,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "18",
     proyecto: "Agilwear",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 7.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Yasmin Gregorat","doc":"606919"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1pwTbXdghMdQit3PTpxvF4VpWQ3rSZdXA/preview",
     linkPreguntas: "https://drive.google.com/file/d/10irp8QZM-xMQnGQ7ek6yVDouJkV3qyY3/preview",
@@ -980,11 +1018,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "19",
     proyecto: "Zenith Salud",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 8.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Sara Elizabeth Dominguez Prieto","doc":"633782"},{"nombre":"Lucia Tesselhoff","doc":"531578"},{"nombre":"María Daniela Marín","doc":"629937"},{"nombre":"Bianca Antonella Rocco","doc":"632929"},{"nombre":"Guillermo Dulce","doc":"558510"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1U5-X6CvEse8uShyNdRLHMguKxX7T2lY7/preview",
     linkPreguntas: "https://drive.google.com/file/d/1aGCTDb1B9keFx7YWD5wQDZf6-d0YbLDB/preview",
@@ -1031,11 +1071,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "20",
     proyecto: "Coffee Co",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 7.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Jonathan Diaz","doc":"626394"},{"nombre":"Alicia Labandeira","doc":"3844"},{"nombre":"Brisa Lachermeier","doc":"608721"},{"nombre":"Maria Antonella Ratigan Bonatti","doc":"616615"},{"nombre":"Sofia Galan","doc":"572367"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1MmomEs-TjHUqFuzUvmkkllIIsxqlPeni/preview",
     linkPreguntas: "https://drive.google.com/file/d/1WzFiQrC1FKeWE-eiMUkSmLKyU8DAxyza/preview",
@@ -1082,11 +1124,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "21",
     proyecto: "Brand Up Studio",
     nivel: "Regular",
-    integrantes: [],
+    nota: 7.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"María Sol  Ibarra","doc":"636712"},{"nombre":"Camila Nair Iglesias","doc":"641878"},{"nombre":"Paula Kier Fucito","doc":"627336"},{"nombre":"María Carmela Ojea Sipowicz","doc":"593817"},{"nombre":"Luciana Mariel Ortiz","doc":"644397"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/11W4LeEnxe6NmjHZ8hBz5YQCYn_AuB2OH/preview",
     linkPreguntas: "https://drive.google.com/file/d/1SHv3J6CfG44kOBPRn3zSCFiWZMEDei0h/preview",
@@ -1133,11 +1177,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "23",
     proyecto: "KROFT",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 9,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Braian Salbatierra","doc":"622779"},{"nombre":"Sara Sofia Scarpetta","doc":"643790"},{"nombre":"Leandro Palmieri","doc":"599111"},{"nombre":"Mateo Cebrian","doc":"629811"},{"nombre":"Theo Valls","doc":"634828"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1mZMwcAm08tWH0D4emnfYo31qccLaDwMG/preview",
     linkPreguntas: "https://drive.google.com/file/d/1HJig9g6AUGph0B2vlW4pIuxF5k0RdkGN/preview",
@@ -1184,11 +1230,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "24",
     proyecto: "Vendimia Meetings",
     nivel: "Muy Bueno",
-    integrantes: [],
+    nota: 9,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Julieta Palacios","doc":"596613"},{"nombre":"Andrea Pedersen","doc":"598894"},{"nombre":"Ailén Melina Mustafa","doc":""},{"nombre":"Andrés Eduardo Pérez Nieto","doc":"635647"},{"nombre":"Veronica Shisel Zamora","doc":"644927"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1tjGmnKZ-kRooZij3U8ah3oxdvxUGt0Nj/preview",
     linkPreguntas: "https://drive.google.com/file/d/1-gMLpSrV5JdqcmA9fSAYkKrZwgNDIOPC/preview",
@@ -1235,11 +1283,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     id: "25",
     proyecto: "MateGo",
     nivel: "Regular",
-    integrantes: [],
+    nota: 8.5,
+    notaFuente: "Examen Final Julio",
+    integrantes: [{"nombre":"Ayelen Julia","doc":"615870"},{"nombre":"Valentina Cudina","doc":"633398"},{"nombre":"Josefina Borgobello","doc":"638427"}],
     tribunal: [],
     linkTrabajo: "https://drive.google.com/file/d/1fNmN6xgDtwukeozuySotACLp4HD3FjcM/preview",
     linkPreguntas: "https://drive.google.com/file/d/1QwgNHjeHn30vtlUiFdCm73WOSiHfJkT5/preview",
@@ -1286,11 +1336,13 @@ const GRUPOS = [
       ]}
     ]
   },
-  {
+{
     "id": "26",
     "proyecto": "Horizonte Bastit",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 10,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Andrzejak, Sebastián Alejandro","doc":""},{"nombre":"Ricardo Mario Bastit","doc":"596575"},{"nombre":"Carolina Feliciotti","doc":"635643"},{"nombre":"Paula Feliciotti","doc":"633461"},{"nombre":"Lara Durigutti","doc":"593329"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/11A_ZTH-1X4gDhKu8SRF_AEPcEaQEQjJy/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1lHyYjJTpU1y7ecKnYV7EtbzEzjvLfala/preview",
@@ -1412,11 +1464,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "27",
     "proyecto": "OSMOS",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Noelia Giselle Fernandez","doc":"606027"},{"nombre":"Florencia Fernandez","doc":"638856"},{"nombre":"Diego Fraiese","doc":"530377"},{"nombre":"Nicolas Solomin","doc":"614111"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1kv6lTU8nz0Uun81VMth76hEbDqUfsWLz/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1_UqVx0p631EhnEcw1P3q7ILUHe31y6iU/preview",
@@ -1538,11 +1592,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "28",
     "proyecto": "CRECE +3D",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 8,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Jazmin Marrese","doc":"616190"},{"nombre":"Rivero, Anabella Belen.","doc":""},{"nombre":"Martina Grillo","doc":"650260"},{"nombre":"Sastre, Denise Sheila.","doc":""},{"nombre":"Camila Jazmin Castro","doc":"621290"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1FVK6zqOBNZ31dCzptw7BxUzbSOscQix8/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1WauJLB_UOw3upB11F64wSOFQbqpqLw3t/preview",
@@ -1664,11 +1720,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "29",
     "proyecto": "Spongic",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 8.5,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Paloma Carreira Griot","doc":"620917"},{"nombre":"Santino Cartasegna","doc":"606958"},{"nombre":"Valentina Muguelar","doc":"602934"},{"nombre":"Javier Rodriguez","doc":"600519"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1WJtoqgpQIDZfFkz0fJgzp32fM4_aELni/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1vZJypYp8zpxt2dHGTS7i01cFys5EVih5/preview",
@@ -1790,11 +1848,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "30",
     "proyecto": "Spicy Digital",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Johanna Vanesa Calabrese","doc":"380060"},{"nombre":"Martina Rocio Carrera","doc":"620605"},{"nombre":"Karim Silva","doc":"621439"},{"nombre":"Belen Vieytes","doc":"644564"},{"nombre":"Celeste Wallar (escrito distinto en el CSV)","doc":"640801"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1hAgPx0KEZGgkARWy1y6TI6Ax3PGDY7mA/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1azGpeF5g44QlTuo_8Wzem_oH41LGTJuE/preview",
@@ -1916,11 +1976,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "31",
     "proyecto": "Huellitas Felices",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Marcos Portillo","doc":"637860"},{"nombre":"Micaela Pradel","doc":"612656"},{"nombre":"Julieta Luduena","doc":"618081"},{"nombre":"Joaquina Belen Nunez","doc":"637131"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1dPOah8by12tZ9-o5px9Nx_W390V_C-Q6/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1nF8LY6fKguj_CPy6IsGu7cAMTU6xxV2Y/preview",
@@ -2042,11 +2104,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "32",
     "proyecto": "Travel By Sea",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 10,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Leonel Fuentes","doc":"645804"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1fpNxKh9lWXFjXuymT6Wln55VHWYtf0F9/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1f_Q1byh2z5-T_URBjkKDIrrOnxSqFeKL/preview",
@@ -2168,11 +2232,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "33",
     "proyecto": "ZIO Pinturería",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 10,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Lucas Rojas","doc":"642411"},{"nombre":"Agustin Garcia Giocolo","doc":"601936"},{"nombre":"Camila Romero","doc":"637432"},{"nombre":"Romero, Mirian","doc":""},{"nombre":"Rocio Giuliana Russo","doc":"467785"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/11CzxdKAH5BZI9PiRCTWDaPX8Y8r8lSLz/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1fqhXHlIq8nkLhHZZ5te0twPQ0IeBbonZ/preview",
@@ -2294,11 +2360,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "34",
     "proyecto": "Kit And Go",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 6,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Fausto Cetta","doc":"629444"},{"nombre":"Federico Emiliano Ibañez","doc":"643991"},{"nombre":"Micaela Aylen Olivadese","doc":"636733"},{"nombre":"Maylen  Sacco","doc":"645066"},{"nombre":"Romina Sosa Medina","doc":"636506"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/176Ky-XA5GRJOGM_Kzximu7Wfd9OqlYeN/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1zaYCW-NF_m5i--CSxrSEi9oq3ItFdSfB/preview",
@@ -2420,11 +2488,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "35",
     "proyecto": "LURE Design",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 8,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Anny Gabriela Acevedo Mendoza","doc":"624640"},{"nombre":"Silvina  Dalla Valle","doc":"639572"},{"nombre":"Alvaro Alderete","doc":"627961"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1PY2oQ20JIK5dGz4mZJi5outw3yWmPAGq/preview",
     "linkPreguntas": "https://drive.google.com/file/d/16Ulnxe9W6NpLrrHVARU1MHRW1RnIQZVJ/preview",
@@ -2546,11 +2616,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "36",
     "proyecto": "4CWINE",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 8.5,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Camila Maribel Castro","doc":"618434"},{"nombre":"Facundo Castro Narvaiz","doc":"511159"},{"nombre":"Damian Chaparroseoane (escrito distinto en el CSV)","doc":"629288"},{"nombre":"Florencia Chiarillo","doc":"617562"},{"nombre":"Leandro Wasinger","doc":"628820"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1t8gDiN5V4HBr37HuPSiM1yGwt0g5Xw2S/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1S2zGbzOSHLmVefXIZBiMORCmDe3fFuXp/preview",
@@ -2672,11 +2744,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "37",
     "proyecto": "PSICOWAVE",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Alberto Rangoni","doc":"640811"},{"nombre":"Milagros Rodriguez","doc":"638376"},{"nombre":"Karen Moreno","doc":"623102"},{"nombre":"Daiana Abigail Ritter Lisazu","doc":"604978"},{"nombre":"Diego David Russman","doc":"413557"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1lNfRHcE5ziCx9MZO1TDVmBoTQEsG-m-q/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1ou6HCICu-ZpcbyFU__0CPgkbbNLsryh0/preview",
@@ -2798,11 +2872,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "38",
     "proyecto": "ECOMPULSE/HANPURE",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 8,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Deiker Rosales","doc":"588952"},{"nombre":"Alejandra Cánepa","doc":"626909"},{"nombre":"Leila Hais","doc":"637980"},{"nombre":"Tibor Santorufo","doc":"611683"},{"nombre":"Milagros Santos","doc":"610469"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1hh48TwTJ8QesNWV80LnYzX7jK720ZzRu/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1ZkZMWoIRDYfNnQ8ans51rwaDZCPtBfnN/preview",
@@ -2924,11 +3000,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "39",
     "proyecto": "Linda Bags",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Ayelen Broggi","doc":"39598"},{"nombre":"Jessica Bulldain","doc":"635232"},{"nombre":"Vanesa Ayelen Marino","doc":"604821"},{"nombre":"Cinthia Beatriz Toro","doc":"530594"},{"nombre":"Romina Natalia Torres","doc":"594154"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1JTBmzczG0bk1qejXrtiz67CY8KiRJbPm/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1dK3wdQpy0v4X4kAaH3iBLwST3gUMje1F/preview",
@@ -3050,11 +3128,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "40",
     "proyecto": "El Negro Tati - Cuchillería de Autor",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Juan Manuel Guzman","doc":"525131"},{"nombre":"Mariela Portillo","doc":"608167"},{"nombre":"Gastón Eduardo Insfran","doc":"616839"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/189HfkHn1QE0gnMnehCKlARa4F4eSCCHS/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1HjZ1KjT46vB2eJgQvlNS3S86LOWK2zFt/preview",
@@ -3176,11 +3256,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "41",
     "proyecto": "Estilo Organizado",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Victoria Padilla","doc":"643406"},{"nombre":"Martina Ares","doc":"621417"},{"nombre":"Luz Maria Olarte Moyano","doc":"637864"},{"nombre":"Noelia Zaragoza Dietrich","doc":"601920"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1qrXn5qLN053KS1EFjruxcocLnYiDR0Fy/preview",
     "linkPreguntas": "https://drive.google.com/file/d/12DL3Ub-x_Ode7a0Qpi-3SiwOwtr44Xw7/preview",
@@ -3302,11 +3384,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "42",
     "proyecto": "Bigotes Felices",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Melisa Paula Biondi.","doc":"467906"},{"nombre":"Ghianny Burgos","doc":"609320"},{"nombre":"María Natalia Billalobos","doc":"645429"},{"nombre":"Meyibeth Bustamante","doc":"496139"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1yHCO4ktfuzJ9xiACuG1kSbbwXnkTHCwT/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1yAdo8hvivV4KfKFeffEQGhAyAK3gSVUG/preview",
@@ -3428,11 +3512,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "43",
     "proyecto": "Brújula Digital – Escanear y Comer",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Lucas Martin Benik","doc":"613873"},{"nombre":"Andrea Sanchez","doc":"618351"},{"nombre":"Georgina Cabrera","doc":"600861"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1ZYdOcUQKA_RSRApvYaVT5bqEsKP2ajr2/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1fEL3dzBNYBplOdgCBZnoJIqQbuQWiwAn/preview",
@@ -3554,11 +3640,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "44",
     "proyecto": "SUMMA",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Erika Daiana Giungi","doc":"596534"},{"nombre":"Alexandra Belen Gomez","doc":"635086"},{"nombre":"Stefania Tapia","doc":"610010"},{"nombre":"Yamila Olivera.","doc":"450765"},{"nombre":"Geronimo Romero","doc":"608993"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1tw7Zyq_wvU4E1-tlQVCqhfUF6s0_QZZA/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1WjhmYaUk_h7i_J-UXNmhJ0Nfs1-qI4hM/preview",
@@ -3680,11 +3768,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "45",
     "proyecto": "Giro Eterno",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 8.5,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Melina Burgos","doc":"640660"},{"nombre":"Luz Melina Grisolia","doc":"592873"},{"nombre":"Gonzalo Herlein","doc":"637113"},{"nombre":"Elias Kubisen","doc":"609271"},{"nombre":"Ignacio Pacheco","doc":"635110"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1NF1eZ5YGmCrpJt8_TG6tcgSmq14QdGeH/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1hMc6BhIiqN1hTCNiwyQryr1jeLnkXF5e/preview",
@@ -3806,11 +3896,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "46",
     "proyecto": "URBIX",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Tamara Thais Caceres Paredes","doc":"612492"},{"nombre":"Luciano Fernandez Gieco","doc":"626267"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1_AYrnTpccWsE3URnS6h4JrUXJgc1lGB9/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1Xpqlr9c-e7IE_yw1MrVcyIP_ybRJx5wU/preview",
@@ -3932,11 +4024,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "47",
     "proyecto": "Omiyage",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Leandro Imai","doc":"624411"},{"nombre":"Julieta Hoyos","doc":"624271"},{"nombre":"Wanda Segovia","doc":"594883"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1xa_IYT3SrnNAjQi5HoU1AjcuPeDpHN_O/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1FMGf8Ee-lceQtzgo6YtXO40L5-ZHxXZT/preview",
@@ -4058,11 +4152,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "48",
     "proyecto": "CAIRO",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 8.5,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Camila Palermo","doc":"593836"},{"nombre":"Olivia Flores Presedo","doc":""},{"nombre":"Francisco Andrés Machicado","doc":"629171"},{"nombre":"Milagros Martinez","doc":"646202"},{"nombre":"Leticia Belén Larrea Mérida","doc":""}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1m5NQHilKtS5l4B79vZd89zdIW1vcChy8/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1wf9PRcnU_dof1rM-j6LCtD02VAj9uv5D/preview",
@@ -4184,11 +4280,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "49",
     "proyecto": "EcoBox Argentina S.R.L.",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Maria Susana Gonzalez","doc":"494232"},{"nombre":"María Sol Gonzalez","doc":"639402"},{"nombre":"Tomas Diego Rojas","doc":"607895"},{"nombre":"Yesica Romina  Romero Siritto","doc":"635526"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/15NR8wsAOuRfT64kCcEULar1hHe26fMhp/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1rFku_EUary5N18THc0STo9qdIi6ILGuB/preview",
@@ -4310,11 +4408,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "50",
     "proyecto": "RentReady",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Lucas Gabriel Castillo","doc":"619152"},{"nombre":"Ariel Casas","doc":"632904"},{"nombre":"Tatiana Carrillo","doc":"630697"},{"nombre":"Thiago Cappuzzello","doc":"637309"},{"nombre":"Christian Arleo","doc":"606372"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1D-ZbuItWjApGrUFEjMJ_dMVgP_ltQ9yT/preview",
     "linkPreguntas": "https://drive.google.com/file/d/16RiUF1QXa16yZp37M117FMYyC1cOjSnQ/preview",
@@ -4436,11 +4536,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "51",
     "proyecto": "Sandía Sublimación",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 6,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Jorgelina Acebo","doc":"638855"},{"nombre":"Anali Diaz","doc":"627197"},{"nombre":"Katherine Yepez","doc":"619324"},{"nombre":"Ana Laura Fernández Morales","doc":"568960"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1PGx9TkmIIE9YZW2xHEgFyz18oeLcAIMw/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1c2Y-gKC2wkz46MX_zWECf7Tt8PIkpD2s/preview",
@@ -4562,11 +4664,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "53",
     "proyecto": "ORIGEN",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 8.5,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Alondra Luna Erneta","doc":"633006"},{"nombre":"Maria Paula Maass","doc":"468274"},{"nombre":"Camila Macia","doc":"566839"},{"nombre":"Paula Ayelen Marin","doc":"626821"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1AU45CGhPwlKGzGa1zHB7NUfvAI3wASOv/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1_KXZlY-97qX3CVsZR1PDC33TKT5vqyfw/preview",
@@ -4688,11 +4792,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "55",
     "proyecto": "HogarFix",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 8.5,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Juan Manuel Garcia","doc":"623263"},{"nombre":"Melina Oriana Galuszka","doc":"592867"},{"nombre":"Gimenez, Fernanda","doc":""},{"nombre":"Cintia  Jimenez","doc":"638620"},{"nombre":"Liz Rodriguez","doc":"632523"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1HyJl55L4muvwWAXKwWOrGsfRCxrq0zRj/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1aIYwlA5AzlaBBPyg9UHTIVQGhsvbZF2_/preview",
@@ -4814,11 +4920,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "56",
     "proyecto": "Modo Piloto",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Maria Soledad  Peña Carrizo","doc":"641743"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/12nqzP7hPI3Qqm6xSaSsPhL1Dtm3fJufI/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1M51ANLt_z6_bPhUlLo8m_4XCoXH_Hosw/preview",
@@ -4940,11 +5048,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "58",
     "proyecto": "Venika Jewerly",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Carolina Perez","doc":"631626"},{"nombre":"Facundo Milne","doc":"633013"},{"nombre":"Jessica Gonzalez","doc":"475415"},{"nombre":"Claudia Veronica Rodriguez","doc":"31136"},{"nombre":"Oliva Gabriel","doc":""},{"nombre":"Bar Lucía","doc":""}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1uryc8y86hoNSZGQ9yLG0Ep4VscdseTNL/preview",
     "linkPreguntas": "https://drive.google.com/file/d/15W8cHoDsyViDF7hjfj1MYcUAQmyDZ-1w/preview",
@@ -5066,11 +5176,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "59",
     "proyecto": "SATHANE",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 8,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Damian Gabriel Presmanes","doc":"373599"},{"nombre":"Alexis Sebastian Unzurrunzaga","doc":"593716"},{"nombre":"Nicolas Ruiz Nieto","doc":"596576"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1Op_ih_UwL1ene52b1vTnx71utQ-H69QT/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1zUtgN9zgGvIMtMli81KwWEAfTjLLiVFv/preview",
@@ -5192,11 +5304,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "60",
     "proyecto": "Home Tex",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Valentina Clavijo","doc":"617655"},{"nombre":"Lucía Chiacchiara","doc":"622930"},{"nombre":"Barbara Alejandra Gassmann","doc":"552679"},{"nombre":"Fiorella Fontana","doc":"594992"},{"nombre":"Vanesa Sprovieri","doc":"631176"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1PLR2tskfcK4AKVnvzoh06mAhLHU5_Imf/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1tl5gv2dz-YDtYJ9hmyNA4xqbRCg4ez-A/preview",
@@ -5318,11 +5432,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "61",
     "proyecto": "Eunoia Agency - Maxing Home",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Tomás Alessandria","doc":"637712"},{"nombre":"Mateo Costanzo  louit","doc":"635148"},{"nombre":"Facundo Derbilli","doc":"630403"},{"nombre":"Melisa  Rodriguez Ferrari","doc":"642809"},{"nombre":"Juan Máximo Saldaño","doc":"628684"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1squ4XA1Pw91YBze0sR1fRG4_G6R2wBGa/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1QGD_g6nnUMpwbG9pH1RlNBTDJTpl2MUc/preview",
@@ -5444,10 +5560,12 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "62",
     "proyecto": "Coty John",
     "nivel": "Regular",
+    "nota": 6,
+    "notaFuente": "Entrega Final",
     "integrantes": [],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/13CRpET_20HTqTmex-DDFgufvHL4a_g3j/preview",
@@ -5570,11 +5688,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "62bis",
     "proyecto": "Coty John - Eventos & Cotillón Online",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 6,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Martín  Retamar","doc":"647956"},{"nombre":"Delfina  Campos","doc":"645663"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/11Gn8OvCaDoSuv5Zxhs0t-Zmg6B7sYLdW/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1hs1kSsO_eqYfo-uuTht-bsHqt6p2WpLW/preview",
@@ -5696,11 +5816,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "63",
     "proyecto": "SastreCo",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Mena, Lucia","doc":""},{"nombre":"Camila Valentina Alaya","doc":"643381"},{"nombre":"María Luciana Ortiz","doc":"638914"},{"nombre":"Marcos Florian","doc":"166966"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/19cfabuHhgn-WTLpQ6yfD0g9syeB5sOg5/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1EIVWDANVPFcgHaw9-uqsDjxeEqwqwZVt/preview",
@@ -5822,11 +5944,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "64",
     "proyecto": "CAPILUX",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Dafne Lagos","doc":"611690"},{"nombre":"Camila Ailín Sanchez Vilchez","doc":"643831"},{"nombre":"Daniela Salas Tabares","doc":"634777"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/105TWmDlAM2vVxmLdyOwrtANZd3mJXQKL/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1I0gr4hlaI32a7f-17R2ptgpBEUmuoL76/preview",
@@ -5948,11 +6072,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "65",
     "proyecto": "Yerba Mate María Epul",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Ana Macarena Altamirano","doc":"630902"},{"nombre":"Natalia Soledad Aravena","doc":"414618"},{"nombre":"Boix Valentina.","doc":""},{"nombre":"Martin Mino","doc":"569989"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1jEIxQzJcDdZgftVBulCVfjfngVPhwI3q/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1-7FFFtbZdkoquhMFIaousy4NiqLb2YIk/preview",
@@ -6074,11 +6200,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "67",
     "proyecto": "Senza Gluten Free",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 10,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Natalia Berbel","doc":"626836"},{"nombre":"Abril Cacere Esquivel","doc":"611133"},{"nombre":"Alma Violeta Garcia Buxton","doc":"611416"},{"nombre":"Valeria Gizzarelli","doc":"573135"},{"nombre":"Victoria Gomez","doc":"503755"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1hb786oGcZg5tLI8OopP1IeL-YGM389F7/preview",
     "linkPreguntas": "https://drive.google.com/file/d/167Dj2WyYqo1b3slKadb4ibMhGnfA4pWv/preview",
@@ -6200,11 +6328,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "68",
     "proyecto": "Red Pink",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 6,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Florencia Francos","doc":"623000"},{"nombre":"Micaela Fariña Polichiso","doc":""},{"nombre":"Agustina Fontana","doc":""},{"nombre":"Carmen Ivonne Polichiso","doc":""}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1Kot0I66kX8V-lVX57Y8wJYB1lHPvFKDQ/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1Ah3RWNpHOgXmecVKJfkNOry6C4P713Zv/preview",
@@ -6326,11 +6456,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "69",
     "proyecto": "Bariloche Bike",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7.5,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Carla Virginia Campos","doc":"611381"},{"nombre":"Lilian Mariel Gariboglio","doc":"637133"},{"nombre":"Ivan Franco Garnica","doc":"611224"},{"nombre":"Fernanda Pianco","doc":"633632"},{"nombre":"Nicolas Velazquez","doc":"556121"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1yBJQfY9Ax9_eeS7iirhBTduipQi5qE2r/preview",
     "linkPreguntas": "https://drive.google.com/file/d/175i1PIfsLYXUDXlOJwwish-5iOqZ0R34/preview",
@@ -6452,11 +6584,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "70",
     "proyecto": "Suelo Gamer",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Gianella Denisse  Mamani","doc":"635474"},{"nombre":"Fatima Carolina Maschio Maciel","doc":"610991"},{"nombre":"Barbara Skovgaard","doc":"631677"},{"nombre":"Pablo Antonio Maigua","doc":"593985"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1qwvy5FmPvy-CWMtpL81pPu8rGV7xFw6-/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1UL7nO8kfgdvaN4k8WUNa_sc1pKQtsasX/preview",
@@ -6578,11 +6712,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "71",
     "proyecto": "VITALAGE",
     "nivel": "Regular",
-    "integrantes": [],
+    "nota": 8.5,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Lucila Antonini Modet","doc":"643411"},{"nombre":"Maria Emilia Arias","doc":"639729"},{"nombre":"Tomas Gallardo","doc":"645345"},{"nombre":"Barbara Silva","doc":"627794"},{"nombre":"Martin Piparuolo","doc":"625002"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1T9tzfTmrvGRKuqq6I9xW4sqbg3zFBaX2/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1GICZZm6gndL1gYOnNq3urSx6EkFKVjLp/preview",
@@ -6704,11 +6840,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "72",
     "proyecto": "Crumb Club by Second Byte Agency",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Ailén Del Rio","doc":"595302"},{"nombre":"Gonzalo Damian Formia","doc":"620519"},{"nombre":"Lucia Regalado","doc":"614659"},{"nombre":"Marina Gabriela Albor","doc":"634418"},{"nombre":"Maria Elena Vazquez.","doc":"485701"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1Tgrb25IhQccpcVJMkUWKvayMTinMOg9x/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1mxGwTLouqWNARNW4TAzqzyDkBkdcR2RJ/preview",
@@ -6830,11 +6968,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "73",
     "proyecto": "Quedá Bien",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Camila Abanto","doc":"601897"},{"nombre":"Giorgina Lo Iacona","doc":"632404"},{"nombre":"Melisa Daniela Lencina","doc":"606303"},{"nombre":"Citrina Ana","doc":""},{"nombre":"German Ariel Leicker","doc":"641816"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/14YZvik0zMxMrFQ2F9-DEs0yGOaLb0U6L/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1C1WBWvbgZ1FGUFxDmtngi0JewknDTpRW/preview",
@@ -6956,11 +7096,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "74",
     "proyecto": "MateMío",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 8,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Ramiro Dominguez","doc":"603203"},{"nombre":"Maria Laura  Zalazar","doc":"624259"},{"nombre":"Axel Jair Deus","doc":"636699"},{"nombre":"Analia Irusta","doc":"616258"},{"nombre":"Jose Diaz","doc":""}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1jnpU0lWGxNprGTf518bKmZa97-gmxk7_/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1HqltXqTz88-tG-sBj8FPwdmvDb2Oqg9_/preview",
@@ -7082,11 +7224,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "75",
     "proyecto": "EscalaControl",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Angeles Belen Castro Tossi","doc":"644980"},{"nombre":"Juliana Bernardo","doc":"637869"},{"nombre":"Agostina Berón (escrito distinto en el CSV)","doc":"625825"},{"nombre":"Belen Florio","doc":"592938"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/14L78QyYeY99PfFlYJR3-FiedibQE23Q0/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1SmY6hUqIQ6-FRUUhvdn7nI1ueySFT0f4/preview",
@@ -7208,11 +7352,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "76",
     "proyecto": "Rutargenta — Agencia Hornero Digital",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 9,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Juan Jose Juarez","doc":"642541"},{"nombre":"Andrea Insfran","doc":"631805"},{"nombre":"Daniel Iuzzolino","doc":"634957"},{"nombre":"Aldo Juárez","doc":"516366"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1eXz35YqBX6OxoXlCq-_y_Me7PtOPn2RV/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1j7tmBNuBZRkf_7KYIZZN69yPG3O1Ue38/preview",
@@ -7334,11 +7480,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "77",
     "proyecto": "Garritas Club",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Sebastian Arguello","doc":"621272"},{"nombre":"Ornella Damiani","doc":"633875"},{"nombre":"Facundo Delgado","doc":"621576"},{"nombre":"Julieta Montero","doc":"626758"},{"nombre":"Teo Sittoni","doc":"639104"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/11CUq6Lj9kS9JqHzR_YH2kO7IChp2FQOK/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1nyTLHbRveVZLYAUOV9Ib6a5vPCJIawnd/preview",
@@ -7460,11 +7608,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "78",
     "proyecto": "GastroLogic Digital",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Ariana García","doc":"616931"},{"nombre":"Federico Schonfeld","doc":"646077"},{"nombre":"Florencia Sofia Simiele","doc":"628664"},{"nombre":"Joel Silvero","doc":"608829"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/19tO60LrHyLmD56aC0ZlYyGB3bPupJZqn/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1LlbMTzLW6dElq1GhqzjstH3t4dLtoZCg/preview",
@@ -7586,11 +7736,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "79",
     "proyecto": "ICE FIT",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Giuliana Burelli","doc":"622909"},{"nombre":"Vanesa Del Rosario Contrucci","doc":"644153"},{"nombre":"Dil Fabricio","doc":""},{"nombre":"Julia Freniche","doc":"643973"},{"nombre":"Agostina Peduto","doc":"622908"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1OGldCDlNbAB8FoRKWCYH-9htsaNc_-yU/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1RblA60fF9JbhaotXzlmFC5ROcwyA7WKE/preview",
@@ -7712,11 +7864,13 @@ const GRUPOS = [
       }
     ]
   },
-  {
+{
     "id": "80",
     "proyecto": "Academia Cumbre",
     "nivel": "Muy Bueno",
-    "integrantes": [],
+    "nota": 7,
+    "notaFuente": "Examen Final Julio",
+    "integrantes": [{"nombre":"Agustina Ceballos","doc":"635416"},{"nombre":"Sofía Espín","doc":"635374"},{"nombre":"Johanna Falbo","doc":"609437"},{"nombre":"Ludmila Fazzari","doc":"620542"},{"nombre":"Yanina Meza","doc":"632390"}],
     "tribunal": [],
     "linkTrabajo": "https://drive.google.com/file/d/1QjY21vJc5_63i1uOLtwLx_gDXBncBDpn/preview",
     "linkPreguntas": "https://drive.google.com/file/d/1NJGwN7tfCGvRWsbtdsr-tAUuFqIElpcF/preview",
