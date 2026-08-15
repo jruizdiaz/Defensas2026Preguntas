@@ -64,16 +64,37 @@
   .save:disabled{opacity:.5;cursor:default}
   .hint{font-size:.8rem;color:var(--muted);margin-top:4px}
   .empty{color:var(--muted);font-style:italic;font-size:.9rem}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0 6px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .stat .n{font-size:1.45rem;font-weight:800;color:var(--navy);line-height:1}
+  .stat .l{font-size:.78rem;color:var(--muted);margin-top:5px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap}
+  .filter-btn{border:1px solid var(--line);background:#fff;color:var(--navy);padding:9px 12px;border-radius:9px;cursor:pointer;font-weight:650}
+  .filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .card-links{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+  .card-link{font-size:.76rem;text-decoration:none;padding:6px 9px;border-radius:8px;background:#eef4f7;color:var(--teal);font-weight:700}
+  .card-link.gold{background:#fbf4db;color:#6a5600}
+  .row a.secondary{background:var(--navy)}
+  .row a.gold{background:var(--gold);color:#3a2f00}
+  .summary-note{font-size:.8rem;color:var(--muted);margin-top:10px}
 </style>
 </head>
 <body>
 <header>
   <h1>Defensas de TFI · TUCEMD</h1>
-  <p>Espacio de tribunal — Agosto 2026 · UTN FRBA</p>
+  <p>Espacio de tribunal — Agosto 2026 · UTN FRBA · TF y defensas actualizados desde Drive</p>
 </header>
 <div class="wrap">
+  <div class="stats" id="stats"></div>
   <div class="toolbar">
-    <input id="q" type="search" placeholder="Buscar por número, proyecto o nivel…" oninput="render()">
+    <div class="filters">
+      <button class="filter-btn active" data-level="" onclick="setLevel(this,'')">Todos</button>
+      <button class="filter-btn" data-level="Muy Bueno" onclick="setLevel(this,'Muy Bueno')">Muy Bueno</button>
+      <button class="filter-btn" data-level="Regular" onclick="setLevel(this,'Regular')">Regular</button>
+    </div>
+  </div>
+  <div class="toolbar">
+    <input id="q" type="search" placeholder="Buscar por grupo, proyecto, nivel o integrante…" oninput="render()">
     <span class="hint" id="count"></span>
   </div>
   <div id="grid" class="grid"></div>
@@ -95,14 +116,36 @@
 const API = ""; // ej: "https://script.google.com/macros/s/AKfy.../exec"
 
 const $ = s=>document.querySelector(s);
+let levelFilter = "";
 function esc(t){return (t||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+
+function setLevel(btn, level){
+  levelFilter = level;
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  render();
+}
+function renderStats(){
+  const mb=GRUPOS.filter(g=>/muy bueno/i.test(g.nivel)).length;
+  const reg=GRUPOS.filter(g=>/regular/i.test(g.nivel)).length;
+  const tf=GRUPOS.filter(g=>g.linkTrabajo).length;
+  const qp=GRUPOS.filter(g=>g.linkPreguntas).length;
+  $("#stats").innerHTML =
+    '<div class="stat"><div class="n">'+GRUPOS.length+'</div><div class="l">Grupos cargados</div></div>'+
+    '<div class="stat"><div class="n">'+mb+'</div><div class="l">Nivel Muy Bueno</div></div>'+
+    '<div class="stat"><div class="n">'+reg+'</div><div class="l">Nivel Regular</div></div>'+
+    '<div class="stat"><div class="n">'+tf+'/'+GRUPOS.length+'</div><div class="l">TF vinculados</div></div>'+
+    '<div class="stat"><div class="n">'+qp+'/'+GRUPOS.length+'</div><div class="l">Docs de preguntas</div></div>';
+}
 
 function render(){
   const q=($("#q").value||"").toLowerCase().trim();
   const grid=$("#grid"); grid.innerHTML="";
   const list=GRUPOS.filter(g=>{
+    if(levelFilter && g.nivel!==levelFilter) return false;
     if(!q)return true;
-    return (g.id+" "+g.proyecto+" "+g.nivel).toLowerCase().includes(q);
+    const integrantes=(g.integrantes||[]).map(i=>i.nombre+" "+(i.doc||"")).join(" ");
+    return (g.id+" "+g.proyecto+" "+g.nivel+" "+integrantes).toLowerCase().includes(q);
   });
   $("#count").textContent=list.length+" de "+GRUPOS.length+" grupos";
   for(const g of list){
@@ -112,7 +155,11 @@ function render(){
     c.innerHTML='<div class="gid">Grupo '+esc(g.id)+'</div>'+
       '<h3>'+esc(g.proyecto)+'</h3>'+
       '<span class="badge '+(mb?"b-mb":"b-reg")+'">'+esc(g.nivel)+'</span>'+
-      '<div class="meta" style="margin-top:8px">'+(g.integrantes&&g.integrantes.length?g.integrantes.length+' integrante(s)':'<span class="empty">sin integrantes cargados</span>')+'</div>';
+      '<div class="meta" style="margin-top:8px">'+(g.integrantes&&g.integrantes.length?g.integrantes.length+' integrante(s)':'<span class="empty">sin integrantes cargados</span>')+'</div>'+
+      '<div class="card-links">'+
+        (g.linkTrabajo?'<a class="card-link" href="'+g.linkTrabajo+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">TF</a>':'')+
+        (g.linkPreguntas?'<a class="card-link gold" href="'+g.linkPreguntas+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">Preguntas DOC</a>':'')+
+      '</div>';
     grid.appendChild(c);
   }
 }
@@ -154,8 +201,9 @@ function openModal(id){
   const inf=g.informe||{};
   let html="";
   html+='<div class="row">'+
-    '<a href="'+g.linkTrabajo+'" target="_blank" rel="noopener">📄 Ver trabajo (PDF)</a>'+
-    '<a class="alt" href="'+g.linkPreguntas+'" target="_blank" rel="noopener">❓ Preguntas (doc)</a></div>';
+    (g.linkTrabajo?'<a href="'+g.linkTrabajo+'" target="_blank" rel="noopener">📄 Ver TF</a>':'')+
+    (g.linkPreguntas?'<a class="gold" href="'+g.linkPreguntas+'" target="_blank" rel="noopener">📝 Ver preguntas (DOC)</a>':'')+
+    '</div>';
 
   html+='<details class="section" open><summary>Integrantes y tribunal</summary><div class="inner">'+
     '<dt style="font-weight:700;color:var(--teal);font-size:.82rem;text-transform:uppercase">Integrantes</dt>'+integrantesHTML(g)+
@@ -223,6 +271,7 @@ async function guardar(id){
   }catch(e){ btn.textContent="Error, reintentar"; btn.disabled=false; }
 }
 
+renderStats();
 render();
 </script>
 </body>
