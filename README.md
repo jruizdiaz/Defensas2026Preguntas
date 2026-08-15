@@ -1,25 +1,19 @@
-# Dashboard Defensas TFI · TUCEMD — Integrantes y notas
+# Dashboard TFI TUCEMD — notas corregidas
 
-Actualización basada en:
-- `Cruce_defensas.xlsx`: integrantes asociados a cada grupo.
-- `Grupos_Notas.xlsx`: nota grupal.
+## Fuente de integrantes
+`Cruce_defensas.xlsx` → hoja `Cruce completo`
 
-## Regla de prioridad de notas
-1. Se usa `Examen Final Julio` cuando existe una nota para el grupo.
-2. Si esa celda está vacía, se usa `Entrega Final`.
+## Fuente de notas
+`Grupos_Notas(1).xlsx` → hoja `Entrega Final`
 
-Resultado:
-- 77 grupos en el dashboard.
-- 76 grupos con integrantes cargados.
-- 326 integrantes asociados.
-- 76 notas tomadas de `Examen Final Julio`.
-- 1 nota(s) tomadas de `Entrega Final`.
-- Grupo 62: nota 6 de `Entrega Final`, porque `Examen Final Julio` está vacío.
-- Grupo 62: sin integrantes en `Cruce_defensas.xlsx`.
+## Resultado
+- Grupos: 77
+- Grupos con nota: 77
+- Integrantes asociados: 326
+- Grupos sin integrantes en el cruce: 62
+- Grupos sin nota: ninguno
 
 ## Publicación en GitHub Pages
-Subir en la raíz:
+Reemplazar en la raíz del repositorio:
 - `index.html`
 - `grupos.js`
-
-`validacion.json` es opcional y sirve para auditoría del cruce.

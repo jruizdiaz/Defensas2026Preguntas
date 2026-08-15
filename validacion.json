@@ -1,18 +1,36 @@
 {
-  "total_grupos_dashboard": 77,
-  "grupos_con_integrantes": 76,
-  "total_integrantes": 326,
-  "grupos_sin_integrantes_en_cruce": [
+  "grupos": 77,
+  "notas_fuente": "Grupos_Notas(1).xlsx / Entrega Final",
+  "grupos_con_nota": 77,
+  "faltantes_nota": [],
+  "integrantes_total": 326,
+  "grupos_sin_integrantes": [
     "62"
   ],
-  "notas_por_fuente": {
-    "Examen Final Julio": 76,
-    "Entrega Final": 1
-  },
-  "regla_nota": "Examen Final Julio si existe; en caso contrario Entrega Final",
-  "grupo_62": {
-    "nota": 6,
-    "fuente": "Entrega Final",
-    "integrantes": []
+  "muestra": {
+    "1": {
+      "nota": 8,
+      "integrantes": 5
+    },
+    "13bis": {
+      "nota": 8,
+      "integrantes": 3
+    },
+    "26": {
+      "nota": 10,
+      "integrantes": 5
+    },
+    "62": {
+      "nota": 6,
+      "integrantes": 0
+    },
+    "62bis": {
+      "nota": 6,
+      "integrantes": 2
+    },
+    "80": {
+      "nota": 7,
+      "integrantes": 5
+    }
   }
 }
