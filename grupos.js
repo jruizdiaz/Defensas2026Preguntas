@@ -1285,7 +1285,6557 @@ const GRUPOS = [
         { pregunta: "En el PESTEL reconocen que el contexto inflacionario es un riesgo sostenido, pero el ticket promedio de $45.000 que sostiene toda la proyección no tiene fecha ni mecanismo de ajuste: ¿cómo gestionarían ese riesgo si la inflación erosiona ese número antes del primer año?", buscamos: "Que propongan un mecanismo concreto de revisión de precios o ajuste del ticket (revisión mensual, precio en dólares, banda de actualización), y lo conecten con la coherencia interna: si el PESTEL alerta sobre inflación, el plan financiero debería contemplarla.", evasiva: "Decir que 'la inflación es un riesgo conocido' o que 'habría que actualizarlo en su momento', sin proponer ningún mecanismo específico ni reconocer que esa ausencia es una debilidad del trabajo." }
       ]}
     ]
+  },
+  {
+    "id": "26",
+    "proyecto": "Horizonte Bastit",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/11A_ZTH-1X4gDhKu8SRF_AEPcEaQEQjJy/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1lHyYjJTpU1y7ecKnYV7EtbzEzjvLfala/preview",
+    "informe": {
+      "resumen": "El trabajo muestra consistencia entre diagnóstico, solución técnica y métricas, con reflexión crítica honesta sobre errores cometidos.",
+      "queEs": "Ecosistema digital para hotel boutique marplatense: web con motor de reservas, membresía BIP recurrente y coworking para reducir dependencia de OTAs.",
+      "fortalezas": [
+        "Corrección proactiva del modelo BIP de 5.000 a 54 suscriptores ajustada a capacidad real del hotel.",
+        "Dos crisis documentadas con causa raíz, plan de acción por ejes, responsables y métricas de resolución.",
+        "Punto de equilibrio (33,6%) con margen de seguridad de 5,4 pp sobre ocupación objetivo (39%)."
+      ],
+      "interrogar": [
+        "Crisis ERR-986 menciona 5.000 cuentas VIP suspendidas, pero el modelo BIP solo proyecta 54 suscriptores en Año 1: ¿de dónde surgen esas 5.000 cuentas?",
+        "El sitio está en entorno de desarrollo Pantheon (dev-hotel-bastit1.pantheonsite.io), no en producción: ¿cuál es el estado real de implementación y el plan de migración?",
+        "El presupuesto de pauta es $20.000.000 anuales pero no se desglosa cómo se calculó ni se compara contra el CAC proyectado por reserva obtenida."
+      ],
+      "dondeApretar": "Presionar sobre la coherencia entre las cifras de la crisis BIP y el modelo real de suscriptores, y sobre la brecha entre MVP en staging y un sitio productivo operativo."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo propone pasar de depender de las OTAs en un 70% a reducirlo al 30% para el Año 3, pero en el Año 1 arrancan con esa alta dependencia: ¿qué justifica que un hotel boutique marplatense pueda lograr ese cambio en ese plazo y qué rol juega el ecosistema digital que diseñaron en ese proceso?",
+            "buscamos": "Que el grupo conecte la lógica de la estrategia: el motor de reservas propio + la membresía BIP + el coworking como palancas concretas para capturar reservas directas y reducir el pago de comisiones a OTAs, y que puedan explicar por qué ese plazo de tres años les parece razonable dado el punto de partida del hotel.",
+            "evasiva": "Hablar en abstracto de que 'las OTAs cobran comisiones altas y es mejor vender directo' sin vincular esa afirmación a las herramientas específicas del proyecto ni al contexto de un hotel boutique que recién arranca su canal propio."
+          },
+          {
+            "pregunta": "La membresía BIP apunta a generar ingresos recurrentes y reducir el impacto de la temporada baja, pero el flujo de caja muestra meses con resultados negativos importantes, especialmente entre mayo y octubre: ¿consideran que el volumen de suscriptores proyectado para el Año 1 es suficiente para cumplir ese objetivo, y por qué decidieron ese número?",
+            "buscamos": "Que el grupo reconozca la tensión real entre la aspiración del BIP como amortiguador de la baja temporada y el volumen acotado de suscriptores del Año 1, y que puedan defender la lógica de arrancar con ese volumen en lugar de uno mayor, ya sea por razones de tracción de mercado, capacidad operativa o estrategia de lanzamiento.",
+            "evasiva": "Defender el BIP como concepto ('la recurrencia es positiva para el negocio') sin hacerse cargo de que con ese número de suscriptores los meses negativos no se neutralizan, o prometer que en Año 2 y 3 va a crecer sin explicar cómo."
+          },
+          {
+            "pregunta": "Eligieron distribuir el presupuesto de pauta priorizando Meta Ads con la mitad del total y Google Search con casi un tercio: ¿cómo justifican esa distribución teniendo en cuenta que el cliente que buscan —huésped de hotel boutique en Mar del Plata— puede tener comportamientos de búsqueda muy distintos en cada plataforma?",
+            "buscamos": "Que el grupo demuestre que hubo una decisión estratégica detrás del mix de medios y no solo una distribución arbitraria, argumentando sobre el perfil del viajero objetivo, el momento del funnel en que cada plataforma opera (descubrimiento vs. intención de compra) y cómo eso se relaciona con los KPIs de conversión que se fijaron.",
+            "evasiva": "Justificar la distribución diciendo que 'Meta tiene mucho alcance' o 'Google es para búsquedas' como afirmaciones genéricas, sin conectarlo con el perfil específico del huésped boutique ni con el objetivo de conversión de reservas directas del proyecto."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "La crisis que tuvieron el día del lanzamiento mostró que los botones de reserva no funcionaban en celular porque el QA se había hecho solo en computadora: ¿qué cambiarían en el proceso de pruebas para que eso no vuelva a pasar antes de migrar el sitio a producción?",
+            "buscamos": "Que el grupo reconozca la causa raíz (QA únicamente en desktop) y proponga un protocolo concreto: pruebas en dispositivos móviles reales o emulados, checklist de viewports antes del go-live, y que conecten esa mejora con el momento de migración desde el entorno de desarrollo actual.",
+            "evasiva": "Decir que 'hay que hacer más pruebas' o que 'el error fue del plugin' sin proponer un proceso diferente ni vincularlo al estado actual del sitio."
+          },
+          {
+            "pregunta": "El sitio todavía está en entorno de desarrollo y no en producción: ¿cuál es el plan concreto para migrarlo y qué condiciones mínimas definiría el grupo para considerar que el producto está listo para recibir reservas reales?",
+            "buscamos": "Que el grupo describa etapas de migración (revisión de dominio, configuración del motor de reservas en vivo, pruebas de integración de pagos) y establezca criterios de aceptación claros, como la tasa de conversión objetivo o el comportamiento del CTA en mobile, antes de abrir al público.",
+            "evasiva": "Decir que 'falta terminar algunas cosas' sin nombrar qué condiciones técnicas o de negocio definen el momento de salida a producción."
+          },
+          {
+            "pregunta": "Dado que el objetivo de la membresía BIP en el primer año es de 54 suscriptores, ¿cómo justifican que esa propuesta de valor sea suficientemente atractiva para que un huésped o viajero frecuente pague todos los meses, en lugar de simplemente reservar por una OTA cuando lo necesita?",
+            "buscamos": "Que el grupo defienda los beneficios diferenciales del BIP más allá del precio, explicando qué recibe el suscriptor que no consigue en una OTA: acceso prioritario, descuentos acumulables, acceso al coworking u otras ventajas, y que reconozcan que la propuesta debe ser lo suficientemente clara en el sitio para convertir visitantes en miembros.",
+            "evasiva": "Repetir que el precio es $15.000 por mes o que el objetivo es 54 suscriptores sin explicar por qué alguien elegiría adherirse en lugar de reservar de forma puntual."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio todavía corre en el entorno de desarrollo de Pantheon, no en producción: ¿cómo justifican esa decisión y qué pasos concretos tiene el plan de migración antes del Go-Live?",
+            "buscamos": "Que el grupo reconozca que el estado actual es de desarrollo y no de producción, que explique por qué se eligió ese entorno para la etapa del proyecto, y que describa al menos los hitos principales del pasaje a producción (dominio propio, DNS, pruebas de staging, QA en mobile) con alguna referencia al aprendizaje que dejó la crisis del Go-Live del 15 de agosto.",
+            "evasiva": "Decir que 'el sitio ya está listo' o hablar de las funcionalidades del sitio sin abordar el estado real de implementación ni mencionar ningún paso del plan de migración."
+          },
+          {
+            "pregunta": "La crisis del Go-Live mostró que los botones de reserva no funcionaban en celular porque el QA se hizo solo en desktop: ¿qué cambiarían en el proceso de pruebas para que eso no vuelva a ocurrir antes de salir a producción?",
+            "buscamos": "Que el grupo identifique el QA únicamente en desktop como la causa raíz declarada, proponga un protocolo que incluya pruebas en distintos viewports y dispositivos móviles reales o simulados, y muestre conciencia del impacto de negocio de tener el motor de reservas inoperativo en mobile dado que el Mobile Bounce Rate es un KPI central del proyecto.",
+            "evasiva": "Responder en abstracto que 'hay que hacer más pruebas' o que 'se va a testear mejor', sin vincular la propuesta al conflicto específico entre plugins ni al canal mobile como punto crítico del ecosistema."
+          },
+          {
+            "pregunta": "El proyecto apunta a reducir la dependencia de las OTAs del 70% inicial al 30% en el tercer año: ¿qué rol técnico cumple el motor de reservas propio en esa estrategia y qué tendría que pasar en el sitio para que un huésped prefiera reservar ahí antes que en Booking o Expedia?",
+            "buscamos": "Que el grupo vincule el motor de reservas directo con la reducción de comisiones OTA y explique qué condiciones técnicas y de experiencia de usuario hacen que la conversión directa sea competitiva: velocidad, UX mobile, precio paridad o beneficio diferencial, proceso de pago sin fricciones, y conexión con el programa BIP como incentivo concreto.",
+            "evasiva": "Hablar solo de las ventajas de tener web propia o de la estrategia de marketing sin explicar qué características técnicas o de experiencia del motor de reservas son las que efectivamente mueven al huésped a reservar de forma directa."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo distribuye el presupuesto de pauta entre Meta, Google y otros canales, pero ¿cómo justifican que ese monto es suficiente o adecuado para alcanzar la ocupación objetivo del Año 1, considerando que el 70% de las reservas iniciales siguen dependiendo de las OTAs?",
+            "buscamos": "Que el grupo explique el razonamiento detrás de la distribución: si hay una lógica de CAC estimado, si el objetivo de conversión del 2,2% fue el punto de partida del cálculo, o si reconocen que el presupuesto es una hipótesis que necesita ajustarse en función de los resultados reales de los primeros meses.",
+            "evasiva": "Describir qué es Meta Ads o Google Ads, o repetir los porcentajes de distribución sin conectarlos con ningún objetivo de negocio concreto del proyecto."
+          },
+          {
+            "pregunta": "El flujo de caja proyecta seis meses con resultado negativo, concentrados en temporada baja, y los ingresos del BIP con 54 suscriptores no alcanzan a cubrirlos: ¿qué decisión tomaron o deberían tomar para sostener la operación durante esos meses sin recurrir a las OTAs que el proyecto busca reemplazar?",
+            "buscamos": "Que el grupo reconozca la tensión real: en temporada baja la membresía BIP es insuficiente como colchón financiero y el canal directo todavía no está maduro, y que puedan proponer alguna medida concreta —reserva de capital, campaña específica de baja temporada, ajuste de precios, coworking como ingreso alternativo— aunque sea perfectible.",
+            "evasiva": "Decir que el BIP 'ayuda a diversificar' sin cuantificar en absoluto su impacto o sin reconocer que 54 suscriptores no resuelven un déficit de millones de pesos en meses como mayo o junio."
+          },
+          {
+            "pregunta": "Ustedes fijaron un KPI de tasa de abandono de carrito menor al 70%: ¿qué aprendieron de la crisis del Go-Live —donde los botones de reserva no funcionaban en mobile— que los llevó a elegir ese umbral y cómo piensan monitorearlo una vez que el sitio esté en producción?",
+            "buscamos": "Que conecten el problema técnico real del lanzamiento (QA solo en desktop, CTAs inoperativos en mobile) con la lógica del KPI: si el error no se detecta antes del go-live, el abandono de carrito se dispara por fallas técnicas, no por falta de intención de compra, y que mencionen algún mecanismo de seguimiento como Google Analytics, Hotjar o pruebas periódicas en dispositivos móviles.",
+            "evasiva": "Definir qué es el abandono de carrito en términos generales sin mencionar el incidente técnico del proyecto ni explicar por qué ese porcentaje específico fue el elegido."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "La crisis del Go-Live del 15 de agosto mostró que los botones de reserva no funcionaban en celular porque el QA previo se hizo solo en desktop: ¿qué cambiarían en el proceso de validación técnica si tuvieran que volver a planificar ese lanzamiento?",
+            "buscamos": "Que el grupo reconozca la causa raíz (QA limitado a desktop ignorando el comportamiento mobile) y proponga una corrección concreta: testing en múltiples dispositivos y viewports reales, checklist pre-lanzamiento que incluya mobile, o un ambiente de staging que replique condiciones de producción antes del go-live.",
+            "evasiva": "Decir que 'hay que hacer más pruebas' o que 'fue un error técnico de los plugins' sin explicar qué protocolo concreto hubieran aplicado para detectarlo antes del lanzamiento."
+          },
+          {
+            "pregunta": "El plan describe una crisis en la que aparecen miles de suscripciones VIP suspendidas como impagas, pero el objetivo del primer año es de apenas 54 suscriptores fundadores: si el tribunal les preguntara de dónde surge esa base de cuentas VIP, ¿cómo defenderían esa decisión de incluir ese escenario en el documento?",
+            "buscamos": "Que el grupo admita honestamente si fue un error de consistencia interna, o que explique con fundamento de dónde proviene esa base (por ejemplo, si se pensó como escenario futuro, como caso hipotético de otra escala, o si fue importado de otra fuente), y que demuestren capacidad de detectar y gestionar inconsistencias dentro de su propio trabajo.",
+            "evasiva": "Ignorar la brecha y hablar genéricamente de 'cómo se manejan las suspensiones de cuentas' sin abordar por qué el número no cierra con los 54 suscriptores proyectados."
+          },
+          {
+            "pregunta": "El flujo de caja proyectado muestra meses con resultado negativo durante la temporada baja, y el plan contempla la membresía BIP precisamente como herramienta para amortiguar esa caída: ¿consideran que los 54 suscriptores del año 1 son suficientes para cumplir ese rol, o detectaron ese riesgo y decidieron asumirlo conscientemente?",
+            "buscamos": "Que el grupo demuestre que evaluaron el riesgo de liquidez en temporada baja, reconozcan que con 54 suscriptores los ingresos BIP no alcanzan a neutralizar los meses negativos, y expliquen si tienen una estrategia de contingencia (reserva de capital, ajuste de costos variables, captación acelerada de suscriptores) o al menos que puedan nombrar el riesgo con claridad.",
+            "evasiva": "Reiterar que el BIP 'genera ingresos recurrentes' o que 'reduce la dependencia de OTAs' sin reconocer que en el año 1 esa palanca es insuficiente para los meses de déficit proyectado."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "27",
+    "proyecto": "OSMOS",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1kv6lTU8nz0Uun81VMth76hEbDqUfsWLz/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1_UqVx0p631EhnEcw1P3q7ILUHe31y6iU/preview",
+    "informe": {
+      "resumen": "El trabajo presenta consistencia interna entre diagnóstico, diseño e implementación, con evidencias reales del MVP, gestión de crisis documentada y KPIs definidos, aunque con brechas operativas notorias.",
+      "queEs": "E-commerce DNVB de purificadores de agua para hogares urbanos AMBA, diferenciado por educación, simplificación y recurrencia vía filtros.",
+      "fortalezas": [
+        "MVP publicado y funcional en Pantheon con carrito, checkout y catálogo operativo verificado con capturas.",
+        "Gestión de dos crisis documentadas con tickets, KPIs de cierre, responsables y acciones correctivas específicas.",
+        "Coherencia entre FODA/PESTEL y decisiones de plataforma, contenido educativo, soporte WhatsApp y SEO."
+      ],
+      "interrogar": [
+        "Checkout solo admite transferencia bancaria (p.32): contradice la propuesta de cuotas y medios digitales declarada como diferencial clave.",
+        "Break-even de 64 unidades con ROI 88,09% (p.5): el presupuesto de $1.349.000 y contribución de $21.145 no detallan cómo se calculó el precio promedio de $140.966,67 del TAM.",
+        "Buscador validado con solo 1 búsqueda crítica (p.38): el criterio de cierre de crisis ERR-508 exigía <5% búsquedas sin resultados, pero la muestra es insuficiente para declarar el KPI cumplido."
+      ],
+      "dondeApretar": "Concentrar la defensa en la brecha entre la propuesta de valor (cuotas, múltiples medios de pago, recurrencia) y lo efectivamente implementado en el MVP entregado."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo proyecta capturar el 1% del mercado con casi 92.000 hogares como objetivo, pero el horizonte real de validación del negocio descansa en llegar a 64 unidades anuales vendidas en AMBA: ¿cómo justifican que esa proyección de mercado es alcanzable con ese punto de partida?",
+            "buscamos": "Que el grupo reconozca la tensión entre el SOM declarado y el break-even real, y que pueda explicar qué pasos concretos conectan ambos números, por ejemplo fases de crecimiento, reinversión o expansión geográfica.",
+            "evasiva": "Hablar del tamaño del mercado de purificación en Argentina en general, o repetir que el SOM es el 1% del SAM, sin explicar cómo se transita desde 64 unidades anuales hasta esa escala."
+          },
+          {
+            "pregunta": "En el trabajo declaran que uno de los diferenciales del negocio es ofrecer medios de pago digitales y la posibilidad de cuotas, pero al momento de la entrega el checkout solo admite transferencia bancaria: ¿por qué tomaron esa decisión y qué impacto real tiene sobre la propuesta de valor que prometieron al cliente?",
+            "buscamos": "Que el grupo pueda explicar la razón concreta detrás de la decisión —sea técnica, operativa o de tiempo— y que reconozca abiertamente que eso debilita uno de los diferenciales declarados, idealmente proponiendo cómo se resolvería en una etapa siguiente.",
+            "evasiva": "Justificar la transferencia bancaria como un medio válido en Argentina sin reconocer que contradice lo que el propio trabajo prometía como diferencial, o desviar la respuesta hacia las características del producto."
+          },
+          {
+            "pregunta": "Uno de los pilares del modelo de negocio es la recurrencia a través de la reposición de filtros, pero el checkout implementado no muestra ninguna opción de suscripción automática aunque eso sí estaba previsto en los wireframes: ¿cómo defienden que el modelo de recurrencia está realmente validado en este trabajo?",
+            "buscamos": "Que el grupo distinga entre lo que fue diseñado conceptualmente y lo que se implementó efectivamente, y que pueda argumentar si consideran la recurrencia validada a nivel estratégico o si reconocen que es una deuda de implementación pendiente.",
+            "evasiva": "Explicar qué es la recurrencia como concepto de negocio o mencionar el plan de contenidos de fidelización sin abordar que el mecanismo operativo concreto —la suscripción— no está funcionando en el sitio entregado."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En los wireframes prometían medios de pago digitales y cuotas como diferencial, pero al momento de la entrega el único método habilitado era la transferencia bancaria: ¿por qué tomaron esa decisión y cómo afecta la experiencia de compra que querían ofrecer?",
+            "buscamos": "Que reconozcan la contradicción entre la promesa de la propuesta de valor y la implementación real, expliquen la razón técnica o de tiempo que llevó a esa decisión, y muestren conciencia del impacto en conversión y en la credibilidad del diferencial declarado.",
+            "evasiva": "Decir que 'es una limitación técnica' o que 'se va a resolver en la próxima etapa' sin reconocer que contradice algo que ellos mismos pusieron como diferencial clave en el proyecto."
+          },
+          {
+            "pregunta": "El buscador interno tuvo una crisis al momento del lanzamiento porque no devolvía resultados para términos centrales del negocio, y luego lo dieron por resuelto: ¿qué tan confiados están en que esa solución funcionó, considerando cómo hicieron la validación?",
+            "buscamos": "Que identifiquen que la validación post-corrección se hizo con una muestra muy reducida, reconozcan que eso no es suficiente para declarar el KPI cumplido con certeza, y propongan cómo hubieran robustecido esa validación.",
+            "evasiva": "Decir que 'se hicieron las pruebas necesarias' o que 'el buscador quedó funcionando' sin cuestionar si una sola búsqueda crítica es metodológicamente válida para cerrar el incidente."
+          },
+          {
+            "pregunta": "La fidelización por suscripción automática de filtros era parte central de la propuesta de recurrencia, pero esa opción no aparece implementada en el checkout: ¿cómo impacta esa ausencia en el modelo de negocio que diseñaron?",
+            "buscamos": "Que conecten la ausencia de la suscripción en el checkout con la lógica de recurrencia que sostiene el modelo DNVB, reconozcan que sin ese flujo el diferencial de reposición automática queda solo como intención y no como experiencia real, y evalúen el peso de esa brecha.",
+            "evasiva": "Explicar qué es una suscripción o cómo funciona en general, sin vincular la ausencia concreta en su checkout con el modelo de negocio que ellos propusieron."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio quedó publicado en el entorno de desarrollo de Pantheon y no en un dominio propio: ¿qué impacto concreto tiene eso sobre el SEO y la credibilidad del proyecto, y por qué decidieron dejarlo así para la entrega?",
+            "buscamos": "Que reconozcan que un subdominio de desarrollo no es indexable de forma óptima por Google, que afecta la percepción de marca y la confianza del usuario, y que expliquen la razón real detrás de esa decisión (costo, tiempo, complejidad del registro) sin esquivar que es una brecha entre lo planificado y lo ejecutado.",
+            "evasiva": "Decir que 'era solo para mostrar el prototipo' o que 'igual funciona igual' sin reconocer el impacto en posicionamiento orgánico ni en la propuesta de valor de marca que el trabajo mismo declara como diferencial."
+          },
+          {
+            "pregunta": "El buscador interno falló al momento del lanzamiento y no devolvía resultados para palabras clave centrales del negocio: después de corregirlo, ¿por qué consideran suficiente haber validado la solución con una sola búsqueda, y cómo justifican ese criterio de cierre?",
+            "buscamos": "Que admitan que una sola búsqueda es una muestra claramente insuficiente para dar por cumplido el KPI, que reconozcan el riesgo de falsos positivos, y que idealmente propongan cómo hubieran debido diseñar esa validación: cuántas búsquedas, con qué términos variantes, y con qué criterio de aceptación.",
+            "evasiva": "Repetir que el KPI pedía menos del 5% de búsquedas sin resultado y decir que lo cumplieron, sin cuestionar en ningún momento si una sola búsqueda alcanza para sostener estadísticamente ese porcentaje."
+          },
+          {
+            "pregunta": "El panel de analítica en GA4 aparece sin datos al momento de la entrega: ¿cómo pensaban tomar decisiones operativas de optimización si la infraestructura de medición no estaba funcionando?",
+            "buscamos": "Que expliquen qué falló en la implementación vía Google Tag Manager, que reconozcan que sin datos reales el monitoreo de KPIs como conversión o tráfico es imposible, y que propongan qué hubieran necesario verificar antes de declarar la analítica como parte de la infraestructura operativa.",
+            "evasiva": "Decir que 'ya estaba configurado' o que 'solo era cuestión de tiempo para que aparecieran los datos', sin asumir que un panel vacío al momento de entrega implica que esa herramienta declarada como crítica no estaba efectivamente operativa."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo proyecta un ROI muy atractivo para el primer año, pero el break-even está calculado sobre un precio promedio que surge del TAM general y no de los tres productos que tienen todos el mismo precio en el sitio: ¿cómo justifican ese precio promedio que usaron para las proyecciones financieras?",
+            "buscamos": "Que el grupo reconozca la tensión entre el precio promedio teórico del TAM y el precio uniforme visible en el catálogo, y que pueda explicar si ese promedio representa una mezcla de ventas esperada, un supuesto simplificador o una limitación del modelo financiero.",
+            "evasiva": "Repetir que el ROI es 88% o que el break-even son 64 unidades sin explicar de dónde sale el precio promedio ni cómo se relaciona con los productos reales del catálogo."
+          },
+          {
+            "pregunta": "El trabajo declara los medios de pago digitales y las cuotas como un diferencial clave de la propuesta, pero al momento de la entrega el checkout solo admitía transferencia bancaria: ¿por qué tomaron esa decisión y cómo impacta eso en la propuesta de valor que le prometieron al cliente?",
+            "buscamos": "Que el grupo pueda justificar la decisión operativa (limitaciones técnicas, tiempo, plataforma) sin evadir la contradicción con el diferencial declarado, y que reconozca el impacto real en la conversión y en la credibilidad de la promesa de marca.",
+            "evasiva": "Decir que 'fue una decisión técnica' o que 'se va a resolver después' sin conectar esa limitación con la promesa de cuotas que el propio trabajo señala como ventaja competitiva."
+          },
+          {
+            "pregunta": "Cuando describen la crisis del troll en la comunidad, estiman una caída de conversión de entre 15% y 25% y una baja de ventas de 10 a 7 u 8 mensuales: ¿en qué se basaron para hacer esa estimación si la marca es nueva y no tiene historial de conversión propio?",
+            "buscamos": "Que el grupo reconozca que la estimación no puede surgir de datos históricos propios porque la marca no tiene, y que explique si tomaron benchmarks de industria, datos del sector o asumieron un escenario conservador, siendo transparentes sobre el nivel de incertidumbre de esa cifra.",
+            "evasiva": "Afirmar que la estimación es válida porque está en el informe o que 'es una proyección' sin explicar la fuente o el razonamiento detrás de los números."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo describen la crisis del troll en la comunidad y estiman una caída de ventas bastante específica, de 10 a 7 u 8 unidades mensuales. ¿Cómo llegaron a ese número si OSMOS todavía no tiene historial de ventas real?",
+            "buscamos": "Que el grupo reconozca honestamente que la estimación es proyectada y no empírica, explique desde dónde la anclaron (por ejemplo, en el break-even o en benchmarks del sector), y muestre que entienden la limitación de proyectar impacto de reputación sobre una marca que aún no tiene conversión medida.",
+            "evasiva": "Responder que 'es una estimación conservadora' o 'lo calculamos en base al mercado' sin explicar el razonamiento concreto ni reconocer que no existe un baseline histórico propio."
+          },
+          {
+            "pregunta": "El criterio para dar por cerrada la crisis del buscador exigía que menos del 5% de las búsquedas no devolvieran resultados, pero en la validación final solo probaron con una búsqueda. ¿Por qué decidieron cerrar la crisis con esa evidencia y qué riesgo dejaba abierto eso para el lanzamiento?",
+            "buscamos": "Que el grupo admita que la muestra fue insuficiente para declarar cumplido el KPI, que expliquen qué los llevó a esa decisión en contexto (tiempo, recursos, prioridades del cierre), y que puedan nombrar el riesgo concreto: que búsquedas como 'agua', 'purificacion' o 'filtro' siguieran sin resultados en producción.",
+            "evasiva": "Defender que 'una búsqueda representativa es suficiente' o describir el proceso técnico de indexación sin pronunciarse sobre la validez estadística ni el riesgo residual."
+          },
+          {
+            "pregunta": "El KPI de recuperación de la crisis del troll pide volver al 90% del baseline de conversión, pero OSMOS es una marca nueva sin historial. Si tuviesen que defender esa métrica ante un inversor hoy, ¿cómo la reformularían para que sea medible de verdad?",
+            "buscamos": "Que el grupo identifique el problema de fondo: no se puede calcular el 90% de algo que no existe. Una buena respuesta propone un baseline alternativo razonable, como las primeras semanas de lanzamiento, un benchmark del sector, o las 5,3 unidades mensuales del break-even, y explica por qué ese ancla es más honesta.",
+            "evasiva": "Repetir que el KPI figura en el documento tal cual o argumentar que 'con el tiempo se va a poder medir' sin proponer ninguna reformulación concreta."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "28",
+    "proyecto": "CRECE +3D",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1FVK6zqOBNZ31dCzptw7BxUzbSOscQix8/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1WauJLB_UOw3upB11F64wSOFQbqpqLw3t/preview",
+    "informe": {
+      "resumen": "El trabajo es completo en estructura pero carece de cifras concretas en TAM/SAM/SOM, presupuesto, metas de KPIs y resultados reales medidos.",
+      "queEs": "E-commerce de kits educativos físicos (impresión 3D) con contenido digital complementario para familias con niños de 3 a 10 años en Argentina.",
+      "fortalezas": [
+        "Plataforma funcional implementada en WordPress/WooCommerce/Pantheon con URL verificable.",
+        "Gestión de crisis documentada con tickets, tableros Miro y metodología 5 Porqués aplicada.",
+        "Estrategia multicanal definida: Instagram 50%, TikTok 30%, Google Ads 20%."
+      ],
+      "interrogar": [
+        "TAM/SAM/SOM sin ninguna cifra: no hay datos de población, porcentajes ni proyección de ingresos.",
+        "KPIs declarados (8 indicadores) sin valores meta ni resultados obtenidos post-implementación.",
+        "Análisis PESTEL menciona 'estabilidad normativa' favorable, contradiciendo la amenaza FODA de 'barreras regulatorias'."
+      ],
+      "dondeApretar": "Presionar sobre la brecha entre planificación estratégica robusta y ausencia total de métricas cuantitativas que demuestren aprendizaje aplicado."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo definen un público objetivo y también un buyer persona específico: ¿por qué decidieron enfocarse en ese perfil de comprador y cómo esa decisión se refleja en el canal publicitario donde pusieron la mayor parte del presupuesto?",
+            "buscamos": "Que conecten el buyer persona (madres y padres de 28 a 45 años) con la elección de Instagram como canal principal (50% de la inversión), argumentando por qué ese canal alcanza mejor a ese perfil. Se valora que justifiquen la lógica de la decisión, no que reciten el porcentaje.",
+            "evasiva": "Explicar qué es un buyer persona en abstracto, o describir las redes sociales elegidas sin relacionarlas con el perfil de comprador definido en el trabajo."
+          },
+          {
+            "pregunta": "El trabajo presenta el tamaño del mercado dividido en TAM, SAM y SOM, pero sin cifras de respaldo: ¿cómo justifican esa segmentación si no hay datos de población ni proyección de ingresos que la sostengan?",
+            "buscamos": "Que reconozcan la debilidad sin evasivas y expliquen qué fuentes o criterios podrían haber usado para estimar el mercado (INDEC, UNICEF, informes del sector), o que argumenten qué decisión tomarían hoy para subsanar el vacío. Se valora la honestidad y la reflexión sobre la limitación.",
+            "evasiva": "Definir qué significan TAM, SAM y SOM, o afirmar que 'el mercado es grande' sin reconocer que el trabajo no lo cuantifica."
+          },
+          {
+            "pregunta": "En el análisis PESTEL el trabajo señala estabilidad normativa como un factor favorable, pero en el FODA aparecen las barreras regulatorias como una amenaza concreta: ¿cómo explican esa contradicción y cuál de los dos diagnósticos representa mejor la situación real del proyecto?",
+            "buscamos": "Que adviertan la tensión entre ambos análisis y la resuelvan con algún argumento: por ejemplo, que la estabilidad general del marco legal no implica ausencia de requisitos específicos para productos dirigidos a niños, o que el FODA captura riesgos operativos que el PESTEL no desagregó. Se valora que tomen posición en lugar de esquivar.",
+            "evasiva": "Leer o parafrasear ambos puntos del trabajo sin explicar por qué conviven o cuál tiene más peso para el negocio."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio está publicado en un entorno de desarrollo y no en un dominio productivo: ¿qué impacto tiene eso en la experiencia del usuario que llega desde una campaña pagada?",
+            "buscamos": "Que el grupo reconozca que un entorno 'dev' puede generar desconfianza, afectar la velocidad, mostrar advertencias de seguridad o tener funcionalidades incompletas, y que explique si esa decisión fue deliberada o una limitación del proyecto.",
+            "evasiva": "Decir que el sitio 'funciona bien' o que 'es solo para mostrar' sin abordar el riesgo real para el usuario final que intenta comprar."
+          },
+          {
+            "pregunta": "Cuando el tráfico del influencer colapsó el checkout, ¿qué decisión de diseño o arquitectura del sitio habrían tomado distinto si hubieran anticipado ese pico de visitas?",
+            "buscamos": "Que el grupo vincule la crisis con la ausencia de pruebas de carga previas al lanzamiento y proponga acciones concretas: caché, servidor escalable, página de espera, límite de stock visible, u otras medidas que reduzcan la carga sobre la base de datos de WordPress.",
+            "evasiva": "Culpar al influencer o al volumen de tráfico sin asumir responsabilidad sobre las decisiones de infraestructura y preparación del sitio."
+          },
+          {
+            "pregunta": "El sitemap del informe lista 'Productos' como una sección independiente, pero la estructura implementada no la incluye así: ¿cómo afecta esa diferencia al recorrido que hace una madre o un padre cuando entra al sitio buscando qué comprar?",
+            "buscamos": "Que el grupo reconozca la inconsistencia entre lo planificado y lo ejecutado, explique dónde quedaron los productos dentro de la navegación real y evalúe si eso dificulta o no que el buyer persona llegue al catálogo sin fricciones.",
+            "evasiva": "Minimizar la diferencia diciendo que 'es solo una cuestión de nombres' sin analizar el impacto en la navegación y la conversión del público objetivo."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio está corriendo en un entorno de desarrollo, no en producción. ¿Por qué decidieron lanzar las campañas con influencers sobre esa infraestructura y qué cambiarían hoy?",
+            "buscamos": "Que el grupo reconozca que la URL activa es un entorno 'dev' de Pantheon, que eso implica limitaciones de rendimiento y escalabilidad, y que lo conecten con el colapso que sufrieron cuando el tráfico de influencers saturó la base de datos e impidió que los usuarios completaran el checkout. Una buena respuesta admite que faltó migrar a producción y/o hacer pruebas de carga antes del lanzamiento.",
+            "evasiva": "Hablar genéricamente de que 'WordPress a veces falla con mucho tráfico' o decir que 'era una prueba piloto' sin vincular el problema al entorno de desarrollo ni mencionar la ausencia de pruebas previas."
+          },
+          {
+            "pregunta": "En el informe declaran la infraestructura como estable y escalable, pero tuvieron una crisis donde el tráfico de un influencer tiró el checkout. ¿Cómo concilian esas dos cosas?",
+            "buscamos": "Que el grupo pueda reconocer la contradicción entre lo declarado y lo ocurrido, y que expliquen qué medidas concretas tomarían para que la plataforma pueda sostener picos de tráfico reales, por ejemplo pruebas de carga, CDN, caché, plan de hosting superior o migrar a entorno productivo.",
+            "evasiva": "Minimizar la crisis diciendo que fue algo puntual o excepcional, sin proponer ninguna solución técnica ni admitir que la plataforma no estaba preparada para ese escenario."
+          },
+          {
+            "pregunta": "El sitemap que describen en una sección del informe incluye 'Productos' como página independiente, pero la estructura que implementaron no la lista así. ¿A qué responde esa diferencia y cómo afecta la experiencia del usuario que llega desde un anuncio?",
+            "buscamos": "Que el grupo advierta la inconsistencia entre el sitemap planificado y el implementado, que puedan explicar si fue una decisión deliberada o un error de documentación, y que relacionen el impacto con el recorrido real del usuario, especialmente considerando que vienen de campañas pagas donde la coherencia entre anuncio y landing es clave para la conversión.",
+            "evasiva": "Responder solo sobre qué es un sitemap o para qué sirve el SEO en general, sin abordar la discrepancia concreta entre lo planificado y lo ejecutado ni su efecto en el flujo de compra."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo definieron varios KPIs para medir el rendimiento de la tienda, pero ninguno tiene un valor meta ni resultados obtenidos después del lanzamiento. ¿Cómo justifican haber elegido esos indicadores si no pueden decir si el proyecto los cumplió o no?",
+            "buscamos": "Que el grupo reconozca la limitación y explique por qué los KPIs quedaron sin metas cuantificadas: si fue por estar en etapa de lanzamiento, por falta de datos históricos, o por una decisión consciente. Lo importante es que muestren que entienden la diferencia entre definir un indicador y poder evaluar su desempeño, y que puedan decir qué harían distinto.",
+            "evasiva": "Explicar qué mide cada KPI (tráfico, conversión, ROI, etc.) sin tocar en ningún momento la ausencia de valores meta ni justificar por qué el proyecto no tiene resultados concretos."
+          },
+          {
+            "pregunta": "Decidieron concentrar la mitad del presupuesto publicitario en Instagram Ads y prácticamente nada en Google. ¿Por qué esa distribución tiene sentido para el perfil de cliente que definieron, y qué riesgo implica apostar tan fuerte a una sola plataforma?",
+            "buscamos": "Que conecten la decisión de presupuesto con el buyer persona: madres y padres de 28 a 45 años que consumen contenido visual y de comunidad en Instagram. Y que mencionen el riesgo real que ya vivieron: la Crisis ERR-335 demostró que depender de Meta puede dejar el proyecto sin publicidad de golpe, lo que hace que esa concentración sea una vulnerabilidad concreta, no solo teórica.",
+            "evasiva": "Decir que Instagram tiene mucho alcance o que es donde está el público sin vincular el argumento al perfil etario ni reconocer el riesgo que el propio proyecto ya sufrió."
+          },
+          {
+            "pregunta": "El trabajo presenta un análisis de mercado dividido en TAM, SAM y SOM, pero ese análisis no incluye ninguna cifra de población ni proyección de ingresos. ¿Cómo puede un inversor o un banco tomar una decisión sobre este proyecto sin esos datos?",
+            "buscamos": "Que el grupo reconozca que la ausencia de cifras vacía de utilidad práctica el análisis de mercado y que expliquen qué fuentes podrían haber usado para estimarlo: datos del INDEC sobre hogares con niños, precios del producto, escenarios de conversión. No se espera que reciten un número, sino que demuestren entender para qué sirve esa sección y qué le faltó.",
+            "evasiva": "Definir qué es TAM, SAM y SOM o describir el concepto de segmentación sin admitir que la sección quedó incompleta ni proponer cómo podría haberse resuelto."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo declaran la dependencia de validación profesional como una debilidad, pero cuando llegó el bloqueo real de las cuentas publicitarias el problema central fue exactamente ese: anuncios sobre desarrollo infantil sin respaldo profesional. ¿Por qué esa debilidad no fue tratada como un riesgo operativo concreto antes del lanzamiento de las campañas?",
+            "buscamos": "Que el grupo reconozca la contradicción entre identificar algo en el análisis interno y no convertirlo en un plan de mitigación previo. Una buena respuesta menciona qué harían diferente: validación anticipada, consulta con un profesional, disclaimer en los anuncios, o una estrategia de contenido alternativa mientras se resolvía.",
+            "evasiva": "Responder que 'no sabían que Meta iba a bloquear la cuenta' o describir cómo resolvieron el bloqueo a posteriori sin reconocer que el riesgo ya estaba identificado en el propio trabajo."
+          },
+          {
+            "pregunta": "Cuando el tráfico generado por el influencer colapsó el sitio e impidió que los usuarios terminaran sus compras, ¿qué decisión tomaron en ese momento y qué cambiarían hoy en la forma en que planificaron ese lanzamiento?",
+            "buscamos": "Que el grupo explique qué hicieron durante la crisis para contener el daño y, sobre todo, que reconozcan que la infraestructura no fue probada antes de exponerla a un pico de tráfico. Una buena respuesta conecta el problema con la necesidad de hacer pruebas de carga previas o de escalar el entorno antes de activar acciones de alto volumen.",
+            "evasiva": "Limitarse a decir que 'se cayó el servidor y lo resolvimos' sin reflexionar sobre la ausencia de pruebas previas ni sobre cómo eso contradice la afirmación del trabajo de que la infraestructura era estable y escalable."
+          },
+          {
+            "pregunta": "El proyecto tuvo dos crisis en simultáneo o en un período corto: cuentas publicitarias bloqueadas y sitio caído por tráfico. ¿Cómo organizaron al equipo para atender los dos frentes y quién tomó las decisiones en ese momento?",
+            "buscamos": "Que el grupo describa cómo se distribuyeron roles bajo presión, quién lideró cada frente y cómo priorizaron. No se espera un protocolo perfecto, sino que puedan explicar con honestidad cómo funcionó el equipo en una situación real de estrés y qué aprendieron sobre la coordinación.",
+            "evasiva": "Dar una respuesta genérica sobre trabajo en equipo sin referirse a ninguna de las dos crisis concretas, o responder solo sobre una y eludir la otra sin justificación."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "29",
+    "proyecto": "Spongic",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1WJtoqgpQIDZfFkz0fJgzp32fM4_aELni/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1vZJypYp8zpxt2dHGTS7i01cFys5EVih5/preview",
+    "informe": {
+      "resumen": "El trabajo muestra coherencia conceptual y buena articulación estratégica, pero presenta brechas significativas entre lo declarado y lo efectivamente implementado, y supuestos financieros sin validación empírica.",
+      "queEs": "E-commerce B2C argentino de esponjas termosensibles (4 líneas), diferencial: tecnología + estética + precio accesible vs. importadas premium.",
+      "fortalezas": [
+        "Análisis estratégico integrado (FODA, PESTEL, TAM/SAM/SOM) consistente entre sí y con los objetivos comerciales.",
+        "Customer Journey detallado por fases con fricciones, emociones y oportunidades específicas ancladas al buyer persona Laura.",
+        "Gestión de crisis documentada con impacto numérico concreto y protocolos de mitigación institucionalizados."
+      ],
+      "interrogar": [
+        "ROI del 168,5% e ingresos anuales de $64.800.000 proyectados sin mostrar estructura de costos ni cálculo detallado que los sustente.",
+        "El plan de lanzamiento lista una 'Etapa 3' pero el documento numera dos veces 'Etapa 4', omitiendo completamente la Etapa 3.",
+        "El sitio funcional existe solo en entorno demo (Pantheon), mientras el dominio de producción DonWeb declarado (spongicar.store) no está verificado ni operativo en el documento."
+      ],
+      "dondeApretar": "Presionar la brecha entre las proyecciones financieras declaradas y la ausencia de evidencia operativa real, dado que el sitio no está en producción."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El TAM que calcularon parte de un precio unitario de $1.500, pero el ticket promedio con el que proyectan sus ingresos es de $9.000: ¿cómo justifican esa diferencia y qué impacto tiene en el tamaño real del mercado que están midiendo?",
+            "buscamos": "Que el grupo reconozca la inconsistencia entre el precio unitario usado para el TAM y el ticket promedio real, explique qué representa cada uno (unidad suelta vs. pack o venta múltiple) y argumente si el TAM debería recalcularse o si la comparación sigue siendo válida con esa aclaración.",
+            "evasiva": "Decir que el TAM es una estimación amplia y que siempre hay diferencias entre el precio unitario y el precio de venta real, sin explicar qué es lo que se vende en cada caso ni reconocer que los números no son comparables directamente."
+          },
+          {
+            "pregunta": "Su SOM objetivo es de alrededor de $763 millones anuales, pero los ingresos que proyectan para el primer año son bastante menores: ¿cómo explican esa brecha y qué significa para el negocio en términos de la porción de mercado que realmente están apuntando a capturar?",
+            "buscamos": "Que el grupo advierta que sus ingresos proyectados representan apenas una fracción del SOM declarado, explique si el SOM es un horizonte de largo plazo o un error de consistencia, y demuestre que entienden la diferencia entre el mercado al que apuntan y lo que planean capturar efectivamente en el primer año.",
+            "evasiva": "Repetir que el SOM es el 1% del SAM y que el primer año siempre es de arranque, sin abordar por qué los $64,8M proyectados no guardan relación con los $763M que ellos mismos definieron como su mercado objetivo obtenible."
+          },
+          {
+            "pregunta": "Eligieron posicionarse con tecnología local más accesible frente a las importadas premium: ¿qué riesgo concreto identifican para ese diferencial si el tipo de cambio o los costos de producción local se mueven en su contra, y cómo lo contemplaron en la estrategia?",
+            "buscamos": "Que el grupo muestre que entienden que el precio accesible es un diferencial frágil en el contexto argentino, y que puedan vincular ese riesgo con alguna decisión concreta del plan, como el margen, la estructura de costos o los escenarios de crisis que trabajaron.",
+            "evasiva": "Mencionar que el mercado argentino es volátil y que siempre hay que monitorear los costos, sin conectar esa afirmación con ninguna decisión específica de su estrategia ni con los datos financieros de su propio trabajo."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que nos están mostrando hoy corre en un entorno de prueba en Pantheon, no en el dominio de producción que declaran en el trabajo. ¿Por qué eligieron defender el proyecto sobre ese entorno demo y qué faltó resolver para que el sitio de producción estuviera operativo?",
+            "buscamos": "Que reconozcan la brecha entre lo presentado y lo declarado como producto final, que expliquen honestamente qué quedó pendiente (dominio, configuración de hosting, DNS, pasarela en producción) y que distingan entre un entorno de validación funcional y un sitio listo para operar comercialmente.",
+            "evasiva": "Decir que 'es básicamente lo mismo' o que 'el demo muestra todo lo que haría la versión final', sin explicar qué pasos técnicos concretos separan el entorno Pantheon del dominio de producción declarado."
+          },
+          {
+            "pregunta": "Durante una de las crisis que describen, el filtro antifraude rechazó un porcentaje importante de tarjetas válidas en el checkout. Si en el plan de lanzamiento la primera etapa contemplaba explícitamente activar las pasarelas de pago, ¿cómo explican que ese problema igual ocurriera?",
+            "buscamos": "Que distingan entre activar una pasarela y testearla bajo condiciones reales de uso, que reconozcan que 'activar' no equivale a 'validar con pruebas de carga o casos borde', y que puedan decir qué protocolo de prueba hubiera evitado el rechazo masivo de tarjetas.",
+            "evasiva": "Atribuir el problema solo a la pasarela de pago como proveedor externo o decir que 'era imposible preverlo', sin reflexionar sobre la diferencia entre activación técnica y validación funcional previa al lanzamiento."
+          },
+          {
+            "pregunta": "El diferencial del producto que proponen combina tecnología termosensible, estética y precio accesible frente a importadas premium. Considerando que el ticket promedio de venta que declaran es de $9.000, ¿cómo justifican que ese precio sigue siendo percibido como accesible por el segmento al que apuntan?",
+            "buscamos": "Que articulen el posicionamiento relativo: accesible no significa barato en términos absolutos sino comparado con la alternativa importada, que puedan explicar cómo comunican ese valor en la experiencia del sitio (descripción de producto, comparativas, presentación visual) y que conecten el diseño del e-commerce con la percepción de precio justo.",
+            "evasiva": "Repetir que el producto 'es más barato que las importadas' sin explicar cómo la experiencia digital concreta (ficha de producto, imágenes, copy) construye esa percepción de accesibilidad para alguien que llega al sitio sin conocer las alternativas."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que nos presentaron hoy vive en un entorno de demo de Pantheon, no en el dominio de producción que declaran en el trabajo: ¿por qué decidieron defender el TFI sobre ese entorno de prueba y qué pasos concretos faltan para que spongicar.store esté operativo para un cliente real?",
+            "buscamos": "Que el grupo reconozca honestamente la brecha entre demo y producción, explique qué implica técnicamente migrar de Pantheon a producción (DNS, SSL, pasarelas en vivo, pruebas de pago), y muestre que tienen un plan claro para cerrar esa brecha, aunque aún no esté ejecutado.",
+            "evasiva": "Decir que 'el sitio está casi listo' o que 'solo falta apuntar el dominio', sin demostrar comprensión de los pasos técnicos y operativos que implica poner un e-commerce real en producción."
+          },
+          {
+            "pregunta": "En la Crisis 2 el filtro antifraude rechazó el 40% de las tarjetas válidas durante el checkout, y en el trabajo atribuyen eso a la falta de protocolos de prueba previos al lanzamiento: pero la Etapa 1 del plan contemplaba explícitamente la activación de las pasarelas de pago, ¿cómo explican esa contradicción?",
+            "buscamos": "Que el grupo pueda distinguir entre 'activar' una pasarela y 'testearla' correctamente, reconociendo que planificar la activación no es lo mismo que ejecutar un protocolo de prueba en modo sandbox con tarjetas de prueba, distintos bancos y escenarios de rechazo.",
+            "evasiva": "Culpar al proveedor de pagos o al contexto sin asumir responsabilidad sobre la falta de testing, o confundir 'activar la pasarela' con haberla probado adecuadamente antes del lanzamiento."
+          },
+          {
+            "pregunta": "En el trabajo mencionan dos crisis donde el CAC se disparó por encima del objetivo de $1.800, pero solo cuantifican el número de una de ellas: ¿cómo puede el negocio tomar decisiones de pauta y presupuesto si no tienen medido el impacto real del CAC en ambos eventos?",
+            "buscamos": "Que el grupo entienda que un CAC no medido impide calcular el ROAS real, ajustar el presupuesto de pauta y proyectar rentabilidad con seriedad, y que propongan cómo instrumentar el seguimiento del CAC de forma continua, por ejemplo con UTMs, informes de la plataforma publicitaria o un dashboard básico.",
+            "evasiva": "Responder que 'igual se superó el punto de equilibrio' o que 'las crisis fueron excepcionales', sin abordar la necesidad operativa de medir el CAC sistemáticamente para tomar decisiones de inversión en pauta."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo proyecta ingresos anuales importantes y un ROI muy atractivo, pero hay una brecha de más de 26 puntos porcentuales entre el margen bruto y el margen neto que el documento no explica: ¿a qué costos le atribuyen esa diferencia y por qué no los detallaron?",
+            "buscamos": "Que el grupo identifique que la brecha corresponde a costos operativos, logísticos o de marketing, que reconozcan la omisión como un punto débil del trabajo y que puedan nombrar al menos qué rubros la componen aunque no tengan el número exacto.",
+            "evasiva": "Repetir el porcentaje de margen neto o bruto sin explicar de dónde viene la diferencia, o decir 'está calculado en el Excel' sin describir los conceptos."
+          },
+          {
+            "pregunta": "Durante la Crisis 1 el CAC subió de $1.800 a $2.700, y en la Crisis 2 también se disparó pero el documento no cuantifica ese segundo impacto: ¿cómo evaluaron la salud financiera de la campaña cuando tenían dos eventos de CAC elevado sin un número consolidado?",
+            "buscamos": "Que el grupo reconozca que la ausencia de un CAC consolidado es una limitación, que expliquen qué criterio usaron para seguir o ajustar la pauta en ese contexto, y que relacionen el CAC con el LTV o el margen para justificar si la campaña seguía siendo viable.",
+            "evasiva": "Describir qué es el CAC o explicar las crisis por separado sin abordar la falta de un número integrado ni cómo eso afectó la toma de decisiones."
+          },
+          {
+            "pregunta": "El TAM del trabajo está calculado usando $1.500 como precio unitario, pero el ticket promedio declarado para las ventas es $9.000: ¿por qué eligieron esa base de cálculo para el TAM y qué implica esa diferencia para el tamaño de mercado que están capturando?",
+            "buscamos": "Que el grupo note la inconsistencia entre ambas cifras, que expliquen si el TAM refleja consumidores individuales comprando una unidad o packs, y que reconozcan que usar $1.500 infla el TAM respecto a su modelo de negocio real basado en el ticket de $9.000.",
+            "evasiva": "Definir qué es el TAM o repetir el número calculado sin confrontar la diferencia entre el precio unitario usado en el cálculo y el ticket promedio real de su negocio."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Durante la Crisis 2, el filtro antifraude rechazó un porcentaje importante de tarjetas de crédito válidas en el checkout. Si la Etapa 1 del plan ya contemplaba la activación de pasarelas de pago, ¿qué falló en ese proceso y qué cambiarían hoy?",
+            "buscamos": "Que el grupo reconozca la contradicción entre tener prevista la activación de pasarelas en Etapa 1 y aun así no haber testeado el filtro antifraude antes del lanzamiento. Una buena respuesta distingue entre activar una pasarela y validarla con pruebas reales de transacción, y propone una acción concreta de mitigación futura (sandbox de pagos, checklist de QA, etc.).",
+            "evasiva": "Decir que 'los filtros antifraude son un problema técnico externo' o describir la crisis en términos generales sin asumir responsabilidad sobre la falta de protocolo de prueba previo, que es exactamente lo que el propio documento reconoce."
+          },
+          {
+            "pregunta": "En la Crisis 1, las ventas cayeron pero se mantuvieron por encima del punto de equilibrio del negocio. Sin embargo, el trabajo describe esa situación como un riesgo al punto de equilibrio. ¿Cómo justifican esa caracterización?",
+            "buscamos": "Que el grupo pueda defender la decisión editorial de calificarlo como riesgo aunque técnicamente no se haya caído por debajo del breakeven. Una respuesta sólida argumenta sobre el margen de seguridad estrecho, la tendencia de caída, o la proyección de que una crisis sostenida sí hubiera roto el equilibrio. Demuestra pensamiento crítico sobre sus propios números.",
+            "evasiva": "Repetir que 'las ventas bajaron y eso es un riesgo' sin reconocer la tensión entre el dato real y la caracterización del documento, o decir que no recuerdan el número exacto para esquivar la pregunta."
+          },
+          {
+            "pregunta": "El CAC objetivo era de $1.800 por cliente, pero en ambas crisis ese costo se disparó. Si tuvieras que rediseñar la estrategia de adquisición para que el negocio aguante un período de CAC elevado, ¿qué palanca usarían y por qué?",
+            "buscamos": "Que el grupo conecte el CAC elevado con su impacto real sobre la rentabilidad del negocio, considerando que la brecha entre margen bruto y neto ya es significativa. Una buena respuesta propone una palanca concreta y justificada: canales orgánicos, remarketing, programa de referidos, o ajuste del mix de pauta, explicando por qué esa palanca reduce la dependencia de la pauta paga en contextos de crisis.",
+            "evasiva": "Proponer 'bajar la pauta' o 'diversificar canales' sin explicar el razonamiento detrás ni vincularlo con la estructura de costos o la sostenibilidad del negocio durante una crisis prolongada."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "proyecto": "Spicy Digital",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1hAgPx0KEZGgkARWy1y6TI6Ax3PGDY7mA/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1azGpeF5g44QlTuo_8Wzem_oH41LGTJuE/preview",
+    "informe": {
+      "resumen": "El trabajo presenta estructura completa pero sus proyecciones financieras (ROI 2239%, inversión inicial de solo $1.860.000) revelan supuestos irreales que comprometen la solidez del análisis.",
+      "queEs": "Agencia de marketing digital B2B/B2C con modelo híbrido de servicios y cursos, orientada a PyMEs y emprendedores argentinos.",
+      "fortalezas": [
+        "Análisis TAM/SAM/SOM con fuente real (CACE 2025) y cálculo explícito del porcentaje capturado (0,031%).",
+        "Buyer persona doble bien diferenciado (María Emprende / Lucas Aprende) con canales, objeciones y motivaciones específicos.",
+        "Plan de lanzamiento en 4 etapas con actividades concretas y sitio funcional desplegado en Pantheon."
+      ],
+      "interrogar": [
+        "ROI del 2239% se explica porque la inversión inicial excluye salarios ($90M/año) y equipos; ese ROI no mide retorno real.",
+        "Los impuestos se estiman en 10% de facturación bruta sin especificar qué impuestos ni régimen fiscal aplicable en Argentina.",
+        "El PESTEL solo desarrolla el factor económico; los factores político, social, tecnológico, legal y ambiental se declaran pero no se analizan en el documento."
+      ],
+      "dondeApretar": "Profundizar en la consistencia financiera: definición real de inversión inicial, régimen impositivo, y cómo planean captar 25 clientes en el primer año sin trayectoria ni marca."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo proyecta llegar a 25 clientes en el primer año y fija el punto de equilibrio en 20 clientes: ¿qué pasa con el negocio si al cierre del año no llegaron a esos 25 sino que se quedaron en, digamos, 18 o 19?",
+            "buscamos": "Que reconozcan que 25 clientes es el SOM proyectado y que el margen sobre el umbral de rentabilidad es muy ajustado (solo 5 clientes), y que expliquen qué palancas tienen para no caer por debajo del equilibrio: reducir costos variables, renegociar sueldos, ajustar la oferta de servicios, etc.",
+            "evasiva": "Responder que 'el plan de marketing garantiza la captación de clientes' o hablar del embudo de ventas sin reconocer el riesgo concreto de quedar debajo del punto de equilibrio con tan poco margen."
+          },
+          {
+            "pregunta": "Para estimar el tamaño de mercado usaron datos de CACE sobre e-commerce y aplicaron un porcentaje para llegar al TAM de servicios de marketing: ¿por qué ese porcentaje y no otro, y en qué fuente se apoyaron para elegirlo?",
+            "buscamos": "Que admitan que el 3% aplicado al TAM es un supuesto propio sin respaldo bibliográfico explícito, y que expliquen cómo podrían haberlo fundamentado mejor: benchmarks del sector, informes de agencias, datos de cámaras como AMDIA, o una estimación conservadora/optimista justificada.",
+            "evasiva": "Explicar el procedimiento de cálculo del TAM-SAM-SOM como si la pregunta fuera sobre la metodología, sin nunca admitir ni abordar la falta de fuente que respalde el 3% de partida."
+          },
+          {
+            "pregunta": "El plan de contenidos es bastante ambicioso en volumen semanal y mensual, pero en ningún momento el trabajo aclara quién del equipo se hace cargo de producirlo: ¿cómo pensaron que eso iba a funcionar en la práctica?",
+            "buscamos": "Que reconozcan la omisión y propongan una distribución concreta de roles entre las cinco socias, o que expliquen si estaba previsto tercerizar parte de la producción, y que vinculen esa decisión con el presupuesto disponible.",
+            "evasiva": "Decir que 'entre todas se van a organizar' o que 'cada una aporta según sus habilidades' sin proponer ninguna asignación concreta de responsabilidades ni mencionar el impacto en costos o tiempo."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que presentan en el trabajo está corriendo en un entorno de desarrollo de Pantheon, no en un dominio propio. ¿Cómo explican esa situación considerando que el plan financiero ya contempla la inversión en dominio y hosting?",
+            "buscamos": "Que reconozcan la inconsistencia entre lo declarado en el plan financiero y el estado real del sitio, y que justifiquen si se trata de una etapa de desarrollo intencional, un desfase temporal o un error de presentación, mostrando conciencia de que el producto digital no está en producción.",
+            "evasiva": "Decir que 'el sitio está en construcción' o que 'todavía falta terminarlo' sin reconocer que eso contradice lo que el propio documento afirma sobre la inversión ya realizada."
+          },
+          {
+            "pregunta": "El plan de contenidos es bastante ambicioso en volumen semanal y mensual, pero en ningún lugar del trabajo se aclara quién del equipo se encarga de producir ese contenido ni cuánto cuesta hacerlo. ¿Cómo pensaron cubrir esa carga operativa con las cinco socias?",
+            "buscamos": "Que expliquen cómo se distribuiría ese trabajo dentro del equipo, si hay roles diferenciados, si está absorbido por los sueldos ya previstos o si falta presupuestarlo, demostrando que pensaron la viabilidad operativa del plan de contenidos.",
+            "evasiva": "Responder en términos generales que 'entre todas lo hacemos' o que 'el marketing lo maneja quien tenga más tiempo', sin vincular la respuesta a la estructura del equipo ni al modelo de costos del trabajo."
+          },
+          {
+            "pregunta": "Dentro de los KPIs que presentan aparece el valor de vida del cliente, pero ese indicador no está calculado en ninguna parte del modelo financiero. ¿Por qué decidieron incluirlo si el trabajo no lo desarrolla, y cómo impacta eso en las proyecciones?",
+            "buscamos": "Que reconozcan la brecha entre mencionar el KPI y no haberlo calculado, y que expliquen si fue una omisión, si estaba fuera del alcance o cómo afecta la solidez de las proyecciones no contar con ese dato para una agencia que apuesta a relaciones de largo plazo con clientes.",
+            "evasiva": "Explicar qué es el valor de vida del cliente en términos conceptuales sin reconocer que el modelo financiero no lo usa ni lo estima en ningún momento."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo declaran que el sitio web ya está funcionando, pero la URL que figura en el documento lleva a un entorno de desarrollo, no a un dominio propio. ¿Cómo justifican haber incluido el sitio como activo operativo si todavía no está en producción?",
+            "buscamos": "Que reconozcan la inconsistencia entre declarar el sitio como parte del activo aportado y la evidencia de que está en un entorno de desarrollo (Pantheon). Una buena respuesta distingue entre 'en construcción' y 'operativo', y explica cómo y cuándo planean migrar a producción, o reconoce que debieron aclararlo mejor en el documento.",
+            "evasiva": "Decir que 'el sitio está casi listo' o que 'es un detalle técnico menor' sin explicar por qué figura como activo ya disponible ni qué implica para la inversión declarada en dominio y hosting."
+          },
+          {
+            "pregunta": "El plan de contenidos es bastante ambicioso, con publicaciones semanales, artículos y videos mensuales, pero en ningún lugar del trabajo se aclara quién del equipo se encarga de producir eso. ¿Cómo pensaron la distribución de esa carga operativa entre las cinco socias?",
+            "buscamos": "Que puedan explicar, aunque sea de forma general, cómo se reparten los roles de producción de contenido entre las socias, y que reconozcan que esto quedó sin especificar en el documento. Idealmente mencionan perfiles o habilidades de cada integrante, o admiten que es un punto a desarrollar.",
+            "evasiva": "Responder que 'lo hacemos entre todas' o describir el plan de contenidos en abstracto sin abordar en ningún momento quién hace qué ni cómo se organiza esa carga con el resto de las responsabilidades del equipo."
+          },
+          {
+            "pregunta": "Incluyeron el CLV o valor de vida del cliente como uno de sus KPIs, pero ese indicador no aparece calculado ni estimado en ninguna parte del modelo financiero. ¿Cómo piensan medirlo en la práctica si el propio plan no lo proyecta?",
+            "buscamos": "Que entiendan qué mide el CLV y por qué es relevante para una agencia con servicios recurrentes. Una buena respuesta reconoce que quedó fuera del modelo financiero y propone cómo lo calcularían: ticket promedio, duración estimada del cliente, churn esperado. No se exige el número, sino coherencia conceptual.",
+            "evasiva": "Definir qué es el CLV de memoria sin conectarlo con su modelo de negocio concreto, o decir que 'lo van a medir con el tiempo' sin explicar con qué datos ni cómo."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El ROI que proyectan en el trabajo es un número muy llamativo, pero al leer el documento se ve que la inversión inicial no incluye los sueldos de las socias ni los equipos: ¿cómo defenderían esa forma de calcularlo frente a un inversor real que les pregunta lo mismo?",
+            "buscamos": "Que el grupo reconozca la limitación del cálculo y pueda argumentar por qué eligieron esa base (por ejemplo, medir retorno sobre el capital desembolsado externamente), pero también que demuestren conciencia de que un inversor externo necesitaría ver el ROI con todos los costos reales incluidos.",
+            "evasiva": "Explicar qué es el ROI como concepto, o repetir el porcentaje sin reconocer que el denominador excluye costos reales del negocio."
+          },
+          {
+            "pregunta": "En el plan financiero estiman los impuestos como un porcentaje fijo sobre la facturación bruta, sin aclarar qué impuestos están contemplando ni bajo qué régimen fiscal operaría la agencia: ¿qué los llevó a tomar esa decisión y qué riesgos le ven a ese enfoque?",
+            "buscamos": "Que admitan que fue una simplificación, que mencionen que en Argentina el régimen fiscal (monotributo, responsable inscripto, SRL, etc.) cambia sustancialmente la carga impositiva real, y que reconozcan que ese número debería haberse desagregado con mayor precisión.",
+            "evasiva": "Defender que el 10% 'es un promedio razonable' sin poder nombrar a qué impuestos corresponde ni qué régimen fiscal aplica a una agencia de cinco socias."
+          },
+          {
+            "pregunta": "Listaron CLV o valor de vida del cliente como uno de sus KPIs, pero en ningún apartado del plan financiero calcularon ese número: ¿cómo pensaban hacer el seguimiento de ese indicador si no tiene base de cálculo en el propio documento?",
+            "buscamos": "Que el grupo reconozca la inconsistencia entre declarar el KPI y no haberlo estimado, y que puedan proponer, aunque sea a grandes rasgos, qué datos necesitarían para calcularlo: ticket promedio, duración del vínculo con el cliente, tasa de retención.",
+            "evasiva": "Definir qué es el CLV o decir que 'se calcularía con los datos reales una vez que la agencia esté operando', sin reconocer que el documento lo declara como KPI de seguimiento sin ningún respaldo numérico."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el plan de crisis mencionan el robo de contenido y sitios clonados como una amenaza concreta: ¿qué acciones específicas de su agencia harían que ese escenario sea menos probable o más fácil de resolver si ocurriera?",
+            "buscamos": "Que el grupo pueda conectar la amenaza con medidas preventivas o reactivas concretas vinculadas a su modelo de negocio: marca registrada, metadatos, watermarking, monitoreo de dominio, respuesta legal. Lo importante es que defiendan por qué eligieron esas acciones y no que reciten un protocolo genérico.",
+            "evasiva": "Explicar qué es el robo de contenido o listar pasos genéricos de gestión de crisis sin relacionarlos con lo que hace específicamente su agencia ni por qué serían efectivos en su caso."
+          },
+          {
+            "pregunta": "El plan proyecta arrancar con 25 clientes en el primer año, cuando el punto de equilibrio es de 20: ¿qué pasa con el equipo y con la operación si en los primeros meses no llegan a ese umbral?",
+            "buscamos": "Que reconozcan que el margen sobre el punto de equilibrio es estrecho y puedan describir alguna medida concreta de contingencia: reducción de costos variables, renegociación de herramientas, ajuste de sueldos, priorización de clientes más rentables. Se valora que muestren conciencia del riesgo real, no que lo minimicen.",
+            "evasiva": "Responder que confían en que van a llegar a los 25 clientes porque el plan de marketing es sólido, sin reconocer el riesgo ni proponer ninguna medida si la captación se demora."
+          },
+          {
+            "pregunta": "Tienen cinco socias con sueldos idénticos: ¿cómo manejarían un conflicto interno si una de ellas considera que su carga de trabajo o su aporte al negocio no se refleja en esa estructura igualitaria?",
+            "buscamos": "Que el grupo pueda fundamentar la decisión de la estructura igualitaria con argumentos propios (equidad, etapa inicial, confianza entre socias) y al mismo tiempo mostrar que tienen algún criterio o mecanismo para revisar esa decisión si genera tensión: revisión periódica, evaluación de desempeño, acuerdo de socias. Se valora madurez para reconocer que la igualdad puede ser fuente de conflicto.",
+            "evasiva": "Decir que entre ellas no va a haber conflictos porque se conocen bien o que la estructura igualitaria es justa por definición, sin ofrecer ningún mecanismo de revisión ni reconocer la tensión potencial."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "31",
+    "proyecto": "Huellitas Felices",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1dPOah8by12tZ9-o5px9Nx_W390V_C-Q6/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1nF8LY6fKguj_CPy6IsGu7cAMTU6xxV2Y/preview",
+    "informe": {
+      "resumen": "El trabajo muestra buena estructuración conceptual pero evidencia brechas significativas entre lo declarado (collar IoT, algoritmo propietario, app móvil) y lo efectivamente implementado (solo un sitio WordPress de demostración).",
+      "queEs": "DNVB Pet-Tech que combina collar IoT biométrico y suscripción nutricional mensual personalizada, operando en AMBA para segmento ABC1-C2.",
+      "fortalezas": [
+        "Modelado financiero coherente: precio gancho $60.000 ARS (15% margen), suscripción $25.000 ARS (45% margen), CAC amortizado en 5 meses.",
+        "Gestión documentada de dos crisis reales del simulador con planes de contingencia y aprendizajes específicos (ERR-199, ERR-508).",
+        "Stack tecnológico detallado y justificado: WordPress/Pantheon, WooCommerce, Klaviyo, GA4, GTM, Mixpanel, plugin Code Snippets con solución técnica concreta."
+      ],
+      "interrogar": [
+        "El collar IoT con biometría, API Rest y algoritmo propietario se declara como núcleo del negocio pero no existe evidencia alguna de prototipo, desarrollo ni integración real.",
+        "El SOM se fija en 500 suscriptores para el mes 10 pero el sitio live es un entorno 'dev' en Pantheon sin transacciones reales ni datos de conversión que validen el funnel.",
+        "El anticipo al influencer equivale al 20% del presupuesto anual ($21.000.000 sobre $105.000.000 declarados), lo cual contradice la política de diversificación y control de proveedores externos que el propio análisis FODA señala como riesgo."
+      ],
+      "dondeApretar": "Presionar sobre la brecha entre el diferencial tecnológico declarado (IoT + algoritmo) y la ausencia total de evidencia de su existencia, y cómo eso afecta la viabilidad real del modelo de negocio."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo define a su compradora ideal como una 'dueña preventiva digital' de entre 28 y 45 años: ¿cómo justifican ese perfil y por qué les parece que es el cliente más adecuado para lo que están ofreciendo?",
+            "buscamos": "Que el grupo reconozca honestamente que el perfil se construyó sin investigación primaria citada y pueda explicar al menos la lógica detrás de la elección: por qué ese rango etario, qué relación tiene con el segmento ABC1-C2 apuntado y cómo ese perfil conecta con la propuesta de collar IoT más suscripción nutricional.",
+            "evasiva": "Definir qué es un buyer persona en términos generales o describir las características del perfil sin explicar de dónde vienen ni por qué ese y no otro."
+          },
+          {
+            "pregunta": "Ustedes eligen concentrarse en el AMBA y apuntan a un segmento socioeconómico específico: ¿qué argumentos usarían para convencer a alguien escéptico de que ese mercado justifica el negocio que proponen?",
+            "buscamos": "Que el grupo vincule la elección geográfica y socioeconómica con la propuesta de valor concreta: el precio del collar y la suscripción mensual implican un desembolso sostenido que requiere capacidad de pago, y el AMBA concentra la mayor densidad de ese segmento. Una buena respuesta conecta precio, perfil y geografía en lugar de tratarlos como datos aislados.",
+            "evasiva": "Repetir que el AMBA tiene mucha población o que el segmento ABC1-C2 'tiene poder adquisitivo' sin relacionarlo con los precios reales del producto ni con por qué alguien de ese segmento elegiría esta solución específica."
+          },
+          {
+            "pregunta": "El trabajo fija una meta de 500 suscriptores activos para el mes 10: ¿cómo explican que ese número sea alcanzable si al momento de la presentación el sitio todavía no registra transacciones reales?",
+            "buscamos": "Que el grupo pueda reconocer la tensión entre la proyección y el estado real del canal de venta, y que ofrezca alguna argumentación coherente: qué pasos concretos faltan para que el funnel funcione, qué supuestos sostienen la proyección o, en el mejor caso, que reconozcan la brecha y expliquen cómo planearían cerrarla.",
+            "evasiva": "Defender el número como 'conservador' o 'razonable' sin mencionar el estado actual del sitio ni explicar de dónde saldrían esos suscriptores si el canal de venta aún no está operativo."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El collar Huellitas V1 aparece en el trabajo como el corazón del negocio, con biometría, API y algoritmo propio. ¿Cómo explican que ese componente esté presentado así si todavía no hay un prototipo funcionando?",
+            "buscamos": "Que el grupo reconozca la brecha entre lo declarado y lo construido, y pueda explicar si lo plantearon como visión de producto a desarrollar, como MVP diferido o como un error de presentación que corregirían. Una buena respuesta muestra conciencia de que el collar no puede ser el núcleo si no tiene evidencia de desarrollo, y propone cómo habrían subsanado eso.",
+            "evasiva": "Hablar en general de qué es un dispositivo IoT o describir las funcionalidades que tendría el collar sin reconocer que no existe evidencia de que esté construido ni integrado."
+          },
+          {
+            "pregunta": "El sitio está corriendo en un entorno de desarrollo en Pantheon y tuvieron un problema real de sobreventa del collar porque el stock que veía el cliente no era el stock real. ¿Qué les dice eso sobre el estado del canal de venta en el momento de presentar el trabajo?",
+            "buscamos": "Que conecten el entorno 'dev' con la crisis de sincronización de inventario y entiendan que un canal sin transacciones reales no puede validar el funnel ni la proyección de suscriptores. Una buena respuesta reconoce que el sitio no estaba listo para operar y que eso afecta la credibilidad de las proyecciones de conversión.",
+            "evasiva": "Explicar la solución técnica del plugin sin discutir qué implica para la madurez del canal el hecho de que el entorno sea de desarrollo y no haya datos reales de conversión."
+          },
+          {
+            "pregunta": "Ustedes definen a su buyer persona como una 'dueña preventiva digital' de entre 28 y 45 años. ¿Cómo justifican ese perfil si en el documento no aparece ninguna investigación propia que lo respalde?",
+            "buscamos": "Que el grupo distinga entre un perfil construido con datos primarios o secundarios citados y uno elaborado por intuición, y que pueda decir honestamente de dónde salió ese perfil o qué investigación habrían necesitado hacer para sustentarlo. No se espera que lo defiendan como sólido, sino que muestren conciencia metodológica.",
+            "evasiva": "Describir las características del perfil o argumentar que 'tiene sentido' para el segmento ABC1-C2 sin abordar la ausencia de datos que lo respalden dentro del trabajo."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "Cuando se cayó el stock del collar y tuvieron que hacer reintegros a clientes que ya habían comprado, ¿por qué eligieron resolver el problema con un plugin que inyecta un script en lugar de buscar otra solución, y qué riesgos ven en esa decisión?",
+            "buscamos": "Que el grupo explique la lógica detrás de la solución: forzar la consulta a la base de datos transaccional en tiempo real para evitar que el caché del servidor muestre stock desactualizado. Una buena respuesta también reconoce que es una solución parche sobre una arquitectura que no estaba pensada para sincronización en tiempo real, y que idealmente debería resolverse a nivel de infraestructura.",
+            "evasiva": "Decir que 'el plugin solucionó el problema' o que 'era la opción más rápida' sin explicar por qué el caché era el origen del conflicto ni qué pasa si el script falla o genera conflictos con otros componentes del sitio."
+          },
+          {
+            "pregunta": "El sitio hoy está en un entorno de desarrollo en Pantheon y no registra transacciones reales: ¿cómo piensan validar que el funnel de ventas funciona antes de lanzar la suscripción al público general?",
+            "buscamos": "Que el grupo muestre conciencia de que operar en un entorno dev no es suficiente para validar conversión real, y que proponga un camino concreto: migrar a producción, correr pruebas con tráfico real aunque sea limitado, medir métricas de funnel con datos genuinos. No se espera que citen cifras exactas, sino que entiendan la diferencia entre un entorno de prueba y un negocio operando.",
+            "evasiva": "Responder que 'el sitio ya está online' o que 'cuando tengamos más presupuesto lo migramos', sin reconocer que sin transacciones reales no hay forma de saber si el CPA proyectado o la tasa de conversión son alcanzables."
+          },
+          {
+            "pregunta": "El collar IoT con biometría y el algoritmo de personalización nutricional son presentados como el núcleo diferencial del negocio, pero en el trabajo no aparece ningún prototipo ni integración real: ¿cómo defienden esa promesa tecnológica frente a un cliente que quiere comprarlo hoy?",
+            "buscamos": "Que el grupo reconozca honestamente la brecha entre la propuesta de valor declarada y el estado real de desarrollo, y que pueda articular un camino de validación: MVP, prototipo funcional, alianza con un desarrollador, o incluso redefinir el producto para una primera etapa sin el componente IoT. Se valora la honestidad y la capacidad de replantear el roadmap.",
+            "evasiva": "Hablar del potencial del mercado pet-tech o de las tendencias de wearables sin reconocer que hoy el producto tecnológico no existe en forma validada, esquivando la pregunta sobre cómo sostienen esa promesa en la práctica."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo fija una meta de 500 suscriptores activos para el mes 10, ¿cómo justifican que ese número es alcanzable si el sitio todavía no registra transacciones reales?",
+            "buscamos": "Que el grupo reconozca la brecha entre la proyección y la ausencia de datos de conversión reales, y explique qué pasos concretos planean dar para validar el funnel antes de comprometer esa cifra como objetivo.",
+            "evasiva": "Hablar del potencial del mercado de mascotas o mencionar el porcentaje del SAM sin explicar cómo piensan llegar a esos 500 suscriptores desde cero ventas reales."
+          },
+          {
+            "pregunta": "Destinaron una parte importante del presupuesto anual de marketing a un único influencer que luego incumplió el contrato, ¿qué cambiarían en la estrategia de medios para que eso no vuelva a comprometer el presupuesto entero?",
+            "buscamos": "Que conecten la crisis real del trabajo con el riesgo de concentración en un solo proveedor que ellos mismos identificaron en el FODA, y propongan alguna medida concreta como diversificar canales, escalonar pagos o establecer garantías contractuales.",
+            "evasiva": "Decir genéricamente que hay que diversificar o que fue mala suerte, sin vincular la respuesta ni al monto comprometido ni al riesgo que el propio FODA ya señalaba."
+          },
+          {
+            "pregunta": "El trabajo propone que el CAC publicitario se recupere en los primeros cinco meses de suscripción, ¿cómo saben que el margen de la suscripción alcanza para absorber ese costo si todavía no tienen datos reales de churn?",
+            "buscamos": "Que el grupo muestre que entiende la relación entre margen de contribución de la suscripción, tiempo de recupero del CAC y tasa de cancelación, y que reconozca honestamente que sin churn medido esa proyección es un supuesto que necesita validación.",
+            "evasiva": "Repetir el objetivo de churn menor al 5% como si fuera un dato medido, sin aclarar que es una meta declarada y no un resultado comprobado."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando el influencer se fue con el anticipo y el contenido desapareció, ¿cómo decidieron reaccionar en ese momento y qué cambiarían hoy en la forma de contratar a ese tipo de proveedor?",
+            "buscamos": "Que conecten el problema concreto (anticipo alto a un solo proveedor externo) con el riesgo que su propio FODA ya señalaba, y que propongan una mejora real: pagos por hitos, contratos con cláusula de devolución, diversificar canales. No importa que reciten el monto exacto.",
+            "evasiva": "Responder que 'hay que diversificar los proveedores' o 'tener un plan B' de forma genérica, sin vincular la decisión al peso que ese anticipo tenía dentro del presupuesto total ni al riesgo que ellos mismos habían identificado en el FODA."
+          },
+          {
+            "pregunta": "La sobreventa del Collar V1 les generó reintegros por un monto importante y afectó la confianza del cliente en el momento del lanzamiento: ¿por qué creen que ocurrió ese desfase entre el stock real y lo que mostraba el sitio, y cómo lo resolvieron?",
+            "buscamos": "Que expliquen la causa raíz con sus palabras: el caché del servidor no consultaba el stock en tiempo real, entonces el sitio mostraba unidades disponibles que ya no existían. Y que describan la solución que implementaron para forzar la consulta directa a la base de datos. Se valora que entiendan el 'por qué' técnico, no que reciten el nombre del plugin.",
+            "evasiva": "Decir que 'fue un error del sistema' o que 'lo solucionaron con un script' sin poder explicar qué problema resolvía ese script ni por qué el caché era el origen del conflicto."
+          },
+          {
+            "pregunta": "Tuvieron dos crisis importantes casi en paralelo durante el lanzamiento: ¿cómo afectó eso al equipo y quién tomó las decisiones en cada momento?",
+            "buscamos": "Que reflexionen sobre la dinámica real del equipo bajo presión: cómo se organizaron, si hubo un rol de liderazgo claro, qué aprendieron sobre la toma de decisiones en situaciones de estrés operativo. Se busca honestidad y reflexión, no un protocolo de manual.",
+            "evasiva": "Describir las crisis de forma técnica sin ninguna referencia a cómo las vivió el equipo, o responder con un esquema teórico de gestión de crisis sin anclarlo a lo que realmente hicieron."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "32",
+    "proyecto": "Travel By Sea",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1fpNxKh9lWXFjXuymT6Wln55VHWYtf0F9/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1f_Q1byh2z5-T_URBjkKDIrrOnxSqFeKL/preview",
+    "informe": {
+      "resumen": "El trabajo presenta consistencia entre análisis estratégico, solución técnica e implementación real documentada, con evidencia de site funcional y gestión de crisis concretas.",
+      "queEs": "E-commerce 100% transaccional de cruceros desde Buenos Aires, cuyo diferencial es integrar cotización, reserva, pago y emisión sin asistencia humana.",
+      "fortalezas": [
+        "Stack tecnológico justificado: rechazan SaaS por comisiones sobre alto ticket y documentan cada plugin con su función específica.",
+        "Gestión de crisis real documentada: dos incidentes (ERR-468/ERR-500) con análisis de causa raíz vía 5 Porqués y acciones correctivas.",
+        "Arquitectura UX orientada a conversión: checkout encapsulado sin nav, guest checkout y precio sin sorpresas, coherentes con la propuesta de valor."
+      ],
+      "interrogar": [
+        "ROI del 1.250% se calcula sobre 900 ventas, pero el tráfico proyectado (5.000/mes × 1,5%) daría 75 ventas/mes = 900/año: ¿cómo sostienen esa tasa de conversión desde el día 1 con marca emergente y sin SEO consolidado?",
+        "El cupón ABORDO10 falló en producción el día del lanzamiento: ¿cómo pasó a producción sin prueba end-to-end si el documento declara entornos Dev/Test/Live en Pantheon?",
+        "El SOM proyecta captar 1% del SAM (USD 3.066.216) pero la facturación por comisión del 20% sobre 900 ventas × USD 1.200 da USD 216.000: hay una brecha de ~14x sin explicación."
+      ],
+      "dondeApretar": "Presionar la coherencia entre las proyecciones financieras (SOM vs. ingresos reales proyectados) y la viabilidad del tráfico orgánico para sostener conversiones sin depender indefinidamente de pauta paga."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El plan proyecta llegar al primer año con 75 ventas por mes, pero el presupuesto en publicidad es de USD 500 mensuales para un producto de ticket alto como un crucero: ¿cómo justifican que ese presupuesto alcanza para sostener ese volumen desde el arranque?",
+            "buscamos": "Que el grupo reconozca la tensión entre presupuesto y objetivo, y argumente con alguna lógica: por ejemplo, que la conversión alta compensa el bajo tráfico pagado, que el boca a boca o el SEO futuro aportan, o que el canal de Google Ads con intención de compra mejora la eficiencia. Lo importante es que defiendan la decisión con criterio, no que reciten el número.",
+            "evasiva": "Responder que 'el presupuesto cubre Google Ads y Meta Ads' sin explicar por qué eso alcanza para mover el volumen proyectado, o decir que 'es lo que se estimó' sin relacionarlo con el costo por adquisición real."
+          },
+          {
+            "pregunta": "Ustedes eligieron WordPress con WooCommerce y descartaron Tiendanube y Shopify explícitamente por las comisiones por transacción: ¿por qué esa razón es especialmente relevante en el contexto de los cruceros que venden?",
+            "buscamos": "Que conecten la decisión tecnológica con el modelo de negocio: el ticket promedio alto implica que una comisión porcentual de plataforma recorta mucho más el margen que en productos de bajo valor, y que al operar sobre comisión del 20% cada punto de costo adicional impacta directamente en la rentabilidad. Una buena respuesta muestra que la elección fue consciente y vinculada al negocio.",
+            "evasiva": "Decir que WordPress 'es más personalizable' o 'más conocido' sin mencionar el impacto concreto que las comisiones de otras plataformas tendrían sobre productos de ticket alto como los que comercializan."
+          },
+          {
+            "pregunta": "El SAM del proyecto toma como base el total de pasajeros vinculados al puerto de Buenos Aires sin separar los que embarcan de los que desembarcan: ¿qué problema concreto genera eso para estimar el mercado al que realmente pueden llegar como agencia emisiva?",
+            "buscamos": "Que el grupo entienda que una agencia emisiva local solo puede captar pasajeros que salen desde Buenos Aires, no los que llegan, y que mezclar ambos infla el mercado potencial. Una buena respuesta muestra que reconocen la limitación y pueden explicar por qué el SAM real podría ser menor al declarado.",
+            "evasiva": "Defender el número sin cuestionar la composición del dato, o decir que 'igual es el 1% del SAM y es conservador' sin abordar que la base de cálculo puede estar sobreestimada desde el origen."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El mail de confirmación que recibe el pasajero después de pagar le avisa que un asesor va a contactarlo en las próximas 24 horas para completar los datos y elegir camarote: ¿cómo concilian eso con la promesa central del proyecto de que el checkout es 100% sin asistencia humana?",
+            "buscamos": "Que el grupo reconozca la contradicción y la explique con criterio: si es una limitación técnica temporaria, si es una decisión deliberada por la complejidad del producto, o si reformularían la promesa de autogestión. Se espera que defiendan la decisión o propongan cómo resolverla, no que la ignoren.",
+            "evasiva": "Decir que 'es solo un mail automático' o que 'en la siguiente fase se automatiza todo' sin explicar por qué esa intervención humana existe hoy y qué impacto tiene en la experiencia que prometieron."
+          },
+          {
+            "pregunta": "Eligieron WordPress con WooCommerce y Elementor descartando Tiendanube y Shopify por las comisiones sobre transacciones de alto valor, pero el sitio funcional que presentan corre en un subdominio de Pantheon y el dominio propio en Nic.ar está para una fase futura sin fecha: ¿qué efecto tiene eso en la confianza del usuario que llega a comprar un crucero?",
+            "buscamos": "Que el grupo pueda argumentar por qué presentaron el proyecto en ese estado (prototipo funcional vs. producto final) y que demuestren conciencia de que un subdominio de desarrollo impacta en la credibilidad de un e-commerce de ticket alto, idealmente conectándolo con la tasa de conversión que proyectaron.",
+            "evasiva": "Responder solo la parte técnica de por qué eligieron WordPress y no mencionar el subdominio ni el efecto en la percepción del comprador."
+          },
+          {
+            "pregunta": "El cupón ABORDO10 se promovió con un pop-up el día del lanzamiento y fallaba en el checkout, y ustedes declaran en el trabajo que tienen entornos separados de desarrollo, test y producción en Pantheon: ¿cómo llegó ese error al lanzamiento si esos entornos existen justamente para evitarlo?",
+            "buscamos": "Que el grupo explique qué salió mal en el proceso de pase entre entornos: si no se probó end-to-end el flujo del cupón en el entorno de test antes de publicar en Live, si hubo presión de tiempo, o qué harían distinto. Se valora que reconozcan la falla de proceso y no solo la falla técnica.",
+            "evasiva": "Explicar qué es un cupón de descuento o describir la arquitectura de entornos sin responder por qué el error no fue detectado antes del lanzamiento."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio se lanzó el 15 de agosto con un cupón de descuento promocionado mediante pop-up, pero ese cupón fallaba en el checkout el mismo día del lanzamiento: ¿cómo explicarían que eso ocurrió si el proyecto declara tener entornos separados de desarrollo, prueba y producción en Pantheon?",
+            "buscamos": "Que el grupo reconozca la contradicción entre tener una infraestructura de tres entornos y no haber ejecutado una prueba funcional end-to-end del cupón antes de pasar a Live. Una buena respuesta admite el error, explica qué paso del proceso de QA se saltó y propone cómo lo evitarían en el futuro (checklist de lanzamiento, prueba de flujo completo en el entorno Test con datos reales de cupón).",
+            "evasiva": "Decir que 'fue un error técnico puntual' o que 'WooCommerce a veces tiene bugs' sin explicar por qué no fue detectado en Test antes del lanzamiento."
+          },
+          {
+            "pregunta": "La plataforma se presenta como de autogestión 100% y checkout sin asistencia humana, pero el mail de confirmación que recibe el pasajero después de reservar dice explícitamente que un asesor va a contactarlo en las próximas 24 horas para completar los datos: ¿cómo justifican esa decisión de diseño frente al diferencial que eligieron como eje del proyecto?",
+            "buscamos": "Que el grupo pueda explicar si esa intervención humana es una limitación técnica transitoria (por ejemplo, que los formularios de datos de pasajeros aún no están integrados al checkout) o una decisión deliberada de negocio, y que puedan argumentar cómo afecta o no a la propuesta de valor central. Una buena respuesta distingue entre lo que el sistema ya automatiza y lo que todavía requiere intervención, y es honesta sobre la brecha.",
+            "evasiva": "Decir que 'igual el proceso es mayormente digital' o que 'el asesor solo es un contacto de bienvenida' sin abordar que eso contradice directamente la promesa de emisión sin asistencia humana."
+          },
+          {
+            "pregunta": "Eligieron WordPress con WooCommerce y descartaron explícitamente plataformas como Shopify o Tiendanube por el impacto de sus comisiones en productos de ticket alto, pero el sitio funcional presentado opera sobre un subdominio de Pantheon y la migración a un dominio propio y a un VPS en Hostinger quedó para una fase futura sin fecha: ¿cómo impacta eso en la credibilidad del sitio ante un usuario que está por pagar un crucero?",
+            "buscamos": "Que el grupo pueda vincular la decisión de infraestructura con la experiencia del usuario y la confianza de compra en productos de alto valor. Una buena respuesta reconoce que operar en un subdominio de Pantheon en el momento del lanzamiento real es un problema de confianza y conversión, y plantea por qué esa migración no se priorizó antes del lanzamiento comercial.",
+            "evasiva": "Responder que 'Pantheon es una plataforma profesional' o que 'el usuario no mira la URL' sin considerar el efecto que un subdominio de proveedor tiene sobre la percepción de legitimidad en transacciones de ticket alto."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El presupuesto publicitario que definieron es de USD 500 por mes, y el objetivo es cerrar 75 ventas mensuales de cruceros: ¿cómo justifican que ese presupuesto es suficiente para alcanzar ese volumen desde el primer mes, siendo una marca nueva sin posicionamiento orgánico todavía?",
+            "buscamos": "Que reconozcan la tensión entre el bajo presupuesto y el volumen proyectado, y que puedan argumentar cómo lo compensarían: por ejemplo, eficiencia en segmentación de Google Ads apuntando a alta intención comercial, remarketing con Meta Ads, o que admitan que el año 1 probablemente tenga una curva de rampa y las 900 ventas no se distribuyen uniformes mes a mes.",
+            "evasiva": "Decir que el 60% va a Google Ads y el 40% a Meta sin explicar por qué eso alcanza para generar el tráfico y las conversiones necesarias, o repetir la tasa de conversión del 1,5% como si fuera un hecho dado en lugar de una proyección que hay que justificar."
+          },
+          {
+            "pregunta": "En el trabajo declaran que la plataforma permite autogestión 100% y checkout sin asistencia humana, pero el mail de confirmación que le llega al pasajero le avisa que un asesor va a contactarlo en las próximas 24 horas para completar datos y definir camarotes: ¿cómo ven ustedes esa contradicción y qué impacto tiene en el diferencial que eligieron como propuesta de valor?",
+            "buscamos": "Que puedan reconocer la contradicción sin ponerse a la defensiva, y que expliquen si esa intervención humana es una limitación técnica o regulatoria de la etapa actual, qué pasos concretos la resolvería en fases siguientes, y cómo afecta la promesa central del negocio mientras esa brecha exista.",
+            "evasiva": "Minimizar el punto diciendo que 'es solo para confirmar datos' sin reconocer que eso implica intervención humana en el proceso que el trabajo presenta como automatizado, o desviar la respuesta hacia las funcionalidades técnicas de WooCommerce."
+          },
+          {
+            "pregunta": "El trabajo muestra dos cifras de facturación proyectada que no cierran entre sí: la que surge de multiplicar ventas por ticket promedio y la que aparece en el análisis de mercado como el 1% del SAM. ¿Cómo explican esa diferencia y cuál de las dos cifras es la que realmente guía las decisiones financieras del proyecto?",
+            "buscamos": "Que identifiquen que hay una inconsistencia interna entre las secciones del trabajo, que puedan explicar de dónde viene cada número aunque sea a grandes rasgos, y que tomen posición sobre cuál es la cifra operativa que usarían para tomar decisiones reales, reconociendo que la brecha es significativa y no cosmética.",
+            "evasiva": "Repetir ambas cifras sin explicar la diferencia, o decir que 'son proyecciones distintas con distintos supuestos' sin poder precisar cuáles son esos supuestos ni cuál número es el que orienta el negocio."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "El cupón ABORDO10 falló justo el día del lanzamiento oficial, cuando más gente estaba mirando el sitio. ¿Cómo llegó ese cupón a producción sin haber sido probado end-to-end, si el proyecto declaraba tener entornos separados de desarrollo, testing y producción?",
+            "buscamos": "Que el grupo reconozca la falla de proceso concreta: el entorno Live en Pantheon existía pero la prueba funcional completa del flujo de checkout con cupón no se realizó antes del lanzamiento. Buena respuesta: admiten el error, explican qué paso del ciclo de pruebas se saltó y qué harían diferente (por ejemplo, checklist de smoke testing previo al go-live, prueba end-to-end en entorno Test con datos reales del cupón).",
+            "evasiva": "Decir que 'fue un error técnico' o que 'lo resolvieron rápido' sin explicar por qué el proceso de tres entornos no lo previno ni qué cambiarían para que no vuelva a ocurrir."
+          },
+          {
+            "pregunta": "El mail de confirmación que recibe el usuario dice que un asesor los va a contactar en las próximas 24 horas para completar los datos de los pasajeros. ¿Cómo justifican eso en un proyecto cuyo diferencial central es la autogestión 100% sin asistencia humana?",
+            "buscamos": "Que el grupo pueda explicar si esto es una limitación técnica transitoria, una decisión consciente de diseño o una contradicción que no advirtieron. Una buena respuesta reconoce la tensión, la contextualiza (por ejemplo, complejidad regulatoria de los datos de embarque) y propone cómo resolverla en fases futuras para no comprometer el posicionamiento del proyecto.",
+            "evasiva": "Decir que 'igual el proceso es casi automático' o que 'el asesor solo es un formalismo' sin reconocer que ese contacto humano obligatorio contradice directamente la propuesta de valor que ellos mismos declararon."
+          },
+          {
+            "pregunta": "Cuando el cupón falló el día del lanzamiento, ¿qué decisiones tomaron como equipo en ese momento de crisis: quién lideró, qué comunicaron hacia afuera y cómo priorizaron la resolución?",
+            "buscamos": "Que describan un proceso real de gestión de crisis: identificación del problema, asignación de roles, decisión sobre si comunicar o no al usuario afectado y en qué tono, y cómo se coordinó el equipo bajo presión. No se espera un protocolo perfecto, sino que demuestren que aprendieron algo sobre liderazgo y comunicación de crisis a partir de esa experiencia concreta.",
+            "evasiva": "Relatar solo el fix técnico ('lo desactivamos y lo volvimos a cargar') sin mencionar cómo funcionó el equipo, quién tomó decisiones ni qué habrían comunicado a los usuarios que intentaron usar el cupón ese día."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "33",
+    "proyecto": "ZIO Pinturería",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/11CzxdKAH5BZI9PiRCTWDaPX8Y8r8lSLz/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1fqhXHlIq8nkLhHZZ5te0twPQ0IeBbonZ/preview",
+    "informe": {
+      "resumen": "El trabajo articula diagnóstico, diseño e implementación con consistencia, fundamenta cada decisión con datos propios y documenta dos crisis con análisis de causa raíz.",
+      "queEs": "Tienda WooCommerce para pinturería 100% digital de La Plata, producción a pedido sin stock, diferencial en precio y asesoramiento personalizado por WhatsApp.",
+      "fortalezas": [
+        "Dos crisis simuladas (ERR-142 y ERR-503) documentadas con impacto financiero cuantificado y resolución en tres capas.",
+        "Proyecciones financieras respaldadas en benchmarking real con SimilarWeb y SEMrush sobre tres competidores.",
+        "Decisiones de UX/MVP fundamentadas: exclusión deliberada del selector de colores con argumento de riesgo de usabilidad."
+      ],
+      "interrogar": [
+        "El documento dice 157 pedidos proyectados en escenario base (sección objetivos) pero la sección KPIs dice 126 pedidos; la tasa y el tráfico son iguales: ¿cuál es el número correcto?",
+        "El SAM se calcula como 2% del TAM nacional sin justificar por qué ese porcentaje es alcanzable para una pinturería con radio de 5 km en La Plata.",
+        "El sitio está en entorno de desarrollo (dev-zio.pantheonsite.io) con indexación desactivada; no hay evidencia de migración a producción ni de ventas reales validadas."
+      ],
+      "dondeApretar": "Presionar sobre la brecha entre lo planificado y lo efectivamente validado: sin ventas reales ni dominio productivo, ¿qué del modelo de negocio está verdaderamente probado?"
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El SAM que calcularon toma un porcentaje del total de viviendas de Argentina, pero ZIO opera en un radio de 5 km dentro de La Plata: ¿cómo justifican que ese porcentaje representa el mercado al que realmente pueden llegar?",
+            "buscamos": "Que reconozcan la tensión entre un TAM nacional y una operación hiperlocal, y que expliquen qué criterio usaron para llegar a ese porcentaje o, si no lo tienen, que propongan cómo lo reformularían (por ejemplo, usando datos de viviendas o población del área de cobertura real en La Plata).",
+            "evasiva": "Definir qué es el SAM o el TAM en términos generales, sin abordar por qué un porcentaje calculado sobre datos nacionales es representativo para una pinturería con alcance geográfico acotado."
+          },
+          {
+            "pregunta": "El documento identifica el miedo a recibir un color equivocado como un punto de dolor clave en la etapa de Decisión del Customer Journey, pero el selector de colores fue excluido del MVP: ¿cómo esperan que el sitio resuelva esa objeción sin esa herramienta?",
+            "buscamos": "Que defiendan la decisión con argumentos concretos del trabajo, por ejemplo el rol del asesoramiento personalizado por WhatsApp como canal alternativo para resolver esa objeción, y que reconozcan que no cuantificaron el impacto de esa exclusión sobre la conversión.",
+            "evasiva": "Repetir que una implementación deficiente sería peor sin explicar qué mecanismo concreto del sitio o de la propuesta de valor reemplaza funcionalmente al selector ausente en el momento de la decisión de compra."
+          },
+          {
+            "pregunta": "El trabajo declara que el 86% del tráfico online en Argentina es mobile y que el buyer persona principal consume de forma mobile-first, pero los wireframes presentados corresponden a desktop: ¿cómo sostienen que el diseño responde a ese perfil de usuario si la evidencia visual del TFI es de escritorio?",
+            "buscamos": "Que expliquen si existe un diseño mobile que no quedó documentado y por qué, o que reconozcan la brecha entre la caracterización del usuario y los entregables presentados, y que articulen cómo WooCommerce o el tema elegido cubre esa adaptación mobile en la práctica.",
+            "evasiva": "Mencionar que WooCommerce es responsive por defecto sin vincular esa afirmación con la necesidad específica del buyer persona ni con la ausencia de wireframes mobile en el documento."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "Decidieron dejar afuera el selector de colores del MVP argumentando que una mala implementación podría generar más desconfianza, pero el propio Customer Journey identifica el miedo a recibir un color equivocado como un punto de dolor clave en la etapa de Decisión. ¿Cómo justifican esa decisión si el problema que querían evitar agravar es exactamente el que más frena la compra?",
+            "buscamos": "Que el grupo reconozca la tensión real entre ambas decisiones y la defienda con criterio: por ejemplo, que priorizaron resolver esa objeción por otro canal (el asesoramiento personalizado por WhatsApp), que consideraron que un selector mal hecho generaría más fricción que su ausencia, o que planean incorporarlo en una versión posterior. Lo importante es que muestren que la decisión fue consciente y argumentada, no una omisión.",
+            "evasiva": "Decir que 'el selector era muy complejo de implementar' o que 'lo van a agregar después' sin explicar cómo compensan la objeción de desconfianza en el flujo actual ni por qué el WhatsApp alcanza para resolverla en la etapa de Decisión."
+          },
+          {
+            "pregunta": "El documento menciona que el 86% del tráfico online en Argentina es mobile y que su buyer persona principal consume contenido en modo mobile-first, pero los wireframes presentados en el documento corresponden a desktop. ¿Cómo tomaron esa decisión y qué impacto puede tener en la experiencia de la usuaria que describieron?",
+            "buscamos": "Que el grupo pueda explicar si fue una limitación del proceso de diseño o una elección deliberada, y que reconozcan la contradicción entre el perfil de usuario declarado y la evidencia documental. Una buena respuesta menciona cómo la experiencia mobile está contemplada aunque no documentada con wireframes, o reconoce honestamente que es una deuda del trabajo.",
+            "evasiva": "Decir que 'WooCommerce es responsivo por defecto' como si eso resolviera la pregunta, sin abordar la ausencia de decisiones de diseño pensadas específicamente para la experiencia mobile de su buyer persona."
+          },
+          {
+            "pregunta": "El sitio está en un entorno de desarrollo con la indexación desactivada, lo que significa que los productos que tienen buena puntuación en Yoast todavía no generan tráfico orgánico real. ¿Qué implica eso para las proyecciones de tráfico y conversión que presentan en el trabajo, y cómo lo tuvieron en cuenta?",
+            "buscamos": "Que el grupo distinga entre tráfico proyectado y tráfico real validado, y que puedan explicar si las proyecciones asumen que el sitio ya migró a producción o si son estimaciones a futuro. Una buena respuesta reconoce que las métricas de SEO son potenciales y no actuales, y muestra conciencia de que hay un paso pendiente entre el estado actual del sitio y el modelo de negocio proyectado.",
+            "evasiva": "Defender la calidad del trabajo de SEO on-page sin reconocer que, mientras el sitio no esté indexado en producción, esas optimizaciones no tienen impacto real en el tráfico ni en las conversiones proyectadas."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio figura en un entorno de desarrollo con la indexación desactivada al momento de presentar este trabajo, lo que significa que los productos que cargaron y optimizaron no están siendo encontrados por nadie en Google todavía: ¿cómo piensan resolver esa brecha antes de salir al mercado real, y qué pasos concretos implica ese pasaje a producción?",
+            "buscamos": "Que el grupo reconozca que hay una diferencia crítica entre tener el sitio armado y tenerlo operativo para el público, que pueda describir aunque sea en términos generales qué implica migrar de un entorno de desarrollo a producción (dominio propio, activar indexación, verificar en Search Console), y que entienda que el trabajo SEO hecho hasta ahora no genera tráfico real hasta que eso ocurra.",
+            "evasiva": "Decir que ya tienen todo optimizado con Yoast, que las fichas tienen buena puntuación, o hablar del proceso de carga de productos sin abordar en ningún momento qué significa pasar de dev a producción ni cuándo ni cómo lo harían."
+          },
+          {
+            "pregunta": "Decidieron dejar afuera el selector de colores del MVP argumentando que una implementación mala podría generar más desconfianza que no tenerlo, pero al mismo tiempo el propio Customer Journey que presentan identifica el miedo a recibir un color equivocado como un punto de dolor concreto en la etapa de Decisión: ¿cómo resuelven ese problema de confianza sin esa herramienta?",
+            "buscamos": "Que el grupo demuestre que pensaron una alternativa real para compensar la ausencia del selector, por ejemplo el asesoramiento por WhatsApp como canal de validación antes de confirmar la compra, la descripción detallada de productos, muestras físicas, o cualquier otro mecanismo que justifiquen. Lo importante es que puedan defender que hay un camino concreto para reducir esa objeción sin el selector, no que lo hayan resuelto perfectamente.",
+            "evasiva": "Repetir que lo excluyeron porque era riesgoso implementarlo mal, sin decir nada sobre cómo van a atender igual el miedo del cliente a equivocarse de color, como si reconocer el problema y postponer la solución fuera suficiente justificación."
+          },
+          {
+            "pregunta": "El documento menciona que el 86% del tráfico online en Argentina es mobile y que su buyer persona principal consume contenido cien por ciento desde el celular, pero las vistas del sitio que presentan en el trabajo corresponden a desktop: ¿cómo garantizan que la experiencia de compra real funciona bien en mobile si no hay evidencia de eso en el documento?",
+            "buscamos": "Que el grupo pueda explicar si el tema mobile está resuelto a nivel técnico aunque no figure en los wireframes del documento, por ejemplo mencionando que WooCommerce con su tema tiene diseño responsive por defecto, o que hicieron pruebas manuales en dispositivos, o que es una deuda reconocida. Lo valioso es que sean conscientes de la tensión entre lo que declaran sobre su público y lo que muestran como evidencia.",
+            "evasiva": "Decir que WooCommerce es responsive y dar la conversación por cerrada, sin reconocer que en ningún momento del documento se valida ni se muestra cómo se ve o funciona la tienda en el dispositivo que su propio cliente principal va a usar para comprar."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo aparecen dos números distintos para el escenario base: en un lugar dicen que proyectan cierta cantidad de pedidos mensuales y en otro lugar dicen una cantidad diferente, usando la misma tasa de conversión sobre el mismo tráfico. ¿Cómo explican esa diferencia?",
+            "buscamos": "Que reconozcan la inconsistencia entre 157 y 126 pedidos, identifiquen en qué sección aparece cada número y ofrezcan una explicación razonable: error de edición, revisión posterior del documento, o diferencia de criterio entre objetivos y KPIs. No se espera que justifiquen el número 'correcto' con una fórmula, sino que muestren que entienden que hay una contradicción y que pueden hablar de ella con honestidad.",
+            "evasiva": "Explicar en general cómo se calcula una tasa de conversión o decir 'la tasa es 1,5% sobre 10.509 visitas' sin reconocer que esa misma operación da resultados distintos en dos secciones del propio documento."
+          },
+          {
+            "pregunta": "Para dimensionar el mercado al que apunta ZIO usaron un porcentaje del total de viviendas de Argentina. Siendo que el negocio opera en un radio de 5 km dentro de La Plata, ¿por qué les parece válido ese enfoque para estimar el mercado al que realmente pueden llegar?",
+            "buscamos": "Que puedan defender la decisión metodológica o, si no pueden defenderla, que reconozcan la limitación y propongan cómo hubieran podido acotarlo mejor: usar datos de viviendas del partido de La Plata, estimar el radio de cobertura de entrega, o apoyarse en fuentes locales. Lo valioso es que muestren conciencia de que escalar desde el TAM nacional a un negocio hiperlocal requiere una justificación que el documento no desarrolla.",
+            "evasiva": "Repetir la definición de TAM, SAM y SOM sin explicar por qué el 2% aplicado sobre viviendas de todo el país representa algo significativo para una pinturería con cobertura de 5 km."
+          },
+          {
+            "pregunta": "El trabajo define un umbral de alerta para el costo de adquisición de clientes, pero no queda claro si ese umbral es semanal o mensual ni cómo se relaciona con el CAC proyectado para condiciones normales. ¿Cómo funciona en la práctica ese sistema de alerta y qué acción dispararía si se supera?",
+            "buscamos": "Que expliquen la lógica detrás del umbral: cuándo y con qué frecuencia se mediría, qué acción concreta tomarían al superarlo (pausar campañas, revisar audiencias, ajustar presupuesto) y que puedan vincular ese número con el CAC proyectado en condiciones normales. Se valora que muestren que el umbral tiene un propósito operativo real, no que sea solo un número en el documento.",
+            "evasiva": "Decir que 'el CAC es el costo de adquisición de clientes' o describir en abstracto qué es un umbral de alerta sin explicar qué pasaría concretamente en el negocio de ZIO si ese valor se supera durante una semana de campaña."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Durante la Crisis 1, el costo de adquirir cada cliente se disparó muy por encima de lo proyectado, y el umbral de alerta que definieron para detectarlo a tiempo quedó expresado de forma ambigua en el documento, sin quedar claro si era semanal o mensual. ¿Cómo hubieran operado ese indicador en la práctica para realmente saber cuándo cortar o ajustar la inversión publicitaria?",
+            "buscamos": "Que el grupo reconozca la ambigüedad del umbral tal como está definido en el TFI y explique —aunque sea en términos conceptuales— qué criterio concreto usarían para compararlo con el CAC real: ¿lo acumulan al mes, lo prorrateaban por semana, disparan una alerta cuando la tendencia sube sostenida dos semanas? Se valora que demuestren haber pensado en el proceso de decisión, no que reciten el número exacto.",
+            "evasiva": "Explicar en abstracto qué es el CAC o decir 'lo monitoreábamos con Google Analytics' sin conectar eso con el umbral definido ni con la inconsistencia de unidad de tiempo que tiene el documento."
+          },
+          {
+            "pregunta": "La Crisis 2 les generó un impacto financiero importante por órdenes confirmadas sobre stock inexistente, y el propio documento reconoce que algunas de esas órdenes podrían haber disparado producción en el proveedor de Berisso antes de que las cancelaran. ¿Qué decisión de liderazgo tomaron —o tomarían— en las primeras horas de esa crisis para contener ese riesgo puntual con el proveedor?",
+            "buscamos": "Que el grupo muestre que entienden que el riesgo no era solo interno sino que involucraba a un tercero real (el proveedor de Berisso) y que describan alguna acción concreta de comunicación o protocolo hacia ese actor: llamado inmediato, pausa de órdenes, acuerdo previo de cancelación, etc. Se valora criterio operativo y conciencia del impacto externo.",
+            "evasiva": "Hablar de cómo comunicaron la crisis a los clientes finales o de la solución técnica del error 503, sin mencionar en ningún momento al proveedor ni el riesgo de producción ya iniciada que el propio documento admite."
+          },
+          {
+            "pregunta": "Eligieron excluir el selector de colores del MVP argumentando que una implementación deficiente empeoraría la desconfianza del usuario, pero ese mismo miedo a recibir el color equivocado aparece identificado como un punto de dolor crítico en la etapa de Decisión del Customer Journey. ¿Cómo gestionan ese riesgo de conversión mientras el selector no existe, y quién dentro del equipo tiene responsabilidad sobre ese gap?",
+            "buscamos": "Que el grupo defienda la decisión con coherencia: explicar qué mecanismo alternativo —por ejemplo, el asesoramiento por WhatsApp— cubre ese punto de dolor en ausencia del selector, y que puedan nombrar un rol o responsable concreto de hacer el seguimiento de ese gap hasta que sea resuelto. Se valora que no lo presenten como problema cerrado sino como riesgo activo con dueño.",
+            "evasiva": "Repetir que 'decidimos no incluirlo para no generar desconfianza' sin explicar cómo resuelven concretamente la objeción del color en el flujo de compra actual, ni mencionar quién del equipo tiene visibilidad sobre ese riesgo hacia adelante."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "34",
+    "proyecto": "Kit And Go",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/176Ky-XA5GRJOGM_Kzximu7Wfd9OqlYeN/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1zaYCW-NF_m5i--CSxrSEi9oq3ItFdSfB/preview",
+    "informe": {
+      "resumen": "El trabajo es completo en estructura pero presenta contradicciones financieras relevantes y referencias bibliográficas inconsistentes que debilitan su solidez académica.",
+      "queEs": "E-commerce de kits tecnológicos prearmados para creadores de contenido principiantes, diferenciado por curaduría experta y asesoramiento personalizado.",
+      "fortalezas": [
+        "Modelo financiero coherente internamente: ticket promedio $222.500, punto de equilibrio 55 kits, facturación proyectada $111.250.000.",
+        "Decisiones UX/UI justificadas en el buyer persona 'Santi' con evidencia visual en los wireframes del anexo.",
+        "Gestión de crisis documentada con reportes reales adjuntos (ERR-389 y ERR-505) que fundamentan decisiones estratégicas concretas."
+      ],
+      "interrogar": [
+        "Contradicción financiera: la inversión inicial es $4.200.000 pero el CAC se calcula sobre una 'inversión anual en marketing de $6.000.000' nunca presupuestada.",
+        "Referencia bibliográfica cita 'ChatGPT (modelo GPT-5.5)' de OpenAI (2026): ese modelo no existe públicamente, sugiere uso acrítico de IA sin verificación.",
+        "El margen bruto declarado es 35%, pero los datos de la tabla muestran márgenes reales de 36,7% (Starter), 36% (Creator) y 35% (Pro): la cifra no es uniforme."
+      ],
+      "dondeApretar": "Confrontar la inconsistencia entre el presupuesto inicial de $4,2M y el CAC calculado sobre $6M anuales, pidiendo que justifiquen de dónde salen esos fondos adicionales."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes apuntan a creadores de contenido principiantes como su cliente principal: ¿por qué eligieron ese segmento y qué tiene de distinto su propuesta para que alguien que recién empieza les compre a ustedes y no arme su propio kit comprando cada producto por separado?",
+            "buscamos": "Que defiendan la propuesta de valor de la curaduría experta y el asesoramiento personalizado como diferencial real frente a la compra individual, conectando eso con la decisión de segmentar a principiantes que no saben qué comprar ni cómo usarlo.",
+            "evasiva": "Responder que 'el mercado de creadores de contenido está creciendo mucho' sin explicar por qué alguien elegiría el kit prearmado sobre ir a Mercado Libre a comprar cada pieza."
+          },
+          {
+            "pregunta": "En el trabajo proyectan llegar a 500 clientes en el primer año, lo que representa una porción muy chica del mercado que identificaron: ¿cómo justifican que ese número es alcanzable con la inversión en marketing que tienen prevista para el arranque?",
+            "buscamos": "Que reconozcan la tensión entre la magnitud de la proyección de ventas y el presupuesto de marketing inicial, y que intenten explicar con qué canales o estrategia piensan cubrir esa brecha, aunque sea admitiendo que la proyección es optimista.",
+            "evasiva": "Repetir que 500 clientes es el 0,03% del mercado potencial y que 'por eso es conservador', sin tocar la relación entre esa meta y los recursos disponibles para alcanzarla."
+          },
+          {
+            "pregunta": "Cuando se presenta la crisis ERR-389, la respuesta fue sumar Google Ads como canal: ¿por qué Google Ads no estaba contemplado desde el inicio como parte de la estrategia de lanzamiento, y qué dice eso sobre cómo planificaron los canales de adquisición originalmente?",
+            "buscamos": "Que reflexionen sobre la diferencia entre tener una estrategia multicanal planificada desde el principio y diversificar de forma reactiva ante un problema, y que puedan argumentar si cambiarían algo en la planificación original sabiendo lo que pasó.",
+            "evasiva": "Defender que 'adaptarse a los cambios es parte del marketing digital' sin reconocer que la diversificación de canales podría haberse anticipado como parte del plan en lugar de surgir como respuesta a una crisis."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el informe mencionan que el checkout como invitado reduce la fricción para el usuario, pero en la captura del anexo se ve un formulario con nombre, apellidos, dirección, teléfono y email: ¿cómo concilian esa decisión con la promesa de experiencia simple?",
+            "buscamos": "Que el grupo reconozca la tensión entre la declaración de 'mínima fricción' y lo que realmente muestra el anexo, y que pueda argumentar por qué esos campos son necesarios (logística, envío, contacto postventa) o bien admitir que hay una inconsistencia y proponer cómo la resolverían.",
+            "evasiva": "Decir que el checkout como invitado es mejor que el registro obligatorio sin mencionar el formulario extenso del anexo ni explicar por qué se incluyen todos esos campos de todos modos."
+          },
+          {
+            "pregunta": "El producto está pensado para creadores de contenido principiantes: ¿qué decisiones concretas de diseño o de la selección de los kits tomaron para que alguien sin experiencia técnica se sienta capaz de comprar y usar el producto sin ayuda?",
+            "buscamos": "Que conecten la propuesta de valor del asesoramiento personalizado y la curaduría experta con decisiones reales de UX o de armado del kit, mostrando que entendieron al usuario objetivo y no solo lo nombraron.",
+            "evasiva": "Hablar en general de que 'el producto está pensado para principiantes' o mencionar el buyer persona sin explicar ninguna decisión de diseño concreta que responda a esa necesidad."
+          },
+          {
+            "pregunta": "El diferencial del negocio es la curaduría experta: ¿cómo se refleja eso en la experiencia digital del sitio, más allá de los nombres de los kits?",
+            "buscamos": "Que puedan describir al menos un elemento concreto de la experiencia en el sitio —contenido educativo, comparador de kits, recomendador, descripción detallada de productos— que materialice ese diferencial y no quede solo como promesa de marca.",
+            "evasiva": "Repetir que el diferencial es la curaduría sin poder señalar ningún punto del recorrido del usuario donde eso se vea o se sienta de manera distinta a cualquier otro e-commerce de tecnología."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el informe dicen que el checkout como invitado reduce la fricción para el usuario, pero en la captura del Anexo 2 se ve un formulario que pide nombre, apellidos, dirección, teléfono y email. ¿Cómo justifican esa decisión de diseño?",
+            "buscamos": "Que el grupo reconozca la tensión entre la promesa de 'mínima fricción' y el formulario extenso, y pueda argumentar por qué esos campos son necesarios (logística, confirmación de envío, etc.) o reconocer que es un punto a mejorar con una experiencia más progresiva.",
+            "evasiva": "Responder en abstracto que 'el checkout como invitado es mejor para la conversión' sin hacerse cargo de lo que realmente muestra el Anexo 2."
+          },
+          {
+            "pregunta": "El plan de lanzamiento describe una estrategia de canales publicitarios, pero cuando ocurrió la crisis ERR-389 tuvieron que salir a diversificar hacia Google Ads de manera reactiva. Si tuvieran que rehacer ese plan, ¿qué cambiarían en la estrategia de canales desde el inicio?",
+            "buscamos": "Que entiendan que depender de un solo canal es un riesgo operativo real, y que puedan proponer cómo habría sido más robusto incluir la diversificación como estrategia planificada y no como reacción a una crisis.",
+            "evasiva": "Defender que la diversificación reactiva estuvo bien porque 'supieron adaptarse', sin reflexionar sobre por qué no estaba contemplada desde el principio."
+          },
+          {
+            "pregunta": "En el informe citan como fuente bibliográfica un modelo de ChatGPT con un número de versión que no corresponde a ningún producto publicado por OpenAI. ¿Cómo deberían haber documentado el uso de herramientas de IA en un trabajo académico?",
+            "buscamos": "Que el grupo reconozca que usar IA como fuente citable requiere verificar que la herramienta exista, aclarar para qué se usó y no tratarla como una referencia de autoridad equivalente a un autor o publicación académica.",
+            "evasiva": "Decir que 'todo el mundo usa IA hoy en día' o que 'APA 7 lo permite' sin abordar el problema concreto de que la versión citada no existe y no se aclaró qué partes del trabajo fueron asistidas."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el plan de marketing arrancaron con Instagram y TikTok como canales principales, pero después de la crisis ERR-389 terminaron incorporando Google Ads. ¿Por qué no lo incluyeron desde el inicio y cómo justifican esa decisión original?",
+            "buscamos": "Que reconozcan que la estrategia inicial priorizó canales visuales por el perfil del público creador de contenido, y que puedan reflexionar honestamente sobre si la diversificación debería haber estado planificada desde el arranque en lugar de aparecer solo como respuesta a una crisis.",
+            "evasiva": "Decir que Google Ads 'se sumó porque funcionó' o describir cómo resolvieron la crisis sin cuestionar por qué no estaba en el plan original."
+          },
+          {
+            "pregunta": "El trabajo proyecta 500 clientes en el primer año. ¿Cómo justifican que esa cantidad es alcanzable con el presupuesto de marketing que tiene el proyecto?",
+            "buscamos": "Que noten la tensión entre la inversión en pauta declarada y la escala de ventas proyectada, y que puedan explicar qué canales o estrategias orgánicas compensarían esa brecha, aunque sea reconociendo que el modelo financiero necesitaba más detalle en ese punto.",
+            "evasiva": "Repetir que 500 clientes es el 0,03% del mercado como si eso solo bastara para justificar la viabilidad, sin explicar cómo el presupuesto disponible sostiene esa captación."
+          },
+          {
+            "pregunta": "Declararon que el checkout como invitado reducía la fricción para el comprador, pero en el anexo se ve un formulario que pide nombre, apellidos, dirección, teléfono y email. ¿Cómo concilian esa decisión con el objetivo de experiencia de compra simple que plantearon?",
+            "buscamos": "Que puedan distinguir entre registro obligatorio de cuenta y datos mínimos necesarios para procesar un envío, reconociendo que el formulario extenso puede percibirse como fricción aunque técnicamente no exija crear una cuenta, y que reflexionen sobre si comunicaron bien esa distinción en el informe.",
+            "evasiva": "Insistir en que 'no es lo mismo que registrarse' sin reconocer que el volumen de campos solicitados puede contradecir la promesa de mínima fricción en la experiencia del usuario."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo mencionan que tuvieron que salir a usar Google Ads para resolver la crisis ERR-389, pero ese canal no estaba en el plan original. ¿Por qué no lo habían considerado desde el arranque y qué aprendieron de eso?",
+            "buscamos": "Que el grupo reconozca que la diversificación de canales surgió de forma reactiva y no como parte de una estrategia planificada, y que reflexionen sobre por qué depender de un solo canal representa un riesgo real para el negocio. Idealmente mencionan que en una próxima versión del plan ese canal aparecería desde el inicio.",
+            "evasiva": "Explicar qué es Google Ads o describir cómo funciona la plataforma en general, sin relacionarlo con la decisión concreta que tomaron ni con lo que el plan original omitía."
+          },
+          {
+            "pregunta": "Cuando surgió la crisis, ¿cómo tomaron la decisión de qué hacer primero dentro del equipo, y quién o cómo se organizaron para resolverla sin que todo colapsara?",
+            "buscamos": "Que describan cómo funcionó el liderazgo real del grupo ante la presión: si hubo alguien que coordinó, cómo distribuyeron tareas, cómo priorizaron. No se busca un modelo teórico sino una reflexión honesta sobre su propio proceso de trabajo en equipo bajo estrés.",
+            "evasiva": "Responder con términos genéricos como 'nos comunicamos bien' o 'aplicamos gestión ágil' sin contar qué pasó concretamente dentro del equipo durante esa situación."
+          },
+          {
+            "pregunta": "El plan de lanzamiento arranca con una inversión en pauta bastante acotada. Si en los primeros meses las ventas no llegan a lo proyectado, ¿qué harían antes de quedarse sin caja?",
+            "buscamos": "Que el grupo demuestre conciencia del riesgo de liquidez temprana y proponga acciones concretas y priorizadas: por ejemplo, reducir stock, ajustar pauta, buscar canales orgánicos, revisar el mix de kits. Se valora que conecten la respuesta con la estructura de costos real de su proyecto.",
+            "evasiva": "Dar una respuesta vaga como 'haríamos más marketing' o 'bajaríamos precios' sin considerar el impacto en el margen ni en la sostenibilidad del modelo."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "35",
+    "proyecto": "LURE Design",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1PY2oQ20JIK5dGz4mZJi5outw3yWmPAGq/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/16Ulnxe9W6NpLrrHVARU1MHRW1RnIQZVJ/preview",
+    "informe": {
+      "resumen": "El trabajo articula análisis estratégico, diseño UX, implementación técnica y gestión de crisis con coherencia interna y autocorrección documentada ante observaciones de la cátedra.",
+      "queEs": "DNVB de mobiliario inteligente D2C (WordPress/WooCommerce) que integra carga Qi, LED y push-to-open en diseño minimalista, sin intermediarios.",
+      "fortalezas": [
+        "Autocorrección documentada del modelo financiero: ROI pasó de -24,49% a +60,45% tras revisión del ticket promedio.",
+        "Gestión de dos crisis reales (ERR-611 hardware y ERR-501 indexación MySQL) con respuestas operativas concretas.",
+        "Buyer persona Milo Fernández estructura coherentemente journey, UX, SEO, contenidos y KPIs en todo el documento."
+      ],
+      "interrogar": [
+        "El margen bruto del 80,37% es excepcionalmente alto para mobiliario físico con costos de manufactura tercerizada (Cortecloud) y logística: ¿cómo se calculó exactamente el COGS?",
+        "El SOM Año 1 se fijó en 1% del SAM ($1.232M) pero la proyección de ingresos usa 1.973 sesiones/mes × 1% conversión × $770.052: ¿ambas cifras son consistentes o son estimaciones paralelas sin reconciliación?",
+        "El staging en Pantheon se presenta como MVP funcional pero los wireframes de Figma difieren visualmente del sitio real mostrado en el Anexo G: ¿qué decisiones de diseño cambiaron y por qué?"
+      ],
+      "dondeApretar": "Presionar sobre la solidez del modelo financiero, especialmente la composición del margen bruto del 80,37% y su consistencia con los costos reales de Cortecloud y logística."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El ticket promedio que proyectan para LURE está bastante por debajo del promedio que relevaron en el mercado: ¿por qué eligieron posicionarse ahí y no apuntar a ese techo de precio?",
+            "buscamos": "Que expliquen la lógica de penetración: LURE como entrante sin trayectoria, fricción de adopción de tecnología integrada, necesidad de generar primeras conversiones. Bonus si vinculan esa decisión a la proyección de sesiones y volumen de unidades del Año 1.",
+            "evasiva": "Decir que el precio es 'más accesible para el cliente' o 'competitivo' sin anclar la decisión a ninguna variable del modelo ni a la etapa de lanzamiento."
+          },
+          {
+            "pregunta": "Eligieron el canal D2C directo y descartaron intermediarios: ¿qué ganaron con esa decisión y qué riesgo concreto asumieron al hacerlo?",
+            "buscamos": "Que defiendan el D2C en términos de control del margen y la relación directa con el cliente, pero que también reconozcan el riesgo real: todo el costo de adquisición cae sobre ellos, como quedó evidenciado cuando el 75% del tráfico dependía de pauta paga y la crisis ERR-501 los obligó a pausar las campañas.",
+            "evasiva": "Enumerar ventajas del D2C como si fuera una definición de manual sin mencionar la dependencia de pauta paga ni lo que eso implicó durante el Go-Live."
+          },
+          {
+            "pregunta": "Fijaron el SOM del Año 1 en el 1% del SAM: ¿cómo llegaron a ese número y por qué les pareció una meta realista para una marca sin historial?",
+            "buscamos": "Que expliquen el razonamiento detrás de la captura estimada: nueva marca, sin reputación, con manufactura tercerizada y un catálogo MVP acotado. Si pueden vincular ese 1% con el volumen de sesiones y conversiones que proyectaron, mejor. No se espera que reciten el monto exacto del SAM.",
+            "evasiva": "Justificar el 1% únicamente porque 'es un número conservador' o porque 'el mercado es grande', sin ninguna referencia a las capacidades reales de la marca en su etapa inicial."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo muestran wireframes en Figma y también el sitio real en el Anexo G, y se nota que hay diferencias visuales entre uno y otro. ¿Qué decisiones tomaron durante el desarrollo que hicieron que el producto final se alejara del diseño original, y por qué las tomaron?",
+            "buscamos": "Que el grupo identifique al menos una decisión de diseño concreta que cambió entre el wireframe y el staging en Pantheon, explique la razón funcional o técnica detrás del cambio, y muestre que fue una decisión deliberada y no una omisión. Buena respuesta conecta diseño con restricciones reales (tecnología, UX, tiempo de desarrollo del MVP).",
+            "evasiva": "Decir que 'los wireframes son una guía aproximada y siempre cambian' sin especificar qué cambió puntualmente ni por qué en este proyecto en particular."
+          },
+          {
+            "pregunta": "El catálogo del MVP tiene 16 SKUs distribuidos en tres líneas, pero las decisiones de arquitectura del sitio y el Sitemap apuntan principalmente a Dormitorio, Mesas de Noche y Escritorios. ¿Por qué priorizaron esas categorías en la experiencia del sitio si el catálogo declarado es más amplio?",
+            "buscamos": "Que el grupo justifique la priorización con criterios de UX, foco de MVP o hipótesis de cliente, reconociendo la tensión entre tener 16 SKUs listados y una navegación que no los trata a todos por igual. Respuesta sólida menciona que el MVP debe validar hipótesis acotadas antes de escalar a todo el catálogo.",
+            "evasiva": "Explicar qué es un MVP en términos generales sin aterrizar por qué estas categorías específicas y no otras dentro del propio catálogo del trabajo."
+          },
+          {
+            "pregunta": "Durante la simulación de Go-Live tuvieron una falla técnica que los obligó a pausar las campañas pagas en Meta y Google justo cuando la mayoría del tráfico venía de esa pauta. ¿Qué aprendieron de ese episodio y cómo cambiaría la secuencia de lanzamiento si lo tuvieran que hacer de nuevo?",
+            "buscamos": "Que el grupo reflexione sobre la dependencia de tráfico pago en un momento de inestabilidad técnica, y proponga una lección concreta: por ejemplo, validar estabilidad de la plataforma antes de activar pauta, tener un protocolo de contingencia, o escalar el tráfico de forma gradual. Se valora que conecten el incidente técnico (ERR-501) con la estrategia de lanzamiento digital.",
+            "evasiva": "Describir qué fue el error técnico o cómo se resolvió sin extraer ninguna conclusión sobre cómo eso debería modificar la planificación del lanzamiento."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "Durante la simulación de Go-Live tuvieron una falla técnica en WooCommerce que los obligó a pausar las campañas pagas. ¿Qué aprendieron de eso y qué cambiarían en el proceso de lanzamiento si tuvieran que hacerlo de nuevo?",
+            "buscamos": "Que el grupo reconozca la falla ERR-501 como un problema real de dependencia entre la infraestructura técnica y el tráfico pago, que entienda el riesgo de tener el 75% del tráfico concentrado en pauta activa sin un entorno estable, y que propongan una solución concreta: staging más robusto, smoke tests antes de activar campañas, o una estrategia de lanzamiento escalonada.",
+            "evasiva": "Decir que 'fue un error puntual que ya se resolvió' o describir qué es MySQL sin explicar qué harían diferente ni por qué la situación era crítica para el negocio."
+          },
+          {
+            "pregunta": "El sitio final que mostraron en el Anexo G tiene diferencias visuales con los wireframes de Figma que presentaron antes. ¿Qué decisiones tomaron durante el desarrollo que explican esos cambios?",
+            "buscamos": "Que el grupo distinga entre decisiones de diseño deliberadas (adaptaciones por usabilidad, limitaciones del theme de WooCommerce, feedback de pruebas) y cambios reactivos sin fundamento, y que puedan justificar al menos uno de esos cambios en términos del usuario o del negocio, no solo decir que 'quedaba mejor'.",
+            "evasiva": "Decir que los wireframes son solo una guía y que siempre cambian, sin explicar qué problema concreto resolvió cada cambio ni cómo afectó la experiencia del usuario."
+          },
+          {
+            "pregunta": "El MVP que levantaron tiene 16 SKUs en tres líneas, pero las decisiones de arquitectura del sitio y el UX parecen estar pensados principalmente para la línea de Dormitorio. ¿Cómo justifican esa tensión entre el catálogo declarado y el foco real del sitio?",
+            "buscamos": "Que el grupo reconozca la inconsistencia entre lo que el catálogo promete y lo que el sitio prioriza, y que puedan argumentar si fue una decisión estratégica consciente de enfocar el MVP en el producto ancla, o si fue una limitación del proceso que quedó sin resolver. Una buena respuesta conecta esta decisión con la lógica de validar el canal antes de escalar el catálogo.",
+            "evasiva": "Decir que 'el sitio cubre todas las líneas' sin reconocer la diferencia de profundidad entre secciones, o justificarlo solo con que 'Dormitorio era la categoría más fuerte' sin explicar qué implicancias tiene eso para el usuario que llega buscando productos de Living u Home Office."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El margen bruto que proyectaron es notablemente alto para un producto físico que se fabrica con un tercero y tiene costos de logística: ¿cómo llegaron a ese número y qué incluye exactamente lo que consideraron como costo del producto?",
+            "buscamos": "Que el grupo pueda explicar qué ítems entran en su COGS (manufactura con Cortecloud, flete, packaging, etc.) y justificar por qué quedan afuera ciertos costos o por qué el modelo los asigna a otra categoría. Lo ideal es que reconozcan si hubo una decisión metodológica cuestionable y la defiendan con criterio, no que esquiven la tensión.",
+            "evasiva": "Hablar en abstracto de que 'el margen es la diferencia entre precio y costo' o mencionar que 'se investigaron precios de mercado' sin explicar qué partidas de costo concretas se incluyeron o excluyeron en el cálculo."
+          },
+          {
+            "pregunta": "A lo largo del trabajo manejaron dos referencias para medir su potencial de ventas: el SOM del mercado por un lado y las proyecciones de sesiones y conversiones por el otro. ¿Estas dos formas de estimar ingresos llegan al mismo resultado o son estimaciones independientes, y cómo lo justifican?",
+            "buscamos": "Que el grupo reconozca que ambas estimaciones deben ser consistentes entre sí para que el modelo financiero tenga coherencia interna, y que pueda explicar si las reconciliaron o si funcionaron como supuestos paralelos. Una buena respuesta admite la tensión y explica la lógica detrás de cada número, aunque haya quedado una brecha.",
+            "evasiva": "Definir qué es el SOM o describir el embudo de conversión sin abordar si ambas estimaciones apuntan al mismo volumen de ventas proyectado ni por qué podrían diferir."
+          },
+          {
+            "pregunta": "Definieron el Hardware Reliability Rate como un KPI crítico del negocio: ¿por qué eligieron ese indicador para medir el éxito del proyecto siendo que están presentando un emprendimiento de e-commerce?",
+            "buscamos": "Que el grupo pueda argumentar que el producto físico con tecnología integrada (carga Qi, LED, push-to-open) hace que la confiabilidad del hardware sea central para la experiencia del cliente y la reputación de la marca, y que expliquen cómo ese KPI se conecta con métricas de negocio como devoluciones, reseñas o fidelización. Lo valioso es que justifiquen la elección, no que la esquiven.",
+            "evasiva": "Repetir la definición del indicador o decir que 'es importante porque el producto tiene tecnología' sin explicar cómo ese umbral del 98% impacta en decisiones concretas del negocio digital."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Durante la simulación de Go-Live, el sitio tuvo una falla técnica importante justo cuando había una alta proporción de tráfico pago activo: ¿qué decisión tomó el equipo en ese momento y por qué la consideraron la más adecuada?",
+            "buscamos": "Que el grupo explique con criterio propio la lógica detrás de pausar las campañas de Meta Ads y Google Ads ante la crisis ERR-501: proteger el presupuesto publicitario, evitar tráfico que no podía convertir y reducir el impacto reputacional. Se valora que conecten la decisión con el costo de atraer tráfico pago a un sitio no operativo.",
+            "evasiva": "Describir técnicamente qué fue el ERR-501 o explicar qué es una falla de indexación MySQL sin fundamentar POR QUÉ pausar las campañas era la respuesta correcta en ese contexto específico."
+          },
+          {
+            "pregunta": "El proyecto declara un fondo de contingencia de 'aproximadamente el 5% del presupuesto operativo', pero en ninguna parte del documento ese porcentaje se traduce a una cifra concreta: ¿cómo manejó el equipo esa indefinición y qué cambiarían si tuvieran que presentar el plan financiero a un inversor real?",
+            "buscamos": "Que el grupo reconozca la debilidad de dejar el fondo de contingencia sin cuantificar en pesos, explique si fue una decisión consciente o una omisión, y proponga cómo lo resolverían (por ejemplo, calcularlo sobre el presupuesto operativo mensual proyectado). Se valora autocrítica y pensamiento financiero básico.",
+            "evasiva": "Definir qué es un fondo de contingencia en términos generales o justificar que 'el 5% es un porcentaje estándar del mercado' sin abordar la ausencia de cifra absoluta en el documento."
+          },
+          {
+            "pregunta": "El proyecto arrancó con un resultado financiero negativo en la primera estimación y terminó con un ROI positivo: ¿qué decisiones concretas tomó el equipo para revertir ese escenario inicial y cómo se aseguraron de que los nuevos supuestos fueran realistas y no simplemente más optimistas?",
+            "buscamos": "Que el grupo identifique qué variables ajustaron entre la primera y la segunda estimación (margen bruto, punto de equilibrio, estructura de costos) y que puedan justificar por qué esos ajustes reflejan una revisión fundamentada y no un 'maquillaje' de los números para que cierren. Se valora la capacidad de distinguir entre optimización legítima y sesgo de confirmación.",
+            "evasiva": "Listar los nuevos números sin explicar qué cambió en los supuestos subyacentes, o atribuir la mejora a 'una revisión del modelo' sin describir qué decisiones específicas la produjeron."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "36",
+    "proyecto": "4CWINE",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1t8gDiN5V4HBr37HuPSiM1yGwt0g5Xw2S/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1S2zGbzOSHLmVefXIZBiMORCmDe3fFuXp/preview",
+    "informe": {
+      "resumen": "Alta coherencia entre decisión estratégica, diseño UX, financiero y gestión de crisis, con evidencia propia que fundamenta cada elección.",
+      "queEs": "E-commerce de vinos por suscripción mensual con curaduría experta, precio fijo de $20.000 y checkout mobile de 3 pasos para el AMBA.",
+      "fortalezas": [
+        "Decisiones UX (checkout 3 pasos, precio visible, taxonomía sensorial) derivadas directamente de datos del buyer persona.",
+        "Punto de equilibrio (375 suscriptores) conservador y cuantificado; ROI 53% con recuperación proyectada en mes 10-11.",
+        "Gestión de dos crisis documentadas con causa raíz 5 Porqués, impacto cuantificado y umbrales de resolución verificables."
+      ],
+      "interrogar": [
+        "El SAM usa 15.000.000 como base AMBA, pero el TAM declara 22.300.000 adultos nacionales; la cifra 15M no tiene fuente explícita en el documento.",
+        "La encuesta tiene 51 casos sin describir metodología de muestreo: ¿cómo se garantiza representatividad para extrapolar al SAM de 1.499.400 usuarios?",
+        "El LTV meta es ≥$60.000 (3 meses de suscripción) pero el churn máximo es 5% mensual; a ese churn el LTV promedio sería ~$400.000, sin reconciliación en el documento."
+      ],
+      "dondeApretar": "Presionar la solidez metodológica de la encuesta propia y la coherencia entre el LTV declarado, el churn tolerado y las proyecciones financieras del año 1."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo identificaron un mercado objetivo dentro del AMBA y calcularon cuántos suscriptores potenciales tendría ese segmento, pero la cifra de población que usaron como base no tiene una fuente citada en el documento: ¿cómo justifican haber trabajado con ese número y qué impacto tendría si la base real fuera diferente?",
+            "buscamos": "Que reconozcan la ausencia de fuente explícita para los 15 millones, que propongan de dónde podría provenir (INDEC, estudios de mercado, informes sectoriales) y que demuestren entender que si la base cambia, el SAM y los objetivos de captación se recalculan en cascada. Una buena respuesta admite la limitación y la defiende con razonamiento, no con certeza.",
+            "evasiva": "Repetir el número del SAM como si fuera un dato consolidado, o explicar qué es un SAM en abstracto sin tocar el problema de la fuente ni las consecuencias de que ese número sea incorrecto."
+          },
+          {
+            "pregunta": "Su modelo de negocio se apoya en decisiones estratégicas centrales —el buyer persona, la validación del precio de $20.000, el interés en suscripción— que fueron construidas sobre una encuesta de 51 personas: ¿cómo defienden que esos resultados son lo suficientemente representativos para fundamentar esas decisiones a la escala del mercado que proyectan?",
+            "buscamos": "Que reconozcan la limitación del tamaño muestral y la ausencia de descripción metodológica, y que argumenten qué decisiones de diseño tomaron para mitigarla (perfil del encuestado, canal de distribución, criterios de inclusión) o qué validación adicional sería necesaria antes de escalar. Una buena respuesta no defiende la muestra como suficiente, sino que explica por qué sirvió como punto de partida y qué sigue.",
+            "evasiva": "Decir que 51 casos 'es lo que se pudo hacer' sin reflexionar sobre las implicancias, o desviar hacia los resultados de la encuesta sin abordar el problema de representatividad."
+          },
+          {
+            "pregunta": "Proyectan actualizar el precio de $20.000 a $30.000 en el segundo año, que es un incremento del 50%, pero uno de los tres pilares no negociables del modelo es precisamente la transparencia y el precio fijo: ¿cómo resuelven esa tensión sin erosionar la promesa central que le hacen al suscriptor?",
+            "buscamos": "Que identifiquen la contradicción entre la promesa de precio fijo y la actualización proyectada, y que propongan algún mecanismo de comunicación o fidelización que amortigüe el impacto: aviso anticipado, beneficio compensatorio, segmentación de planes, o revisión de la promesa misma. También es válido que reconozcan que el documento no lo resuelve y propongan cómo lo abordarían.",
+            "evasiva": "Justificar el aumento solo por inflación o costos sin reconocer la tensión con la propuesta de valor, o hablar del precio fijo como diferencial sin conectarlo con el impacto que el aumento tendría sobre la confianza del suscriptor y el churn."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El modelo le muestra al suscriptor tres vinos curados pero le entrega solo dos: ¿quién decide cuál de los tres llega a la puerta del cliente y bajo qué criterio?",
+            "buscamos": "Que el grupo explique el mecanismo concreto de selección final —si es el sommelier, un algoritmo, las preferencias declaradas por el usuario u otro criterio— y que justifiquen por qué esa decisión refuerza el valor percibido de la curaduría en lugar de generar frustración o sensación de promesa incumplida.",
+            "evasiva": "Hablar en abstracto de 'experiencia personalizada' o 'curaduría experta' sin explicar quién toma la decisión ni cómo se comunica eso al cliente antes de que abra la caja."
+          },
+          {
+            "pregunta": "El checkout mobile de tres pasos es uno de los diferenciales del modelo: ¿cómo se aseguraron de que esos tres pasos resuelven los puntos de fricción reales de su buyer persona y no son simplemente tres pasos arbitrarios?",
+            "buscamos": "Que el grupo conecte el diseño del checkout con los hallazgos de su encuesta o con decisiones de UX deliberadas —por ejemplo, qué información se pide en cada paso y por qué en ese orden— demostrando que la simplificación tiene un fundamento en el comportamiento del usuario y no es solo un número elegido.",
+            "evasiva": "Repetir que 'tres pasos es menos fricción que más pasos' sin explicar qué se elimina, qué se agrupa y por qué esa secuencia específica responde al perfil de su comprador."
+          },
+          {
+            "pregunta": "El email transaccional quedó sin implementar en el entorno de simulación, y ustedes tienen un modelo cuyo éxito depende de retener suscriptores mes a mes: ¿qué impacto concreto tiene esa brecha sobre la experiencia del cliente y cómo planearían resolverla?",
+            "buscamos": "Que el grupo reconozca que el email transaccional cubre momentos críticos del ciclo de vida del suscriptor —confirmación de cobro, envío, renovación, recupero de churn— y que proponga un plan de implementación con prioridad clara, mostrando que entienden la relación entre comunicación automatizada y retención en un modelo de suscripción.",
+            "evasiva": "Justificar la ausencia diciendo que 'era una limitación del TP' sin reconocer el riesgo real ni proponer cómo se resolvería en una operación real."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El email transaccional figura como no implementado en el entorno de simulación, y ustedes tienen un modelo cuyo principal desafío es retener suscriptores mes a mes. ¿Cómo justifican haber dejado ese canal sin implementar, y qué impacto concreto tiene esa ausencia sobre la estrategia de retención?",
+            "buscamos": "Que el grupo reconozca la tensión real: el email transaccional no es un detalle técnico menor, sino el canal más directo para confirmar cobros, avisar despachos, recuperar suscriptores en riesgo de cancelar y gestionar el churn. Una buena respuesta nombra esa función crítica, admite la limitación del TP y propone cómo se resolvería en una implementación real (integración con la plataforma de suscripción, automatizaciones de retención).",
+            "evasiva": "Decir que 'el email es importante para comunicarse con los clientes' sin conectarlo al churn, a la retención de suscriptores ni a las consecuencias operativas concretas de no tenerlo en un modelo de suscripción mensual."
+          },
+          {
+            "pregunta": "El plan contempla obtener nuevos suscriptores a través del tráfico orgánico, pero si calculamos cuántos suscriptores reales generaría ese canal por mes, el número queda muy lejos de la meta anual. ¿Cómo pensaron el rol del SEO dentro del mix de adquisición, y por qué decidieron incluirlo si no alcanza por sí solo?",
+            "buscamos": "Que el grupo entienda que el SEO cumple un rol complementario y de largo plazo, no de volumen inmediato: construye autoridad, reduce dependencia de pauta paga y baja el CPA en el tiempo. Una buena respuesta explica cómo el SEO se articula con los otros canales de adquisición (pauta, influencers) y no pretende justificarlo como motor principal del año 1.",
+            "evasiva": "Defender el SEO con argumentos genéricos como 'genera tráfico gratuito y posicionamiento' sin reconocer que, con las metas de tráfico propias del trabajo, ese canal no alcanza para llegar a los suscriptores objetivo del año 1 sin el resto del mix."
+          },
+          {
+            "pregunta": "En la simulación tuvieron un escenario donde un contenido viral agotó el stock en muy poco tiempo, y al mismo tiempo el plan de medios destina una parte relevante de la inversión a influencers de lifestyle y gastronomía. ¿Qué protocolo de contingencia de stock definirían para proteger la operación ante una campaña de alto alcance que funcione mejor de lo esperado?",
+            "buscamos": "Que el grupo conecte el riesgo operativo real que mostró la simulación con la decisión de invertir en influencers: si un contenido puede agotar el stock en horas, lanzar campañas de alto alcance sin un protocolo previo (límite de suscripciones activas, lista de espera, comunicación proactiva, coordinación con proveedores) compromete la experiencia del cliente y la promesa del modelo. Una buena respuesta propone mecanismos concretos, no solo 'tener más stock'.",
+            "evasiva": "Responder que 'hay que tener stock suficiente' o que 'se avisa a los clientes' sin explicar cómo se activa el protocolo antes de que ocurra el problema ni cómo se articula esa contingencia con la operación de la suscripción y la curaduría."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo proyectan actualizar el precio de $20.000 a $30.000 en el segundo año, pero al mismo tiempo uno de los tres pilares no negociables del modelo es la transparencia y el precio fijo. ¿Cómo justifican esa decisión sin contradecir la promesa central que le hacen al suscriptor?",
+            "buscamos": "Que el grupo reconozca la tensión real entre la promesa de precio fijo y el ajuste del 50%, y que ofrezca una justificación coherente: por ejemplo, que el precio fijo aplica dentro del año, que el ajuste se comunica con anticipación, o que existe un mecanismo de fidelización para absorber el impacto. Lo importante es que demuestren haber pensado en el efecto sobre el churn y en cómo se sostiene la confianza del suscriptor.",
+            "evasiva": "Decir que la inflación lo justifica o que 'es necesario para la rentabilidad' sin explicar cómo se gestiona la contradicción con la promesa de transparencia ni qué pasa con los suscriptores activos."
+          },
+          {
+            "pregunta": "El plan de medios destina una parte de la inversión a influencers de lifestyle y gastronomía, y en las crisis simuladas tuvieron un caso donde una acción de alto alcance agotó el stock en pocas horas. ¿Qué protocolo de contingencia de stock definen para campañas con ese tipo de visibilidad?",
+            "buscamos": "Que el grupo conecte explícitamente la experiencia de la crisis de stock con el plan de influencers: deberían proponer algún mecanismo concreto de stock mínimo de respaldo, un tope de suscripciones activas por campaña, o una comunicación proactiva de 'lista de espera'. Se valorará que reconozcan que una campaña exitosa puede ser un problema si no hay stock suficiente.",
+            "evasiva": "Describir el plan de influencers en abstracto o mencionar que 'se coordinaría con el proveedor' sin articular ningún criterio, umbral o protocolo previo al lanzamiento de la campaña."
+          },
+          {
+            "pregunta": "Las decisiones estratégicas centrales del modelo —el buyer persona, la validación del precio de $20.000 y el interés en la suscripción— se fundamentan en una encuesta propia de 51 personas. ¿Cómo defienden que esos resultados son suficientes para validar un modelo dirigido a un mercado del tamaño que proponen?",
+            "buscamos": "Que el grupo reconozca la limitación del tamaño muestral y no la evite, y que ofrezca argumentos complementarios para sostener la validez: por ejemplo, consistencia con datos secundarios del sector, características del perfil encuestado, o el carácter exploratorio de la encuesta como punto de partida que requiere validación posterior. Una buena respuesta admite la debilidad y la encuadra honestamente.",
+            "evasiva": "Defender los 51 casos como representativos sin argumentar por qué, o desviar la respuesta hacia los resultados de la encuesta en lugar de responder a la pregunta sobre la metodología y el alcance."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En la Crisis 1, el viral de TikTok agotó el stock en horas: ¿cómo justifican que el plan de medios destine inversión a influencers de lifestyle y gastronomía sin tener un protocolo definido para ese escenario de demanda súbita?",
+            "buscamos": "Que el grupo reconozca la tensión real entre la apuesta por influencers como canal y la ausencia de un protocolo de contingencia de stock, y que proponga aunque sea en términos generales cómo lo resolverían: por ejemplo, stock de reserva, pausas automáticas de campaña, comunicación proactiva al suscriptor. Lo importante es que demuestren que aprendieron del episodio y que conectan la decisión de inversión en medios con la operación logística.",
+            "evasiva": "Explicar en abstracto qué es una crisis de stock o hablar de la importancia de los influencers sin mencionar qué hubieran hecho diferente ni cómo se protege la promesa al suscriptor cuando la demanda supera la capacidad."
+          },
+          {
+            "pregunta": "El email transaccional quedó sin implementar en el entorno de simulación, y ustedes tienen un modelo que depende de retener suscriptores mes a mes: ¿cómo defienden haber dejado ese canal fuera, siendo que es una de las herramientas centrales para reducir el churn?",
+            "buscamos": "Que el grupo pueda distinguir entre una limitación técnica del TP y una decisión estratégica, y que demuestren entender el impacto real de esa ausencia en un modelo de suscripción: sin email transaccional no hay confirmación de envío, recordatorio de renovación ni recupero de bajas. Una buena respuesta incluye qué harían en una implementación real y por qué ese canal no es prescindible.",
+            "evasiva": "Decir que 'no dio el tiempo' o que 'era una simulación' sin explicar qué implica esa omisión para la retención de suscriptores ni cómo lo compensarían en un escenario real."
+          },
+          {
+            "pregunta": "En la Crisis 2 lograron restablecer la tasa de conversión y bajar las búsquedas sin resultado, pero el documento no aclara en cuánto tiempo se resolvió todo más allá de las primeras horas: ¿qué criterio usaron para declarar que la crisis estaba cerrada, y qué riesgo asumen si ese tiempo de resolución se extiende en un modelo donde el cobro es mensual y la baja es con un clic?",
+            "buscamos": "Que el grupo piense en los efectos acumulados de una interrupción técnica en un negocio de suscripción: cada hora de ERR-502 durante un ciclo de cobro o de alta es potencialmente un suscriptor menos. Una buena respuesta define algún criterio de cierre —métricas que deben estabilizarse, ventana de tiempo aceptable— y reconoce que en este modelo el margen de tolerancia a la fricción técnica es bajo.",
+            "evasiva": "Describir los pasos técnicos que tomaron para resolver el error sin discutir el impacto en la retención ni el criterio con el que evaluaron que la situación estaba realmente bajo control."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "37",
+    "proyecto": "PSICOWAVE",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1lNfRHcE5ziCx9MZO1TDVmBoTQEsG-m-q/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1ou6HCICu-ZpcbyFU__0CPgkbbNLsryh0/preview",
+    "informe": {
+      "resumen": "El trabajo muestra estructura sólida y terminología correcta, pero sus proyecciones financieras carecen de respaldo histórico propio y la brecha entre el MVP implementado (subdominio Pantheon sin pasarela activa) y los objetivos declarados ($43.2M anuales, 360 alumnos) es significativa.",
+      "queEs": "Plataforma LMS en WordPress para formación en psicología, posicionada como puente entre academia universitaria y divulgación informal.",
+      "fortalezas": [
+        "Buyer personas con customer journey detallado por etapa, con pain points y oportunidades específicas para cada arquetipo.",
+        "Gestión de crisis documentada con tickets, SLAs, responsables nombrados y métricas de salida concretas.",
+        "Análisis TAM-SAM-SOM con fuentes secundarias explícitas (HolonIQ, Statista, UNESCO) y traducción operativa al embudo."
+      ],
+      "interrogar": [
+        "El documento declara pagos bimoneda pero aclara 'solo local durante MVP': ¿qué pasarela de pago está efectivamente activa en dev-psicowave.pantheonsite.io?",
+        "El CPA objetivo es menor a $9.000 pero el costo anual de marketing digital declarado es $6.000.000 para 360 alumnos, lo que implica CPA real de ~$16.667: contradicción no resuelta.",
+        "El TAM cuerpo del trabajo dice '1,8 billones ARS' pero Anexo 1 indica '168 millones de personas': unidades distintas sin aclaración metodológica."
+      ],
+      "dondeApretar": "Cuestionar la brecha entre MVP real implementado y proyecciones financieras, exigiendo que los estudiantes justifiquen los supuestos de conversión y CPA con evidencia concreta."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Eligieron posicionarse como un puente entre la academia universitaria y la divulgación informal: ¿por qué ese espacio intermedio es una oportunidad para Psicowave y no simplemente una zona de nadie donde compiten con los dos lados a la vez?",
+            "buscamos": "Que defiendan la propuesta de valor diferencial: hay un público que ya superó el contenido de YouTube pero no quiere (o no puede) hacer una carrera universitaria formal, y Psicowave apunta a esa brecha. Una buena respuesta nombra al menos un perfil de usuario concreto y explica por qué ni la universidad ni los influencers lo satisfacen.",
+            "evasiva": "Hablar en abstracto de que 'hay demanda de contenido de calidad' o describir qué es la divulgación informal sin vincular eso a por qué alguien elegiría pagar $30.000 por un curso de Psicowave en lugar de sus alternativas actuales."
+          },
+          {
+            "pregunta": "El plan proyecta llegar a 360 alumnos en el primer año partiendo de 36.000 visitas calificadas: ¿qué significa 'visita calificada' en el contexto de Psicowave y por qué ese tráfico es más valioso que simplemente atraer cualquier visita?",
+            "buscamos": "Que expliquen que una visita calificada es alguien con intención o perfil afín al producto, no tráfico masivo sin segmentación. Idealmente conectan esto con la decisión de usar Google Ads y Meta Ads para segmentar por intereses o intención de búsqueda, justificando por qué eso impacta en la tasa de conversión del 1% que sostiene todo el modelo.",
+            "evasiva": "Definir 'visita calificada' como diccionario ('es alguien interesado') sin explicar cómo Psicowave distingue ese tráfico del resto ni por qué la tasa del 1% depende de esa distinción."
+          },
+          {
+            "pregunta": "Concentraron toda la pauta publicitaria en Google Ads y Meta Ads, y en el mismo trabajo reconocen que eso es un riesgo crítico: ¿qué los llevó a mantener esa decisión igual y qué tendría que pasar para que la cambien?",
+            "buscamos": "Que justifiquen la decisión con argumentos reales: foco en el MVP, presupuesto acotado, curva de aprendizaje de las plataformas, o que ambas permiten segmentación precisa para un nicho como psicología. Lo importante es que demuestren que la decisión fue consciente, no una omisión, y que puedan nombrar algún disparador concreto (caída de conversión, cambio de algoritmo, costo por click) que los haría diversificar.",
+            "evasiva": "Decir que 'es lo más usado' o que 'había que arrancar por algo' sin reconocer el riesgo ni plantear ningún criterio para revisarlo en el futuro."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "Psicowave se posiciona como un puente entre la academia universitaria y la divulgación informal: ¿cómo se traduce eso en decisiones concretas de diseño o navegación dentro de la plataforma, para que el usuario sienta esa diferencia respecto a un canal de YouTube o a un aula universitaria?",
+            "buscamos": "Que conecten el posicionamiento declarado con al menos una decisión de diseño de producto: estructura de cursos, credenciales, tono del contenido, interfaz del LMS, progresión del aprendizaje, etc. No se espera que citen cifras sino que expliquen qué hace que la experiencia sea distinta a los extremos que el propio trabajo identifica.",
+            "evasiva": "Responder con definiciones abstractas de 'valor agregado' o 'contenido de calidad' sin anclarlo a ninguna decisión concreta de diseño visible en la plataforma o en la propuesta del trabajo."
+          },
+          {
+            "pregunta": "El sitio funcional está en un subdominio gratuito de Pantheon y no tienen dominio propio todavía: ¿qué impacto creen que eso tiene en la percepción del usuario que llega desde una campaña de Google Ads, y cómo lo tuvieron en cuenta al diseñar esa primera experiencia de llegada?",
+            "buscamos": "Que reconozcan la tensión entre el estado actual del MVP y la propuesta de valor de una plataforma de formación legítima y confiable. Una buena respuesta muestra que pensaron en cómo compensar esa limitación técnica en la experiencia (landing page, mensajería, prueba social, etc.) o que la identifican como un riesgo real a resolver antes del lanzamiento.",
+            "evasiva": "Decir que 'es solo la etapa de desarrollo' y que 'en producción va a tener dominio propio', sin reflexionar sobre qué pasa con la confianza del usuario mientras eso no esté resuelto."
+          },
+          {
+            "pregunta": "El objetivo es llegar a 360 alumnos a partir de 36.000 visitas calificadas: ¿qué tiene que lograr la experiencia dentro del sitio para que alguien que llega por primera vez termine decidiendo inscribirse, en lugar de irse a buscar otra opción?",
+            "buscamos": "Que identifiquen los momentos clave del recorrido del usuario: qué información necesita ver, qué genera confianza, qué reduce la fricción hacia la conversión. No se pide que reciten la tasa del 1% sino que demuestren haber pensado en el por qué alguien elegiría Psicowave sobre alternativas gratuitas o más conocidas.",
+            "evasiva": "Responder hablando de las campañas de tráfico o del presupuesto de marketing, sin entrar en lo que pasa dentro del sitio una vez que el usuario ya llegó."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio está corriendo en un subdominio gratuito de Pantheon, no en un dominio propio. ¿Por qué eligieron esa infraestructura para el MVP y qué implicaría migrar a un dominio propio antes del lanzamiento comercial?",
+            "buscamos": "Que entiendan la decisión como una elección deliberada de bajo costo para validar antes de invertir, que reconozcan el límite (no es producción), y que puedan explicar que migrar implica costos, configuración DNS, posible pérdida de autoridad SEO acumulada y actualización de todos los enlaces indexados.",
+            "evasiva": "Decir que 'es solo para pruebas' sin explicar qué cambia operativamente al pasar a producción, o mencionar el INPI sin conectarlo con la necesidad del dominio propio."
+          },
+          {
+            "pregunta": "El trabajo menciona Google Ads como canal de adquisición central, y el objetivo es traer 36.000 visitas calificadas al año. ¿Qué significa para ustedes que esa visita sea 'calificada' y cómo pensaron capturarla con SEO o pauta en un nicho tan específico como psicología en Argentina?",
+            "buscamos": "Que distingan tráfico genérico de tráfico con intención de compra o aprendizaje, que puedan dar al menos un ejemplo concreto de keyword o segmento de audiencia relevante para el producto, y que reconozcan que el nicho acota el volumen pero mejora la conversión.",
+            "evasiva": "Hablar de 'apuntar al público objetivo' o 'segmentar bien' sin poder describir aunque sea un criterio concreto de segmentación aplicado al producto."
+          },
+          {
+            "pregunta": "El trabajo identifica como riesgo crítico depender de Meta Ads y Google Ads para el 100% de la pauta. ¿Qué alternativa operativa de bajo costo podrían activar si una de esas plataformas les suspende la cuenta o encarece mucho el clic?",
+            "buscamos": "Que puedan proponer al menos una alternativa concreta y razonada, por ejemplo email marketing, alianzas con cátedras universitarias, contenido orgánico o comunidades de psicología, mostrando que entienden la fragilidad de la dependencia y tienen un plan B aunque sea básico.",
+            "evasiva": "Reconocer el riesgo pero no proponer ninguna alternativa, o mencionar 'diversificar canales' sin poder nombrar uno específico aplicado al contexto del proyecto."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo fija un objetivo de 360 alumnos por año y al mismo tiempo declara que el punto de equilibrio está en la mitad de eso: ¿por qué eligieron ese margen entre los dos números y qué pasa con el proyecto si al primer año solo llegan al punto de equilibrio?",
+            "buscamos": "Que el grupo entienda que el punto de equilibrio no es el objetivo sino el piso mínimo para no perder, que hayan pensado en qué escenario el proyecto sigue siendo viable, y que puedan relacionar esa brecha con el riesgo real del negocio.",
+            "evasiva": "Explicar qué es un punto de equilibrio en general o repetir los números sin decir nada sobre qué implica esa distancia para la sostenibilidad del proyecto."
+          },
+          {
+            "pregunta": "El trabajo concentra toda la pauta publicitaria en Meta Ads y Google Ads, y el propio documento lo señala como un riesgo crítico: ¿qué los llevó a mantener esa decisión igual, y cómo pensaron cubrir ese riesgo?",
+            "buscamos": "Que el grupo reconozca la contradicción entre identificar algo como riesgo crítico y no diversificar el presupuesto, y que puedan justificar si fue una decisión consciente de foco o una limitación del MVP, mostrando que la identificaron y no la ignoraron.",
+            "evasiva": "Describir cómo funcionan Meta Ads o Google Ads, o decir que 'son las plataformas más usadas' sin abordar por qué eso es un riesgo ni cómo lo mitigaron."
+          },
+          {
+            "pregunta": "El plan declara un payback de menos de doce meses, pero el trabajo no muestra un flujo de caja mes a mes ni aclara sobre qué inversión inicial se calcula ese retorno: ¿cómo llegaron a ese número y qué información faltaría para que un inversor pueda verificarlo?",
+            "buscamos": "Que el grupo reconozca que el payback necesita dos datos concretos —inversión inicial total y flujo mensual— y que puedan admitir con honestidad si esa información está incompleta en el trabajo, idealmente explicando qué habría que agregar para validarlo.",
+            "evasiva": "Definir qué es el payback o repetir que 'es menor a doce meses' sin explicar de dónde sale ese cálculo ni qué le falta para ser verificable."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo identifican como riesgo crítico depender casi exclusivamente de Meta Ads y Google Ads para toda la pauta publicitaria: ¿por qué eligieron asumir ese riesgo en lugar de diversificar los canales desde el arranque?",
+            "buscamos": "Que el grupo defienda la decisión con argumentos concretos: presupuesto acotado para MVP, curva de aprendizaje, facilidad de medición, o que reconozcan honestamente que es una deuda pendiente del plan y expliquen cómo la mitigarían en una segunda etapa.",
+            "evasiva": "Responder que Meta Ads y Google Ads son las plataformas más usadas en marketing digital sin vincular esa elección a las limitaciones reales del proyecto ni a la concentración de riesgo que ellos mismos señalaron."
+          },
+          {
+            "pregunta": "En el plan de crisis por trolls o reputación negativa, ustedes fijan como indicador de recuperación llegar a una matrícula diaria sostenida: ¿cómo justifican haber elegido ese umbral como señal de que la crisis está resuelta?",
+            "buscamos": "Que el grupo razone la lógica detrás del indicador, aunque no recuerden el número exacto: que una matrícula diaria sostenida representa el ritmo necesario para alcanzar el objetivo anual y que usarlo como métrica da una señal operativa concreta y medible. Si advierten que ese umbral en realidad supera el objetivo anual declarado, se valora aún más.",
+            "evasiva": "Decir que una matrícula diaria 'suena razonable' o que 'es un número alcanzable' sin relacionarlo con el objetivo comercial del proyecto ni con qué significa ese ritmo en términos anuales."
+          },
+          {
+            "pregunta": "El trabajo plantea registrar la marca Psicowave ante el INPI como medida para mitigar el riesgo de identidad, pero el sitio está funcionando en un subdominio gratuito sin dominio propio: ¿cómo conviven esas dos decisiones dentro de la estrategia de protección de marca que proponen?",
+            "buscamos": "Que el grupo reconozca la tensión entre proteger legalmente el nombre y no haber asegurado todavía el activo digital básico que es el dominio, y que ofrezcan una justificación coherente: por ejemplo, que el registro INPI es prioritario porque protege el nombre independientemente del soporte, y que el dominio propio está previsto para la siguiente fase del MVP.",
+            "evasiva": "Explicar qué es el INPI o para qué sirve registrar una marca en general, sin abordar por qué tiene sentido iniciar ese proceso mientras el sitio todavía no tiene dominio propio."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "38",
+    "proyecto": "ECOMPULSE/HANPURE",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1hh48TwTJ8QesNWV80LnYzX7jK720ZzRu/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1ZkZMWoIRDYfNnQ8ans51rwaDZCPtBfnN/preview",
+    "informe": {
+      "resumen": "Alta consistencia interna entre diagnóstico, diseño UX y modelo financiero, con fundamentación técnica concreta y gestión documentada de incidentes reales.",
+      "queEs": "E-commerce D2C de K-Beauty premium en Argentina, diferenciado por posicionamiento como 'Asesora Esteticista' con diagnóstico guiado y precios transparentes sin descuentos.",
+      "fortalezas": [
+        "Modelo financiero trianual detallado con Curva en J: déficit controlado Año 1 (-$15.922.200 ARS) y ROI acumulado +15% en Año 3.",
+        "Decisiones UX justificadas explícitamente en leyes de usabilidad (Hick, Miller, Fitts, Fogg) vinculadas al buyer persona Adriana.",
+        "Gestión de dos crisis documentadas con tickets, impacto financiero cuantificado y resolución técnica específica (fallback GeoLite2)."
+      ],
+      "interrogar": [
+        "SOM Año 1 fijado en $56.320.000 ARS = 640 unidades × $88.000 ARS, pero el COGS efectivo del 39,2% incluye logística Jipink desde mes 3 solamente: ¿cómo se calculó el COGS de los meses 1 y 2?",
+        "Se declara MVP funcional en Pantheon y PageSpeed 82/100 con FCP 0,8s, pero la URL aún es 'dev-hanpure.pantheonsite.io': ¿el sitio está en producción real o sigue en entorno de desarrollo?",
+        "Crisis 1: el simulador UTN arrojó $7.355.328 ARS de penalidad pero el equipo la 'saneó' a $300.000 ARS; el criterio de recálculo no tiene respaldo metodológico documentado en el TFI."
+      ],
+      "dondeApretar": "Presionar la brecha entre lo declarado como implementado y el estado real del sitio (dev vs. producción), y la solidez del recálculo financiero de la Crisis 1."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo posiciona a HanPure como una 'Asesora Esteticista' con diagnóstico guiado y precios transparentes sin descuentos: ¿por qué eligieron ese posicionamiento y no uno más tradicional de e-commerce con promociones y ofertas, considerando que están entrando en un mercado nuevo para ustedes?",
+            "buscamos": "Que el grupo explique la lógica estratégica detrás de la diferenciación: qué problema del mercado K-Beauty en Argentina resuelve ese posicionamiento, por qué la transparencia de precios refuerza la propuesta de valor premium, y cómo el diagnóstico guiado reduce la fricción de compra en un producto de cuidado personal que requiere conocimiento. Se espera que conecten la decisión con el perfil del cliente, no que la describan.",
+            "evasiva": "Decir que 'el posicionamiento premium es lo que diferencia al negocio' o que 'los descuentos devalúan la marca' sin explicar por qué eso es válido específicamente para este producto, este mercado y este momento de entrada."
+          },
+          {
+            "pregunta": "El trabajo toma el SOM del primer año y lo convierte directamente en la meta de facturación: ¿cómo justifican esa decisión sabiendo que una estimación de mercado capturado y un objetivo financiero interno son conceptualmente cosas distintas?",
+            "buscamos": "Que el grupo reconozca la tensión conceptual y la defienda con argumentos reales: por ejemplo, que al ser un proyecto nuevo sin histórico propio el SOM funcionó como ancla para dimensionar el tamaño del negocio posible, o que la escala de 640 unidades resultaba alcanzable dado el canal y el ticket. Lo importante es que no lo presenten como si fuera naturalmente lo mismo, sino que expliquen por qué tomaron esa decisión metodológica.",
+            "evasiva": "Repetir que el SOM 'es la porción del mercado que esperan capturar' sin abordar el problema de haberlo equiparado a un objetivo financiero, o decir que 'era la cifra que tenían disponible' sin ninguna justificación adicional."
+          },
+          {
+            "pregunta": "Eligieron una política de precios fijos sin descuentos en un contexto de alta inflación en Argentina: ¿cómo pensaron el riesgo de que esa decisión aleje a un comprador argentino acostumbrado a buscar promociones, y qué tiene el producto o la experiencia de compra para sostener ese posicionamiento?",
+            "buscamos": "Que el grupo muestre que evaluaron el riesgo cultural y económico de esa política, y que puedan argumentar qué elementos concretos del proyecto —el diagnóstico guiado, la ficha de producto con 'Paso en la rutina', la experiencia de compra— compensan la ausencia de descuentos y construyen un valor percibido que justifica el precio sin necesidad de promoción.",
+            "evasiva": "Decir que 'el cliente premium no busca descuentos' como si eso fuera autoevidente, sin explicar cómo el proyecto construye concretamente ese valor percibido ni reconocer que en Argentina la sensibilidad al precio es una variable que hay que trabajar activamente."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En las fichas de producto incluyeron una sección llamada 'Paso en la rutina' que no estaba en el wireframe original ni en el diseño en Figma: ¿por qué decidieron agregarla durante el desarrollo y cómo se relaciona esa decisión con el posicionamiento del sitio como 'Asesora Esteticista'?",
+            "buscamos": "Que el grupo conecte el agregado funcional con la propuesta de valor central: una asesora no solo muestra productos, guía el uso. Una buena respuesta explica que el wireframe capturó la estructura visual pero no alcanzó a traducir la experiencia de asesoramiento, y que la sección emergió como necesidad real durante el desarrollo para que la UX sostuviera el posicionamiento declarado.",
+            "evasiva": "Decir que 'se agregó porque quedaba mejor' o 'el cliente lo pidió', sin vincular la decisión al diferencial estratégico del proyecto ni reconocer que hubo una brecha entre lo planificado y lo implementado."
+          },
+          {
+            "pregunta": "Eligieron reservar el terracota exclusivamente para los CTAs críticos, el botón de compra y la barra de progreso del envío bonificado: ¿cómo justifican esa restricción dentro de una tienda que apunta a un segmento premium de K-Beauty, donde el color también comunica identidad de marca?",
+            "buscamos": "Que el grupo demuestre que la decisión fue consciente y no solo estética: el terracota al 10% mantiene su peso visual como señal de acción justamente porque no se diluye en el resto de la interfaz. Una buena respuesta articula la tensión entre identidad de marca y jerarquía de conversión, y explica por qué en un e-commerce D2C la claridad del camino de compra tiene prioridad sobre la saturación cromática.",
+            "evasiva": "Recitar la regla 60/30/10 como si fuera una fórmula universal sin explicar por qué ese reparto específico sirve al objetivo de conversión de este proyecto en particular."
+          },
+          {
+            "pregunta": "Durante el Go-Live hubo 300 sesiones móviles concurrentes que provocaron un timeout en la API de MaxMind y los precios se mostraron mal por casi 8 horas: teniendo en cuenta que la base GeoLite2 local figuraba en el alcance técnico del proyecto desde el principio, ¿qué les impidió tenerla activa antes del lanzamiento y qué aprenderían de eso para un próximo proyecto?",
+            "buscamos": "Que el grupo reconozca la contradicción sin esquivarla: si GeoLite2 estaba planificada, su ausencia en el Go-Live fue una falla de implementación o de priorización, no un imprevisto externo. Una buena respuesta asume esa brecha, explica qué la generó (tiempo, testeo insuficiente, dependencia de la agencia) y reflexiona sobre cómo un checklist de pre-lanzamiento o una prueba de carga habría detectado el problema antes.",
+            "evasiva": "Describir la solución post-crisis como si fuera la planificación original, o atribuir el problema únicamente a un fallo técnico externo sin asumir responsabilidad sobre la falta de pruebas previas al lanzamiento."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio figura con una URL de Pantheon en entorno de desarrollo al momento de presentar el trabajo: ¿por qué eligieron hacer el Go-Live con esa configuración y qué implicancias reales tuvo eso para los usuarios que llegaron durante esas primeras horas?",
+            "buscamos": "Que el grupo reconozca la brecha entre entorno de desarrollo y producción real, explique si hubo una decisión consciente o una limitación técnica, y conecte ese estado del sitio con los problemas de rendimiento y timeout que ocurrieron durante el lanzamiento.",
+            "evasiva": "Decir que 'Pantheon es una plataforma confiable' o que 'el PageSpeed de 82 demuestra que funcionaba bien', sin explicar qué diferencia hay entre dev y producción ni cómo eso afectó la experiencia real de los usuarios."
+          },
+          {
+            "pregunta": "Durante el Go-Live, la API de geolocalización falló bajo carga concurrente y los precios se mostraron en la moneda equivocada durante varias horas: la base GeoLite2 local estaba prevista desde el diseño original del proyecto, ¿por qué no estaba activa antes del lanzamiento?",
+            "buscamos": "Que el grupo explique qué pasó entre la planificación (donde GeoLite2 figuraba como componente activo) y la ejecución real, asumiendo responsabilidad sobre la brecha entre lo diseñado y lo implementado, y reflexionando sobre qué checklist de pre-lanzamiento hubiera evitado el problema.",
+            "evasiva": "Atribuir todo a un fallo técnico externo de MaxMind o decir que 'nadie podía prever una falla de la API', sin mencionar que la solución offline ya estaba contemplada en el alcance original del proyecto."
+          },
+          {
+            "pregunta": "El trabajo describe que la sección 'Paso en la rutina' en las fichas de producto no estaba en el wireframe original y fue incorporada durante el desarrollo: ¿cómo tomaron esa decisión en el medio del proceso y qué aprendizaje les deja sobre la relación entre el diseño planificado y lo que termina viviendo en producción?",
+            "buscamos": "Que el grupo defienda la incorporación con un argumento claro vinculado a la propuesta de valor del proyecto (asesoramiento guiado, diferencial de posicionamiento), reconozca que implicó salirse del diseño original, y reflexione sobre la gestión de cambios durante el desarrollo.",
+            "evasiva": "Decir que 'fue una mejora obvia' o que 'lo sugirió la agencia', sin conectar la decisión con la lógica del posicionamiento como Asesora Esteticista ni explicar cómo se gestionó ese cambio respecto al Figma o wireframe aprobado."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo equiparan directamente el SOM del Año 1 con la meta de facturación: ¿por qué tomaron esa decisión y qué riesgos ven ustedes mismos en haberlo hecho así?",
+            "buscamos": "Que el grupo reconozca la diferencia conceptual entre una estimación de mercado capturado (SOM) y un objetivo financiero interno, y que pueda explicar —aunque sea brevemente— por qué colapsaron esas dos métricas y qué implicancias tiene para la credibilidad del plan: si el mercado no responde como proyectaron, el plan financiero entero cae sin colchón.",
+            "evasiva": "Repetir que el SOM representa el mercado alcanzable y que es lógico usarlo como meta, sin reconocer que son instrumentos conceptualmente distintos ni mencionar el riesgo de circularidad entre la estimación y el objetivo."
+          },
+          {
+            "pregunta": "El trabajo muestra que los ingresos proyectados del Año 1 no alcanzan para cubrir la inversión estructural de apertura, cerrando con margen neto negativo: ¿cómo justifican ese déficit inicial dentro de la estrategia del negocio?",
+            "buscamos": "Que el grupo articule una lógica de etapa de inversión o arranque: que el déficit es deliberado porque están construyendo marca, infraestructura y base de clientes, y que proyectan recuperarlo en años siguientes. Idealmente que mencionen el posicionamiento premium D2C como apuesta de largo plazo y que el modelo de costos —honorarios, agencia, logística— refleja esa decisión.",
+            "evasiva": "Decir que 'es normal perder plata el primer año' sin explicar qué activos o ventajas están construyendo con ese gasto, o no conectar el déficit con ninguna decisión estratégica concreta del proyecto."
+          },
+          {
+            "pregunta": "Durante la Crisis 1 del Influencer Fantasma, el equipo recalculó manualmente el impacto económico para llevarlo a una cifra mucho menor a la que arrojó el simulador: ¿qué criterio usaron para hacer ese ajuste y cómo lo defenderían ante alguien que les señala que no está documentado en el trabajo?",
+            "buscamos": "Que el grupo explique el razonamiento detrás del recálculo —por ejemplo, que la pérdida real debía limitarse al anticipo efectivamente pagado y no a una proyección de campaña completa— y que reconozcan honestamente que ese criterio metodológico quedó sin respaldo explícito en el documento, asumiendo esa deuda como una mejora necesaria.",
+            "evasiva": "Defender que la cifra final 'tiene más sentido' o es 'más realista' sin explicar el criterio de recálculo, o esquivar la pregunta sobre la falta de documentación diciendo que el simulador estaba mal calibrado."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En la Crisis del Influencer Fantasma, el simulador les arrojó un impacto económico muy alto y ustedes decidieron recalcularlo manualmente hasta llegar a una cifra mucho menor: ¿cómo justifican esa decisión y qué habrían necesitado documentar para que ese recálculo fuera metodológicamente sólido?",
+            "buscamos": "Que el grupo reconozca honestamente la debilidad: el recálculo se hizo buscando 'consistencia matemática real y creíble', lo cual es una decisión editorial, no metodológica. Una buena respuesta explica qué criterio usaron (el anticipo real pagado vs. el impacto proyectado total), admite que faltó documentar ese razonamiento en el TFI, y propone qué respaldo —como un supuesto explícito, una fuente de referencia o una nota metodológica— hubiera dado credibilidad al número adoptado.",
+            "evasiva": "Explicar qué es una crisis de influencers en general, describir el tipo de daño reputacional que genera, o decir que 'el simulador a veces exagera' sin abordar por qué el criterio de recálculo no quedó documentado en el trabajo."
+          },
+          {
+            "pregunta": "Durante el Go-Live, la API de geolocalización falló bajo carga concurrente y los precios se mostraron en USD en lugar de ARS durante horas: ¿por qué el plan de contingencia con base de datos local que ya figuraba en el alcance técnico del proyecto no estaba activo antes del lanzamiento?",
+            "buscamos": "Que el grupo identifique la contradicción real: la solución offline (GeoLite2 local) estaba planificada desde el inicio como parte de la configuración técnica declarada, pero no se implementó antes del lanzamiento, lo que convierte una falla prevenible en una crisis reactiva. Una buena respuesta explica qué priorización o error de testing llevó a ese desfasaje, y reflexiona sobre la necesidad de validar los componentes críticos de conversión antes del Go-Live.",
+            "evasiva": "Describir cómo funciona la geolocalización en general, explicar qué hace MaxMind, o centrarse en cómo resolvieron la crisis sin abordar por qué la solución ya planificada no estaba implementada cuando debía estarlo."
+          },
+          {
+            "pregunta": "Mirando ambas crisis en conjunto, ¿qué cambiarían en el proceso de trabajo del equipo para que la próxima iteración del proyecto llegue al lanzamiento con menos flancos críticos sin cubrir?",
+            "buscamos": "Que el grupo muestre capacidad de síntesis y autocrítica genuina: conectar la Crisis 1 (documentación insuficiente de decisiones financieras) con la Crisis 2 (componente técnico planificado pero no implementado a tiempo) para identificar un patrón común, ya sea en la gestión del alcance, en los criterios de 'listo para producción' o en la revisión cruzada entre el área técnica y la financiera antes de cerrar cada etapa.",
+            "evasiva": "Dar respuestas genéricas sobre 'comunicarnos mejor' o 'hacer más reuniones', sin conectar la reflexión con los problemas concretos que tuvo este proyecto en particular."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "39",
+    "proyecto": "Linda Bags",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1JTBmzczG0bk1qejXrtiz67CY8KiRJbPm/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1dK3wdQpy0v4X4kAaH3iBLwST3gUMje1F/preview",
+    "informe": {
+      "resumen": "El trabajo es completo en estructura y declaraciones pero presenta brechas importantes entre lo planificado y lo evidenciado como realmente implementado, con secciones incompletas (SEO repite texto del Customer Journey) y ausencia de conclusiones redactadas.",
+      "queEs": "E-commerce propio para marca argentina de marroquinería en Chubut, desarrollado en WordPress/WooCommerce, como alternativa a redes sociales y marketplaces.",
+      "fortalezas": [
+        "KPIs definidos con metas concretas a 6 meses (ej.: conversión ≥2%, abandono <65%, CAC ≤$1.000).",
+        "Dos casos de crisis documentados con tablas de acciones, responsables y ETAs.",
+        "TAM/SAM/SOM estimados con cifras explícitas y proyección realista de SOM (0,046% del SAM)."
+      ],
+      "interrogar": [
+        "La sección SEO (pág. 15) repite textualmente el párrafo del Customer Journey: no hay estrategia SEO real documentada.",
+        "El sitio funcional existe en Pantheon (URL declarada) pero no se evidencia qué está realmente implementado versus planificado; brecha declarado/construido no cuantificada.",
+        "La sección 'Conclusiones' (pág. 26) aparece como título vacío sin contenido redactado."
+      ],
+      "dondeApretar": "Presionar en la distinción entre lo diseñado/planificado y lo efectivamente construido en el sitio, y en la ausencia total de contenido SEO concreto pese a declararlo como estrategia central."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Eligieron desarrollar su propio e-commerce en lugar de quedarse en redes sociales o marketplaces: ¿por qué esa decisión tiene sentido para una marca de marroquinería en Chubut?",
+            "buscamos": "Que conecten la decisión con el problema concreto de dependencia de plataformas de terceros, idealmente mencionando el riesgo de perder el canal de venta por causas ajenas al negocio, como el bloqueo de Facebook Marketplace que registraron, y que argumenten que el canal propio les da control, identidad de marca y datos del cliente.",
+            "evasiva": "Dar una respuesta genérica sobre las ventajas del e-commerce sin anclarla al contexto de la marca ni al problema real de depender de plataformas que pueden bloquearte o cambiar sus condiciones."
+          },
+          {
+            "pregunta": "Estimaron un mercado potencial muy grande y proyectaron capturar una porción muy pequeña en el primer año: ¿cómo justifican que esa porción sea alcanzable para una marca nueva operando desde Chubut?",
+            "buscamos": "Que defiendan la lógica detrás del SOM proyectado haciendo referencia al ticket promedio y al volumen de ventas estimado, y que argumenten por qué ese resultado es realista dado el tamaño del equipo, el canal elegido y el mercado al que apuntan, sin necesidad de recitar las cifras exactas.",
+            "evasiva": "Repetir los números de TAM, SAM y SOM sin explicar por qué la proyección es alcanzable ni qué supuestos la sostienen."
+          },
+          {
+            "pregunta": "El trabajo plantea un costo de adquisición de cliente bastante bajo en relación al precio de los productos que venden: ¿cómo pensaron esa relación y por qué les conviene mantenerla en ese rango?",
+            "buscamos": "Que expliquen que el CAC bajo tiene sentido porque el ticket promedio es alto y los productos tienen margen, y que idealmente mencionen la lógica detrás de recuperar lo invertido en captar un cliente con una sola venta o pocas ventas, aunque no reciten los valores exactos.",
+            "evasiva": "Decir que un CAC bajo siempre es mejor sin relacionarlo con el ticket promedio ni explicar qué implicaría que ese costo fuera más alto que lo proyectado."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio está funcionando en Pantheon, que es un entorno de desarrollo, y la migración a un hosting productivo todavía no tiene fecha definida: ¿cómo le explicarían a un cliente real que el e-commerce está 'listo' si aún no tiene dominio propio ni hosting definitivo?",
+            "buscamos": "Que distingan entre un prototipo funcional y un sitio productivo, reconozcan la brecha honestamente y expliquen qué falta resolver antes de poder decir que el canal de venta está operativo de verdad.",
+            "evasiva": "Decir que 'el sitio funciona y se puede ver' sin reconocer que Pantheon es un entorno de desarrollo y que falta la etapa de despliegue productivo."
+          },
+          {
+            "pregunta": "Ustedes plantearon que más de 6 de cada 10 personas que agregan un producto al carrito no terminan comprando, y eso lo pusieron como meta aceptable para los primeros 6 meses: ¿qué decisiones de diseño o de flujo de compra tomaron para intentar reducir ese abandono?",
+            "buscamos": "Que conecten el dato de abandono de carrito con decisiones concretas de UX: simplificación del checkout, confianza visual, medios de pago disponibles, notificaciones de carrito abandonado u otras acciones que hayan pensado o implementado.",
+            "evasiva": "Repetir que el 65% es 'el estándar del mercado' sin explicar ninguna acción de diseño orientada a mejorar esa tasa."
+          },
+          {
+            "pregunta": "Cuando el error de caché generó una sobreventa a 100 clientes, la solución que propusieron fue emitir Gift Cards: ¿qué impacto tiene esa decisión en la experiencia del usuario que ya creyó haber comprado un producto y después recibe un cupón en su lugar?",
+            "buscamos": "Que reflexionen sobre la diferencia entre resolver el problema financiero y resolver la experiencia del cliente afectado, y que puedan argumentar por qué esa solución es o no adecuada desde el punto de vista de la confianza y fidelización en un e-commerce nuevo.",
+            "evasiva": "Justificar la decisión solo por el costo económico sin considerar cómo vive esa situación el cliente y qué efecto tiene en la reputación del canal."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio hoy está funcionando en Pantheon, que es un entorno de desarrollo: ¿por qué eligieron ese camino y cómo piensan dar el salto a un hosting productivo con dominio propio?",
+            "buscamos": "Que expliquen la lógica de arrancar en un entorno controlado para probar sin comprometer un dominio real, y que reconozcan que la migración a Hostinger o similar es un paso pendiente con implicancias concretas: DNS, SSL, redirecciones, eventual pérdida de tráfico si no se hace bien.",
+            "evasiva": "Decir que Pantheon 'es el hosting que usamos' o describir las ventajas genéricas de WordPress sin reconocer que el entorno actual no es el destino final del proyecto."
+          },
+          {
+            "pregunta": "En la sección de SEO del informe, el contenido que aparece corresponde al Customer Journey, no a una estrategia SEO propia: ¿qué tendría que haber incluido esa sección para que sea una estrategia SEO real aplicada a la marca?",
+            "buscamos": "Que demuestren que entienden qué es una estrategia SEO concreta: investigación de palabras clave para marroquinería o accesorios de cuero, estructura de URLs, velocidad del sitio, metadatos, contenido optimizado. No hace falta que nombren herramientas específicas, pero sí que distingan el SEO de describir cómo el cliente recorre el sitio.",
+            "evasiva": "Justificar el error diciendo que 'el SEO está relacionado con el Customer Journey' o prometer que 'en la próxima versión lo desarrollamos' sin explicar qué debería contener."
+          },
+          {
+            "pregunta": "Cuando el sistema generó el error de caché y se vendió el mismo producto a cien clientes a la vez, ¿cómo decidieron que la solución era emitir Gift Cards y no, por ejemplo, reembolsos directos?",
+            "buscamos": "Que justifiquen la elección en términos de retención de cliente versus devolución de dinero: la Gift Card mantiene el flujo de caja dentro del negocio y conserva al comprador como cliente activo, aunque implica un costo operativo. Una buena respuesta reconoce que fue una decisión de trade-off, no la única opción posible.",
+            "evasiva": "Repetir que 'se emitieron Gift Cards por el 20% del ticket' sin poder explicar por qué esa solución y no otra, o decir que 'era lo que indicaba el plan de crisis' sin entender la lógica detrás."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo fijaron una meta de abandono de carrito por debajo del 65% para los primeros seis meses: ¿por qué eligieron ese número como objetivo y no uno más ambicioso?",
+            "buscamos": "Que el grupo demuestre que entiende qué implica ese umbral en términos de negocio: aceptar que más de 6 de cada 10 usuarios que agregan al carrito no van a comprar, y que lo justifiquen con algún argumento realista como benchmarks del sector, la etapa temprana del sitio o la falta de historial propio.",
+            "evasiva": "Decir que 'es un KPI estándar' o que 'lo sacaron de una fuente' sin explicar por qué tiene sentido para esta marca y este momento del proyecto."
+          },
+          {
+            "pregunta": "El trabajo proyecta un crecimiento de tráfico del 30% mensual durante seis meses seguidos: ¿cómo pensaron sostener ese ritmo sin tener definida la cantidad de visitas desde la que arrancan?",
+            "buscamos": "Que el grupo reconozca que sin una base de partida declarada la meta es difícil de evaluar, y que pueda explicar con qué acciones concretas (SEO, redes, campañas pagas) pensaban alimentar ese crecimiento mes a mes.",
+            "evasiva": "Repetir el porcentaje o mencionar canales digitales de forma genérica sin conectarlos con el problema real de que no hay un punto de arranque definido en el documento."
+          },
+          {
+            "pregunta": "Cuando calcularon el costo de la crisis por el error de caché en WooCommerce, ¿cómo justifican que Gift Cards sean la solución correcta para retener a esos 100 clientes afectados?",
+            "buscamos": "Que el grupo pueda argumentar la lógica detrás de la decisión: por qué una Gift Card y no un reembolso directo o un descuento, qué objetivo de retención o imagen de marca busca cumplir, y que muestre que pensaron en el cliente y no solo en reducir el costo inmediato.",
+            "evasiva": "Explicar cuánto costó la contingencia o describir el error técnico sin defender por qué ese instrumento específico fue la mejor respuesta para la relación con el cliente."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando ocurrió el error de caché que generó sobreventa a cien clientes, eligieron compensar con Gift Cards. ¿Por qué esa solución y no, por ejemplo, una devolución directa?",
+            "buscamos": "Que el grupo defienda la lógica de la decisión: retener al cliente dentro del ecosistema de la marca, evitar salida de caja inmediata, y sostener la relación comercial. Idealmente conectan el costo estimado con la proyección de facturación mensual para mostrar que la decisión tiene racionalidad financiera.",
+            "evasiva": "Describir qué es una Gift Card o enumerar los pasos del plan de crisis sin explicar por qué esa compensación específica y no otra."
+          },
+          {
+            "pregunta": "El plan de crisis asigna roles como PM, Finanzas u Operaciones, pero en el FODA ustedes mismos reconocen que toda la gestión recae en una sola persona. ¿Cómo resuelven esa contradicción en la práctica?",
+            "buscamos": "Que el grupo reconozca la tensión honestamente y proponga una salida concreta: tercerización puntual, acuerdos con colaboradores externos, priorización de tareas críticas, o al menos admitir que es una deuda del plan que habría que subsanar antes de escalar.",
+            "evasiva": "Repetir que 'en el futuro se va a armar un equipo' sin explicar quién cumple cada rol hoy ni cómo funciona el plan de crisis con recursos reales actuales."
+          },
+          {
+            "pregunta": "El bloqueo de Facebook Marketplace generó una pérdida diaria que, sostenida una semana, dejó la facturación mensual proyectada por debajo del punto de equilibrio. ¿Qué aprendizaje concreto de esa crisis justifica haber desarrollado este e-commerce propio?",
+            "buscamos": "Que el grupo conecte el riesgo de dependencia de plataformas de terceros con la decisión estratégica central del trabajo: tener un canal propio reduce la exposición a decisiones externas, diversifica el ingreso y permite operar aunque una plataforma falle.",
+            "evasiva": "Decir que 'hay que diversificar canales' de forma genérica sin vincular ese principio con la situación concreta que vivieron ni con la razón de ser del proyecto."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "40",
+    "proyecto": "El Negro Tati - Cuchillería de Autor",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/189HfkHn1QE0gnMnehCKlARa4F4eSCCHS/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1HjZ1KjT46vB2eJgQvlNS3S86LOWK2zFt/preview",
+    "informe": {
+      "resumen": "El trabajo muestra consistencia interna sólida entre análisis estratégico, diseño digital y gestión de crisis, con KPIs definidos y fundamentación de cada decisión.",
+      "queEs": "E-commerce D2C sobre WordPress/WooCommerce para artesano cuchillero, diferencial: storytelling del forjado y posicionamiento premium anti-industrial.",
+      "fortalezas": [
+        "Coherencia entre buyer persona, propuesta de valor y decisiones UX: fotos macro, fichas técnicas y WhatsApp atienden objeciones explícitas de Facundo y Valentina.",
+        "KPIs operativos post-crisis (TDT, COR, Lead Time) creados con causa raíz documentada, no genéricos.",
+        "Análisis TAM/SAM/SOM con filtros explícitos (47% NSE + 10% psicográfico) que justifican el SOM de $90M sin sobredimensionarlo."
+      ],
+      "interrogar": [
+        "El SOM asume 75 unidades/mes vendidas todas vía e-commerce, pero el canal aún no probó conversión real: ¿qué pasa si el CR del 1,5% tarda en alcanzarse?",
+        "Se declara integración de HubSpot o Salesforce como CRM, pero el sitio funcional (Pantheon) no muestra evidencia de esa integración: ¿está implementada o solo planificada?",
+        "El presupuesto de influencers ($100.000/mes) se describe como 'barter marketing' con envío de piezas físicas, pero el costo del cuchillo entregado no figura en el CAC calculado: ¿está contemplado?"
+      ],
+      "dondeApretar": "Presionar la brecha entre proyecciones financieras (SOM, ROAS, CAC) y la ausencia de datos reales de conversión del sitio funcional ya desplegado."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes proyectan vender el total de la producción del artesano desde el primer mes, ¿cómo justifican ese punto de partida sabiendo que el canal de e-commerce todavía no tiene historial de ventas real?",
+            "buscamos": "Que el grupo reconozca que el SOM asume conversión plena desde el arranque y pueda argumentar por qué eligieron ese escenario: si fue una proyección optimista consciente, si pensaban en una rampa de entrada, o cómo contemplarían un escenario donde la conversión tarda en llegar. Lo importante es que muestren que entienden la diferencia entre capacidad máxima y demanda probada.",
+            "evasiva": "Explicar qué es el SOM o repetir los números del cuadro sin hablar del riesgo de que el canal no convierta desde el día uno."
+          },
+          {
+            "pregunta": "El mercado que calcularon para dimensionar el negocio viene de la categoría 'Hogar y Decoración' de CACE, ¿por qué eligieron ese universo para un producto de cuchillería artesanal premium y cómo lo defienden?",
+            "buscamos": "Que puedan explicar el razonamiento detrás de la elección de esa categoría como proxy, reconociendo que no existe una categoría específica de cuchillería artesanal en las fuentes disponibles, y que los filtros socioeconómico y psicográfico que aplicaron después son precisamente su intento de acotar ese universo más amplio a su público real.",
+            "evasiva": "Citar los porcentajes de los filtros o el número final del SAM sin explicar por qué 'Hogar y Decoración' es o no una base razonable para este producto."
+          },
+          {
+            "pregunta": "Ustedes definieron como objetivo SMART llegar a 75 clientes mensuales, que coincide exactamente con el tope de producción del artesano, ¿qué pasa con la estrategia de marketing si no se alcanza ese número en los primeros meses?",
+            "buscamos": "Que el grupo pueda articular si ese objetivo fue intencionalmente ambicioso o si hubo una confusión entre la capacidad productiva y una meta de marketing realista, y que propongan alguna lógica de contingencia: reducir pauta, ajustar el mix de canales, trabajar con preventas. La clave es que muestren que piensan el objetivo como un destino y no como el punto de partida.",
+            "evasiva": "Definir qué es un objetivo SMART o confirmar que sí, 75 es la meta, sin reflexionar sobre qué implica eso en términos de presión sobre el canal digital desde el mes uno."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que nos mostraron corre en un dominio de Pantheon que claramente es de desarrollo, no en el dominio de marca. ¿Por qué tomaron esa decisión y qué implicaría para el cliente final que el sitio no esté en el dominio propio?",
+            "buscamos": "Que distingan entre entorno de desarrollo y producción, que reconozcan que un usuario real no debería llegar a una URL de Pantheon, y que expliquen qué pasos faltarían para el despliegue en elnegrotati.com o cuchillosnegrotati.com. No es grave que no esté listo, pero sí que comprendan la diferencia.",
+            "evasiva": "Responden que 'el sitio funciona bien' o que 'Pantheon es una plataforma confiable' sin abordar que el dominio de marca no está apuntando al sitio funcional."
+          },
+          {
+            "pregunta": "En el trabajo declaran que van a usar un CRM como HubSpot o Salesforce, pero en el sitio que vimos no se nota esa integración. ¿Nos pueden explicar si eso está implementado hoy o es algo que planifican para más adelante, y por qué importa esa distinción?",
+            "buscamos": "Que reconozcan honestamente si la integración es real o planificada, que entiendan para qué sirve un CRM en este modelo de negocio concreto (seguimiento de clientes premium, nurturing, historial de compras) y que puedan defender por qué tiene sentido incorporarlo aunque no esté activo aún.",
+            "evasiva": "Describen qué es un CRM en términos generales sin aclarar si está o no implementado, o dicen que 'está configurado' sin poder mostrar evidencia de ello."
+          },
+          {
+            "pregunta": "El trabajo menciona que antes del Go-Live no se configuraron los registros de autenticación del correo, lo que después generó problemas serios con la tasa de apertura de emails. ¿Cómo lo contemplarían en la experiencia del usuario si tuvieran que volver a lanzar el sitio?",
+            "buscamos": "Que conecten el error técnico de SPF/DKIM/DMARC con el impacto real en la experiencia del cliente: los emails de confirmación de compra, seguimiento y nurturing no llegaban correctamente. Que propongan incluir esa validación como parte del checklist de lanzamiento, no como un detalle secundario.",
+            "evasiva": "Culpan únicamente a la agencia sin reflexionar sobre qué proceso de revisión o checklist propio podría haber detectado el problema antes del lanzamiento."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el sitio que nos compartieron para revisar el trabajo, la URL que aparece es un dominio de desarrollo de Pantheon, no el dominio de marca del proyecto. ¿Cómo explicarían esa situación y qué faltaría para que el sitio esté realmente en producción?",
+            "buscamos": "Que el grupo reconozca la diferencia entre un entorno de desarrollo y un entorno de producción, entienda que deplegar en el dominio propio implica apuntar los DNS, configurar el dominio en la plataforma de hosting y validar que todo funcione en ese dominio final. Que no lo presenten como un detalle menor sino como un paso real que falta.",
+            "evasiva": "Decir que 'el sitio ya está hecho y funciona' o que 'Pantheon es el hosting del proyecto' sin reconocer que el dominio de marca no está conectado ni que eso implica pasos técnicos pendientes."
+          },
+          {
+            "pregunta": "En el informe mencionan que no implementaron una base de datos propia en esta fase, pero el sitio corre sobre WordPress con MySQL. ¿Cómo lo explicarían: el proyecto tiene base de datos o no?",
+            "buscamos": "Que el grupo pueda distinguir entre gestionar una base de datos directamente versus que la plataforma la gestione por debajo, y que reconozca que WordPress sí usa MySQL aunque ellos no la administren de forma explícita. Se valoriza que admitan la ambigüedad del texto y la aclaren, no que la ignoren.",
+            "evasiva": "Repetir la frase del informe sin resolver la contradicción, o decir que 'MySQL no cuenta como base de datos propia' sin poder explicar por qué."
+          },
+          {
+            "pregunta": "Una de las crisis del proyecto ocurrió porque los registros SPF, DKIM y DMARC no estaban configurados antes del lanzamiento, lo que hundió la tasa de apertura de emails muy por debajo de la meta. Si tuvieran que volver atrás, ¿en qué momento del proceso lo hubieran resuelto y por qué se los considera críticos antes del Go-Live?",
+            "buscamos": "Que entiendan que esos registros son los que autentican al remitente ante los servidores de correo y que su ausencia hace que los emails caigan en spam o directamente no lleguen. Que identifiquen que debería validarse durante la etapa de configuración técnica previa al lanzamiento, no después. Se valora que lo conecten con el impacto real que tuvo en la campaña.",
+            "evasiva": "Culpar exclusivamente a la agencia sin poder explicar para qué sirven esos registros o en qué momento del proyecto correspondía verificarlos."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El plan propone llegar a 75 clientes por mes desde el arranque, pero el canal digital todavía no demostró que convierta: ¿cómo pensaron manejar ese primer período donde las ventas online pueden tardar en despegar?",
+            "buscamos": "Que reconozcan que el objetivo SMART asume plena capacidad desde el mes 1 sin conversión probada, y que propongan alguna lógica de rampa progresiva, canal alternativo de respaldo (venta directa, ferias, redes) o criterio para ajustar la pauta si el tráfico no convierte al ritmo esperado.",
+            "evasiva": "Responder que el e-commerce es el canal principal y que con buena pauta se llega a los 75 clientes, sin reconocer que el CR todavía no fue validado en la práctica."
+          },
+          {
+            "pregunta": "El presupuesto de influencers está planteado como barter, o sea, se les manda un cuchillo en lugar de pagarles en efectivo: ¿ese cuchillo que se regala tiene algún costo para el negocio, y cómo lo tuvieron en cuenta al calcular cuánto les cuesta adquirir cada cliente?",
+            "buscamos": "Que identifiquen que el cuchillo entregado tiene un costo de producción real que debería sumarse al CAC del canal influencers, y que expliquen si lo incluyeron, lo omitieron conscientemente o proponen cómo corregirlo.",
+            "evasiva": "Decir que el barter es 'sin costo' porque no sale plata de la cuenta, sin reconocer que el artesano pone horas y materiales en cada pieza entregada."
+          },
+          {
+            "pregunta": "El trabajo detecta que la crisis del packaging puso en riesgo una parte importante de la tasa de conversión: ¿qué aprendizaje concreto dejó ese episodio para el plan de marketing hacia adelante?",
+            "buscamos": "Que conecten la crisis con una decisión de mejora operativa o de comunicación: por ejemplo, reforzar el control de calidad antes del envío, ajustar la promesa de packaging en los anuncios, o incorporar ese riesgo en el presupuesto de contingencia, mostrando que entienden el impacto sobre la conversión y el margen.",
+            "evasiva": "Describir qué fue la crisis sin explicar qué cambiaría en la estrategia de marketing o en los procesos para que no vuelva a afectar las métricas de conversión."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo describen una crisis con el packaging que puso en riesgo una parte importante de su tasa de conversión: ¿qué decisión tomaron para contenerla y por qué eligieron ese camino y no otro?",
+            "buscamos": "Que el grupo explique el razonamiento detrás de la acción correctiva elegida para ERR-976, mostrando que entendieron el impacto sobre la conversión y el negocio, aunque no reciten el porcentaje exacto ni el costo por incidencia.",
+            "evasiva": "Describir qué es una crisis de packaging en general, o listar pasos genéricos de gestión de crisis sin anclarlos a lo que realmente pasó en el proyecto."
+          },
+          {
+            "pregunta": "La crisis de email que tuvieron se originó en algo que no estaba configurado antes del lanzamiento: ¿cómo justifican que eso no se detectó a tiempo, y qué cambiarían en el proceso si tuvieran que hacer el Go-Live de nuevo?",
+            "buscamos": "Que reconozcan que SPF, DKIM y DMARC no estaban configurados en Hostinger y que la agencia priorizó otro frente, y que reflexionen con criterio propio sobre cómo mejorar la coordinación o el checklist pre-lanzamiento.",
+            "evasiva": "Decir que 'fue un error técnico' o que 'la agencia se equivocó' sin asumir ninguna responsabilidad del equipo ni proponer ningún aprendizaje concreto."
+          },
+          {
+            "pregunta": "Cuando surgieron las dos crisis durante el proyecto, ¿cómo se organizaron como equipo para responder: quién tomó las decisiones, cómo se comunicaron, y qué funcionó y qué no?",
+            "buscamos": "Que el grupo muestre evidencia de liderazgo real y coordinación interna frente a situaciones de presión, con ejemplos concretos del proyecto aunque sean simples, demostrando que hubo un proceso y no solo una reacción individual.",
+            "evasiva": "Responder en abstracto sobre 'trabajo en equipo' o 'comunicación' sin mencionar ninguna situación concreta de las crisis que efectivamente enfrentaron."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "41",
+    "proyecto": "Estilo Organizado",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1qrXn5qLN053KS1EFjruxcocLnYiDR0Fy/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/12DL3Ub-x_Ode7a0Qpi-3SiwOwtr44Xw7/preview",
+    "informe": {
+      "resumen": "El trabajo integra coherentemente análisis estratégico, implementación técnica real y gestión de crisis con datos propios, aunque algunos supuestos de mercado carecen de fuente primaria verificable.",
+      "queEs": "Ecommerce WordPress/WooCommerce de productos de organización del hogar para mujeres 25-45 años, diferenciado por packs por ambiente y sección de consejos.",
+      "fortalezas": [
+        "Gestión de crisis documentada con tickets, KPIs, impacto económico ($38.752 ARS pérdida ERR-503) y protocolos concretos.",
+        "Estimación TAM/SAM/SOM coherente y autocrítica: justifican 0,015% vs. 1-5% bibliográfico con argumentos operativos.",
+        "Sitio publicado en Pantheon con plugins reales documentados (WooCommerce, Mercado Pago, Rank Math, MetaSlider)."
+      ],
+      "interrogar": [
+        "Declaran atención personalizada 24/7 pero no evidencian chatbot implementado ni herramienta concreta que lo sostenga.",
+        "El ROI positivo del 12,61% se menciona en la sección de factibilidad pero no aparece el cálculo ni los datos base en ninguna parte del documento.",
+        "Las crisis ERR-903 y ERR-503 se presentan como 'simuladas' pero se describen con pérdidas económicas reales cuantificadas: ¿ocurrieron efectivamente o son hipotéticas?"
+      ],
+      "dondeApretar": "Forzar a los alumnos a sostener con números propios la viabilidad financiera (ROI 12,61%, punto de equilibrio 12 pedidos) cuya fórmula y fuente de datos no aparecen en el documento."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Eligieron enfocarse en mujeres de 25 a 45 años de clase media en la Provincia de Buenos Aires: ¿por qué ese perfil y no un público más amplio?",
+            "buscamos": "Que justifiquen el recorte como decisión estratégica: un mercado más acotado permite mayor precisión en la comunicación, menor dispersión de recursos y mensajes más relevantes para ese perfil. Idealmente mencionan que el TAM era enorme y que achicar el foco fue una elección deliberada para ser viables en el primer año.",
+            "evasiva": "Decir que 'es el público que más compra online' o repetir el rango etario sin explicar por qué ese segmento y no otro, sin conectarlo con la propuesta de valor del proyecto."
+          },
+          {
+            "pregunta": "El proyecto apunta a capturar una porción muy pequeña del mercado disponible: ¿cómo justifican que ese volumen de ventas proyectado para el primer año sea un objetivo realista y no una estimación arbitraria?",
+            "buscamos": "Que conecten el SOM proyectado con el punto de equilibrio del negocio: que esa cantidad de pedidos mensuales les permite cubrir costos fijos y generar un resultado positivo. No se espera que reciten el porcentaje exacto, sino que muestren que el número no fue elegido al azar sino que responde a una lógica de viabilidad.",
+            "evasiva": "Decir que 'es un porcentaje bajo del mercado así que es alcanzable' sin vincular ese volumen con los costos del proyecto ni con ninguna condición concreta de operación."
+          },
+          {
+            "pregunta": "Eligieron diferenciarse con packs por ambiente y una sección de consejos: ¿qué problema concreto de su público objetivo resuelve esa propuesta, y por qué creyeron que era suficiente para distinguirse en el mercado?",
+            "buscamos": "Que articulen la propuesta de valor en términos del usuario: alguien que no sabe cómo organizar su hogar o que se siente abrumada al comprar productos sueltos encuentra en los packs una solución completa y en los consejos un acompañamiento que va más allá de la transacción. La respuesta sólida conecta la diferenciación con una necesidad real del segmento elegido.",
+            "evasiva": "Describir las funcionalidades del sitio (los packs, la sección de consejos) sin explicar qué dolor o necesidad del cliente resuelven, quedándose en el 'qué' sin tocar el 'para qué'."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "Eligieron una paleta de colores bastante cálida y suave para Estilo Organizado: ¿por qué esa dirección visual y cómo la conectan con el perfil de la clienta que quieren atraer?",
+            "buscamos": "Que vinculen la paleta (tonos rosados, blancos, neutros cálidos) con la identidad de marca y con el público objetivo de mujeres de 25 a 45 años que buscan organización del hogar, mostrando que fue una decisión intencional y no estética al azar.",
+            "evasiva": "Describir los colores o decir que 'quedaban lindos' sin conectarlos con el posicionamiento, el perfil de usuaria ni la propuesta de valor del proyecto."
+          },
+          {
+            "pregunta": "El sitio incluye una sección de consejos además del catálogo de productos: ¿qué rol cumple esa sección dentro de la experiencia de la usuaria y por qué decidieron incorporarla como diferencial?",
+            "buscamos": "Que expliquen cómo la sección de consejos agrega valor más allá de la venta directa, por ejemplo generando confianza, educando a la usuaria, aumentando el tiempo en el sitio o reforzando el posicionamiento como marca experta en organización, y que lo relacionen con su público objetivo.",
+            "evasiva": "Decir que 'aporta contenido' o que 'es útil para el SEO' sin explicar cómo mejora la experiencia concreta de la usuaria ni qué problema resuelve dentro del recorrido de compra."
+          },
+          {
+            "pregunta": "Eligieron armar la oferta en packs por ambiente en lugar de vender productos sueltos: ¿qué ventaja le da eso a la usuaria cuando navega el sitio y cómo impacta en la decisión de compra?",
+            "buscamos": "Que relacionen el formato de packs con la experiencia de navegación y con la propuesta de valor: simplifica la decisión, reduce la fricción, le da a la usuaria una solución completa en lugar de obligarla a armar su propio conjunto, y se alinea con el perfil de alguien que busca organización sin complicaciones.",
+            "evasiva": "Explicar qué es un pack o listar los ambientes disponibles sin argumentar por qué ese formato beneficia a la usuaria en términos de experiencia o conversión."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo declaran que el sitio ofrece atención personalizada las 24 horas, pero cuando uno lo visita no queda claro cómo se sostiene eso en la práctica: ¿qué herramienta o recurso concreto pensaron para garantizar esa disponibilidad?",
+            "buscamos": "Que el grupo reconozca la brecha entre lo declarado y lo implementado, y pueda explicar si planean un chatbot, un formulario con respuesta automática, o cualquier solución concreta. Lo valioso no es la herramienta perfecta sino que demuestren haber pensado cómo cerrar esa promesa.",
+            "evasiva": "Responder que la atención personalizada es importante para el cliente o que van a responder rápido por WhatsApp, sin vincular eso a ningún mecanismo técnico o flujo de trabajo definido."
+          },
+          {
+            "pregunta": "Cuando el sitio tuvo el problema de disponibilidad que registraron como ERR-903, ¿qué pasos concretos siguieron o hubieran seguido para resolverlo, y por qué eligieron ese camino?",
+            "buscamos": "Que describan un proceso de respuesta: detectar el error, escalar al proveedor de hosting, comunicar al usuario, restablecer el servicio. Se valora que mencionen el fondo de contingencia técnica que asignaron o que articulen la urgencia en función del impacto operativo que el propio trabajo reconoce.",
+            "evasiva": "Describir la crisis solo por sus consecuencias económicas sin explicar ninguna acción técnica ni operativa, o decir que lo resolverían llamando al soporte sin detallar nada más."
+          },
+          {
+            "pregunta": "Eligieron Pantheon como plataforma de hosting para el sitio: ¿qué ventaja concreta les ofrece esa elección para un e-commerce que tiene como KPI mantener la velocidad de carga por debajo de 3 segundos?",
+            "buscamos": "Que vinculen la elección de Pantheon con alguna característica técnica relevante para performance: entornos optimizados para WordPress, CDN, caché administrado, o similares. No se espera una explicación técnica exhaustiva, sino que muestren que la decisión tuvo una razón más allá de la disponibilidad o el precio.",
+            "evasiva": "Decir que Pantheon es una plataforma confiable o que la eligieron porque es fácil de usar, sin conectarlo con el objetivo de performance que ellos mismos definieron."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "Proyectaron capturar alrededor de 50 pedidos por mes durante el primer año: ¿por qué eligieron ese número como meta y qué tendría que pasar en el negocio para que ese objetivo tenga sentido?",
+            "buscamos": "Que el grupo vincule los 50 pedidos con el SOM proyectado y muestre que entienden la lógica detrás: cuánta gente necesitan alcanzar, qué ticket promedio asumen, y por qué ese volumen es realista para un primer año. Idealmente mencionan que el mercado objetivo son mujeres de 25 a 45 años en provincia de Buenos Aires y que la meta es conservadora respecto al TAM total.",
+            "evasiva": "Decir que '50 pedidos es lo que calculamos que podíamos vender' sin explicar de dónde viene ese número ni qué supuestos lo sostienen, o hablar del mercado en general sin conectarlo con la proyección concreta."
+          },
+          {
+            "pregunta": "Definieron una tasa de conversión objetivo del 1,20% como KPI clave: cuando tuvieron el problema técnico que afectó el sitio durante un mes, ¿cómo impactó ese incidente en ese indicador y qué aprendieron de eso para la gestión del negocio?",
+            "buscamos": "Que relacionen el KPI de conversión con lo que pasó en la crisis ERR-503, donde la tasa cayó por debajo del objetivo y el abandono de carrito subió. Se espera que muestren que entienden que los KPIs no son solo metas en el papel sino señales de alerta, y que hablen de la importancia de monitorearlos para detectar problemas a tiempo.",
+            "evasiva": "Explicar qué es una tasa de conversión en abstracto o describir la crisis técnica sin conectarla con el indicador, como si fueran dos secciones separadas del informe que no tienen relación."
+          },
+          {
+            "pregunta": "Declaran en el trabajo que van a ofrecer atención personalizada las 24 horas: ¿cómo pensaron sostener eso operativamente, dado que es un emprendimiento que arranca con recursos limitados?",
+            "buscamos": "Que el grupo reconozca la tensión entre la promesa de atención 24/7 y los recursos reales disponibles, y que puedan explicar qué herramienta o mecanismo concreto planearon implementar para cumplirla. Si no tienen una respuesta sólida, se valora que sean honestos y propongan cómo lo resolverían (chatbot, respuestas automáticas, horario acotado con mensaje claro, etc.).",
+            "evasiva": "Afirmar que 'sí, está contemplado' o 'lo haríamos con el equipo' sin nombrar ninguna herramienta concreta ni reconocer que en el documento no queda claro cómo se implementaría en la práctica."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo describen dos crisis técnicas: una que afectó la disponibilidad del sitio y otra que impactó la tasa de conversión. ¿Cómo decidieron responder de manera diferente a cada una, y por qué no fue la misma solución para las dos?",
+            "buscamos": "Que el grupo distinga la naturaleza de cada crisis: ERR-903 como un problema de disponibilidad con impacto directo en ventas por caída del sitio, y ERR-503 como un problema de performance que degradó la experiencia sin derribar el sitio. Una buena respuesta defiende que el tipo de falla determina la respuesta: no es lo mismo que el comercio esté caído que funcionar mal. Si mencionan que el fondo de contingencia o los protocolos se diseñaron para absorber este tipo de impacto, suma.",
+            "evasiva": "Hablar de crisis en general, decir que 'se siguió un protocolo de gestión de crisis' sin explicar qué tenían de distinto las dos situaciones, o repetir las pérdidas económicas sin conectarlas con la decisión de respuesta."
+          },
+          {
+            "pregunta": "El proyecto arrancó con el nombre 'Pausa' y en algún punto decidieron cambiarlo a 'Estilo Organizado'. ¿Qué los llevó a tomar esa decisión y cómo gestionaron internamente ese cambio sin que afectara la continuidad del trabajo?",
+            "buscamos": "Que el grupo pueda defender el cambio de nombre como una decisión estratégica consciente, vinculándolo al posicionamiento o a la identidad de marca que buscaban para su público objetivo. Se valorará que expliquen cómo comunicaron o coordinaron ese cambio hacia adentro del equipo, ya que implica una decisión de liderazgo que afecta documentación, identidad visual y registro de incidentes.",
+            "evasiva": "Decir que 'Pausa no sonaba bien' sin argumentar en relación al proyecto o al público, o no poder explicar cómo impactó el cambio en la documentación ya producida, como los registros de los incidentes técnicos."
+          },
+          {
+            "pregunta": "Asignaron un fondo de contingencia del 5% del presupuesto operativo digital para cubrir imprevistos técnicos. Si mañana ocurriera una nueva crisis similar a las que ya vivieron, ¿ese fondo les alcanza o tendrían que tomar decisiones adicionales para proteger la operación?",
+            "buscamos": "Que el grupo reflexione sobre la suficiencia del fondo en relación a los impactos que ya registraron. Una buena respuesta no necesita recitar el monto exacto, pero sí demuestra que entienden que el fondo es un colchón acotado y que ante una crisis sostenida necesitarían escalar a otras medidas: ajustar costos, priorizar canales, revisar el punto de equilibrio. Se busca criterio de gestión, no un número.",
+            "evasiva": "Responder que 'el 5% cubre todo' sin cuestionarlo, o hablar de contingencia en abstracto sin conectarlo con lo que les pasó en el proyecto."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "42",
+    "proyecto": "Bigotes Felices",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1yHCO4ktfuzJ9xiACuG1kSbbwXnkTHCwT/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1yAdo8hvivV4KfKFeffEQGhAyAK3gSVUG/preview",
+    "informe": {
+      "resumen": "El trabajo muestra estructura conceptual sólida pero presenta contradicciones numéricas internas y un sitio en entorno de pruebas con funcionalidades críticas sin implementar.",
+      "queEs": "E-commerce omnicanal de pet care en Belgrano que integra tienda online, turnos veterinarios y local físico bajo modelo one-stop-shop.",
+      "fortalezas": [
+        "Análisis de buyer personas con decisiones UX trazables a pain points específicos documentados por perfil.",
+        "Gestión de crisis documentada con tickets reales, causa raíz identificada y aprendizajes concretos aplicados al MVP.",
+        "Stack tecnológico justificado frente a alternativas (WordPress vs Shopify) con criterios explícitos de control y personalización."
+      ],
+      "interrogar": [
+        "El ROI aparece como 544% en el cuerpo y las conclusiones, pero el Anexo 2 (PESTEL) lo declara como 60%: ¿cuál es el correcto y cómo se calculó?",
+        "El TAM figura como $722.400.000.000 en el cuerpo del trabajo pero como $227.040.000.000 en el Anexo 2, con el mismo ticket promedio: contradicción no explicada.",
+        "El sitio funcional está en entorno de pruebas (dev) con buscador, Mi Cuenta y backend sin implementar; la defensa debe explicar qué es realmente el MVP entregado."
+      ],
+      "dondeApretar": "Presionar sobre la consistencia financiera (ROI y TAM contradictorios) y la brecha entre lo diseñado y lo efectivamente implementado en el sitio."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo define a Belgrano como el mercado donde va a operar, pero al mismo tiempo proyecta números que parecen ir mucho más allá de ese barrio: ¿cómo justifican esa delimitación geográfica y por qué la eligieron como punto de partida?",
+            "buscamos": "Que el grupo explique la lógica de arrancar local (Belgrano como zona de alto poder adquisitivo y concentración de mascotas) antes de escalar, y que vincule esa decisión con el modelo one-stop-shop y la viabilidad operativa del local físico. Bonus si mencionan que el TAM y el SOM tienen alcances distintos y que trabajar con el 1% del SAM como meta inicial tiene sentido precisamente porque el mercado real es más amplio que Belgrano.",
+            "evasiva": "Describir qué es un TAM o un SAM en abstracto sin conectarlo con por qué Belgrano específicamente, o decir 'porque es un barrio con mucha gente' sin argumentar la decisión estratégica."
+          },
+          {
+            "pregunta": "Eligieron concentrar el 70% del presupuesto de marketing en Google Ads y el 30% en Meta Ads: ¿qué los llevó a esa distribución y cómo la defienden pensando en el perfil del cliente que describieron en el trabajo?",
+            "buscamos": "Que justifiquen la elección con intención de búsqueda activa (Google captura demanda existente de productos y turnos veterinarios) versus generación de demanda o comunidad (Meta para el segmento de dueños de mascotas en redes). Se valorará que conecten la decisión con el buyer persona y el canal digital priorizado, no que la reciten de memoria.",
+            "evasiva": "Repetir los porcentajes sin explicar por qué esa proporción tiene sentido para este negocio en particular, o justificar con 'Google llega a más gente' sin relacionarlo con el tipo de búsqueda que haría alguien que necesita un turno veterinario o un alimento premium."
+          },
+          {
+            "pregunta": "El modelo que proponen integra tienda online, turnos veterinarios y local físico bajo un mismo paraguas: ¿cuál es el argumento central para que esa combinación funcione como ventaja competitiva y no se convierta en tres negocios difíciles de gestionar a la vez?",
+            "buscamos": "Que defiendan la propuesta de valor omnicanal explicando cómo los tres canales se refuerzan entre sí (por ejemplo, el local físico genera confianza y permite retiro, los turnos veterinarios crean recurrencia y fidelización, la tienda online amplía el alcance), y que reconozcan la complejidad operativa como un riesgo que el modelo debe gestionar, no ignorar.",
+            "evasiva": "Definir qué es omnicanal o one-stop-shop en términos genéricos sin explicar por qué esa integración específica tiene sentido para el segmento de pet care en Belgrano, o enumerar los tres componentes sin argumentar cómo se articulan."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que nos mostraron hoy está en un entorno de desarrollo, no en producción: ¿qué nos pueden explicar sobre qué es lo que realmente entregaron como MVP y qué funcionalidades todavía no están operativas?",
+            "buscamos": "Que el grupo pueda distinguir con claridad qué está maquetado o simulado (buscador, Mi Cuenta, checkout, backend) de lo que sí funciona, y que lo enmarquen honestamente como una etapa de prototipo o prueba de concepto, no como un producto lanzado.",
+            "evasiva": "Describir el sitio como si estuviera completo, enumerar las secciones que se ven visualmente sin aclarar cuáles no tienen lógica operativa detrás, o decir genéricamente que 'falta terminar algunas cosas'."
+          },
+          {
+            "pregunta": "En el trabajo declaran que la sección Mi Cuenta está diseñada pero sin base de datos conectada ni CRM activo: ¿cómo impacta eso en la experiencia real de un usuario que intenta gestionar sus datos o un turno veterinario desde el sitio?",
+            "buscamos": "Que conecten la limitación técnica concreta (sin backend, sin CRM) con la promesa de valor del modelo one-stop-shop, reconociendo que hoy esa autogestión no es posible y explicando qué habría que resolver para que lo sea.",
+            "evasiva": "Hablar de la importancia del CRM en términos teóricos, describir cómo se vería la experiencia si estuviera funcionando, o desviar hacia el diseño visual sin abordar la brecha operativa."
+          },
+          {
+            "pregunta": "Los Buyer Persona y el Customer Journey son herramientas clave para justificar decisiones de diseño: ¿pueden explicarnos cómo usaron esos dos documentos para tomar alguna decisión concreta en la arquitectura del sitio o en el flujo de compra?",
+            "buscamos": "Que puedan trazar una conexión real entre el perfil del usuario y alguna decisión de diseño o navegación, mostrando que esas herramientas tuvieron incidencia en el producto y no fueron solo entregables formales.",
+            "evasiva": "Definir qué es un buyer persona o un customer journey sin vincularlo a ninguna decisión específica del proyecto, o describir los documentos sin poder explicar qué cambiaron o validaron a partir de ellos."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que presentaron funciona y se puede navegar, pero está en un entorno de desarrollo, no en producción: ¿qué consideran que entregaron realmente como MVP y qué le faltaría para estar listo para el lanzamiento que planificaron?",
+            "buscamos": "Que el grupo reconozca con honestidad que el MVP es una demo navegable con funcionalidades simuladas o maquetadas (buscador sin implementar, checkout sin backend, Mi Cuenta sin base de datos conectada), que distingan entre lo que demostraron de forma visual y lo que requeriría trabajo adicional para operar en producción, y que puedan nombrar al menos uno o dos pasos concretos que separan el entorno dev del Go-Live.",
+            "evasiva": "Describir el sitio como si estuviera operativo, enumerar las secciones que se ven sin aclarar cuáles no funcionan realmente, o decir 'faltaría pulirlo un poco' sin reconocer que el checkout, el buscador y la autogestión del usuario son funcionalidades aún no operativas."
+          },
+          {
+            "pregunta": "Durante el lanzamiento tuvieron un problema grave con los pagos: el filtro antifraude rechazó tarjetas válidas y el presupuesto de publicidad que habían invertido ese día no generó ninguna venta. ¿Qué aprendieron de ese escenario y cómo lo contemplarían si tuvieran que relanzar el sitio?",
+            "buscamos": "Que el grupo muestre comprensión de la dependencia crítica entre el embudo de conversión y la inversión en tráfico: si el checkout no funciona, todo el gasto publicitario se desperdicia. Se espera que propongan alguna medida preventiva, como testear el flujo de pago con transacciones reales antes de activar campañas, o tener un protocolo de respuesta ante errores de pasarela, aunque sea en términos generales.",
+            "evasiva": "Limitarse a describir lo que pasó sin reflexionar sobre la causa raíz ni proponer ninguna acción correctiva, o decir que 'se resolvió en unas horas' sin conectar el incidente con la estrategia de lanzamiento y el gasto publicitario que se perdió en paralelo."
+          },
+          {
+            "pregunta": "Ustedes declararon que los Anexos del Buyer Persona y el Customer Journey están en Canva, pero ambos comparten el mismo enlace: ¿cómo explicarían eso al tribunal y qué impacto tendría en la defensa de que son dos herramientas distintas con propósitos diferentes?",
+            "buscamos": "Que el grupo reconozca el error o la inconsistencia en la presentación de los anexos, que expliquen con sus palabras en qué se diferencian conceptualmente un buyer persona de un customer journey, y que demuestren que los trabajaron como herramientas distintas aunque la documentación entregada no permita verificarlo. Se valora que asuman la responsabilidad sin evasivas.",
+            "evasiva": "Ignorar el problema del enlace duplicado, ponerse a definir textualmente qué es un buyer persona o un customer journey sin referirse a su propio proyecto, o argumentar que 'es un error técnico de Canva' sin asumir ninguna responsabilidad sobre la presentación del trabajo."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo aparecen más de un valor de ROI para el mismo proyecto: ¿cómo explicarían esa diferencia y cuál consideran el número correcto?",
+            "buscamos": "Que el grupo reconozca la inconsistencia entre los valores que figuran en el cuerpo y en los anexos, explique de dónde viene cada uno (distintos momentos del proceso, distintas bases de cálculo o un error de edición) y defienda cuál es el valor que realmente respalda su modelo de negocio y por qué.",
+            "evasiva": "Citar uno de los valores como si fuera el único que existe, sin mencionar la discrepancia ni explicar cómo se calculó."
+          },
+          {
+            "pregunta": "Eligieron concentrar el presupuesto de marketing casi exclusivamente en Google Ads y Meta Ads: ¿por qué esa combinación y no otra, considerando el perfil del cliente que describieron en el trabajo?",
+            "buscamos": "Que justifiquen la elección en función del buyer persona del pet care en Belgrano, mostrando que la decisión tuvo lógica estratégica (intención de búsqueda vs. descubrimiento social, segmentación geográfica, etc.) y no fue arbitraria.",
+            "evasiva": "Decir que Google y Meta son 'los canales más usados' sin conectarlo al cliente específico ni al tipo de producto o servicio que ofrecen."
+          },
+          {
+            "pregunta": "El punto de equilibrio que calcularon implica alcanzar una cantidad determinada de pedidos mensuales: ¿qué acciones concretas del plan de marketing apuntan a lograr ese volumen en los primeros meses?",
+            "buscamos": "Que vinculen el dato financiero con el plan de acción real: mencionen tácticas específicas del trabajo (campañas, canales, promociones de lanzamiento, fidelización) y muestren que entienden que el breakeven no se alcanza solo con tener el sitio online.",
+            "evasiva": "Describir el punto de equilibrio en términos abstractos o repetir la fórmula sin explicar cómo el plan de marketing concretamente contribuye a llegar a ese número."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "El día del lanzamiento tuvieron un problema serio con los pagos: muchas tarjetas válidas fueron rechazadas y eso les cortó las ventas justo cuando más tráfico tenían. ¿Cómo tomaron la decisión de resolver eso y qué habrían hecho diferente para evitar que llegara al cliente?",
+            "buscamos": "Que el grupo muestre razonamiento de gestión de crisis: quién decidió, con qué criterio priorizaron la resolución, y que puedan reflexionar sobre la falta de pruebas previas del filtro de fraude. No se espera que citen el 40% ni las 4 horas, sino que demuestren que entienden por qué ese error fue crítico en ese momento puntual del lanzamiento.",
+            "evasiva": "Decir que 'es un problema técnico que lo resuelve el proveedor de pagos' sin asumir ninguna responsabilidad propia en la decisión de configurar el filtro ni en la falta de validación antes del Go-Live."
+          },
+          {
+            "pregunta": "Cuando ese problema con los pagos ocurrió, tenían todo el presupuesto de publicidad corriendo y dirigiendo gente al sitio. ¿Qué debería haber hecho el equipo en ese momento con esa pauta, y cómo se organiza un equipo para tomar esa decisión rápido bajo presión?",
+            "buscamos": "Que el grupo entienda que el error generó un embudo roto: traer tráfico pago a un sitio que no podía convertir fue un desperdicio evitable. Se espera que hablen de la necesidad de pausar la pauta, de tener un protocolo de decisión claro y de comunicación interna ágil durante una crisis, aunque sea en términos simples.",
+            "evasiva": "Responder en abstracto sobre 'la importancia del trabajo en equipo' sin conectarlo con la situación concreta de tener publicidad activa durante una falla de conversión."
+          },
+          {
+            "pregunta": "Si mañana tuvieran que lanzar este proyecto de verdad, ¿qué riesgo del trabajo les parece el más importante de resolver antes de abrir al público, y por qué lo priorizarían por encima de los demás?",
+            "buscamos": "Que el grupo pueda jerarquizar riesgos con criterio propio, mencionando al menos uno de los problemas reales del trabajo: el sitio en entorno de pruebas, las funcionalidades simuladas como el checkout o Mi Cuenta, o la falta de validación del filtro de pagos. Se valora que justifiquen su elección en función del impacto sobre el cliente o sobre el negocio.",
+            "evasiva": "Elegir un riesgo genérico o secundario sin referencia al proyecto, o enumerar varios problemas sin tomar posición sobre cuál es más urgente ni por qué."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "43",
+    "proyecto": "Brújula Digital – Escanear y Comer",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1ZYdOcUQKA_RSRApvYaVT5bqEsKP2ajr2/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1fEL3dzBNYBplOdgCBZnoJIqQbuQWiwAn/preview",
+    "informe": {
+      "resumen": "El trabajo articula análisis estratégico completo y prototipo funcional, pero sus proyecciones financieras carecen de sustento empírico y la implementación real queda reducida a un sitio WordPress sin pedidos ni pagos operativos.",
+      "queEs": "SaaS de menú QR y pedidos digitales para gastronomía PyME, diferenciado por interfaz inspirada en cartas físicas tradicionales.",
+      "fortalezas": [
+        "TAM/SAM/SOM con cifras explícitas y coherentes entre sí ($45.000/mes base, 15 clientes SOM).",
+        "Gestión de crisis documentada con planes alternativos concretos (Plan B tablet, Plan C WhatsApp).",
+        "Prototipo funcional desplegado en Pantheon con URL pública verificable."
+      ],
+      "interrogar": [
+        "El SOM proyecta 15 clientes 'en el segundo año', pero el plan de lanzamiento no menciona ningún restaurante piloto real confirmado ni pipeline.",
+        "El sitio funcional solo simula el panel administrativo y el pago; nunca se procesa una transacción real con Mercado Pago, contradiciendo la sección de infraestructura tecnológica.",
+        "El TAM asume 90.000 establecimientos a $45.000/mes sin citar fuente; ningún benchmark competitivo nombra precios ni cuota de mercado de competidores identificados."
+      ],
+      "dondeApretar": "Profundizar en la brecha entre lo declarado (SaaS con pagos integrados, pedidos en tiempo real) y lo efectivamente implementado (prototipo WordPress sin transacciones reales ni clientes activos)."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo proyectaron capturar solo 15 clientes en el segundo año: ¿por qué eligieron arrancar con esa cantidad y no con más, siendo que el mercado disponible es bastante más grande?",
+            "buscamos": "Que el grupo demuestre que hubo una decisión consciente detrás del número: recursos limitados del equipo, curva de aprendizaje, estrategia conservadora para validar antes de escalar, o cualquier razonamiento que muestre que no fue arbitrario. No importa que reciten el porcentaje exacto de captura, sino que expliquen la lógica.",
+            "evasiva": "Decir que 15 es un número razonable para empezar sin explicar por qué, o repetir que el mercado es grande sin vincular eso con la decisión de arrancar chico."
+          },
+          {
+            "pregunta": "El trabajo identifica el precio de $45.000 por mes como base del análisis de mercado, pero el sitio también muestra un plan a $70.000 y otro a $105.000: ¿cómo pensaron integrar esos tres precios en la propuesta comercial y por qué el análisis financiero trabajó solo con uno?",
+            "buscamos": "Que el grupo reconozca la inconsistencia y pueda explicarla con honestidad: por ejemplo, que el análisis se simplificó usando el plan de entrada para ser conservadores, o que los planes superiores no estaban del todo definidos al momento de las proyecciones. Una buena respuesta acepta la limitación y propone cómo lo resolverían.",
+            "evasiva": "Describir los tres planes como si fueran una fortaleza del producto sin tocar la pregunta de por qué las proyecciones no los contemplaron, o decir que el plan básico 'es el más común' sin ningún sustento."
+          },
+          {
+            "pregunta": "El mercado que definen como alcanzable son 27.000 negocios, pero el plan concreto apunta a 15 clientes: ¿qué criterios usaron para definir a quién iban a ir a buscar primero dentro de ese universo?",
+            "buscamos": "Que el grupo pueda describir algún criterio de segmentación operativa, aunque sea básico: zona geográfica, tipo de restaurante, tamaño, perfil del dueño, canal de adquisición. Lo que se espera es que haya habido alguna lógica de priorización, no que reciten una metodología perfecta.",
+            "evasiva": "Volver a hablar del TAM o del mercado total en lugar de responder cómo van a encontrar y convencer a esos 15 clientes específicos, o decir que apuntan a 'cualquier restaurante PyME' sin más criterio."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo menciona que eligieron Montserrat SemiBold y Open Sans porque favorecen la legibilidad en pantallas y la adaptabilidad a dispositivos móviles: ¿por qué esas dos tipografías en particular son una buena elección para un menú que se escanea desde el celular en un restaurante?",
+            "buscamos": "Que conecten la decisión tipográfica con el contexto real de uso: pantalla pequeña, luz variable del ambiente, usuario distraído o apurado. Buena respuesta si mencionan legibilidad a tamaños reducidos, contraste, que Montserrat funciona bien en títulos y Open Sans en cuerpo de texto, o que el usuario no viene a leer sino a elegir rápido.",
+            "evasiva": "Decir que 'son tipografías modernas y profesionales' o que 'se ven bien' sin vincular la elección al escenario concreto de uso del producto."
+          },
+          {
+            "pregunta": "El diferencial del producto es que la interfaz está inspirada en las cartas físicas tradicionales: ¿qué problema concreto del usuario gastronómico resuelve esa decisión de diseño, y qué riesgo trae imitar el formato papel en una pantalla?",
+            "buscamos": "Que identifiquen el problema que resuelve: reducir la fricción de adopción tanto para el dueño del restaurante como para el comensal, apelando a algo familiar. Y que reconozcan al menos un riesgo real: que imitar papel puede atentar contra la usabilidad móvil, el scroll, la jerarquía visual o la velocidad de carga si se abusa de elementos decorativos.",
+            "evasiva": "Quedarse solo en 'es más atractivo visualmente' o 'les gusta a los clientes' sin mencionar el problema de adopción ni ningún riesgo de la decisión."
+          },
+          {
+            "pregunta": "El sitio funcional estaba alojado en una URL de entorno de desarrollo, no en un dominio propio: si un restaurante interesado en contratar el servicio hubiera visitado ese sitio durante la etapa de presentación, ¿qué impacto podría tener eso en la percepción del producto?",
+            "buscamos": "Que entiendan que la URL de desarrollo comunica algo al usuario: falta de profesionalismo, sensación de prototipo inacabado, dudas sobre la seriedad del negocio. Buena respuesta si mencionan que la experiencia del producto empieza antes del login, que el dominio es parte de la identidad de marca, o que un potencial cliente PyME puede interpretarlo como señal de riesgo.",
+            "evasiva": "Decir que 'es solo técnico y no afecta el producto' o que 'en la versión final se cambia' sin reconocer el impacto en la confianza o en la percepción durante la etapa comercial real."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio quedó alojado en un entorno de desarrollo de Pantheon y no en un dominio propio de producción: ¿qué implicancias tiene eso para un negocio real que quiere transmitirle confianza a sus clientes gastronómicos?",
+            "buscamos": "Que el grupo reconozca que una URL de desarrollo comunica provisoriedad o falta de profesionalismo ante un cliente PyME, y que explique qué hubieran necesitado hacer para pasar a producción (dominio propio, certificado SSL, etc.) aunque no lo hayan implementado.",
+            "evasiva": "Explicar qué es Pantheon o decir que 'funciona igual' sin abordar el impacto en la percepción del cliente ni en la credibilidad comercial del producto."
+          },
+          {
+            "pregunta": "Durante el Go-Live tuvieron un error en las campañas de Google Ads porque los links no coincidían con la estructura real del sitio: ¿cómo hubieran evitado ese problema antes de activar la campaña?",
+            "buscamos": "Que el grupo entienda la relación entre cambios en la arquitectura del sitio y las URLs de destino en campañas activas, y que proponga un proceso concreto de verificación previa, aunque sea básico, como revisar cada URL antes de lanzar o hacer una checklist de Go-Live.",
+            "evasiva": "Decir que 'hay que tener más cuidado' o mencionar la checklist que propusieron en el documento sin poder explicar qué debería tener esa checklist ni por qué sirve."
+          },
+          {
+            "pregunta": "El trabajo declara la integración con Mercado Pago como 'simulada o API', lo que significa que nunca se procesó un pago real: ¿qué diferencia hay entre tener esa integración simulada y tenerla funcionando de verdad, y qué impacto tiene eso en la propuesta de valor que le ofrecen al restaurante?",
+            "buscamos": "Que el grupo distinga entre una demo o prototipo y un producto listo para operar, y que reconozca que sin pagos reales el restaurante no puede cobrar digitalmente, lo cual vacía una parte central de la propuesta de valor del SaaS.",
+            "evasiva": "Explicar cómo funciona Mercado Pago en general o decir que 'se puede integrar fácilmente después' sin reconocer que el estado actual del producto no soporta la promesa que hace el documento."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo proyectaron capturar solo 15 clientes en el segundo año sobre un mercado disponible de miles de negocios: ¿por qué eligieron ese número y qué tendría que pasar concretamente para alcanzarlo?",
+            "buscamos": "Que reconozcan la brecha enorme entre el SAM y el SOM, que la expliquen con algún criterio real (recursos, equipo, ciclo de ventas, etc.) y que mencionen al menos una acción concreta de adquisición de clientes, aunque sea básica.",
+            "evasiva": "Decir que 'es un número conservador' o 'quisimos ser realistas' sin explicar qué proceso de ventas o canal concreto llevaría a cerrar esos 15 contratos."
+          },
+          {
+            "pregunta": "El análisis de mercado usa un solo precio para calcular los ingresos potenciales, pero el sitio muestra tres planes distintos: ¿cómo impacta eso en las proyecciones que presentaron y qué harían para corregirlo?",
+            "buscamos": "Que identifiquen que usar un único precio simplifica y puede distorsionar las proyecciones financieras, que reconozcan que los tres planes tienen precios distintos y que propongan integrarlos con alguna lógica de mix de clientes o escenarios.",
+            "evasiva": "Repetir los precios de los planes sin explicar el problema de coherencia con las proyecciones ni proponer ninguna forma de incorporarlos al análisis."
+          },
+          {
+            "pregunta": "El plan menciona que después de los problemas del lanzamiento iban a hacer una checklist obligatoria antes de cada Go-Live, pero esa checklist no aparece en el trabajo: ¿qué incluirían en ella pensando en lo que falló?",
+            "buscamos": "Que conecten la respuesta con las dos crisis reales del lanzamiento (la caída del sistema por falta de pruebas de carga y el error en las URLs de las campañas de Google Ads) y que propongan ítems concretos vinculados a esos problemas.",
+            "evasiva": "Listar ítems genéricos de checklist de proyecto sin mencionar ninguna de las dos fallas específicas que ocurrieron durante el Go-Live del trabajo."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo identifica que el sistema se cayó por completo durante un período de alta demanda porque no se habían hecho pruebas de carga antes del lanzamiento: ¿qué harían diferente si tuvieran que volver a planificar ese lanzamiento?",
+            "buscamos": "Que el grupo conecte la causa raíz declarada en el documento (ausencia de pruebas de carga) con una acción concreta y anticipatoria: simular tráfico antes de salir al aire, definir un umbral mínimo de rendimiento, o hacer un lanzamiento gradual. Lo importante es que no repitan solo 'haríamos pruebas' sino que expliquen por qué eso cambia el resultado.",
+            "evasiva": "Decir que 'hay que testear mejor' o 'tener un equipo técnico más preparado' sin anclar la respuesta a qué hubiera evitado específicamente la caída que describes en el trabajo."
+          },
+          {
+            "pregunta": "Cuando las campañas de Google Ads dejaron de funcionar durante el Go-Live porque las URLs no se habían actualizado después de cambiar la estructura del sitio, ¿de quién era responsabilidad detectar ese problema antes de que ocurriera, y cómo lo resolverían en términos de proceso de equipo?",
+            "buscamos": "Que el grupo pueda nombrar que la crisis fue de coordinación interna —alguien modificó el sitio y nadie avisó al área de campañas— y que la solución no es técnica sino de proceso: comunicación entre roles, validación cruzada antes de cualquier cambio que afecte URLs activas. La checklist que el documento menciona como acción preventiva es un buen ejemplo si la nombran.",
+            "evasiva": "Culpar a la plataforma o decir que 'Google Ads es complicado', sin reconocer que el problema fue interno y que dependía de una coordinación que no sucedió."
+          },
+          {
+            "pregunta": "El documento propone como medida preventiva elaborar una checklist obligatoria antes de cada Go-Live, pero esa checklist no aparece en ninguna parte del trabajo: ¿pueden contarles al tribunal qué incluiría esa checklist tomando como base los dos problemas que les ocurrieron?",
+            "buscamos": "Que el grupo demuestre que pueden trasladar aprendizaje a herramienta concreta: la checklist debería incluir al menos verificar que las URLs de campañas activas coincidan con la estructura vigente del sitio, y confirmar que se realizaron pruebas de carga antes de abrir el tráfico. No importa si lo redactan perfecto; importa que conecten las crisis con ítems concretos.",
+            "evasiva": "Describir una checklist genérica de proyecto (fechas, presupuesto, equipo asignado) sin que ningún ítem responda directamente a lo que falló en su propio lanzamiento."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "44",
+    "proyecto": "SUMMA",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1tw7Zyq_wvU4E1-tlQVCqhfUF6s0_QZZA/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1WjhmYaUk_h7i_J-UXNmhJ0Nfs1-qI4hM/preview",
+    "informe": {
+      "resumen": "El trabajo articula bien la propuesta conceptual pero presenta supuestos financieros sin respaldo y contradicciones entre el alcance declarado y lo efectivamente implementado.",
+      "queEs": "E-commerce de suplementos deportivos premium certificados y libres de dopaje, diferenciado por validación de laboratorio.",
+      "fortalezas": [
+        "Gestión de crisis detallada con KPIs de resolución específicos (CPA, CPM, NPS, tasa de conversión) anclados a situaciones reales.",
+        "Arquitectura de información completa con sitemap, decisiones UX/UI y stack tecnológico (WordPress + WooCommerce + Pantheon + Astra + Elementor) justificado.",
+        "Plan de lanzamiento en tres etapas (pre-launch, soft launch, hard launch) con acciones concretas por fase."
+      ],
+      "interrogar": [
+        "El SAM declara 250.000 consumidores con gasto de $180.000 ARS, pero la meta SOM Año 1 de $45M ARS requeriría 750 clientes, no los 250.000 declarados como 'meta de captación real': inconsistencia aritmética sin explicar.",
+        "La plataforma es descrita como '100% digital y sin costo de mantenimiento' pero luego se asigna el 15% del presupuesto a mantenimiento, licencias y seguridad: contradicción directa.",
+        "Las certificaciones antidopaje son el diferencial central y el mayor costo de cadena de valor, pero no se menciona ningún laboratorio, norma (ej. Informed Sport, NSF) ni costo estimado de certificación."
+      ],
+      "dondeApretar": "Exigir que el grupo justifique la coherencia entre las proyecciones financieras (SAM/SOM/ticket/clientes) y demuestre que las certificaciones antidopaje son operativamente viables y costeadas."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo declaran un SAM de 250.000 consumidores, pero cuando uno hace la cuenta con los datos del propio trabajo, la meta real de captación para el Año 1 resulta ser unas pocas centenas de clientes, no 250.000. ¿Cómo explican esa diferencia y qué significa en términos de con quién están compitiendo realmente?",
+            "buscamos": "Que el grupo reconozca que el SAM y el SOM son magnitudes con propósitos distintos: el SAM define el universo potencial, mientras que el SOM operativo del Año 1 es una fracción pequeña de ese universo. Una buena respuesta distingue ambos conceptos, acepta que la redacción del trabajo generó confusión al presentarlos como equivalentes y ofrece una lectura correcta: captar ~250 clientes fieles en el primer año es una apuesta de nicho, no una campaña masiva.",
+            "evasiva": "Repetir que 'el SAM es el mercado disponible y el SOM es lo que podemos capturar' sin tocar la inconsistencia numérica concreta del trabajo ni reconocer que los 250.000 aparecen usados en los dos contextos a la vez."
+          },
+          {
+            "pregunta": "Eligieron las certificaciones antidopaje como el diferencial central del negocio, pero en ningún momento del trabajo mencionan un laboratorio específico, una norma de referencia ni siquiera un rango de costo estimado. ¿Cómo fundamentan entonces que ese diferencial es viable y sostenible en el tiempo?",
+            "buscamos": "Que el grupo defienda la decisión estratégica reconociendo abiertamente que faltó anclar el diferencial a evidencia concreta: nombre de al menos un sello certificador reconocido internacionalmente, alguna referencia a costos reales o rangos del mercado, y cómo ese costo se traslada o absorbe en la estructura de precios. Una respuesta sólida no esquiva la omisión: la explica y propone cómo subsanarla.",
+            "evasiva": "Justificar el diferencial explicando por qué las certificaciones antidopaje son importantes para los atletas, sin tocar en ningún momento la ausencia de laboratorio, norma ni costo dentro del propio trabajo."
+          },
+          {
+            "pregunta": "El trabajo cita la Ley 25.065 como el marco regulatorio del e-commerce, pero esa ley regula otro tema completamente distinto. ¿Qué consecuencias prácticas podría tener para el negocio operar con una referencia normativa incorrecta, por ejemplo en la política de devoluciones o en los avisos legales del sitio?",
+            "buscamos": "Que el grupo entienda que una cita normativa errónea no es solo un problema formal del trabajo escrito: implica que la política de devoluciones, los términos y condiciones y los avisos al consumidor podrían estar redactados sobre una base legal equivocada, con riesgo de incumplimiento real frente a organismos de defensa del consumidor. Una buena respuesta acepta el error, lo dimensiona en términos de riesgo operativo y menciona que habría que revisar esa sección a la luz de la normativa correcta.",
+            "evasiva": "Admitir que fue un error de tipeo o de cita bibliográfica y quedar ahí, sin conectar la equivocación con ninguna implicancia concreta para el funcionamiento del negocio."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo describen la plataforma como cien por ciento digital y sin costo de mantenimiento, pero después le asignan el quince por ciento del presupuesto justamente a mantenimiento, licencias y seguridad: ¿cómo explican esa diferencia?",
+            "buscamos": "Que el grupo reconozca la contradicción y la resuelva con criterio: por ejemplo, que 'sin costo de mantenimiento' refería al modelo de negocio hacia el cliente o a una etapa inicial, y que el quince por ciento refleja costos operativos reales que debieron haberse aclarado desde el principio. Se valoriza que distingan entre lo que comunicaron al mercado y lo que planificaron internamente, y que asuman que la redacción generó ambigüedad.",
+            "evasiva": "Decir que 'son dos cosas distintas' sin explicar cuáles ni por qué, o repetir que la plataforma es digital como si eso respondiera la pregunta."
+          },
+          {
+            "pregunta": "La URL del sitio funcional que presentaron tiene un error tipográfico en el nombre del dominio: dice 'permormance' en lugar de 'performance'. ¿Qué nos dice ese detalle sobre el proceso de revisión que tuvieron antes de presentar el producto al tribunal?",
+            "buscamos": "Que el grupo lo reconozca sin minimizarlo y lo conecte con la ausencia de un protocolo de QA, el mismo problema que apareció con el cupón de bienvenida mal configurado. Una buena respuesta propone qué checklist o proceso de revisión implementarían para evitar que ese tipo de error llegue a un lanzamiento real.",
+            "evasiva": "Atribuirlo a un error menor de tipeo sin vincularlo al proceso de aseguramiento de calidad del producto digital, o decir que 'igual el sitio funciona'."
+          },
+          {
+            "pregunta": "Se propone como KPI que la tasa de rebote móvil esté por debajo del treinta y cinco por ciento, pero en ningún momento del trabajo se menciona con qué herramienta van a medirla ni cuál es el valor de arranque desde el que parten: ¿cómo piensan gestionar ese indicador en la práctica?",
+            "buscamos": "Que el grupo nombre una herramienta concreta de medición como Google Analytics u otra equivalente, que expliquen que sin una línea de base previa el objetivo del treinta y cinco por ciento es arbitrario, y que propongan cómo establecerían ese punto de partida en las primeras semanas de operación.",
+            "evasiva": "Definir qué es la tasa de rebote o repetir que el objetivo es mejorar la experiencia móvil sin abordar la ausencia de medición ni de línea de base."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo describen la plataforma como completamente digital y sin costo de mantenimiento, pero después le asignan el 15% del presupuesto justamente a mantenimiento, licencias y seguridad: ¿cómo explican esa diferencia?",
+            "buscamos": "Que el grupo reconozca la contradicción sin evasivas y la justifique: por ejemplo, aclarando que 'sin costo de mantenimiento' se refería al modelo de hosting o a que no requiere infraestructura propia, pero que igual existen costos operativos de licencias y seguridad que deberían haberse separado conceptualmente desde el inicio.",
+            "evasiva": "Responder que 'toda plataforma tiene costos' o definir qué es el mantenimiento sin abordar por qué el trabajo afirma las dos cosas aparentemente opuestas al mismo tiempo."
+          },
+          {
+            "pregunta": "Durante la implementación tuvieron una crisis con el cupón de bienvenida que se resolvió con un script PHP generado por inteligencia artificial enganchado al hook de WooCommerce: ¿qué harían diferente antes de volver a lanzar una funcionalidad de ese tipo en producción?",
+            "buscamos": "Que identifiquen la ausencia de un protocolo de QA previo al lanzamiento como el problema de fondo, y que propongan medidas concretas: un entorno de staging, pruebas funcionales antes del deploy, o al menos una revisión manual del comportamiento del cupón en distintos escenarios de compra.",
+            "evasiva": "Defender que la IA es una herramienta válida o describir cómo funciona un hook de WooCommerce sin mencionar ninguna práctica de prueba o validación previa al lanzamiento."
+          },
+          {
+            "pregunta": "Se propone como KPI que la tasa de rebote móvil esté por debajo del 35%, pero en ningún momento del trabajo se menciona con qué herramienta van a medirla ni cuál es el valor de partida: ¿cómo piensan hacer seguimiento real de ese objetivo?",
+            "buscamos": "Que el grupo nombre una herramienta de analítica concreta como Google Analytics o similar, que reconozca que sin una línea de base el objetivo del 35% es arbitrario, y que explique cómo establecerían ese punto de partida una vez que el sitio tenga tráfico real.",
+            "evasiva": "Afirmar que van a 'monitorear el rendimiento' o 'revisar las métricas periódicamente' sin nombrar ninguna herramienta ni explicar cómo se define o se mide la tasa de rebote en la práctica."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo destinaron el 60% del presupuesto de marketing a publicidad paga y el 25% a influencers, pero en ningún momento indican cuánto es ese presupuesto en pesos: ¿cómo tomaron esa decisión sin fijar primero un monto absoluto de referencia?",
+            "buscamos": "Que el grupo reconozca la omisión y explique cómo piensan anclar esos porcentajes a un número concreto, o que justifiquen por qué eligieron trabajar con distribución relativa antes que con presupuesto fijo, mostrando criterio sobre el orden lógico de la planificación financiera.",
+            "evasiva": "Explicar que el 60/25/15 es una distribución estándar del mercado o justificar cada canal por sus ventajas sin mencionar en ningún momento la ausencia del monto base."
+          },
+          {
+            "pregunta": "Definieron que la Crisis 1 queda resuelta cuando el CPA llega a $20.100 ARS y el CPM baja de $2.500 ARS, pero esos valores no aparecen explicados en ninguna sección anterior del trabajo: ¿de dónde salieron esos umbrales y por qué los eligieron a esos valores y no a otros?",
+            "buscamos": "Que el grupo admita que faltó anclar esos umbrales en el documento y que pueda explicar, aunque sea en la defensa, si vienen de un benchmark del sector, de una proyección de margen, o de algún otro criterio concreto que justifique por qué esos números marcan el límite entre fracaso y éxito.",
+            "evasiva": "Decir que son valores razonables para el mercado argentino o que los tomaron como referencia general, sin explicar ningún cálculo ni fuente que los respalde."
+          },
+          {
+            "pregunta": "Se propone como KPI una tasa de rebote móvil por debajo del 35%, pero en el trabajo no se menciona ninguna herramienta para medirla ni una línea de base que indique de dónde parte hoy el sitio: ¿cómo van a saber si mejoraron o empeoraron ese indicador?",
+            "buscamos": "Que el grupo identifique la herramienta concreta con la que van a medir (por ejemplo Google Analytics u otra), explique cómo van a establecer una medición inicial antes de lanzar campañas, y demuestre que entienden que un KPI sin línea de base y sin instrumento de medición no tiene valor operativo real.",
+            "evasiva": "Hablar sobre la importancia de la experiencia móvil o sobre por qué el 35% es un buen objetivo sin explicar con qué herramienta lo van a medir ni de qué número parten hoy."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo describe cómo resolvieron el problema del cupón de bienvenida que mostraba un valor mínimo de compra irrisoriamente bajo: ¿qué proceso de revisión van a incorporar antes del próximo lanzamiento para que ese tipo de error no llegue al usuario final?",
+            "buscamos": "Que reconozcan la ausencia de un protocolo de QA previo al lanzamiento y propongan algo concreto: un checklist de pruebas, un ambiente de staging, pruebas con usuarios reales antes de publicar, o similar. Se valora que entiendan que el problema no fue el error en sí sino que no había ningún filtro que lo atrapara antes.",
+            "evasiva": "Decir que 'lo revisarían más' o que 'fue un error humano que no se va a repetir', sin proponer ningún mecanismo concreto que cambie el proceso."
+          },
+          {
+            "pregunta": "Para resolver el problema técnico del cupón usaron un script generado con inteligencia artificial integrado al sistema de gestión de la tienda: ¿cómo se aseguran de que esa solución sigue funcionando correctamente si mañana actualizan la plataforma o cambian algo en el flujo de pago?",
+            "buscamos": "Que identifiquen el riesgo real: una solución generada por IA sin auditoría ni prueba de regresión es frágil ante actualizaciones. Una buena respuesta menciona la necesidad de documentar el script, hacer pruebas después de cada actualización, o contemplar soporte técnico especializado. No se espera que sepan de código, sí que entiendan la vulnerabilidad de depender de una solución no auditada.",
+            "evasiva": "Explicar cómo funciona la inteligencia artificial o cómo generaron el script, sin abordar qué pasa con la solución en el tiempo o ante cambios en la plataforma."
+          },
+          {
+            "pregunta": "En la primera crisis publicitaria definieron un CPA máximo y un CPM umbral como criterios de éxito, pero esos valores no están justificados en ninguna sección anterior del trabajo: ¿de dónde salieron esos números y por qué decidieron que esos eran los límites aceptables para el negocio?",
+            "buscamos": "Que defiendan el origen de esos valores: si los tomaron de benchmarks del sector, de la estructura de costos del producto, del margen que necesitan para ser rentables, o de alguna referencia externa. Se valora la honestidad si reconocen que faltó anclarlos mejor en el documento y explican cómo los justificarían ahora. Lo importante es que muestren que hubo un razonamiento, no un número elegido al azar.",
+            "evasiva": "Repetir cuáles son los valores sin explicar por qué esos y no otros, o decir que 'son estándares de la industria' sin poder precisar de dónde surge esa referencia."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "45",
+    "proyecto": "Giro Eterno",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1NF1eZ5YGmCrpJt8_TG6tcgSmq14QdGeH/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1hMc6BhIiqN1hTCNiwyQryr1jeLnkXF5e/preview",
+    "informe": {
+      "resumen": "El trabajo muestra consistencia entre diagnóstico, diseño y métricas, con gestión de crisis documentada y fundamentación estratégica articulada, aunque presenta supuestos de mercado débiles.",
+      "queEs": "E-commerce omnicanal de vinilos con modelo 'Curaduría como Servicio', diferenciado por storytelling experto frente a la despersonalización del streaming.",
+      "fortalezas": [
+        "Benchmarking competitivo con datos reales de SimilarWeb (Universal Music Studio 19.735, Animal Record 13.900) justifica el tráfico objetivo de 15.000 visitas.",
+        "Jerarquía explícita de KPIs con LTV:CAC como métrica primaria, coherente con la estrategia de retención declarada en el modelo de negocio.",
+        "Dos crisis documentadas (ERR-447 reputacional y ERR-503 técnica) con causa raíz, impacto cuantificado y protocolo de mitigación concreto."
+      ],
+      "interrogar": [
+        "TAM revisado bajó de 1,5M a 1,2M coleccionistas activos, pero el SAM pasó del 30% al 35% del TAM: la corrección es internamente contradictoria sin justificación.",
+        "Se declara un margen de seguridad del 50% (7,5 vs 5 ventas diarias), pero la sección de riesgos afirma que el margen operativo es 'bajo' con apenas 5 ventas diarias como punto de equilibrio.",
+        "El ROI estimado del 176% y la facturación anual de $297.000.000 se proyectan sin detallar estructura de costos ni inversión inicial, haciendo inverificable el cálculo."
+      ],
+      "dondeApretar": "Presionar sobre la solidez financiera real: pedir que desglosen costos operativos, inversión inicial y cómo sostienen el CAC hasta alcanzar el LTV proyectado en un contexto inflacionario argentino."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo identificaron dos perfiles de cliente muy distintos: el coleccionista adulto de entre 35 y 55 años del AMBA, y la Generación Z como oportunidad estratégica. ¿Cómo piensan llegar a los dos sin diluir la propuesta de valor del negocio?",
+            "buscamos": "Que el grupo reconozca la tensión real entre ambos segmentos —poder adquisitivo, comportamiento digital, plataformas preferidas— y justifique si eligieron priorizar uno, cómo planean secuenciar el abordaje, o qué ajustes haría falta en la comunicación para cada perfil sin contradecir el posicionamiento de curaduría experta.",
+            "evasiva": "Decir que 'ambos públicos consumen música' o que 'el vinilo está de moda entre los jóvenes' sin explicar cómo se resuelve la diferencia concreta en estrategia de contenidos, canales o mensaje."
+          },
+          {
+            "pregunta": "El plan de contenidos detalla publicaciones en Instagram, Facebook y un newsletter, pero en las conclusiones mencionan a TikTok como plataforma de visibilidad masiva. ¿Por qué quedó TikTok fuera del plan operativo y del presupuesto de medios si lo reconocen como una oportunidad?",
+            "buscamos": "Que el grupo defienda la decisión con criterio real: foco en el segmento adulto definido como buyer persona, limitación de recursos para producir contenido en otro formato, o una decisión consciente de dejarlo para una segunda etapa. Lo importante es que no suene a omisión accidental sino a elección justificada.",
+            "evasiva": "Decir que 'TikTok es importante para el futuro' o que 'lo íbamos a agregar' sin explicar por qué no se incluyó en el plan y qué implicaría sumarlo en términos de recursos y coherencia con el perfil de cliente definido."
+          },
+          {
+            "pregunta": "Para estimar el mercado al que pueden llegar, el trabajo recorrió un camino desde el total de coleccionistas activos hasta un porcentaje concreto del SAM. ¿Cómo justifican que ese porcentaje del SAM que fijaron como accesible es realista para el primer año, considerando el punto de equilibrio que el propio trabajo declara como ajustado?",
+            "buscamos": "Que el grupo conecte la estimación del SAM con la proyección operativa concreta: cuántas ventas diarias necesitan, cuál es el margen sobre el punto de equilibrio, y si la porción del SAM que reclamaron como alcanzable es consistente con esos números. Una buena respuesta reconoce que el margen es estrecho y explica qué palanca usarían para sostenerlo.",
+            "evasiva": "Repetir el porcentaje del SAM como si fuera un dato dado sin vincular esa estimación a la operación real del negocio ni al riesgo financiero que el propio documento identifica."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo declaran que su buyer persona principal es un adulto de 35 a 55 años, pero en las conclusiones aparece la Generación Z como oportunidad estratégica. ¿Cómo piensan atender a dos perfiles con comportamientos digitales y poder adquisitivo tan distintos sin que la experiencia del sitio pierda foco?",
+            "buscamos": "Que el grupo reconozca la tensión entre los dos perfiles y defienda una lógica de priorización: por ejemplo, que el núcleo del diseño está orientado al perfil principal y que la Gen Z es una expansión futura, o que proponen capas de experiencia diferenciadas. Lo importante es que justifiquen la convivencia, no que la ignoren.",
+            "evasiva": "Responder que 'los vinilos atraen a todas las edades' o describir genéricamente las características de cada generación sin explicar cómo eso se traduce en decisiones concretas de diseño o comunicación dentro del sitio."
+          },
+          {
+            "pregunta": "El stack tecnológico que eligieron incluye herramientas como Elementor y CartFlows, que tienen licencias pagas, pero en el documento lo califican como una arquitectura de bajo costo. ¿Cómo justifican esa caracterización si esos costos no aparecen detallados en ninguna parte del trabajo?",
+            "buscamos": "Que el grupo admita la omisión o la justifique con valores concretos que puedan dar en el momento, y que expliquen por qué aun con esas licencias consideran la arquitectura accesible en relación a alternativas del mercado. La honestidad sobre la laguna también cuenta como buena respuesta si va acompañada de una reflexión sobre el impacto real en los costos.",
+            "evasiva": "Defender que 'es una arquitectura conocida y ampliamente usada' o enumerar las funcionalidades de las herramientas sin abordar el punto específico del costo omitido y su efecto sobre la viabilidad declarada."
+          },
+          {
+            "pregunta": "La crisis que llaman ERR-503 muestra que una falla de sincronización entre WooCommerce y Elementor dejó el buscador roto con campañas pagas activas. Más allá de cómo la resolvieron, ¿qué cambiarían en el diseño de la arquitectura o en los procesos operativos para que ese tipo de falla no vuelva a impactar directamente en las ventas?",
+            "buscamos": "Que el grupo vaya más allá del caso puntual y propongan una lógica de prevención: por ejemplo, ambientes de staging para testear actualizaciones antes de publicar, monitoreo automatizado, o protocolos para pausar campañas ante errores críticos. Se valora que conecten la decisión técnica con el impacto comercial real que ya documentaron.",
+            "evasiva": "Explicar en detalle cómo diagnosticaron y resolvieron el problema original sin proponer ninguna medida concreta que modifique el diseño o los procesos para evitar que se repita."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo describen el stack tecnológico como una arquitectura accesible y de bajo costo, pero incluyen herramientas como CartFlows y Elementor Pro que tienen licencias pagas anuales: ¿cómo justifican esa caracterización si esos costos no aparecen detallados en ninguna parte del documento?",
+            "buscamos": "Que reconozcan la omisión y expliquen si esos costos fueron absorbidos en otra línea presupuestaria, estimados informalmente o directamente no contemplados; una buena respuesta también argumenta por qué siguen considerando el stack accesible a pesar del gap de información.",
+            "evasiva": "Describir las funcionalidades de Elementor o CartFlows sin reconocer que la omisión de sus costos debilita la afirmación de 'bajo costo' y hace parcialmente inverificable la estructura financiera del proyecto."
+          },
+          {
+            "pregunta": "La crisis ERR-503 que documentan, donde una falla de sincronización entre WooCommerce y Elementor dejó el buscador mostrando 'No products found' con campañas pagas activas, ¿qué cambio concreto incorporaron al plan operativo para que eso no vuelva a ocurrir?",
+            "buscamos": "Que describan una medida preventiva real: protocolo de verificación antes de activar campañas, entorno de staging para testear actualizaciones, monitoreo automatizado de disponibilidad del catálogo, o similar; lo importante es que la respuesta conecte la falla específica con una acción de mitigación específica.",
+            "evasiva": "Explicar qué fue la crisis o cuánto costó sin articular ninguna medida concreta que hayan incorporado al plan para evitar que se repita la misma falla técnica."
+          },
+          {
+            "pregunta": "El documento menciona en las conclusiones que plataformas como TikTok les otorgan visibilidad masiva, pero TikTok no figura en el plan de contenidos ni en el presupuesto de medios: ¿fue una decisión estratégica dejarla afuera del plan o una inconsistencia que no llegaron a resolver?",
+            "buscamos": "Que tomen posición clara: si fue una decisión, que la fundamenten (recursos insuficientes, perfil de audiencia distinto al buyer persona de 35-55 años, etapa de madurez del proyecto); si fue una inconsistencia, que la reconozcan y expliquen cómo la resolverían en una versión revisada del plan.",
+            "evasiva": "Decir que TikTok 'es importante para llegar a la Generación Z' sin explicar por qué entonces no aparece en el plan ni en el presupuesto, esquivando la contradicción que el tribunal está señalando."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo identifica como buyer persona principal a un adulto de 35 a 55 años con ingresos medios-altos, pero en las conclusiones aparece la Generación Z como oportunidad estratégica. ¿Cómo piensan compatibilizar esos dos perfiles en la práctica, considerando que tienen comportamientos digitales y poder adquisitivo muy distintos?",
+            "buscamos": "Que el grupo reconozca la tensión real entre ambos segmentos y proponga una priorización consciente: ya sea defender por qué uno es el foco y el otro es secundario, o explicar cómo el mix de canales y mensajes permitiría atender a ambos sin diluir la propuesta. Una buena respuesta nombra la diferencia concreta (TikTok vs newsletter, ticket promedio vs capacidad de gasto) y toma una posición.",
+            "evasiva": "Decir que 'ambos públicos aman la música' o que 'el vinilo está de moda entre los jóvenes' sin explicar cómo se traduce eso en decisiones distintas de canal, contenido o precio."
+          },
+          {
+            "pregunta": "En el plan de contenidos definieron Instagram, Facebook y un newsletter mensual, pero en las conclusiones mencionan TikTok como plataforma de visibilidad masiva. ¿Por qué TikTok no quedó integrado al plan operativo y al presupuesto de medios?",
+            "buscamos": "Que el grupo defienda la omisión con criterio: por ejemplo, limitaciones de recursos, falta de capacidad para producir video de alta frecuencia, o decisión deliberada de priorizar canales donde ya tienen presencia. También es válido que reconozcan la inconsistencia y expliquen cómo la resolverían en una segunda etapa. Lo importante es que no suene a un olvido sin explicación.",
+            "evasiva": "Responder que TikTok 'está en los planes futuros' sin justificar por qué no se incluyó ahora ni qué implicaría en tiempo y presupuesto sumarlo."
+          },
+          {
+            "pregunta": "El trabajo proyecta un ROI del 176% y una facturación anual cercana a los 297 millones de pesos, pero no detalla la inversión inicial ni la estructura de costos que respaldan ese cálculo. ¿Cómo podrían demostrarle a un inversor real que ese número es confiable?",
+            "buscamos": "Que el grupo identifique qué le falta al cálculo: costos fijos (plataformas, licencias de CartFlows y Elementor Pro, alquiler del local en Galería Las Vegas), costo de adquisición de clientes, costo del stock, y la inversión inicial que sirve de base para calcular el retorno. Una buena respuesta muestra que entienden que el ROI sin esos datos es un número flotante, y ofrece aunque sea un esquema de cómo completarlo.",
+            "evasiva": "Citar el porcentaje o la cifra de facturación como si el número solo se sostuviera a sí mismo, sin mencionar qué costos o inversión entran en el denominador del cálculo."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo describen la crisis ERR-503 como una pérdida importante en una sola jornada, mientras tenían campañas pagas activas. ¿Qué decisión tomaron primero cuando se dieron cuenta de lo que estaba pasando, y por qué esa y no otra?",
+            "buscamos": "Que el grupo muestre razonamiento de prioridades bajo presión: si pausaron las campañas antes de resolver el técnico, o al revés, y que puedan justificar el orden. Una buena respuesta conecta el costo de cada minuto de campaña activa con tráfico que no convierte contra el tiempo de diagnóstico del bug MySQL-WooCommerce.",
+            "evasiva": "Explicar qué es el error ERR-503 o describir el stack tecnológico sin decir qué hicieron primero ni por qué ese orden importaba económicamente."
+          },
+          {
+            "pregunta": "El documento identifica como riesgo que el margen operativo es ajustado, con apenas cinco ventas diarias como punto de equilibrio. Si en el primer mes real ustedes llegaran solo a esas cinco ventas y no más, ¿qué acción concreta tomarían y qué sacrificarían para no caer por debajo?",
+            "buscamos": "Que el grupo entienda que operar exactamente en el punto de equilibrio no deja margen para absorber ningún imprevisto, y que puedan nombrar una palanca real del negocio propio (bajar inversión en medios, ajustar mix de canales, renegociar un costo) en lugar de dar una respuesta genérica de 'reducir costos'.",
+            "evasiva": "Decir que 'habría que analizar la situación' o repetir que el objetivo conservador es 7,5 ventas diarias sin explicar qué harían concretamente para no operar en rojo."
+          },
+          {
+            "pregunta": "En las conclusiones mencionan TikTok como plataforma de visibilidad masiva, pero no aparece en el plan de contenidos ni en el presupuesto. Si el tribunal les preguntara si ese canal forma parte de su estrategia o no, ¿cómo defenderían esa decisión?",
+            "buscamos": "Que el grupo reconozca la inconsistencia entre lo que se declara en conclusiones y lo que se planificó operativamente, y que puedan tomar posición: o justifican por qué lo dejaron fuera del plan concreto (recursos, perfil del buyer persona de 35-55 años) o reconocen que debería haberse incluido y explican qué implicaría sumarlo.",
+            "evasiva": "Describir qué es TikTok o hablar del potencial de la plataforma en general sin asumir la contradicción interna del documento ni tomar una postura clara sobre si está o no dentro del plan."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "46",
+    "proyecto": "URBIX",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1_AYrnTpccWsE3URnS6h4JrUXJgc1lGB9/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1Xpqlr9c-e7IE_yw1MrVcyIP_ybRJx5wU/preview",
+    "informe": {
+      "resumen": "Alta consistencia interna entre buyer persona, decisiones UX y financiero, con gestión de crisis documentada y ajustes permanentes verificables al modelo.",
+      "queEs": "E-commerce B2C de monopatines eléctricos en AMBA que compite por UX: comparador de modelos, quiz y checkout de 4 clicks sin registro.",
+      "fortalezas": [
+        "Benchmark de 5 competidores con datos concretos (ej.: rebote 83% Rango Bikes) fundamenta cada decisión de diseño.",
+        "Dos crisis simuladas (ERR-651 y ERR-508) generaron cambios permanentes documentados y verificables al modelo.",
+        "Financiero internamente consistente: TIR 97%, punto de equilibrio 166 unidades, Año 1 deficitario por decisión consciente declarada."
+      ],
+      "interrogar": [
+        "El TAM de 124.145 unidades surge de aplicar 60%×20%×5% a la población: esos porcentajes no tienen fuente citada, son supuestos sin evidencia.",
+        "La infraestructura usa Hostinger Plan Business pero el sitio funcional está publicado en Pantheon/WordPress: brecha entre lo declarado y lo implementado.",
+        "Los costos fijos mensuales suman $9.875.512 pero el costo de infraestructura declarado es $62.332: la diferencia implica ~$9,8M en otros ítems fijos no detallados en el cuerpo del TFI."
+      ],
+      "dondeApretar": "Exigir que justifiquen los supuestos de segmentación del TAM/SAM y que expliquen la discrepancia entre la plataforma de hosting declarada y el entorno real de publicación."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El tamaño de mercado que calcularon parte de aplicar tres porcentajes sobre la población del AMBA: ¿de dónde vienen esos porcentajes y cómo los defenderían si el tribunal los cuestiona?",
+            "buscamos": "Que reconozcan que los porcentajes son supuestos propios sin fuente citada, expliquen el criterio con el que los eligieron (experiencia del sector, analogías, lógica de segmentación), y demuestren conciencia del riesgo que implica basar el TAM en asunciones no respaldadas empíricamente.",
+            "evasiva": "Describir el proceso de cálculo (el 60%, luego el 20%, luego el 5%) sin mencionar en ningún momento de dónde provienen esos porcentajes ni admitir que no tienen fuente."
+          },
+          {
+            "pregunta": "El checkout de cuatro clicks sin registro obligatorio es el diferencial central del proyecto, pero ustedes mismos detectaron que ningún competidor del benchmark lo ofrece: ¿cómo saben que ese diferencial importa para el cliente real si no lo validaron con usuarios?",
+            "buscamos": "Que distingan entre validación de oferta (benchmark competitivo) y validación de demanda (testing con usuarios reales), reconozcan el gap, y propongan qué habrían necesitado hacer para cerrar esa brecha, como un test de usabilidad, encuestas o un prototipo con usuarios.",
+            "evasiva": "Insistir en que la ventaja es real porque ningún competidor la tiene, sin abordar en ningún momento la ausencia de validación con personas del segmento objetivo."
+          },
+          {
+            "pregunta": "En el primer año proyectan vender por debajo del punto de equilibrio: ¿por qué decidieron asumir ese resultado operativo negativo y qué condición tendría que cumplirse para que el proyecto siga siendo viable pese a eso?",
+            "buscamos": "Que expliquen la lógica de inversión del primer año como etapa de posicionamiento o tracción, demuestren que entienden que el modelo sigue siendo viable si el Año 2 revierte el resultado, y articulen qué variable es crítica para ese giro, por ejemplo volumen de ventas, reducción de costos fijos o crecimiento del SOM.",
+            "evasiva": "Repetir que el TIR y el VAN son positivos al final del período sin explicar qué sostiene el proyecto durante el año en que opera con flujo negativo."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El checkout de 4 clicks sin registro es el diferencial central del proyecto, pero en ningún momento validaron esa ventaja con usuarios reales. ¿Cómo defienden que eso es efectivamente una ventaja competitiva y no solo una hipótesis?",
+            "buscamos": "Que reconozcan la brecha entre benchmark de oferta y validación de demanda, y que puedan argumentar por qué igual decidieron avanzar: por ejemplo, que el benchmark es un primer indicador válido para una etapa pre-lanzamiento, pero que un paso siguiente necesario hubiera sido un test de usabilidad o un A/B con usuarios reales. Se valora que distingan entre 'ningún competidor lo ofrece' y 'los usuarios lo valoran'.",
+            "evasiva": "Decir que 'ningún competidor lo tiene entonces es una ventaja' sin reconocer que eso solo habla del lado de la oferta, o describir cómo funciona el checkout sin tocar el problema de validación."
+          },
+          {
+            "pregunta": "El KPI de sentimiento de marca con ratio 3:1 lo incorporaron después de que explotó la primera crisis reputacional, no estaba en el plan original. ¿Qué dice eso sobre cómo diseñaron el modelo de embajadores desde el principio?",
+            "buscamos": "Que puedan identificar que lanzar un programa de embajadores sin protocolo de riesgo reputacional fue una omisión de diseño, no un error de ejecución puntual. Una buena respuesta asume la responsabilidad del faltante en el plan original y explica qué debería haber estado desde el día uno: métricas de monitoreo, criterios de selección de embajadores, plan de contingencia ante comentarios negativos.",
+            "evasiva": "Contar qué pasó en la crisis y cómo la resolvieron sin cuestionar por qué el protocolo no existía antes, o presentar la incorporación del KPI como una buena práctica de 'mejora continua' sin reconocer que era algo que debía estar desde el diseño."
+          },
+          {
+            "pregunta": "Durante el go-live tuvieron un rechazo de Google Merchant por falta del atributo de envío, y Google Shopping era el 60% del plan de medios. ¿Cómo puede pasar eso si el canal pago era el eje del plan de adquisición?",
+            "buscamos": "Que identifiquen que el checklist de go-live trató los canales de adquisición paga como dependientes del lanzamiento del sitio, cuando en realidad cada canal tiene sus propios requisitos técnicos independientes. Una respuesta sólida reconoce que validar el feed de Google Merchant tendría que haber sido una condición de go-live por derecho propio, no un paso posterior.",
+            "evasiva": "Explicar cómo se resolvió el error técnico o qué es un feed de Merchant sin conectar el incidente con el error de diseño del checklist, o minimizarlo diciendo que 'son cosas que pasan en un lanzamiento real'."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio funcional quedó publicado en Pantheon/WordPress, pero el plan de infraestructura especifica Hostinger. ¿Por qué existe esa diferencia y cómo la justifican?",
+            "buscamos": "Que el grupo reconozca la brecha entre lo declarado y lo implementado, explique si fue una decisión técnica deliberada (por ejemplo, necesidades de desarrollo o staging) o un desfasaje que quedó sin actualizar en el documento, y muestre que entienden las implicancias operativas de tener el entorno de producción en una plataforma distinta a la del plan.",
+            "evasiva": "Decir que 'Pantheon y Hostinger son similares' o que 'fue solo para el desarrollo' sin explicar si el plan fue actualizado, si hay costos diferentes, o si el sitio en producción real migrará o no a Hostinger."
+          },
+          {
+            "pregunta": "Durante el go-live tuvieron la crisis ERR-508: Google Merchant rechazó el feed y eso afectó el canal que representa el 60% del plan de medios. ¿Qué cambiarían en el checklist de lanzamiento para que eso no se repita?",
+            "buscamos": "Que el grupo muestre aprendizaje operativo concreto: identificar que los canales de adquisición paga deben validarse como condición independiente antes del go-live, no solo el sitio en sí, y proponer una verificación específica del feed y los atributos requeridos por cada plataforma publicitaria como parte del checklist.",
+            "evasiva": "Limitarse a decir que 'lo resolverían más rápido' o que 'harían más pruebas' sin especificar qué ítem concreto faltaba en el checklist ni por qué ese canal en particular quedó fuera del proceso de validación."
+          },
+          {
+            "pregunta": "El servicio técnico tercerizado está proyectado para el Año 2, pero ese costo no está reflejado en las proyecciones financieras que presentaron. ¿Cómo defienden la solidez del modelo financiero ante esa omisión?",
+            "buscamos": "Que el grupo reconozca la omisión sin esquivarla, explique si fue una decisión deliberada de simplificación o un dato que quedó fuera, y argumente cómo impactaría ese costo en los resultados del Año 2, especialmente considerando que el modelo ya muestra un flujo operativo negativo en el Año 1.",
+            "evasiva": "Decir que 'es un costo menor' o que 'se verá en el momento' sin reconocer que su ausencia afecta la credibilidad de las proyecciones y sin intentar estimar cómo modificaría el resultado del Año 2."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El plan proyecta vender menos unidades en el primer año de las que necesitan para cubrir costos, y el flujo operativo termina negativo: ¿por qué decidieron arrancar así y qué los hace confiar en que el proyecto igual es viable?",
+            "buscamos": "Que reconozcan conscientemente la brecha entre el SOM Año 1 y el punto de equilibrio, que expliquen la lógica de tracción progresiva o posicionamiento inicial, y que anclen la viabilidad en la recuperación proyectada para el Año 2 y los indicadores a 3 años, sin ignorar el riesgo del primer año negativo.",
+            "evasiva": "Hablar genéricamente de que 'todo proyecto tarda en arrancar' o mencionar el TIR y el VAN sin explicar qué pasa puntualmente en el Año 1 ni por qué aceptaron ese resultado como parte de la estrategia."
+          },
+          {
+            "pregunta": "El diferencial más fuerte que declaran es el checkout de 4 clicks sin registro obligatorio, y verificaron que ningún competidor lo ofrece, pero no lo probaron con usuarios reales: ¿cómo justifican presentarlo como ventaja competitiva validada?",
+            "buscamos": "Que distingan entre validación de oferta y validación de demanda, que reconozcan la limitación de haber hecho solo benchmark competitivo, y que propongan cómo deberían haber cerrado esa brecha, por ejemplo con pruebas de usabilidad o datos de conversión.",
+            "evasiva": "Decir que 'ningún competidor lo tiene, entonces es una ventaja' sin reconocer que la ausencia en la oferta no prueba que los usuarios la valoren ni que mejore la conversión real."
+          },
+          {
+            "pregunta": "El KPI de sentimiento de marca con ratio 3 a 1 lo incorporaron después de que ocurrió la crisis reputacional con los embajadores, no estaba en el plan original: ¿qué dice eso sobre cómo gestionaron el riesgo en el modelo de embajadores desde el inicio?",
+            "buscamos": "Que reconozcan que lanzaron el canal de embajadores sin un protocolo de riesgo reputacional definido, que expliquen qué señal de alerta ignoraron o no anticiparon, y que reflexionen sobre qué debería haber estado en el plan desde antes del go-live.",
+            "evasiva": "Presentar la incorporación del KPI como una muestra de adaptabilidad positiva sin reconocer que su ausencia inicial fue una omisión en la gestión de riesgos del canal."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Durante el go-live tuvieron un problema con Google Merchant que les rechazó el feed y dejó fuera de juego el canal que concentraba más de la mitad de su plan de medios: ¿qué aprendizaje concreto se llevan de eso para gestionar un lanzamiento la próxima vez?",
+            "buscamos": "Que reconozcan que el checklist de go-live no contemplaba los canales de adquisición paga como condición independiente, que identifiquen el atributo de envío como el punto de falla específico, y que propongan una mejora concreta al proceso: por ejemplo, validar cada canal paga como ítem propio antes de encender campañas.",
+            "evasiva": "Decir que 'los errores técnicos siempre pasan' o que 'lo resolvieron rápido' sin explicar qué faltó en la planificación previa ni cómo cambiarían el proceso."
+          },
+          {
+            "pregunta": "El KPI de sentimiento de marca con un ratio mínimo de tres a uno positivo fue incorporado al plan después de que surgió la primera crisis reputacional, no antes: ¿por qué creen que ese indicador no estaba desde el principio y qué dice eso sobre cómo planificaron el modelo de embajadores?",
+            "buscamos": "Que admitan que el modelo de embajadores se lanzó sin un protocolo de riesgo reputacional definido, que expliquen qué los llevó a esa omisión (foco en métricas de conversión, subestimación del riesgo de imagen), y que muestren comprensión de que un canal basado en personas requiere gestión de riesgo desde el día uno.",
+            "evasiva": "Justificar el KPI reactivo como 'metodología ágil' o 'aprendizaje iterativo' sin reconocer que era un riesgo identificable desde el diseño del canal."
+          },
+          {
+            "pregunta": "El servicio técnico posventa está tercerizado y proyectado para el Año 2, pero ese costo no aparece reflejado en el modelo financiero que presentaron: si un inversor les pregunta hoy cuánto les va a costar operar en el Año 2, ¿cómo defienden la solidez de esas proyecciones?",
+            "buscamos": "Que reconozcan la omisión como una limitación real del modelo financiero, que dimensionen el impacto potencial en términos cualitativos (es un costo recurrente mensual no menor), y que propongan cómo lo incorporarían en una versión revisada, por ejemplo como escenario conservador con el rango de costo estimado ya identificado en el trabajo.",
+            "evasiva": "Minimizar la omisión diciendo que 'es solo una estimación' o que 'el Año 2 todavía está lejos', sin reconocer que afecta la credibilidad del flujo de fondos proyectado ante un evaluador externo."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "47",
+    "proyecto": "Omiyage",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1xa_IYT3SrnNAjQi5HoU1AjcuPeDpHN_O/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1FMGf8Ee-lceQtzgo6YtXO40L5-ZHxXZT/preview",
+    "informe": {
+      "resumen": "El trabajo muestra coherencia entre diagnóstico, diseño e implementación, con gestión documentada de dos crisis reales y autocrítica explícita sobre la deuda financiera (ausencia de VAN y TIR).",
+      "queEs": "E-commerce B2C de productos japoneses auténticos diferenciado por curaduría experta, Quiz de Perfil y experiencia de compra guiada con stock local.",
+      "fortalezas": [
+        "Quiz de Perfil como solución UX directa al problema de parálisis por análisis del buyer persona Lucas Tanaka.",
+        "Gestión de dos crisis documentada con 5 Whys, tres capas de respuesta y protocolos preventivos resultantes.",
+        "Coherencia metodológica: cada decisión de diseño (mobile-first, one-page checkout, storytelling cultural) se ancla en un buyer persona específico."
+      ],
+      "interrogar": [
+        "El SOM año 1 proyecta $75.000.000 pero no hay estructura de costos ni VAN/TIR; la viabilidad económica está argumentada pero no calculada, según admite el propio documento.",
+        "La Crisis 1 (Black Friday) describe 3.000 pedidos colapsados y pérdida de $1.440.000, pero el sitio se presenta como MVP en etapa de lanzamiento: ¿cómo ocurrió ese volumen si aún estaban en fases iniciales?",
+        "El TAM asume 10% de interés en cultura japonesa sobre 12.000.000 personas urbanas sin citar fuente propia; se atribuye a CACE 2025 y Think with Google sin datos específicos de ese segmento."
+      ],
+      "dondeApretar": "Presionar sobre la solidez financiera ausente (VAN, TIR, punto de equilibrio real) y la plausibilidad operativa de la Crisis 1 dado el estadio MVP declarado del proyecto."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo calcula el TAM usando un 10% de personas interesadas en cultura japonesa sobre 12 millones de personas urbanas, pero no cita una fuente propia que valide ese porcentaje: ¿cómo defenderían ese número frente a alguien que les diga que lo eligieron porque les convenía?",
+            "buscamos": "Que el grupo reconozca la limitación sin esquivarla, explique de dónde salió la estimación (CACE 2025 y Think with Google como referencias generales) y proponga cómo podrían haberlo validado mejor, por ejemplo con una encuesta propia o datos segmentados del rubro.",
+            "evasiva": "Repetir que el dato viene de CACE y Think with Google como si eso cerrara la discusión, sin reconocer que ninguna de esas fuentes habla específicamente del segmento de cultura japonesa."
+          },
+          {
+            "pregunta": "El SOM del primer año proyecta una cifra importante, pero el propio trabajo admite que la viabilidad económica está argumentada y no calculada con precisión: ¿qué decisión tomarían hoy si tuvieran que convencer a un inversor real con lo que tienen?",
+            "buscamos": "Que el grupo asuma la brecha con honestidad, explique qué faltó (estructura de costos completa, VAN, TIR) y demuestre que entiende por qué eso es un problema real para la toma de decisiones, no solo una observación formal del tribunal.",
+            "evasiva": "Justificar la proyección hablando del potencial del mercado o del diferencial del producto sin tocar en ningún momento la ausencia de los cálculos financieros que respaldarían esa cifra."
+          },
+          {
+            "pregunta": "El Quiz de Perfil es uno de los diferenciales centrales del negocio, pero el trabajo solo describe una de las tres preguntas y no explica cómo las respuestas se traducen en recomendaciones concretas del catálogo: ¿cómo funciona realmente ese mecanismo y por qué eligieron ese diseño?",
+            "buscamos": "Que el grupo pueda describir la lógica de mapeo entre respuestas y productos aunque sea a nivel conceptual, y que justifique por qué tres preguntas son suficientes para generar una recomendación útil, conectando eso con la propuesta de experiencia de compra guiada.",
+            "evasiva": "Describir el Quiz como herramienta de personalización y hablar de sus beneficios para el usuario sin explicar en ningún momento cómo el algoritmo o la lógica interna conecta las respuestas con productos específicos del catálogo."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El Quiz de Perfil es uno de los diferenciales centrales de su propuesta, pero en el wireframe solo aparece la primera pregunta visible. ¿Cómo funciona el algoritmo que traduce las respuestas del usuario en una recomendación de productos concretos del catálogo?",
+            "buscamos": "Que el grupo explique la lógica de mapeo entre respuestas y productos, aunque sea a nivel conceptual: qué variables toma en cuenta, si asigna puntajes, categorías o etiquetas, y cómo eso se conecta con el catálogo real. No necesitan el código, pero sí demostrar que el quiz tiene un criterio de recomendación pensado y no es decorativo.",
+            "evasiva": "Describir qué es el quiz, mencionar que mejora la experiencia del usuario o decir que 'las respuestas guían al cliente hacia los productos adecuados' sin explicar ningún mecanismo concreto de cómo se produce esa guía."
+          },
+          {
+            "pregunta": "Ustedes posicionan la experiencia de compra guiada como el corazón del diferencial frente a otros e-commerce. Durante la Crisis del Black Friday, con más de 3.000 pedidos sin despachar y demoras masivas, ¿de qué manera esa experiencia guiada que prometieron afectó la confianza del cliente, y qué decisión de diseño o comunicación tomaron para sostenerla?",
+            "buscamos": "Que conecten el diferencial experiencial con el impacto real en la relación con el cliente durante la crisis: si el canal de comunicación fue coherente con la propuesta de marca, si diseñaron una respuesta proactiva o reactiva, y si revisaron algún aspecto del journey post-compra a raíz de ese evento. Se valora que reconozcan la tensión entre promesa de marca y realidad operativa.",
+            "evasiva": "Hablar de la crisis en términos logísticos o de costos sin mencionar al cliente ni la experiencia prometida, o decir que 'se comunicó por redes' sin reflexionar sobre si esa comunicación fue coherente con el posicionamiento de marca diferenciado que proponen."
+          },
+          {
+            "pregunta": "El sistema de alertas logísticas que implementaron post-crisis pausa campañas cuando el depósito llega al 95% de capacidad, lo cual tiene sentido operativo. Pero desde el diseño de experiencia, ¿qué ve el usuario cuando eso ocurre, y cómo se aseguraron de que ese límite técnico no rompa la experiencia de compra guiada que prometieron?",
+            "buscamos": "Que piensen el sistema de alertas no solo como una solución interna sino como un punto de contacto con el usuario: si hay mensajes de stock limitado, productos en lista de espera, comunicación proactiva o algún otro recurso de UX que preserve la experiencia incluso cuando el sistema restringe la venta. Se valora que articulen la capa técnica con la capa de experiencia.",
+            "evasiva": "Explicar solo el funcionamiento técnico del sistema de alertas o decir que 'se evitan quiebres de stock' sin considerar en ningún momento qué sucede desde el punto de vista del usuario que llega al sitio y encuentra restricciones."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En la Crisis 2, el Meta Pixel estaba instalado correctamente a nivel técnico pero no registraba las compras: ¿qué falla de proceso identificaron como causa raíz y qué cambiarían en el flujo de trabajo para que eso no vuelva a pasar?",
+            "buscamos": "Que el grupo distinga entre un error técnico y un error de proceso, y que mencione concretamente la falta de verificación end-to-end del flujo de compra o el no haber usado los entornos de staging de Pantheon antes del Go-Live.",
+            "evasiva": "Decir que 'el Pixel estaba mal configurado' o hablar genéricamente de 'hacer más pruebas' sin mencionar el flujo de compra completo ni los entornos Dev/Test/Live."
+          },
+          {
+            "pregunta": "El sistema de alertas logísticas que implementaron post-Crisis 1 pausa campañas cuando el depósito llega al 95% de capacidad: ¿cómo funciona técnicamente esa integración entre el stock y la plataforma publicitaria?",
+            "buscamos": "Que el grupo reconozca honestamente que el documento no especifica el sistema técnico que ejecuta esa integración, y que pueda proponer o defender una solución concreta, como una API, una regla automatizada en Meta Ads o un script de conexión con el WMS.",
+            "evasiva": "Describir la lógica de negocio de la alerta (pausar al 95%, limitar al 80%) sin poder explicar en absoluto el mecanismo técnico que la ejecuta, como si la automatización ocurriera sola."
+          },
+          {
+            "pregunta": "El plan de lanzamiento tiene la pauta paga arrancando en la semana 7, pero la Crisis 2 del Meta Pixel ocurrió justo en el Go-Live de mayo: ¿cómo explican que las campañas se activaran antes de que la integración estuviera validada?",
+            "buscamos": "Que el grupo note la inconsistencia entre el cronograma declarado y lo que realmente ocurrió, y que pueda reflexionar sobre qué control de validación previo al lanzamiento de campañas faltó, más allá de justificar el desfase como una urgencia comercial.",
+            "evasiva": "Decir que 'hubo un adelantamiento por presión del mercado' sin reconocer que lanzar pauta sin validar el tracking de conversiones invalida cualquier medición de resultados de esas campañas."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo proyecta capturar el 1% del SAM en el primer año, pero ustedes mismos reconocen que la viabilidad económica está argumentada y no calculada con precisión: ¿cómo defienden esa proyección de ventas si no tienen un VAN ni una TIR que la respalde?",
+            "buscamos": "Que el grupo reconozca la brecha honestamente, explique qué sí tienen (lógica de mercado, TAM/SAM/SOM, KPIs de conversión) y argumente por qué eso alcanza o no para validar la decisión en esta etapa del proyecto, sin pretender que el número está justificado cuando el propio documento dice que no lo está.",
+            "evasiva": "Repetir la cifra del SOM o explicar cómo se calculó el TAM sin tocar la ausencia de VAN/TIR ni la brecha que ellos mismos declaran."
+          },
+          {
+            "pregunta": "En la Crisis 1 del Black Friday, el costo de envío casi se duplicó o triplicó respecto a lo proyectado porque tuvieron que salir a buscar un operador 3PL de emergencia: ¿por qué la planificación original no contempló un escenario de demanda que superara las proyecciones, y qué cambiarían hoy en la estrategia de pauta o de stock para que eso no vuelva a pasar?",
+            "buscamos": "Que conecten la decisión de inversión en pauta paga con la capacidad logística real, reconozcan que la proyección de conversión y volumen no tenía un techo operativo definido, y expliquen con lógica propia el sistema de alertas post-crisis como respuesta a esa falla.",
+            "evasiva": "Describir lo que pasó en la crisis sin defender por qué no estaba previsto, o hablar del sistema de alertas sin explicar qué falla de planificación lo hizo necesario."
+          },
+          {
+            "pregunta": "Fijaron un KPI de tasa de conversión de 1,5% como objetivo del primer trimestre, pero durante la Crisis 1 esa tasa cayó a menos de la mitad de lo proyectado originalmente: ¿qué relación ven entre ese KPI y las decisiones de pauta paga que tomaron, y cómo sabrían en el día a día que están en riesgo de no alcanzarlo antes de que sea tarde?",
+            "buscamos": "Que el grupo vincule el KPI de conversión con la inversión real en Meta y Google Ads, entienda que un colapso logístico o un píxel roto impactan directamente en esa métrica, y proponga algún mecanismo concreto de monitoreo o alerta temprana más allá de esperar el cierre del mes.",
+            "evasiva": "Definir qué es una tasa de conversión o repetir el número objetivo sin explicar cómo lo monitorearían ni qué decisiones tomarían si el indicador empieza a caer."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En la Crisis del Black Friday, la demanda superó ampliamente lo que el sitio podía manejar y terminaron recurriendo a un operador logístico de emergencia con costos mucho más altos que los proyectados. ¿Qué decisión tomaron en ese momento y por qué eligieron ese camino en lugar de frenar los pedidos?",
+            "buscamos": "Que el grupo defienda la lógica de la decisión bajo presión: por qué priorizaron cumplir los pedidos aunque fuera más caro, o qué trade-off evaluaron entre reputación, costo y experiencia del cliente. Una buena respuesta reconoce que fue una crisis operativa real, nombra el impacto en el margen y explica qué criterio usaron para actuar.",
+            "evasiva": "Describir qué pasó en la crisis sin explicar por qué tomaron esa decisión puntual, o hablar en genérico de 'gestionar el problema' sin asumir la lógica de negocio detrás de la elección."
+          },
+          {
+            "pregunta": "El sistema de alertas logísticas que implementaron después de esa crisis pausa las campañas cuando el depósito llega al 95% de capacidad, pero el trabajo no explica qué sistema técnico hace esa integración entre el stock y la plataforma publicitaria. ¿Cómo funciona eso concretamente, o qué tendrían que resolver para que funcione?",
+            "buscamos": "Que el grupo demuestre que entiende que esa integración no es automática y requiere una solución técnica concreta, ya sea una API, una regla manual, un webhook o cualquier mecanismo que conecte ambos sistemas. No se espera que lo hayan resuelto, pero sí que puedan identificar el problema real y proponer un camino.",
+            "evasiva": "Explicar la lógica del umbral del 95% como si fuera suficiente con haberlo definido, sin reconocer que la ejecución técnica de esa integración es la parte que quedó sin resolver en el documento."
+          },
+          {
+            "pregunta": "En la Crisis del Meta Pixel, identificaron que la causa raíz no fue técnica sino de proceso: las campañas se activaron sin haber validado el flujo de compra completo. ¿Qué cambiarían en la forma de trabajar del equipo para que ese tipo de error no vuelva a ocurrir antes de un próximo lanzamiento?",
+            "buscamos": "Que el grupo reflexione sobre el proceso interno y no solo sobre la solución técnica: qué checkpoints, roles o validaciones agregarían antes de activar campañas, y por qué ese error de proceso pudo pasar en primer lugar. Una buena respuesta muestra aprendizaje genuino sobre cómo trabaja el equipo.",
+            "evasiva": "Decir que 'la próxima vez van a probar mejor' o mencionar los entornos de staging sin explicar qué cambio concreto en el proceso del equipo hubiera evitado que las campañas se activaran antes de la validación."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "48",
+    "proyecto": "CAIRO",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1m5NQHilKtS5l4B79vZd89zdIW1vcChy8/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1wf9PRcnU_dof1rM-j6LCtD02VAj9uv5D/preview",
+    "informe": {
+      "resumen": "El trabajo integra con coherencia estrategia, diseño, implementación y gestión de crisis, con fundamentación explícita de cada decisión técnica y de negocio.",
+      "queEs": "Suscripción mensual de productos de limpieza sustentables con sistema refill y reposición automática, diferencial: único modelo estructurado del sector en Argentina.",
+      "fortalezas": [
+        "Cada decisión técnica (WordPress, Blocksy, WooCommerce Subscriptions) está fundamentada en necesidades del modelo de negocio, no en preferencias.",
+        "Las dos crisis simuladas generaron protocolos concretos incorporados al modelo: checklist pre-launch y churn rate como KPI central.",
+        "La tabla de KPIs distingue indicadores adelantados de resultado y asocia cada uno a una decisión de respuesta concreta."
+      ],
+      "interrogar": [
+        "El margen bruto declarado es 99,83% pero existen costos de kits detallados ($11.740 refill, $12.500 esencial, $6.140 starter): ¿cómo se reconcilia ese margen con esos costos de producto?",
+        "El sitio funcional opera en Pantheon (desarrollo) pero se declara Hostinger como entorno de producción: ¿hay evidencia de migración o prueba real en producción?",
+        "El SOM proyecta $72.856.350 anuales con 253 clientes mensuales y ticket promedio $24.045, pero el churn rate es 16,67% (permanencia 6 meses): ¿los ingresos proyectados descuentan la pérdida mensual de suscriptores?"
+      ],
+      "dondeApretar": "Presionar la consistencia financiera entre el margen bruto declarado del 99,83%, los costos de kit detallados y el impacto del churn de 16,67% sobre los ingresos anuales proyectados."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo proyecta ingresos anuales bastante concretos con una base de 253 clientes mensuales, pero al mismo tiempo reconoce que los suscriptores se van a un ritmo importante —ustedes mismos lo calcularon: en promedio duran 6 meses. ¿Cómo explican que esos ingresos proyectados sean sostenibles si cada mes están perdiendo parte de la base que los genera?",
+            "buscamos": "Que el grupo reconozca la tensión entre el churn del 16,67% y la proyección de ingresos estáticos, y que explique si el modelo incorpora reposición activa de clientes perdidos (adquisición continua), si el CAC lo permite, y por qué aun así el SOM proyectado sigue siendo válido o qué supuesto sostiene esa cifra.",
+            "evasiva": "Explicar qué es el churn o el LTV en abstracto, o decir 'el mercado es muy grande' sin conectar el flujo de altas necesarias para compensar las bajas con los números propios del trabajo."
+          },
+          {
+            "pregunta": "Declararon un TAM enorme para el mercado nacional de productos de limpieza y de ahí derivaron su porción objetivo. ¿Por qué ese TAM es el punto de partida correcto para un modelo de suscripción con refill en Argentina, siendo que no es un producto de limpieza cualquiera sino un formato de comercialización completamente diferente al canal tradicional?",
+            "buscamos": "Que el grupo defienda la lógica de segmentación descendente (TAM → SAM → SOM) explicando qué filtros aplicaron para llegar al segmento real: consumidores con intención de compra online, afinidad con sustentabilidad, y disposición a un modelo de suscripción, y que reconozcan que el TAM total incluye formatos que no compiten directamente con ellos.",
+            "evasiva": "Citar el número del TAM como validación ('es un mercado de billones, entonces hay espacio') sin explicar por qué ese universo es el correcto ni cómo lo achicaron para llegar al segmento que realmente pueden capturar."
+          },
+          {
+            "pregunta": "Ustedes afirman que el diferencial del negocio es ser el único modelo de suscripción con refill estructurado del sector en Argentina. ¿Qué riesgo estratégico implica basar la ventaja competitiva en algo que depende de ser primero, y qué hicieron en el plan para anticiparlo?",
+            "buscamos": "Que el grupo razone sobre las barreras de entrada reales: si la ventaja es solo la novedad, cualquier competidor puede replicarla; una buena respuesta menciona qué elementos del modelo generan fidelización más allá de la primacía (el sistema de reposición automática, la comunidad, el LTV alto, el checkout simplificado) y cómo eso los protege una vez que el mercado se pueble.",
+            "evasiva": "Afirmar que 'somos los únicos' como si eso fuera suficiente argumento estratégico, sin reflexionar sobre qué pasa cuando aparece un segundo jugador o una marca ya establecida que adopta el mismo formato."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el checkout eligieron un diseño de tres pasos con opción de compra como invitado: ¿por qué tomaron esa decisión y qué problema concreto de su negocio buscaban resolver con ella?",
+            "buscamos": "Que conecten el diseño del checkout con la fricción de conversión en un modelo de suscripción nuevo donde el usuario desconoce la marca: reducir la barrera de registro para no perder al cliente en el momento de mayor intención de compra. Idealmente mencionan que el guest checkout baja la tasa de abandono y que tres pasos es un equilibrio entre claridad y brevedad.",
+            "evasiva": "Decir que 'es una buena práctica de UX' o que 'así lo recomiendan los estándares' sin anclar la decisión a que venden un producto de suscripción nuevo en un mercado donde la confianza todavía hay que ganársela."
+          },
+          {
+            "pregunta": "Descubrieron que GA4 mostraba cero conversiones mientras los pedidos entraban bien a WooCommerce: ¿qué aprendizaje de proceso se llevan de eso y cómo lo trasladarían a un lanzamiento real?",
+            "buscamos": "Que identifiquen la causa raíz —faltaba el trigger en la Thank You Page— y que reflexionen sobre la necesidad de verificar el sistema de medición antes del lanzamiento, no después. Una buena respuesta menciona que el KPI de integridad del evento de conversión no puede asumirse como válido si nunca se probó en condiciones reales.",
+            "evasiva": "Describir el error técnico sin extraer el aprendizaje de proceso, o decir que 'lo corregirían instalando el plugin correcto' sin hablar de por qué no se verificó antes del lanzamiento."
+          },
+          {
+            "pregunta": "Yoast les señaló que las fichas de producto no alcanzaban la extensión mínima de palabras recomendada y eligieron no cumplirlo: ¿cómo justifican esa decisión frente a alguien que les dice que están sacrificando posicionamiento orgánico?",
+            "buscamos": "Que defiendan la decisión como una tensión real entre SEO y UX, explicando qué priorizaron y por qué: en un producto de suscripción donde la claridad y la velocidad de lectura importan, una ficha sobrecargada de texto puede dañar la conversión más de lo que ayuda al ranking. Se espera que reconozcan el trade-off, no que nieguen el costo.",
+            "evasiva": "Decir que 'Yoast es solo una sugerencia' o que 'no era obligatorio cumplirlo' sin explicar qué criterio de negocio o de experiencia de usuario los llevó a priorizar la brevedad sobre la recomendación de la herramienta."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo declara que el sitio de producción va a correr en Hostinger, pero lo que nos mostraron funcionando está en Pantheon, que es un entorno de desarrollo académico. ¿Cómo justifican que eso no es un problema para la validez de lo que presentaron?",
+            "buscamos": "Que el grupo reconozca la brecha real entre lo declarado y lo implementado, explique qué implica migrar de Pantheon a Hostinger (configuración, DNS, plugins, pruebas), y argumente por qué consideran que lo validado en desarrollo es suficientemente representativo del comportamiento en producción, o que reconozcan que queda como paso pendiente y expliquen cómo lo abordarían.",
+            "evasiva": "Decir que Hostinger 'ya está contratado' o que 'la migración es sencilla' sin explicar qué pasos concretos implica ni qué riesgos podría introducir el cambio de entorno."
+          },
+          {
+            "pregunta": "En el trabajo detectaron que GA4 mostraba cero conversiones mientras WooCommerce sí recibía los pedidos correctamente. ¿Qué les dice ese episodio sobre cómo deberían validar el sistema de medición antes de cualquier lanzamiento futuro?",
+            "buscamos": "Que el grupo entienda que el problema no fue técnico-accidental sino de proceso: el sistema de medición nunca se verificó de extremo a extremo antes del lanzamiento. Una buena respuesta conecta esa crisis con la decisión de definir la integridad del evento de conversión como meta-indicador y condición de validez de todos los demás KPIs, y propone un protocolo de verificación previo al go-live.",
+            "evasiva": "Explicar qué es un trigger o la Thank You Page de forma técnica sin reflexionar sobre el error de proceso ni sobre cómo impactó en la confiabilidad de los datos de la fase de prueba."
+          },
+          {
+            "pregunta": "Yoast les marcó que las fichas de producto no cumplen la extensión mínima de palabras recomendada, y el trabajo registra que decidieron no corregirlo. ¿Cómo defienden esa decisión sabiendo que están compitiendo en un nicho donde el SEO orgánico es parte de la estrategia de adquisición?",
+            "buscamos": "Que el grupo articule el trade-off real: priorizaron la experiencia de usuario por sobre una recomendación algorítmica de Yoast, y que puedan argumentar por qué en su contexto eso tiene sentido (fichas limpias, conversión más directa, producto de compra por suscripción). Una respuesta sólida también reconoce el costo potencial en posicionamiento orgánico y cómo lo compensarían.",
+            "evasiva": "Decir que 'Yoast no siempre tiene razón' o que 'la UX es más importante' sin explicar en qué afecta concretamente al posicionamiento de sus fichas ni cómo mitigan ese impacto."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo declara un margen bruto muy alto, casi del 100%, pero al mismo tiempo detalla costos reales de los kits. ¿Cómo reconcilian esos dos datos: cómo puede ser casi nulo el costo si hay un costo de producto concreto?",
+            "buscamos": "Que el grupo reconozca la tensión entre el margen declarado y los costos detallados, explique si el margen refleja solo el componente digital o de servicio y no el físico, o bien que admita que el cálculo tiene un error metodológico y pueda explicar qué debería haberse incluido.",
+            "evasiva": "Hablar en abstracto sobre qué es el margen bruto o decir que 'el margen se calculó según la fórmula estándar' sin tocar la contradicción específica entre el 99,83% y los costos de kit declarados."
+          },
+          {
+            "pregunta": "El trabajo proyecta ingresos anuales con una cantidad fija de clientes mensuales, pero al mismo tiempo reconoce que el negocio tiene una tasa de abandono de casi 1 de cada 6 suscriptores por mes. ¿Cómo tuvieron en cuenta esa pérdida mensual al calcular lo que el negocio puede facturar en el año?",
+            "buscamos": "Que el grupo explique si el churn fue incorporado en la proyección del SOM (reduciendo la base activa mes a mes) o si la proyección asume una base constante, y que puedan justificar la decisión tomada o reconocer que es una limitación del modelo financiero.",
+            "evasiva": "Definir qué es el churn rate o el LTV sin explicar si esa pérdida mensual de suscriptores fue o no descontada del ingreso proyectado."
+          },
+          {
+            "pregunta": "En el trabajo definen que la integridad del evento de conversión es la condición de validez de todos los demás KPIs, y al mismo tiempo describen que durante el proyecto GA4 mostraba cero conversiones mientras los pedidos llegaban bien. ¿Qué aprendizaje metodológico se llevan de esa crisis para la operación real del negocio?",
+            "buscamos": "Que el grupo conecte la falla concreta (ausencia del trigger en la Thank You Page) con la decisión de elevar la integridad del evento de conversión a meta-indicador, mostrando que esa jerarquía de KPIs nació de una experiencia real y no de un criterio teórico.",
+            "evasiva": "Explicar qué es GA4 o describir cómo funciona WooCommerce en general, sin vincular la crisis específica con la decisión de diseño del sistema de medición."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando descubrieron que GA4 mostraba cero conversiones mientras los pedidos entraban bien a WooCommerce, ¿cómo tomaron la decisión de seguir adelante o pausar el lanzamiento, y quién lideró esa resolución dentro del equipo?",
+            "buscamos": "Que describan el proceso real de decisión bajo presión: si pausaron o continuaron y por qué, quién tomó el rol de coordinación, y que conecten la causa técnica (ausencia del trigger en la Thank You Page) con la consecuencia concreta de tener todos sus KPIs sin datos válidos. Bonus si mencionan que la integridad del evento de conversión era condición de validez de los demás indicadores.",
+            "evasiva": "Explicar qué es GA4 o WooCommerce, o decir genéricamente 'nos dividimos las tareas y lo resolvimos en equipo' sin describir la lógica de la decisión ni el impacto real que tuvo el error en la medición."
+          },
+          {
+            "pregunta": "Aumentaron el presupuesto de marketing después de la primera crisis para incorporar gestión de comunidad: ¿qué problema concreto detectaron que los llevó a ese ajuste, y cómo evaluaron que ese gasto adicional era sostenible dentro de su estructura financiera?",
+            "buscamos": "Que identifiquen cuál fue el disparador real que justificó el aumento (no solo que 'surgió una necesidad'), que lo vinculen a una decisión estratégica deliberada y no reactiva, y que al menos mencionen que consideraron el impacto en márgenes o punto de equilibrio, aunque no reciten el número exacto.",
+            "evasiva": "Decir que 'la comunidad es importante en e-commerce' o que 'lo agregamos porque faltaba' sin explicar qué señal concreta del proyecto motivó el cambio ni cómo lo validaron financieramente."
+          },
+          {
+            "pregunta": "El sitio que presentaron hoy funciona sobre Pantheon, que es un entorno académico de desarrollo, pero en el trabajo declaran Hostinger como plataforma de producción: si mañana tuvieran que salir al mercado real, ¿qué riesgos concretos implica esa brecha y cómo la gestionarían?",
+            "buscamos": "Que reconozcan honestamente la brecha entre lo declarado y lo implementado, que identifiquen al menos un riesgo real de esa diferencia (configuración, performance, dominio, pasarela de pago, SEO), y que propongan pasos concretos de migración o validación. Se valora que no minimicen el problema.",
+            "evasiva": "Decir que 'es solo una cuestión técnica menor' o que 'Hostinger está listo, solo falta migrarlo' sin poder explicar qué implica esa migración ni qué podrían romperse en el proceso."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "49",
+    "proyecto": "EcoBox Argentina S.R.L.",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/15NR8wsAOuRfT64kCcEULar1hHe26fMhp/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1rFku_EUary5N18THc0STo9qdIi6ILGuB/preview",
+    "informe": {
+      "resumen": "Consistencia interna sólida, KPIs articulados entre sí y gestión de crisis con metodología documentada, aunque con brechas verificables entre cifras declaradas.",
+      "queEs": "Plataforma e-commerce WordPress/WooCommerce en Pantheon para packaging sustentable B2B/B2C, diferencial: sin MOQ restrictivo y certificación ecológica.",
+      "fortalezas": [
+        "Nota metodológica explica y unifica el AOV de $28.500 ARS en SOM, KPIs y Crisis 1, evitando contradicción interna.",
+        "Crisis 1 aplica 5 Porqués con causa raíz identificada y plan SLA 48hs en tres capas diferenciadas.",
+        "Decisiones UX/UI (Ley de Hick, One Page Checkout, accesibilidad táctil) conectadas directamente a fricciones del Buyer Persona."
+      ],
+      "interrogar": [
+        "El catálogo muestra precios $9,50 y $12,00 en capturas reales, incompatibles con el AOV objetivo de $28.500 ARS declarado.",
+        "Margen bruto del 10% con punto de equilibrio en 150 pedidos/mes nunca se reconcilia con el SOM de solo 70 pedidos/mes en Año 1: el negocio arranca bajo su propio breakeven.",
+        "ROI proyectado del 68% para Año 1 se afirma sin mostrar el cálculo ni los costos operativos que lo sostienen."
+      ],
+      "dondeApretar": "Presionar sobre la coherencia financiera: los precios reales del catálogo, el breakeven vs. volumen proyectado y la falta de cálculo explícito del ROI del 68%."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo calcula el TAM multiplicando todos los habitantes del país por el porcentaje que hace e-commerce y después por el porcentaje con interés ecológico: ¿por qué eligieron arrancar desde la población total de Argentina y no desde un universo más acotado, dado que el negocio apunta a CABA y GBA?",
+            "buscamos": "Que el grupo reconozca la limitación del enfoque top-down y pueda explicar que el TAM es un techo teórico máximo, no el mercado real al que acceden, y que idealmente debería haberse acotado desde el arranque al segmento geográfico objetivo. Una buena respuesta admite la decisión metodológica y la defiende o la revisa con honestidad.",
+            "evasiva": "Decir que el TAM 'representa el potencial del mercado en general' sin reconocer que arrancar desde 46 millones de habitantes sobreestima el universo para un negocio concentrado en dos regiones del país."
+          },
+          {
+            "pregunta": "Para pasar del TAM al SAM tomaron el 30% del mercado total: ¿cómo justifican que ese porcentaje representa específicamente el segmento de e-commerce de CABA y GBA con perfil medio y medio-alto, y no otro número?",
+            "buscamos": "Que el grupo admita que ese 30% no tiene una fuente o metodología explícita en el trabajo y pueda proponer cómo lo hubieran fundamentado mejor: datos del INDEC, informes de Cámara Argentina de Comercio Electrónico, segmentación por NBI o ingreso, etc. Lo valioso es que muestren conciencia de la debilidad y sepan hacia dónde apuntar.",
+            "evasiva": "Defender el número diciendo que 'es una estimación razonable' o que 'lo investigaron' sin poder nombrar ninguna fuente o criterio concreto que respalde ese porcentaje en particular."
+          },
+          {
+            "pregunta": "El trabajo declara que el diferencial del negocio es no tener un mínimo de pedido restrictivo y contar con certificación ecológica: ¿cómo esperaban que esos dos atributos influyeran concretamente en la decisión de compra de un cliente B2B versus uno B2C?",
+            "buscamos": "Que el grupo diferencie el valor de cada atributo según el tipo de cliente: para B2B, la ausencia de MOQ reduce la barrera de entrada y permite probar sin compromiso de volumen; para B2C, la certificación ecológica responde a un valor identitario y de confianza. Una buena respuesta conecta el diferencial con el comportamiento real de compra de cada segmento.",
+            "evasiva": "Responder de forma genérica que 'es importante para el medio ambiente' o que 'los clientes valoran la sustentabilidad' sin distinguir por qué cada atributo importa de forma distinta a un comprador empresarial que a un consumidor final."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo declara desde el inicio un enfoque 100% Mobile-First, pero durante el Go-Live la tasa de abandono de carrito se disparó muy por encima del límite que ustedes mismos habían fijado como aceptable. ¿Qué falló en el proceso para que eso pasara si el enfoque mobile estaba planteado desde el principio?",
+            "buscamos": "Que el grupo reconozca que no existía un protocolo formal de validación de usabilidad UX Mobile antes del Go-Live, y que conecte esa ausencia con el resultado concreto: la tasa de abandono se fue al doble del máximo aceptable. Una buena respuesta nombra la causa raíz sin necesidad de recitar porcentajes.",
+            "evasiva": "Decir que 'hubo problemas técnicos' o que 'el mobile es complejo' sin explicar por qué un proyecto declarado Mobile-First no validó la experiencia mobile antes de salir al mercado."
+          },
+          {
+            "pregunta": "En el catálogo real del sitio aparecen productos con precios que no guardan relación con el ticket promedio que el negocio necesita para funcionar. ¿Cómo explican esa diferencia y qué impacto tiene en la experiencia del cliente que llega esperando un tipo de producto y encuentra esos precios en pantalla?",
+            "buscamos": "Que el grupo identifique la inconsistencia entre los precios visibles en el catálogo y el AOV objetivo del negocio, y que lo piense desde la experiencia del usuario: qué sensación genera esa discrepancia en alguien que llega buscando packaging de cierto valor. No se busca que reciten números, sino que entiendan el problema de coherencia entre propuesta de valor y producto real.",
+            "evasiva": "Justificar los precios bajos como 'productos de entrada' o 'para atraer clientes' sin reconocer que eso rompe la lógica del ticket promedio que el propio trabajo proyectó como necesario."
+          },
+          {
+            "pregunta": "Cuando el carrito se abandonaba masivamente durante el Go-Live, ¿qué información sobre el comportamiento del usuario dentro del sitio les hubiera servido para entender por qué se iban, y cómo deberían haberla estado midiendo desde antes?",
+            "buscamos": "Que el grupo piense en métricas de experiencia digital como mapas de calor, grabaciones de sesión, tasa de abandono por paso del checkout o tiempo en página, y que las vincule con la necesidad de tener esos KPIs definidos antes del lanzamiento, no solo después de que el problema ya ocurrió.",
+            "evasiva": "Hablar en abstracto de 'mejorar la UX' o 'hacer encuestas' sin conectar las herramientas de medición con el momento del proceso en que deberían haber estado activas."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El proyecto declara desde el arranque un enfoque 100% Mobile-First, pero durante el Go-Live la tasa de abandono de carrito se disparó muy por encima del límite que ustedes mismos habían fijado como aceptable. ¿Qué falló en el proceso antes de salir al aire y qué harían diferente?",
+            "buscamos": "Que identifiquen la causa raíz concreta: no hubo un protocolo de validación de usabilidad UX Mobile obligatorio antes del Go-Live. Una buena respuesta conecta ese fallo con la consecuencia operativa real y propone algo accionable, como un checklist de pruebas mobile o un piloto cerrado previo al lanzamiento.",
+            "evasiva": "Hablar en general de que 'la UX es importante' o que 'habría que testear más', sin nombrar que el problema específico fue la ausencia de un protocolo formal de validación antes de publicar, ni conectarlo con lo que declararon en el proyecto."
+          },
+          {
+            "pregunta": "Eligieron Pantheon como infraestructura para alojar la plataforma WordPress/WooCommerce. ¿Por qué esa combinación tecnológica y no otra, considerando que el negocio apunta tanto a clientes B2B como B2C con un catálogo de packaging sustentable?",
+            "buscamos": "Que justifiquen la elección con argumentos propios del proyecto: escalabilidad, compatibilidad con WooCommerce, facilidad de gestión, o adecuación al perfil del equipo. No se espera que citen benchmarks técnicos, sino que defiendan por qué esa stack tiene sentido para este negocio concreto y este equipo.",
+            "evasiva": "Repetir características generales de WordPress o Pantheon sin anclarlas a ninguna necesidad específica del proyecto, como el modelo B2B/B2C, el tamaño del catálogo, o las capacidades del equipo."
+          },
+          {
+            "pregunta": "En el catálogo real de la plataforma aparecen productos con precios muy bajos, del orden de unos pocos pesos con decimales, mientras que el ticket promedio que el proyecto necesita para ser viable es de alrededor de $28.500 ARS. ¿Cómo explican esa diferencia y qué impacto tiene en la operación del negocio?",
+            "buscamos": "Que reconozcan la inconsistencia entre los precios cargados en el catálogo real y el ticket promedio declarado, y que puedan explicar si fue un error de carga, una prueba técnica, o un problema de configuración, mostrando conciencia de que esa brecha afecta directamente la viabilidad financiera del proyecto.",
+            "evasiva": "Minimizar el problema diciendo que 'fue solo una captura de prueba' sin explicar qué pasó realmente ni reconocer que si esos precios estuvieran activos en producción harían inviable alcanzar el ticket promedio que sostiene toda la proyección financiera."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo declaran un punto de equilibrio que requiere cierta cantidad de pedidos mensuales, pero el volumen que proyectan para el primer año queda por debajo de ese número: ¿cómo explican esa diferencia y qué harían para resolverla?",
+            "buscamos": "Que el grupo reconozca la tensión entre el break-even de 150 pedidos/mes y el SOM proyectado de 70 pedidos/mes, y que proponga acciones concretas para cerrar esa brecha: ampliar canales, ajustar el ticket promedio, reducir costos fijos o revisar el horizonte temporal de la proyección.",
+            "evasiva": "Responder que el negocio va a crecer con el tiempo o que en el Año 2 ya se supera el break-even, sin explicar qué variable concreta cambia ni cómo se sostiene la operación mientras tanto."
+          },
+          {
+            "pregunta": "Durante el Go-Live tuvieron una tasa de abandono de carrito muy por encima del límite que ustedes mismos habían fijado como aceptable: ¿qué decisión de proceso creen que faltó antes de salir al aire y qué cambiarían si volvieran a lanzar?",
+            "buscamos": "Que identifiquen la ausencia de un protocolo de validación de usabilidad UX Mobile antes del Go-Live como causa raíz, dado que el proyecto se declaraba 100% Mobile-First, y que propongan incorporar ese paso de validación como requisito obligatorio previo a cualquier lanzamiento.",
+            "evasiva": "Decir que el abandono de carrito es algo normal en e-commerce o que lo solucionaron con retargeting, sin reconocer que el problema de fondo fue no validar la experiencia mobile antes de salir al público."
+          },
+          {
+            "pregunta": "Proyectan un ROI del 68% para el primer año, pero en el trabajo no aparece el cálculo que llega a ese número: ¿pueden explicar de dónde sale y qué costos operativos tuvieron en cuenta para afirmarlo?",
+            "buscamos": "Que el grupo intente reconstruir la lógica del cálculo relacionando la inversión inicial de $3.500.000 ARS con los ingresos proyectados del SOM y el margen declarado del 10%, y que reconozcan honestamente si ese ROI es difícil de sostener dado el volumen por debajo del break-even.",
+            "evasiva": "Repetir el porcentaje como si fuera un dato dado, o decir que lo calculó un integrante del grupo sin poder explicar qué variables entran en la fórmula."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Durante el Go-Live, la tasa de abandono de carrito se fue al doble de lo que el proyecto consideraba aceptable: ¿qué decisión tomaron en ese momento y por qué eligieron ese camino?",
+            "buscamos": "Que el grupo reconozca que hubo una crisis concreta, que pueda nombrar qué hicieron para responder (pausar el lanzamiento, revisar el flujo mobile, comunicar internamente) y que conecten la causa con la falta de validación UX antes del Go-Live. No importa que citen el 70% exacto; importa que muestren criterio de decisión bajo presión.",
+            "evasiva": "Describir en abstracto qué 'debería hacerse' en una crisis de conversión sin anclar la respuesta a lo que realmente pasó en su proyecto ni mencionar la causa raíz que ellos mismos identificaron."
+          },
+          {
+            "pregunta": "El proyecto se declaró desde el inicio como 100% Mobile-First, pero la crisis principal tuvo origen precisamente en el canal mobile: ¿cómo explican esa contradicción y qué cambiarían en el proceso si volvieran a arrancar?",
+            "buscamos": "Que el grupo pueda sostener esa tensión sin esquivarla: reconocer que el enfoque declarado no se tradujo en un protocolo de validación obligatorio antes de salir en vivo, y que propongan algo concreto y realista para cerrar esa brecha (checklist de usabilidad, test con usuarios reales, revisión en dispositivos reales antes del Go-Live).",
+            "evasiva": "Defender que el proyecto 'sí era mobile-first' enumerando características técnicas del sitio, sin hacerse cargo de que la validación previa al lanzamiento estaba ausente y fue justamente lo que derivó en la crisis."
+          },
+          {
+            "pregunta": "La segunda crisis la calificaron como una simulación deliberada, pero la analizaron con las mismas herramientas que usaron para la crisis real: ¿qué valor le encontraron a ese ejercicio y qué limitaciones le ven a ese enfoque?",
+            "buscamos": "Que el grupo pueda defender la decisión metodológica con argumentos propios: por qué aplicar el mismo análisis a una crisis simulada tiene valor formativo o de preparación, y al mismo tiempo que reconozcan honestamente que tratar una situación diseñada como si fuera un fallo no anticipado tiene límites conceptuales. Se valora la reflexión crítica sobre su propio trabajo.",
+            "evasiva": "Explicar en qué consiste la metodología de los 5 Porqués en general, sin pronunciarse sobre si fue o no apropiado aplicarla a una crisis que ellos mismos habían planificado de antemano."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "50",
+    "proyecto": "RentReady",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1D-ZbuItWjApGrUFEjMJ_dMVgP_ltQ9yT/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/16RiUF1QXa16yZp37M117FMYyC1cOjSnQ/preview",
+    "informe": {
+      "resumen": "Consistencia interna alta entre análisis estratégico, modelo financiero y arquitectura técnica, con dos crisis reales documentadas y resueltas que validan el MVP más allá de la proyección.",
+      "queEs": "SaaS B2B para Property Managers de 5–30 propiedades en CABA que elimina overbooking via sincronización API con Channex en <200ms, diferenciándose por Mercado Pago nativo y soporte en español.",
+      "fortalezas": [
+        "Modelo financiero en 3 escenarios con break-even validado (334 uds.), LTV:CAC 21x y payback mes 10.",
+        "Dos crisis técnicas documentadas con tickets, plan de acción y resultado medible (Overbooking Rate 0,00% post ERR-508).",
+        "Arquitectura desacoplada API-first con justificación explícita de cada herramienta elegida y descartada."
+      ],
+      "interrogar": [
+        "El documento declara latencia <200ms (Channex) pero el KPI P95 acepta hasta 1.000ms: ¿cuál es el SLA real comprometido al cliente?",
+        "La Crisis 1 reporta pérdida de 7 PMs sobre una base que aún no existía en producción (el SOM año 1 es la meta): ¿fue simulada o real?",
+        "El LTV por PM se calcula sobre 33,3 meses de retención estimada, pero no hay evidencia ni fuente del churn histórico que sustenta ese supuesto."
+      ],
+      "dondeApretar": "Forzar al grupo a distinguir qué está efectivamente implementado y funcionando en Pantheon de lo que es proyección o simulación, especialmente en las crisis y el modelo financiero."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Eligieron enfocarse en property managers de entre 5 y 30 propiedades en CABA: ¿por qué ese rango y no apuntar a operadores más grandes que podrían pagar más?",
+            "buscamos": "Que el grupo justifique el segmento en función del problema concreto que resuelven: el overbooking es crítico para operadores medianos que ya tienen volumen suficiente para necesitar sincronización multicanal pero no tienen el músculo tecnológico ni el equipo para implementar soluciones enterprise. Que mencionen también la diferenciación por soporte en español y Mercado Pago nativo como factores que encajan específicamente con ese perfil de usuario local.",
+            "evasiva": "Decir que es un segmento 'grande y desatendido' o que 'hay mucha demanda' sin conectarlo con por qué ese rango específico resuelve el problema que ellos detectaron."
+          },
+          {
+            "pregunta": "El cobro está en dólares pero se hace en pesos a través de Mercado Pago: ¿cómo se protege el negocio si el tipo de cambio se mueve bruscamente entre lo que cobra el cliente y lo que recibe la empresa?",
+            "buscamos": "Que reconozcan que el tipo de cambio de conversión no está definido en el documento y que eso representa un riesgo real de descalce cambiario, algo que el propio trabajo identifica como una amenaza de probabilidad alta. Una buena respuesta propone aunque sea una solución de principio: ajuste periódico de precios, referencia al tipo de cambio oficial o blue, cláusula de actualización, etcétera.",
+            "evasiva": "Decir que 'Mercado Pago lo maneja' o que 'el cliente paga en pesos y listo', sin reconocer que la empresa tiene costos en dólares y que la conversión no resuelta es un problema del modelo, no solo un detalle operativo."
+          },
+          {
+            "pregunta": "Eligieron diferenciarse por el soporte en español y la integración nativa con Mercado Pago: ¿qué tan difícil sería para un competidor internacional copiar esas dos ventajas y dejarlos sin diferenciación?",
+            "buscamos": "Que el grupo piense en la sostenibilidad de la ventaja competitiva: el soporte en español es replicable pero implica inversión local; Mercado Pago requiere integración y homologación que tiene fricción real. Una buena respuesta reconoce que son ventajas defensibles en el corto plazo por el conocimiento del ecosistema local, pero admite que no son barreras tecnológicas altas a largo plazo, y propone cómo consolidar la posición antes de que eso ocurra.",
+            "evasiva": "Afirmar que 'los competidores internacionales no conocen el mercado' como si eso fuera una barrera permanente, sin analizar qué tan rápido podrían adaptarse ni qué haría el equipo para adelantarse."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El dashboard tenía un indicador de 'Guardando...' que en algún momento dejó de verse por un conflicto técnico entre dos herramientas que eligieron usar: ¿por qué consideran que ese pequeño detalle visual terminó siendo tan crítico para la experiencia del Property Manager?",
+            "buscamos": "Que el grupo conecte la invisibilidad del feedback visual con la pérdida de confianza del usuario: si el PM no sabe si su acción fue procesada, asume que el sistema falló y abandona. Una buena respuesta menciona que el UX de confianza en un dashboard operativo depende de que el usuario siempre sepa qué está pasando, y que la pérdida de PMs fue consecuencia directa de esa ruptura de comunicación, no de un bug funcional.",
+            "evasiva": "Decir que fue un problema técnico de Z-Index o de caché sin explicar por qué eso impactó en la decisión del usuario de irse, como si el problema fuera solo de código y no de experiencia."
+          },
+          {
+            "pregunta": "Eligieron resolver el overbooking con una restricción a nivel de base de datos en lugar de una validación en la capa de la aplicación: ¿cómo le explicarían a un Property Manager no técnico por qué esa decisión lo protege mejor?",
+            "buscamos": "Que el grupo pueda traducir una decisión técnica a valor de producto: la restricción en base de datos actúa como una red de seguridad que no depende del código de la aplicación, lo que la hace más robusta frente a condiciones simultáneas y extremas como las que generaron el overbooking real. Una buena respuesta demuestra que entienden que el cliente compra confiabilidad, no arquitectura.",
+            "evasiva": "Explicar qué es un UNIQUE CONSTRAINT o por qué PHP era menos confiable sin nunca conectarlo con lo que eso significa para el usuario final que no quiere ver dos reservas en la misma propiedad."
+          },
+          {
+            "pregunta": "El cobro a través de Mercado Pago todavía no está completamente automatizado en el MVP que presentaron: ¿cómo afecta eso la experiencia del Property Manager que está evaluando si contratar el servicio, y qué priorizaron mostrarle en cambio?",
+            "buscamos": "Que el grupo reconozca honestamente la limitación del MVP sin que eso invalide la propuesta, y que expliquen qué parte de la experiencia sí está resuelta y por qué eligieron esa como demostración. Una buena respuesta muestra criterio de producto: qué es lo mínimo valioso que ya resuelve el dolor central del cliente (el overbooking) aunque el flujo de cobro end-to-end esté pendiente de credenciales reales.",
+            "evasiva": "Decir que 'está configurado y listo para producción' sin reconocer que la automatización completa depende de una etapa posterior, o esquivar la pregunta hablando de las ventajas de Mercado Pago como medio de pago en general."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "Cuando apareció el overbooking real en producción, eligieron resolverlo con una restricción directamente en la base de datos en lugar de validar en el código de la aplicación. ¿Por qué tomaron esa decisión y qué ventaja les da ese enfoque?",
+            "buscamos": "Que entiendan que una UNIQUE CONSTRAINT en la base de datos garantiza unicidad incluso si dos procesos llegan al mismo tiempo, porque la base de datos es la última línea de defensa. Una validación en PHP podría fallar bajo concurrencia porque dos hilos pueden pasar la verificación antes de que cualquiera escriba. La buena respuesta muestra que entendieron el problema de concurrencia, no solo que 'pusieron una restricción'.",
+            "evasiva": "Decir que 'la restricción es más segura' o 'el tutor nos lo sugirió' sin explicar por qué una validación en PHP no hubiera alcanzado cuando dos reservas llegan casi al mismo tiempo."
+          },
+          {
+            "pregunta": "El sistema funcional que presentaron a la cátedra corre en un entorno diferente al que usan para la integración real con Channex y Make.com. ¿Cómo explican esa separación y qué implicancias tiene para alguien que quiera evaluar el producto en producción?",
+            "buscamos": "Que identifiquen que Pantheon restringe procesos en segundo plano y webhooks, lo cual es incompatible con la sincronización en tiempo real que es el núcleo del producto, y que por eso la lógica operativa corre en Hostinger. Una buena respuesta reconoce honestamente que lo que se ve en la URL de Pantheon es una demostración de interfaz, no el sistema completo funcionando end-to-end.",
+            "evasiva": "Hablar de que 'son dos ambientes, uno de prueba y uno de producción' como si fuera una práctica estándar de DevOps, sin explicar la limitación técnica concreta que forzó esa separación ni sus consecuencias para la evaluación del MVP."
+          },
+          {
+            "pregunta": "El cobro está en pesos pero el precio está fijado en dólares, y la Crisis 1 ya mostró que perder unos pocos clientes impacta directamente en el ingreso mensual. ¿Cómo pensaron manejar el descalce cambiario para que el modelo de precios no los deje expuestos ante una variación del tipo de cambio?",
+            "buscamos": "Que reconozcan que no especificaron el tipo de cambio de conversión en el documento y que esto es una exposición real, no solo teórica. Una buena respuesta muestra que entienden el riesgo y pueden proponer al menos una alternativa concreta: tipo de cambio de referencia (oficial, MEP, blue), revisión periódica del precio en pesos, o cláusula de ajuste. No se espera una solución financiera perfecta, sino que den cuenta del problema y hayan pensado en él.",
+            "evasiva": "Decir que 'Mercado Pago hace la conversión automáticamente' o que 'es un riesgo que tiene todo negocio en Argentina' sin explicar cómo protegen su margen cuando el tipo de cambio se mueve y el precio en pesos queda desactualizado."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El precio de sus propiedades está fijado en dólares pero el cobro se hace en pesos a través de Mercado Pago: ¿cómo pensaron manejar el riesgo de que una devaluación les cambie los ingresos reales de un mes para otro?",
+            "buscamos": "Que reconozcan el descalce cambiario como riesgo real y propongan una salida concreta: actualización periódica del tipo de cambio, cláusula de ajuste contractual, uso del dólar MEP/oficial como referencia, o cualquier mecanismo que muestre que pensaron el problema más allá de nombrarlo en la matriz de riesgos.",
+            "evasiva": "Decir que 'es un riesgo del contexto argentino' o que 'lo identificamos en la matriz' sin explicar qué harían operativamente para que el MRR en dólares no se licúe con cada movimiento del tipo de cambio."
+          },
+          {
+            "pregunta": "Ustedes calcularon cuántos meses en promedio se queda un Property Manager con el servicio para estimar el valor de cada cliente a largo plazo: ¿de dónde sacaron ese número y por qué les parece razonable para un mercado donde el producto todavía no salió comercialmente?",
+            "buscamos": "Que admitan honestamente que el dato de retención es un supuesto, no un histórico propio, y que justifiquen su elección con una referencia concreta: benchmarks del sector SaaS, comparables de la industria, o un criterio conservador deliberado. El punto fuerte es la conciencia del supuesto, no defenderlo como certeza.",
+            "evasiva": "Citar el número de meses como si fuera un dato validado, sin reconocer que es una estimación, o desviar hacia el ratio LTV:CAC sin explicar la base sobre la que se construyó."
+          },
+          {
+            "pregunta": "En el escenario más adverso que proyectaron, con mayor churn, el payback supera el umbral de 12 meses que ustedes mismos definieron como criterio para seguir adelante: ¿qué los llevó a recomendar igual el lanzamiento?",
+            "buscamos": "Que demuestren que la decisión fue consciente y razonada: pueden argumentar que el escenario base sí cumple el criterio, que el margen bruto es sólido, que el break-even se alcanza antes de agotar la inversión, o que los riesgos del escenario adverso tienen baja probabilidad. Lo importante es que justifiquen el Go con datos propios del trabajo, no que lo esquiven.",
+            "evasiva": "Decir que 'el escenario B es el peor caso y no se va a dar' sin explicar por qué ni apoyarse en ningún otro indicador del modelo para sostener la recomendación."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando el dashboard ocultó el indicador de guardado y perdieron varios property managers en un fin de semana, ¿cómo tomaron la decisión de qué hacer primero: recuperar a los que se fueron o corregir el bug?",
+            "buscamos": "Que el grupo explique el razonamiento detrás de la priorización: si atacaron primero la causa raíz para evitar más bajas, si salieron a contener a los PMs afectados en paralelo, y que reconozcan que no lograron recuperar a todos. Se valora que conecten la decisión con el impacto real en el MRR y en la confianza del usuario.",
+            "evasiva": "Decir que 'resolvieron el conflicto técnico y luego contactaron a los usuarios' sin explicar por qué en ese orden ni reconocer que dos PMs no volvieron."
+          },
+          {
+            "pregunta": "El overbooking real que sufrieron, donde dos reservas casi simultáneas colisionaron en milisegundos, lo resolvieron con una restricción a nivel de base de datos y no con validaciones en el código PHP. ¿Por qué eligieron ese camino y qué riesgo habrían corrido si lo hubieran resuelto solo en la capa de aplicación?",
+            "buscamos": "Que demuestren entender que una validación en PHP no garantiza exclusividad cuando dos procesos corren en paralelo, y que la restricción en la base de datos es la única barrera que el sistema no puede eludir. Se valora que expliquen la decisión en términos de dónde está la garantía real, no solo que 'era más seguro'.",
+            "evasiva": "Responder que eligieron la base de datos porque 'es más robusto' o 'lo recomendó el tutor', sin explicar por qué la capa PHP sola no alcanzaba ante peticiones concurrentes."
+          },
+          {
+            "pregunta": "El precio está fijado en dólares pero el cobro se hace en pesos a través de Mercado Pago, y en el propio trabajo identificaron el tipo de cambio como un riesgo de probabilidad alta. ¿Qué decisión tomaron o recomendarían tomar para que una devaluación brusca no destruya el margen del negocio?",
+            "buscamos": "Que el grupo reconozca la exposición cambiaria real y proponga alguna forma de mitigarla: actualización periódica del tipo de cambio usado para la conversión, cláusula de ajuste en el contrato con el PM, o fijación del tipo al momento del cobro. Se valora la conciencia del riesgo operativo concreto más que una solución perfecta.",
+            "evasiva": "Decir que 'Mercado Pago maneja la conversión' o que 'se actualiza el precio según el dólar' sin explicar cómo ni con qué frecuencia, evitando el fondo del problema."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "51",
+    "proyecto": "Sandía Sublimación",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1PGx9TkmIIE9YZW2xHEgFyz18oeLcAIMw/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1c2Y-gKC2wkz46MX_zWECf7Tt8PIkpD2s/preview",
+    "informe": {
+      "resumen": "El trabajo muestra estructura completa y sitio funcional, pero la fundamentación estratégica es superficial y varias cifras clave carecen de fuente verificable dentro del documento.",
+      "queEs": "Tienda online WordPress/WooCommerce para emprendimiento de productos sublimados, diferencial declarado: experiencia emocional de compra y automatización de gestión.",
+      "fortalezas": [
+        "Sitio funcional publicado en Pantheon con checkout real documentado en capturas (Anexo A).",
+        "Gestión de dos crisis documentadas con tickets, causa raíz, KPIs en riesgo y plan de recuperación.",
+        "Customer Journey y decisiones UX/UI alineadas explícitamente con el Buyer Persona construido."
+      ],
+      "interrogar": [
+        "SOM de 86,4M ARS no tiene metodología de cálculo expuesta; el documento solo dice '0,001% del SAM' sin justificar ese porcentaje.",
+        "Se declara Mercado Pago como medio de pago pero el sitio lo lista como 'Próximamente': brecha entre propuesta y go-live real.",
+        "Crisis 2 ocurrió por 'falta de adopción del protocolo', no por falla técnica, pero las métricas de KPI post-corrección no aparecen: sin evidencia de resolución efectiva."
+      ],
+      "dondeApretar": "Presionar en la solidez de las estimaciones económicas y en qué indicadores concretos demuestran que las crisis quedaron efectivamente resueltas."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo establece que van a capturar una porción específica del mercado argentino de productos sublimados, pero no explica por qué eligieron ese número y no uno mayor o menor. ¿Cómo llegaron a ese objetivo y qué lo sostiene?",
+            "buscamos": "Que el grupo reconozca que el SOM fue calculado como un porcentaje del SAM y que pueda justificar por qué ese porcentaje es razonable para el contexto del emprendimiento: capacidad operativa, presupuesto, canales disponibles, punto de partida desde Instagram/WhatsApp. Se valorará que admitan la limitación metodológica si no tienen una justificación sólida.",
+            "evasiva": "Repetir que el SOM es 86,4 millones de pesos o que representa el 0,001% del SAM sin explicar por qué ese porcentaje refleja la realidad del negocio ni qué factores internos o externos lo fundamentan."
+          },
+          {
+            "pregunta": "El trabajo describe a su cliente ideal, Sofía, a partir de la observación de clientes actuales y de lo que se veía en Instagram y WhatsApp. ¿Por qué consideran que esa forma de construir el perfil es suficiente para tomar decisiones de diseño y comunicación en la tienda?",
+            "buscamos": "Que el grupo defienda la elección metodológica explicando las limitaciones reales del emprendimiento (recursos, tiempo, escala) y que reconozca qué podría haber complementado esa observación, como encuestas o entrevistas breves. Se valorará honestidad sobre los límites del método frente a una justificación ciega.",
+            "evasiva": "Describir las características de Sofía (edad, ocupación, ciudad) o explicar qué es un buyer persona en general, sin abordar por qué la observación sola es o no es suficiente como fuente de datos para el perfil."
+          },
+          {
+            "pregunta": "El mismo documento que presentaron cita una fuente internacional que indica que más de un tercio de los abandonos de carrito en Argentina ocurren cuando el método de pago preferido no está disponible, y al mismo tiempo la tienda ya lanzada muestra Mercado Pago como 'Próximamente'. ¿Cómo reconcilian esa contradicción en su propuesta?",
+            "buscamos": "Que el grupo explique si hubo una decisión consciente de lanzar sin Mercado Pago activo, cuál fue la razón (técnica, contractual, de tiempo) y qué impacto real reconocen que eso tiene sobre sus propios KPI de conversión y abandono de carrito. Se valorará que asuman la brecha y propongan un criterio de cierre concreto.",
+            "evasiva": "Decir que Mercado Pago 'ya está en proceso' o que 'se va a activar pronto' sin reconocer que la brecha contradice directamente los datos que ellos mismos eligieron incluir en el trabajo para justificar la importancia del medio de pago."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo declara que más del 80% de sus compradores esperados van a entrar desde el celular, pero en ninguna parte del documento aparece una métrica real de velocidad de carga móvil medida. ¿Cómo justifican haber elegido la stack tecnológica que eligieron sin ese dato?",
+            "buscamos": "Que el grupo reconozca la brecha entre la declaración del tráfico móvil y la ausencia de evidencia de performance, y que explique si hubo alguna validación informal, qué herramienta usaron o podrían haber usado (PageSpeed, GTmetrix), y por qué ese punto quedó fuera del documento.",
+            "evasiva": "Decir que WordPress y WooCommerce son plataformas muy usadas y que Pantheon es confiable, sin mencionar ninguna medición propia ni reconocer que el dato de tráfico móvil quedó sin respaldo técnico."
+          },
+          {
+            "pregunta": "El buyer persona 'Sofía' está construido a partir de observación de clientes actuales y de lo que se ve en Instagram y WhatsApp. ¿Por qué decidieron apoyarse en esas fuentes y no en encuestas o entrevistas, y qué limitaciones le ven a esa decisión ahora que terminaron el trabajo?",
+            "buscamos": "Que puedan defender la decisión con argumentos reales —acceso limitado, etapa temprana del emprendimiento, recursos disponibles— pero que también reconozcan que esa metodología no produce una muestra cuantificada y que el perfil podría no representar al comprador online futuro, que puede diferir del cliente actual de Instagram.",
+            "evasiva": "Explicar qué es un buyer persona, describir a Sofía con sus características demográficas o decir que 'la observación también es una técnica válida' sin reconocer ninguna limitación metodológica concreta."
+          },
+          {
+            "pregunta": "En la sección de arquitectura del sitio declararon un menú con seis ítems, pero las capturas del sitio real muestran solo tres. ¿Qué pasó entre el diseño que planificaron y lo que efectivamente quedó publicado, y cómo afecta eso a la experiencia de navegación que prometieron?",
+            "buscamos": "Que el grupo admita la discrepancia entre el diseño planificado y la implementación real, explique si fue una decisión consciente, una simplificación por tiempo o un error de documentación, y reflexione sobre si la navegación con tres ítems cubre o no las necesidades del usuario que describieron en el resto del trabajo.",
+            "evasiva": "Decir que el menú simplificado es más limpio y que 'menos es más' en UX sin reconocer que hubo una diferencia entre lo planificado y lo ejecutado, ni evaluar si ítems como Preguntas Frecuentes o Nosotros cumplían una función para reducir fricciones de compra."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo declara que más del 80% del tráfico esperado va a venir de celular, pero en ningún momento se mencionan métricas de velocidad de carga móvil real medida. ¿Cómo justifican haber elegido esa stack tecnológica sin validar ese dato?",
+            "buscamos": "Que el grupo reconozca la brecha entre la afirmación del tráfico móvil y la ausencia de métricas reales, y que pueda explicar qué herramienta usarían o deberían haber usado para medirlo (PageSpeed Insights, GTmetrix u otra), y por qué esa validación es crítica antes del go-live si el usuario mayoritario es mobile.",
+            "evasiva": "Decir que WordPress y WooCommerce son plataformas reconocidas y que Pantheon está optimizado para rendimiento, sin mencionar ninguna medición concreta ni reconocer que esa validación está ausente en el trabajo."
+          },
+          {
+            "pregunta": "En la tienda ya lanzada, Mercado Pago figura como 'Próximamente', pero el mismo trabajo cita que el 34% de los abandonos de carrito en Argentina ocurren porque el método de pago preferido no está disponible. ¿Qué impacto operativo concreto tiene esa brecha en el período de go-live?",
+            "buscamos": "Que el grupo pueda conectar el dato bibliográfico que ellos mismos incluyeron con la decisión de lanzar sin el medio de pago habilitado, que reconozcan el riesgo de abandono que eso genera, y que propongan alguna mitigación concreta como comunicación al usuario, plazo de implementación definido o medio de pago alternativo durante la transición.",
+            "evasiva": "Explicar cómo funciona Mercado Pago como plataforma o decir que 'se va a implementar próximamente' sin reconocer que existe una contradicción directa con la bibliografía que el propio trabajo cita."
+          },
+          {
+            "pregunta": "La Crisis ERR-275 volvió a superar la tasa de error dos semanas después del go-live, y el trabajo lo atribuye a falta de adopción del protocolo, no a un problema técnico. ¿Qué cambio operativo concreto implementaron o recomiendan para que eso no vuelva a ocurrir?",
+            "buscamos": "Que el grupo distinga claramente entre falla técnica y falla humana o de proceso, y que proponga una acción concreta orientada a la adopción real del protocolo: capacitación documentada, checklist obligatorio, un responsable asignado, o algún mecanismo de control. Lo importante es que la respuesta apunte a cambio de comportamiento, no a tecnología.",
+            "evasiva": "Describir en qué consistió la crisis o repetir que el protocolo ya estaba definido, sin explicar por qué falló la adopción ni qué acción concreta garantizaría que no se repita."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo fija como objetivo reducir los carritos abandonados al 20%, pero en ningún momento se muestra cuál era la tasa de abandono de partida antes de lanzar la tienda. ¿Cómo justifican ese número si no hay una línea de base medida contra la cual compararlo?",
+            "buscamos": "Que el grupo reconozca la ausencia de línea de base real (el negocio venía de Instagram/WhatsApp sin métricas de e-commerce) y que conecte el objetivo con la referencia bibliográfica que ellos mismos citan: la tasa global del 70% de Statista y el 26% que abandona por checkout largo según Baymard. Una buena respuesta dice 'tomamos esas referencias como proxy de punto de partida porque no teníamos dato propio' y explica por qué eligieron el 20% como meta ambiciosa pero alcanzable.",
+            "evasiva": "Repetir que el 20% es una buena práctica de la industria o que es un objetivo 'razonable', sin mencionar ni la ausencia de línea de base propia ni los datos bibliográficos que el mismo trabajo cita como contexto."
+          },
+          {
+            "pregunta": "El documento declara que Mercado Pago es uno de los medios de pago disponibles, pero en el sitio ya lanzado aparece como 'Próximamente'. Teniendo en cuenta que el propio trabajo cita que un tercio de los abandonos de carrito en Argentina ocurren porque el método de pago preferido no está disponible, ¿qué impacto real tuvo esa brecha en el go-live y cómo la gestionaron?",
+            "buscamos": "Que el grupo asuma la contradicción entre lo que el documento propone y lo que el sitio muestra, que reconozca el riesgo concreto que eso implica para la conversión según su propia fuente (CACE 2024) y que explique qué decisión tomaron: si fue una limitación técnica, un problema de cuenta, un plazo pendiente, o una omisión que quedó sin resolver.",
+            "evasiva": "Decir que Mercado Pago 'estaba en proceso de habilitación' o que 'ya se iba a activar' sin reconocer la contradicción con el dato del documento ni explicar qué medida concreta tomaron para no afectar la conversión mientras tanto."
+          },
+          {
+            "pregunta": "El buyer persona Sofía Martínez fue construido a partir de observación de clientes actuales e Instagram/WhatsApp. ¿Por qué eligieron ese método y no una encuesta o entrevistas, y cómo defienden que ese perfil representa con solidez al segmento al que apunta la tienda?",
+            "buscamos": "Que el grupo explique la decisión metodológica con criterio real: por ejemplo, que el emprendimiento ya tenía clientas activas y que la observación directa era viable y suficiente para un primer ciclo, o bien que reconozcan la limitación de no tener una muestra cuantificada y expliquen cómo mitigarían eso en una siguiente etapa.",
+            "evasiva": "Describir quién es Sofía o repetir sus características demográficas sin tocar en ningún momento por qué se eligió ese método de construcción ni qué tan representativo puede ser sin encuestas ni entrevistas."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "La crisis de impresión que tuvieron al principio la atribuyeron a no tener un sistema operativo estandarizado, ¿qué cambio concreto implementaron y cómo supieron que ese cambio había funcionado?",
+            "buscamos": "Que describan la acción correctiva específica (el protocolo estandarizado), y que reconozcan honestamente que no registraron métricas post-corrección o que expliquen qué evidencia sí tienen de mejora. Una buena respuesta muestra autoconciencia sobre la brecha entre implementar un protocolo y validar que funciona.",
+            "evasiva": "Explicar en qué consiste el protocolo sin responder si midieron o no su efectividad, o afirmar que 'todo mejoró' sin poder indicar ningún dato o indicador que lo respalde."
+          },
+          {
+            "pregunta": "Dos semanas después del lanzamiento volvieron a superar ampliamente el límite de error que ustedes mismos habían fijado, y la causa no fue técnica sino que el equipo no adoptó el protocolo. ¿Qué hicieron diferente la segunda vez para que el protocolo sí se respetara?",
+            "buscamos": "Que distingan claramente entre un problema de proceso técnico y un problema de conducta humana/gestión de equipo, y que describan una acción de liderazgo concreta: capacitación, supervisión, asignación de responsables, o cualquier mecanismo real que implementaron para lograr adhesión.",
+            "evasiva": "Repetir que 'se reforzó el protocolo' o que 'se comunicó mejor' sin explicar qué rol cumplió cada integrante en asegurar que esa vez sí se cumpliera, o desviar la respuesta hacia la descripción técnica del error original."
+          },
+          {
+            "pregunta": "Si tuvieran que señalar el principal aprendizaje de liderazgo que les dejó gestionar estas dos crisis seguidas, ¿cuál sería y cómo cambiaría algo concreto del proyecto si lo volvieran a hacer?",
+            "buscamos": "Una reflexión genuina que conecte las dos crisis como síntomas de un mismo problema de gestión (falta de estandarización y falta de adopción), e identifique un cambio preventivo específico: por ejemplo, validar adopción antes del go-live, designar un responsable de calidad, o incorporar un período de prueba controlado.",
+            "evasiva": "Dar una respuesta genérica sobre 'comunicarse mejor como equipo' o 'planificar más' sin anclarse en ninguno de los dos eventos reales del trabajo ni proponer un mecanismo concreto y diferente al que ya usaron."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "53",
+    "proyecto": "ORIGEN",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1AU45CGhPwlKGzGa1zHB7NUfvAI3wASOv/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1_KXZlY-97qX3CVsZR1PDC33TKT5vqyfw/preview",
+    "informe": {
+      "resumen": "El trabajo presenta consistencia interna notable entre análisis estratégico, modelo financiero y decisiones de implementación, con crisis documentadas y aprendizajes sistémicos concretos.",
+      "queEs": "E-commerce B2C de cinturones de cuero natural premium en Argentina, diferenciado por talles 80-120 garantizados, packaging regalo integrado y UX mobile superior a competidores.",
+      "fortalezas": [
+        "Modelo financiero detallado con margen bruto 49,6%, punto de equilibrio 235u/mes y ROI 283,33% calculados y justificados.",
+        "Crisis ERR-313 y ERR-504 documentadas con Ishikawa, cuantificación de impacto y plan de acción por capas temporales.",
+        "Benchmark competitivo específico contra Cardón, Lázaro y Estilo Austral con precios, UX y brechas concretas identificadas."
+      ],
+      "interrogar": [
+        "SOM proyecta 3.750 unidades/año para marca nueva sin historial, pero el SAM usa $70.000 de gasto ANUAL por persona en marroquinería: ¿es realista suponer compra recurrente en accesorios premium?",
+        "Se declara margen bruto 49,6% y ganancia neta $32.392.300, pero la sección 5.4 menciona '$32.487.500': hay inconsistencia de $95.200 entre secciones del mismo documento.",
+        "El buyer persona principal es 'María, docente, mujer 25-45', pero las keyphrases SEO priorizan 'cinturón de cuero hombre Argentina': hay desalineación no explicada entre persona y estrategia de captación."
+      ],
+      "dondeApretar": "Presionar sobre la viabilidad real del SOM en meses de baja demanda (90u proyectadas en julio/agosto) y cómo sostienen el punto de equilibrio sin pauta paga activa."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo define como clienta principal a María, una docente de entre 25 y 45 años, pero buena parte de la estrategia de búsqueda orgánica apunta a hombres buscando cinturones de cuero. ¿Por qué tomaron esa decisión y cómo la justifican?",
+            "buscamos": "Que el grupo reconozca la desalineación entre buyer persona y SEO y la explique con alguna lógica defensible: por ejemplo, que el volumen de búsqueda masculino es mayor, que la mujer compra para regalar, o que el SEO apunta a un segmento secundario. Lo importante es que sean conscientes de la tensión y la puedan argumentar, no que la nieguen.",
+            "evasiva": "Decir que 'el SEO es para captar tráfico general' sin relacionarlo con María ni explicar cómo alguien que busca cinturones para hombre termina comprando en una tienda enfocada en mujeres."
+          },
+          {
+            "pregunta": "Para estimar cuánta gente podría comprarles, usaron un dato de gasto anual en marroquinería por persona. Dado que venden un accesorio premium, ¿cómo justifican que ese número refleje bien el comportamiento real de su cliente potencial?",
+            "buscamos": "Que el grupo muestre conciencia de que asumir gasto recurrente en accesorios premium es un supuesto fuerte, y que pueda defender o matizar la cifra: por ejemplo, aclarando que el dato es conservador, que lo usaron como límite superior, o que reconocen que sería más preciso asumir compras menos frecuentes.",
+            "evasiva": "Repetir que 'el dato viene de una fuente secundaria' sin cuestionar si tiene sentido aplicarlo a un producto de compra ocasional como un cinturón premium de $70.000."
+          },
+          {
+            "pregunta": "Proyectan vender una cantidad importante de unidades en el primer año siendo una marca nueva sin historial ni reseñas. ¿Qué los llevó a confiar en que esa meta es alcanzable y qué pasaría con el negocio si las ventas reales estuvieran bastante por debajo de lo proyectado?",
+            "buscamos": "Que el grupo muestre que entiende que la proyección es un supuesto optimista y que pueda nombrar al menos un escenario de contingencia o señalar que en meses bajos ya proyectan estar por debajo del punto de equilibrio, demostrando que conocen el riesgo real del modelo.",
+            "evasiva": "Defender la proyección como si fuera un dato certero, sin reconocer que para una marca nueva sin historial es un objetivo ambicioso, ni mencionar qué implicaría no alcanzarlo."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio hoy está publicado y funcionando, pero en un dominio de prueba, no en el definitivo que declararon en el trabajo. ¿Cómo piensan resolver eso y qué impacto tiene en la experiencia del usuario que llega desde los canales que diseñaron?",
+            "buscamos": "Que el grupo reconozca abiertamente que el dominio definitivo no está activo, que entienda que las URLs de prueba generan desconfianza o se ven poco profesionales para un comprador real, y que tenga aunque sea una idea del próximo paso concreto para hacer la migración.",
+            "evasiva": "Decir que 'es un detalle técnico menor' o que 'ya está casi listo' sin explicar qué efecto tiene en la credibilidad del e-commerce ni cómo afecta a alguien que llega desde un anuncio o una búsqueda orgánica."
+          },
+          {
+            "pregunta": "Declararon que la velocidad de carga del sitio en mobile es baja y que iban a mejorarla en los 30 días siguientes al lanzamiento, pero el sitio ya está operativo. ¿Pudieron cumplir ese plazo o eso quedó pendiente, y por qué importa especialmente en este negocio?",
+            "buscamos": "Que sean honestos sobre si el objetivo se cumplió o no, y que puedan explicar con sus palabras por qué una carga lenta en mobile afecta directamente a su comprador: si la persona abandona antes de ver el producto, todo el esfuerzo de marketing y de SEO pierde sentido.",
+            "evasiva": "Repetir que 'el objetivo era superar 70 puntos' sin reconocer si se logró, o decir que la velocidad 'no es tan importante' sin conectarlo con la experiencia de compra real de su buyer persona."
+          },
+          {
+            "pregunta": "Su buyer persona principal es una mujer, pero las palabras clave que priorizaron para posicionarse en Google apuntan mayormente a hombres. ¿Cómo explican esa decisión y cómo esperan que alguien como María los encuentre si el contenido está orientado a otro perfil?",
+            "buscamos": "Que el grupo pueda defender si fue una decisión estratégica consciente, por ejemplo porque detectaron mayor volumen de búsqueda en ese segmento, o que reconozcan que es una tensión no resuelta en el trabajo. En cualquier caso, que demuestren entender que hay una desconexión entre a quién le hablan y cómo los busca esa persona.",
+            "evasiva": "Decir que 'los cinturones también los compran mujeres para hombres' o 'María puede buscar esas palabras igual' sin reconocer que el trabajo no explicó ni justificó esa brecha en ningún momento."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio ya está publicado y funcionando, pero en el trabajo reconocen que la velocidad mobile no estaba donde querían y se fijaron un plazo de 30 días para mejorarla: ¿llegaron a cumplir ese objetivo, y si no, cómo afecta eso a la experiencia del usuario que describieron como una ventaja competitiva?",
+            "buscamos": "Que el grupo reconozca honestamente si el objetivo de performance se cumplió o no, y que entienda la contradicción de vender UX superior como diferencial mientras el sitio tiene una deuda técnica pendiente. Una buena respuesta conecta la velocidad mobile con la tasa de conversión y la experiencia del buyer persona.",
+            "evasiva": "Decir que 'el PageSpeed es un indicador técnico que estamos trabajando' sin reconocer que el diferencial UX queda debilitado si el sitio carga lento, o afirmar que ya se resolvió sin poder explicar qué se hizo."
+          },
+          {
+            "pregunta": "En el trabajo definen a su cliente principal como una mujer de entre 25 y 45 años, pero si buscan 'cinturón de cuero hombre Argentina' en Google son ustedes los que aparecen primero: ¿por qué eligieron posicionarse con esas palabras clave y cómo encaja eso con el perfil de cliente que construyeron?",
+            "buscamos": "Que el grupo pueda explicar si fue una decisión estratégica consciente (por ejemplo, mayor volumen de búsqueda en ese segmento, o apuntar a compras de regalo) o si reconocen que hay una desalineación entre el buyer persona y la estrategia SEO que quedó sin resolver en el trabajo.",
+            "evasiva": "Responder que 'el SEO es para atraer tráfico en general' sin abordar por qué el contenido optimizado no refleja al cliente que ellos mismos describieron, o cambiar de tema hacia las redes sociales."
+          },
+          {
+            "pregunta": "El dominio que eligieron para la marca figura en el trabajo como pendiente de compra, y el sitio opera en una dirección provisoria de desarrollo: ¿qué implicancias tiene presentar y operar una tienda en una URL que no es la definitiva, tanto para los clientes como para el posicionamiento en buscadores que describieron en el plan?",
+            "buscamos": "Que el grupo entienda que el SEO se construye sobre el dominio definitivo y que cambiar de dominio implica perder autoridad acumulada, además de que un cliente que visita la URL de desarrollo puede dudar de la legitimidad del negocio. Se valora que reconozcan esto como algo que debieron resolver antes del lanzamiento.",
+            "evasiva": "Decir que 'es solo una cuestión técnica menor' o que 'el dominio se compra cuando se necesite', sin mostrar comprensión de que el posicionamiento orgánico y la confianza del usuario dependen de operar desde el dominio correcto desde el inicio."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El buyer persona principal que definieron es una mujer, docente, y sin embargo si uno mira las palabras clave que eligieron para posicionarse en Google apuntan mayormente a hombres: ¿cómo explican esa diferencia y fue una decisión intencional?",
+            "buscamos": "Que el grupo reconozca la desalineación entre persona y estrategia SEO y la justifique con algún argumento de negocio (por ejemplo, que el hombre es quien compra el regalo para la mujer, o que detectaron mayor volumen de búsqueda masculina) o bien que admita honestamente que es una inconsistencia que no resolvieron a tiempo.",
+            "evasiva": "Explicar qué es un buyer persona o describir a María sin tocar en ningún momento por qué las keywords apuntan a otro segmento."
+          },
+          {
+            "pregunta": "En el trabajo proyectan ventas por debajo del punto de equilibrio en los meses de invierno: ¿qué harían concretamente en esos meses para no operar a pérdida, o asumieron ese riesgo como parte del modelo?",
+            "buscamos": "Que el grupo demuestre que entiende que operar por debajo del punto de equilibrio implica pérdida operativa, y que proponga alguna acción real (reducir costos variables, campañas de estímulo, liquidación de stock, ajustar el presupuesto de marketing estacional) o que reconozca con honestidad que el plan no desarrolló una respuesta para ese escenario.",
+            "evasiva": "Definir qué es el punto de equilibrio o repetir las cifras de proyección sin explicar qué harían cuando no se alcanzan."
+          },
+          {
+            "pregunta": "Le pagaron a una mega-influencer el equivalente a casi una quinta parte de todo el presupuesto anual de marketing sin contrato que los protegiera: ¿qué aprendizaje concreto se llevan de eso y cómo lo resolverían si tuvieran que hacerlo de nuevo?",
+            "buscamos": "Que el grupo vaya más allá de 'firmaríamos un contrato' y mencione elementos específicos como cláusulas de penalización por incumplimiento, validación previa de links, aprobación de contenido antes de publicar, o escalonamiento del pago según resultados, mostrando que internalizaron el riesgo real de esa decisión.",
+            "evasiva": "Decir genéricamente que 'la próxima vez tendrían más cuidado' o que 'aprendieron a trabajar con contratos' sin especificar qué cláusulas o controles concretos incorporarían."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo reconocen que le pagaron a una mega-influencer casi el 20% de todo el presupuesto anual de marketing sin tener un contrato con cláusulas de penalización ni un checklist que validara que los links funcionaban: ¿qué cambiarían hoy en el proceso antes de hacer ese pago?",
+            "buscamos": "Que el grupo reconozca la falla de control antes del desembolso, mencione al menos una medida concreta de mitigación (contrato con penalidades, validación técnica previa, pago por tramos o contra resultados) y demuestre que aprendió algo transferible más allá de este caso puntual.",
+            "evasiva": "Explicar qué es una crisis de marketing o decir que 'la próxima vez se va a tener más cuidado' sin nombrar ningún mecanismo concreto que lo garantice."
+          },
+          {
+            "pregunta": "El trabajo menciona que en la primera crisis hubo un error numérico en el presupuesto y que fue corregido en el entregable final, pero no se explica cuál era el número original ni cuánto cambiaba el análisis: ¿por qué decidieron no dejar eso documentado y qué riesgo tiene esa decisión para alguien que lee el informe?",
+            "buscamos": "Que el grupo admita con honestidad que fue una omisión, entienda que un informe profesional requiere trazabilidad de las correcciones para que cualquier lector pueda seguir el razonamiento, y muestre conciencia del impacto en la credibilidad del documento.",
+            "evasiva": "Decir que 'ya estaba corregido entonces no importaba el original' o desviar la respuesta hacia los resultados finales sin abordar la falta de transparencia sobre el proceso."
+          },
+          {
+            "pregunta": "Los sueldos del equipo están incluidos como costo fijo en el modelo financiero, pero en otra parte del trabajo dicen que ese dinero se reinvierte y no sale realmente de la empresa: si tuvieran que defenderle esa decisión a un inversor que les pregunta qué es lo real, ¿qué le dirían?",
+            "buscamos": "Que el grupo reconozca la contradicción sin esquivarla, explique la lógica detrás de la decisión (conservadorismo financiero, mostrar el costo real del trabajo del equipo aunque no se cobre hoy) y entienda que un inversor necesita saber exactamente cuánto efectivo sale del negocio versus cuánto es un costo imputado.",
+            "evasiva": "Repetir que 'es un costo que se reinvierte' como si eso resolviera la contradicción, sin explicar cómo impacta eso en el flujo de caja real ni por qué aparece computado en el total de costos."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "55",
+    "proyecto": "HogarFix",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1HyJl55L4muvwWAXKwWOrGsfRCxrq0zRj/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1aIYwlA5AzlaBBPyg9UHTIVQGhsvbZF2_/preview",
+    "informe": {
+      "resumen": "El proyecto tiene coherencia estratégica y base conceptual sólida, pero la implementación real (WordPress/WooCommerce básico) no demuestra operativamente los diferenciales clave declarados: verificación de profesionales, pagos protegidos y garantía del servicio.",
+      "queEs": "Marketplace de servicios para el hogar (plomería, electricidad, gas, limpieza) con profesionales verificados, precios transparentes y pagos protegidos, apuntando a grandes urbes argentinas.",
+      "fortalezas": [
+        "Análisis estratégico completo (FODA, PESTEL, TAM/SAM/SOM) con coherencia interna entre sí.",
+        "Gestión documentada de dos crisis reales (ERR-504 LCP y saturación de soporte) con resoluciones concretas.",
+        "Customer Journey de 5 etapas con KPIs diferenciados por dimensión (negocio, experiencia, operaciones)."
+      ],
+      "interrogar": [
+        "El diferencial central es 'verificación de profesionales', pero el sitio live (pantheonsite.io) muestra productos WooCommerce estándar tipo catálogo; ¿cómo funciona operativamente esa verificación?",
+        "Se declara 'garantía del servicio' y 'pagos protegidos' como diferenciales, pero no hay descripción de ningún mecanismo técnico u operativo concreto que los sustente en el MVP.",
+        "Los KPIs del primer año (3.000 visitas orgánicas, CTR >5%, conversión 2,5%) se presentan sin justificación numérica ni benchmark comparativo que los valide."
+      ],
+      "dondeApretar": "Presionar la brecha entre los diferenciales declarados (verificación, garantía, pagos protegidos) y lo efectivamente implementado en el MVP, para evaluar si el equipo comprende qué falta construir y cómo."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes apuntan a grandes urbes como Buenos Aires, Córdoba y Rosario, y eso tiene sentido, pero ¿por qué eligieron arrancar específicamente por esas tres ciudades y no por otra combinación?",
+            "buscamos": "Que el grupo demuestre que hubo una decisión estratégica detrás del recorte geográfico: densidad poblacional, concentración de demanda de servicios del hogar, masa crítica de profesionales disponibles, o alguna lógica de validación de modelo antes de escalar. No hace falta que citen un número exacto, sino que muestren que el criterio fue pensado y no arbitrario.",
+            "evasiva": "Responder que 'son las ciudades más grandes del país' sin explicar qué ventaja operativa o de mercado eso les da para un marketplace de servicios, o mencionar que la app y la expansión quedaron fuera del MVP sin explicar por qué ese recorte fue una decisión inteligente y no solo una limitación."
+          },
+          {
+            "pregunta": "El proyecto tiene como diferencial central la verificación de profesionales, que es lo que los distingue de publicar en cualquier grupo de Facebook o Mercado Libre: ¿cómo imaginaron que eso iba a funcionar en la práctica para alguien que quiere sumarse como profesional a la plataforma?",
+            "buscamos": "Que el grupo describa aunque sea un proceso básico y creíble: qué documentación pediría, quién la revisa, qué pasa si hay un reclamo posterior. No se espera un sistema técnico elaborado, pero sí que puedan defender que el diferencial tiene algún respaldo operativo concreto, y si no lo desarrollaron, que lo reconozcan con honestidad y digan qué harían en una siguiente etapa.",
+            "evasiva": "Repetir que 'los profesionales están verificados' o que 'garantizamos la calidad' sin poder explicar ningún paso concreto del proceso, o derivar todo a 'en el futuro se haría', sin reconocer que es una deuda del MVP actual."
+          },
+          {
+            "pregunta": "Tienen proyectado un volumen de visitas orgánicas al finalizar el primer año que es ambicioso para un sitio nuevo: ¿qué les hace pensar que ese número es alcanzable, y en qué se basaron para elegirlo?",
+            "buscamos": "Que el grupo admita si el número fue estimado sin un benchmark comparativo de respaldo, y que puedan explicar al menos qué acciones concretas de SEO o contenido pensaron para acercarse a ese objetivo: palabras clave, contenido de valor, FAQs. Si reconocen que la justificación es débil y proponen cómo la reforzarían, eso es una buena respuesta.",
+            "evasiva": "Defender el número como si fuera sólido sin poder mencionar ninguna referencia externa o acción concreta que lo sustente, o responder que 'con buena estrategia de contenidos se llega' sin especificar nada de esa estrategia."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio live que nos dejaron explorar muestra una estructura de catálogo bastante estándar, pero ustedes plantean que el diferencial central es que los profesionales están verificados: ¿cómo experimenta eso un usuario que entra por primera vez, dónde lo ve reflejado en la navegación?",
+            "buscamos": "Que el grupo reconozca honestamente que en el MVP actual esa verificación no tiene un recorrido de usuario definido o visible, y que puedan explicar cómo lo resolverían o por qué quedó pendiente, sin intentar disimular la brecha entre el discurso y lo construido.",
+            "evasiva": "Hablar en abstracto sobre lo importante que es la confianza, decir que 'se va a ver en el perfil del profesional' sin describir qué contiene ese perfil ni cómo llega el usuario hasta ahí."
+          },
+          {
+            "pregunta": "Cuando tuvieron que resolver el problema del tiempo de carga lento en la home, eligieron reemplazar el video por imágenes estáticas: ¿esa decisión la tomaron solo pensando en velocidad técnica o también evaluaron qué perdía el usuario en términos de experiencia?",
+            "buscamos": "Que demuestren que la decisión de UX y la decisión técnica se analizaron juntas, aunque sea brevemente: que entiendan que mejorar rendimiento puede implicar resignar algo en la comunicación visual y que eso requiere una elección consciente, no automática.",
+            "evasiva": "Responder únicamente desde lo técnico ('el WebP pesa menos y carga más rápido') sin mencionar en ningún momento al usuario, la percepción de la marca o qué comunicaba el video que se eliminó."
+          },
+          {
+            "pregunta": "Ustedes se pusieron como objetivo que al menos cuatro de cada diez consultas se resuelvan solas, sin intervención humana, a través de los contenidos y las FAQs del sitio: ¿qué tipo de dudas pensaron que iba a tener un usuario típico de este servicio, y cómo organizaron los contenidos para cubrirlas?",
+            "buscamos": "Que conecten el objetivo declarado con decisiones concretas de arquitectura de contenido o diseño de información, aunque sea a nivel de intención: qué categorías de preguntas mapearon, qué formato eligieron, por qué ese porcentaje les pareció alcanzable.",
+            "evasiva": "Repetir el objetivo numérico como si fuera una respuesta ('pusimos el 40% porque es un estándar razonable') sin explicar qué contenidos concretos o qué lógica de navegación sostendría ese resultado."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo mencionan que el sitio está publicado y accesible en entorno productivo, pero la URL que usaron empieza con 'dev-'. ¿Cómo explican esa diferencia y qué implicaría pasarlo a un entorno real?",
+            "buscamos": "Que el grupo reconozca honestamente que el entorno es de desarrollo y no productivo, y que pueda explicar en términos generales qué cambios implicaría el pasaje a producción: dominio propio, configuración de seguridad, escalabilidad, etc. No se busca la respuesta técnica perfecta, sino que sean transparentes sobre el estado real del MVP.",
+            "evasiva": "Insistir en que 'está publicado y se puede ver', sin reconocer la diferencia entre un entorno de desarrollo y uno productivo, o desviar la respuesta hacia las funcionalidades del sitio en lugar de responder la pregunta sobre el entorno."
+          },
+          {
+            "pregunta": "Tuvieron un problema serio de performance porque el video de la home tardaba mucho en cargar, y lo resolvieron reemplazándolo por imágenes estáticas. ¿Por qué esa decisión fue importante específicamente para el posicionamiento orgánico del sitio, más allá de la experiencia del usuario?",
+            "buscamos": "Que el grupo conecte la velocidad de carga con el SEO: que Google usa el rendimiento de la página como factor de ranking, que un LCP alto perjudica la posición en buscadores, y que la solución adoptada impacta directamente en la posibilidad de alcanzar las metas de tráfico orgánico que declararon en sus KPIs.",
+            "evasiva": "Responder únicamente que 'el video pesaba mucho y la página tardaba en cargar', sin vincular esa decisión técnica con el SEO ni con los objetivos de tráfico orgánico del proyecto."
+          },
+          {
+            "pregunta": "El diferencial más fuerte que proponen es que los profesionales están verificados, pero si uno entra al sitio hoy no queda claro cómo funciona esa verificación en la práctica. ¿Cómo pensaron operativamente ese proceso, aunque no haya llegado a implementarse en el MVP?",
+            "buscamos": "Que el grupo pueda describir aunque sea un flujo básico y honesto: qué documentación se pediría, quién la revisa, qué criterio define que un profesional queda habilitado. Se valora que reconozcan que esto quedó fuera del MVP y que puedan distinguir entre lo que es una propuesta de valor declarada y lo que está efectivamente construido.",
+            "evasiva": "Repetir que 'los profesionales son verificados' como si fuera un hecho consumado, sin poder explicar ningún paso concreto del proceso, o decir que 'se haría automáticamente' sin ningún detalle de cómo."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo proyectan llegar a 3.000 visitas orgánicas mensuales al final del primer año: ¿por qué eligieron ese número y no uno mayor o menor?",
+            "buscamos": "Que el grupo reconozca que el número necesitaba apoyarse en algún benchmark, dato de competencia o lógica de crecimiento, y que si no lo hicieron puedan decirlo con honestidad y explicar cómo lo corregirían.",
+            "evasiva": "Repetir el número como si fuera obvio o decir que 'es una meta realista' sin dar ningún argumento que lo respalde."
+          },
+          {
+            "pregunta": "Declaran una tasa de conversión del 2,5%: ¿qué tendría que pasar en el sitio para que alguien que entra efectivamente contrate un servicio y ese número se sostenga?",
+            "buscamos": "Que conecten la conversión con decisiones concretas de UX, confianza o flujo de contratación, mostrando que entienden que la cifra no es solo un objetivo sino el resultado de algo que tiene que funcionar en el sitio.",
+            "evasiva": "Describir qué es una tasa de conversión en general o mencionar el número sin explicar ningún mecanismo del sitio que lo haría posible."
+          },
+          {
+            "pregunta": "El modelo de ingresos está basado en comisiones por transacción, pero en el trabajo no se termina de precisar cuánto representa eso en pesos ni cómo impacta en la viabilidad del proyecto: ¿son conscientes de esa brecha y cómo la justifican?",
+            "buscamos": "Que el grupo reconozca la limitación sin defensas vacías, explique por qué quedó fuera del alcance del MVP y demuestre que entiende que sin esa proyección el modelo financiero está incompleto.",
+            "evasiva": "Decir que 'las comisiones son el modelo estándar del mercado' o que 'se calculará más adelante' sin reconocer que es una debilidad real del trabajo entregado."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Tuvieron una crisis donde un error menor generó miles de tickets en pocas horas y el tiempo de respuesta se disparó varios días. ¿Qué aprendieron de eso y qué cambiarían si les volviera a pasar?",
+            "buscamos": "Que reconozcan el impacto real de la crisis ERR-290 (colapso del canal de soporte), identifiquen qué falló en el proceso (ausencia de triaje, falta de automatización o umbral de alerta) y propongan al menos una mejora concreta: un sistema de tickets por categorías, respuestas automáticas para errores conocidos, o el objetivo de autoservicio con FAQs para descomprimir el volumen.",
+            "evasiva": "Decir que 'lo solucionaron' o describir solo el problema sin explicar qué harían diferente; responder en abstracto con 'mejoraríamos la comunicación' sin anclar a ningún mecanismo del proyecto."
+          },
+          {
+            "pregunta": "El video de fondo de la home les generó un problema serio de velocidad de carga y tuvieron que tomar una decisión rápida sobre cómo resolverlo. ¿Por qué eligieron reemplazarlo por imágenes estáticas en lugar de otras alternativas, y qué criterio usaron para tomar esa decisión bajo presión?",
+            "buscamos": "Que expliquen el razonamiento detrás de la decisión: la imagen estática en WebP fue la solución más rápida y efectiva para bajar el LCP a un nivel aceptable, y que en un MVP con recursos limitados se prioriza lo que funciona sobre lo que queda mejor visualmente. Buena señal si mencionan que la experiencia del usuario o el SEO fueron el criterio central.",
+            "evasiva": "Limitarse a describir qué hicieron técnicamente sin explicar por qué esa opción y no otra; o justificarlo solo por 'era lo más fácil' sin conectarlo con una lógica de priorización en un proyecto real."
+          },
+          {
+            "pregunta": "El sitio está publicado en un entorno de desarrollo, no en uno productivo, aunque el informe lo presenta como si ya estuviera live. ¿Cómo manejarían esa diferencia frente a un inversor o cliente real que quisiera ver el producto funcionando hoy?",
+            "buscamos": "Que reconozcan honestamente la brecha entre lo que el informe declara y el estado real del MVP, sin ponerse defensivos. Buena señal si distinguen entre 'demostrar el concepto' y 'tener un producto listo para operar', y si explican qué pasos concretos faltarían para pasar a producción real (dominio propio, entorno productivo, pasarela de pagos activa).",
+            "evasiva": "Justificar la presentación como 'una cuestión técnica menor' o insistir en que el sitio 'ya está publicado' sin reconocer la diferencia entre dev y producción; esquivar la pregunta hablando de funcionalidades en lugar de la situación real del entorno."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "56",
+    "proyecto": "Modo Piloto",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/12nqzP7hPI3Qqm6xSaSsPhL1Dtm3fJufI/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1M51ANLt_z6_bPhUlLo8m_4XCoXH_Hosw/preview",
+    "informe": {
+      "resumen": "Consistencia interna sólida, gestión de crisis con metodología documentada y trazabilidad de decisiones, aunque sin validación con clientes reales.",
+      "queEs": "Consultoría de automatización omnicanal para vendedores medianos de Mercado Libre, modelo retainer, complejidad técnica invisible para el cliente.",
+      "fortalezas": [
+        "Gestión de dos crisis simuladas con herramientas diferenciadas: 5 Porqués para ERR-418, Ishikawa para ERR-419.",
+        "Arquitectura técnica en dos capas separadas (sitio web vs. producto), con justificación explícita de cada componente elegido.",
+        "Evolución documentada del proyecto: cambios de nombre, plataforma, calculadora y contratos, cada uno con su justificación."
+      ],
+      "interrogar": [
+        "El SOM suma USD 24.000 en retainers más USD 38.200 en implementaciones pero el total declarado es USD 59.000, no USD 62.200 como se indica un párrafo después.",
+        "La infraestructura del producto (n8n, PostgreSQL, Retool, VPS) figura como 'prevista para lanzamiento comercial', no implementada; el tribunal puede preguntar qué se probó realmente.",
+        "El LTV proyectado asume retención de 12 meses a USD 400, pero el rango de retainer declarado es USD 400-900: no se explica por qué el escenario base usa el piso."
+      ],
+      "dondeApretar": "Exigir que distingan con precisión qué está implementado y qué es diseño conceptual, y que defiendan la aritmética financiera inconsistente del SOM."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo usan un precio base bastante por debajo del rango que declaran como posible: ¿por qué eligieron ese piso y no un valor intermedio para proyectar lo que esperan ganar?",
+            "buscamos": "Que el grupo reconozca la tensión entre conservadurismo financiero y consistencia interna: si el escenario base usa el precio mínimo, el objetivo de ingresos al mes 12 no cierra con ese mismo precio. Una buena respuesta admite la inconsistencia o explica con qué lógica se tomó esa decisión.",
+            "evasiva": "Decir que 'quisieron ser conservadores' sin notar que el objetivo de MRR declarado para el mes 12 ya implica un precio mayor que el que usaron en el cálculo base."
+          },
+          {
+            "pregunta": "Calcularon el mercado al que apuntan usando el gasto tecnológico promedio de un vendedor mediano, pero el precio anual de su propio servicio es bastante más alto que ese número: ¿cómo explican esa diferencia?",
+            "buscamos": "Que el grupo entienda que el SAM debería medirse con el precio real del servicio o con la disposición a pagar del segmento, no con el gasto tecnológico general. Una buena respuesta reconoce que el número del SAM queda subestimado o mal fundamentado, y puede proponer cómo corregirlo.",
+            "evasiva": "Repetir la definición de SAM o citar la cifra del mercado sin abordar por qué la base de cálculo no coincide con el precio que ellos mismos cobran."
+          },
+          {
+            "pregunta": "El nombre del proyecto tuvo que cambiar porque ya existía una empresa con ese nombre: ¿qué aprendizaje les dejó ese episodio en términos de validar una marca antes de avanzar?",
+            "buscamos": "Que el grupo reflexione sobre la necesidad de validar disponibilidad de nombre e identidad de marca como paso temprano, y que conecte ese aprendizaje con la etapa de lanzamiento comercial que todavía tienen por delante.",
+            "evasiva": "Minimizar el episodio como un trámite menor ya resuelto, sin extraer ninguna lección sobre procesos de validación previos a la ejecución."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio de Modo Piloto está publicado en un entorno de desarrollo, no en producción. ¿Por qué decidieron presentar el TFI en ese estado y qué implicaría para un cliente real llegar a ese sitio hoy?",
+            "buscamos": "Que el grupo reconozca honestamente que el sitio no está en producción, explique la razón práctica (tiempo, costos de hosting, prioridades del proyecto) y demuestre que entiende la diferencia entre un entorno de desarrollo y uno productivo en términos de confianza y experiencia del cliente.",
+            "evasiva": "Decir que 'el sitio está funcionando' o describir las secciones y el contenido del sitio sin mencionar el problema del entorno, evitando reconocer que un cliente real no debería ver esa URL."
+          },
+          {
+            "pregunta": "En la tabla donde describen las herramientas del sitio web, hay una descripción que aparece copiada en dos filas distintas y no corresponde a la herramienta que dice describir. ¿Cómo llegó ese error al documento final y qué proceso de revisión aplicaron antes de entregar?",
+            "buscamos": "Que el grupo admita el error sin justificarlo excesivamente, explique qué pasó en la revisión (o la ausencia de ella) y muestre que entiende que en un documento de consultoría ese tipo de inconsistencia afecta la credibilidad profesional frente a un cliente.",
+            "evasiva": "Atribuir el error a un problema de formato o de copiado sin asumir responsabilidad sobre la revisión, o intentar explicar qué hace WPForms sin reconocer que la descripción estaba equivocada."
+          },
+          {
+            "pregunta": "La infraestructura central del producto —todo lo que hace funcionar la automatización por dentro— figura como prevista para lanzamiento, no implementada. ¿Qué pudieron probar o demostrar de cómo funciona el servicio, más allá del diseño y la documentación?",
+            "buscamos": "Que el grupo distinga con claridad qué existe realmente (sitio web, documentación, propuesta conceptual) de lo que es proyección futura, y que pueda explicar en qué formato validaron la lógica del servicio aunque sea de manera parcial o simulada, sin pretender que el producto está operativo.",
+            "evasiva": "Hablar de las herramientas previstas (n8n, Retool, etc.) como si ya estuvieran funcionando, o describir el modelo de negocio en lugar de responder concretamente qué se implementó y qué no."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio de Modo Piloto está publicado en un entorno de desarrollo, no en producción: ¿por qué tomaron esa decisión y qué implicaría para un cliente que quisiera contratarlos hoy?",
+            "buscamos": "Que el grupo reconozca honestamente que el sitio no está en producción, explique si fue una decisión consciente o una limitación de tiempo, y demuestre que entiende la diferencia práctica entre un entorno de desarrollo y uno productivo en términos de credibilidad y funcionalidad real.",
+            "evasiva": "Describir las secciones del sitio o hablar de lo que planean hacer sin reconocer que hoy no está operativo para un cliente real."
+          },
+          {
+            "pregunta": "La infraestructura central del servicio —el motor de automatización, la base de datos, las integraciones— todavía no está implementada: ¿qué probaron concretamente durante el proyecto y cómo le explicarían eso a un potencial cliente que les pregunta si el servicio ya funciona?",
+            "buscamos": "Que el grupo distinga con claridad qué está probado o prototipado de lo que está solo planificado, sea honesto sobre el estado real del producto, y muestre que puede comunicar esa brecha de forma transparente sin perder credibilidad.",
+            "evasiva": "Hablar de las herramientas elegidas (n8n, Retool, etc.) como si estuvieran funcionando, o describir el diseño de la solución en lugar de lo que efectivamente se ejecutó."
+          },
+          {
+            "pregunta": "En el incidente que llaman ERR-418, detectaron el problema rápido pero la resolución en algunos flujos les llevó mucho más tiempo del que después fijaron como límite en su propio SLA: ¿qué aprendieron de eso y cómo piensan que impacta en la confianza del cliente?",
+            "buscamos": "Que el grupo entienda la contradicción entre el tiempo real de resolución y el SLA que ellos mismos definieron a partir de ese incidente, muestre aprendizaje genuino sobre gestión de crisis y reflexione sobre el impacto en la relación con el cliente.",
+            "evasiva": "Centrarse en que detectaron el problema rápido como logro, sin abordar que la resolución superó el estándar que ellos mismos establecieron."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el plan financiero proyectan un margen neto bastante alto para el primer año, pero la estructura de costos no queda del todo clara en el documento: ¿qué costos concretos tuvieron en cuenta para llegar a ese número y por qué creen que son sostenibles con los precios que proponen?",
+            "buscamos": "Que el grupo reconozca que los márgenes declarados (bruto 59%, neto 45%) requieren una estructura de costos explícita, que mencionen al menos los costos operativos principales que contemplaron (infraestructura, tiempo propio, herramientas) y que puedan defender por qué esos costos son razonables en relación al precio del retainer. No se espera que reciten cifras exactas, sino que demuestren que razonaron la viabilidad.",
+            "evasiva": "Responder que 'el margen es bueno porque el servicio es de alto valor' o listar las herramientas del stack sin explicar cómo impactan en el costo. Evitar mencionar qué pasa si la carga de trabajo crece o si incorporan a alguien más al equipo."
+          },
+          {
+            "pregunta": "El servicio tiene un precio de retainer que va desde un valor base hasta casi el doble en el techo del rango: ¿por qué eligieron el precio más bajo como base para proyectar cuánto van a facturar por cliente, y cómo piensan crecer hacia los valores más altos del rango?",
+            "buscamos": "Que el grupo pueda justificar la elección conservadora del piso del rango (USD 400) como estrategia de entrada, y que tenga alguna lógica para explicar cómo un cliente migraría a tickets más altos (más automatizaciones, más canales, mejores resultados). Si además notan que el objetivo de MRR del mes 12 implica un ticket promedio mayor al base, es una muy buena señal de que leyeron el propio plan con ojo crítico.",
+            "evasiva": "Decir que 'el precio base es para arrancar y después se sube' sin explicar qué trigger o criterio define ese aumento, o esquivar la tensión entre el valor usado en el LTV y el objetivo de MRR mensual."
+          },
+          {
+            "pregunta": "Para dimensionar el mercado calcularon cuánto gastan en tecnología los vendedores que podrían ser sus clientes, pero el precio anual de su propio servicio es bastante mayor que ese gasto de referencia: ¿cómo justifican que un vendedor mediano de Mercado Libre estaría dispuesto a pagar por Modo Piloto si eso supera lo que hoy destina a tecnología?",
+            "buscamos": "Que el grupo entienda la tensión entre el gasto tecnológico unitario usado para calcular el SAM y el costo real del retainer anual, y que pueda articular una propuesta de valor concreta que justifique ese salto: por ejemplo, que el servicio reemplaza varias herramientas, ahorra tiempo operativo o genera un retorno medible en ventas. No se espera que hagan el cálculo de cabeza, sino que defiendan por qué el precio tiene sentido para el cliente.",
+            "evasiva": "Responder que 'el mercado es grande y hay espacio para crecer' sin abordar la brecha entre lo que el cliente gasta hoy y lo que se le pide pagar, o irse por las ramas describiendo el TAM sin tocar el punto del precio relativo."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo aparece un incidente que llamaron ERR-418 donde el sistema tardó hasta tres días en resolverse: ¿por qué creen que ese caso les sirvió para mejorar su propuesta de servicio en lugar de debilitarla?",
+            "buscamos": "Que el grupo reconozca que la crisis fue real y que el SLA de 4 horas que incorporaron como consecuencia nació de esa experiencia concreta, mostrando capacidad de aprendizaje y honestidad sobre las limitaciones actuales del sistema.",
+            "evasiva": "Decir que 'todo incidente es una oportunidad de mejora' en abstracto sin mencionar que el propio incidente reveló que sus tiempos de resolución no cumplían el SLA que ellos mismos propusieron."
+          },
+          {
+            "pregunta": "El proyecto arrancó con otro nombre y tuvieron que cambiarlo porque colisionaba con una marca internacional ya existente: ¿cómo manejaron ese momento dentro del equipo y qué les dejó esa situación de cara al lanzamiento?",
+            "buscamos": "Que describan cómo tomaron la decisión de cambiar a Modo Piloto, cómo coordinaron el equipo ante una crisis de identidad del proyecto, y que muestren que lo vivieron como un riesgo gestionado y no como un tropiezo menor.",
+            "evasiva": "Minimizarlo diciendo que 'fue solo un cambio de nombre' sin reflexionar sobre el impacto en materiales, posicionamiento o confianza del equipo, ni sobre qué proceso siguieron para validar el nuevo nombre."
+          },
+          {
+            "pregunta": "La infraestructura técnica central del servicio —el sistema que automatizaría todo para sus clientes— todavía no está implementada al momento de esta presentación: ¿cómo le explicarían a un cliente potencial en qué punto está el producto hoy y por qué debería confiar en la propuesta?",
+            "buscamos": "Que el grupo sea transparente sobre el estado real del desarrollo, que distingan entre lo que sí existe (el sitio, la propuesta) y lo que está previsto, y que puedan articular un argumento de confianza honesto, como el piloto acotado o la validación de la demanda, sin sobrevender algo que aún no funciona.",
+            "evasiva": "Hablar del producto en términos de lo que 'va a hacer' como si ya existiera, o desviar la respuesta hacia las funcionalidades previstas sin reconocer que el cliente estaría comprando algo que aún está en etapa previa al lanzamiento."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "58",
+    "proyecto": "Venika Jewerly",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1uryc8y86hoNSZGQ9yLG0Ep4VscdseTNL/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/15W8cHoDsyViDF7hjfj1MYcUAQmyDZ-1w/preview",
+    "informe": {
+      "resumen": "El TFI sostiene coherencia interna entre propuesta de valor, decisiones técnicas, KPIs y gestión de crisis, con autocrítica metodológica explícita sobre lo validado vs. proyectado.",
+      "queEs": "E-commerce B2C de joyería en acero 316L con PVD; diferencial declarado: inalterabilidad demostrable con evidencia técnica, no solo prometida.",
+      "fortalezas": [
+        "Gestión de crisis documentada con 5 Whys, impacto cuantificado y plan en tres capas para ambos incidentes.",
+        "Distinción honesta entre lo validado (sitio funcional, KPIs de lanzamiento) y lo proyectado (SOM años 2–3).",
+        "Modelo financiero ajustado post-crisis con márgenes explícitos: 65% bruto, ROI 500–550%, punto de equilibrio ~475 uds."
+      ],
+      "interrogar": [
+        "El dominio productivo declarado es 'venikajewelry.com.ar' pero el proyecto se llama 'Venika Jewerly' (con 'y'): ¿cuál es el nombre registrado en INPI?",
+        "La ERR-501 afirma umbrales verificados a 48 hs (conversión ≥1,5%, rebote ≤50%) pero el sitio está en Pantheon/dev, no en producción real: ¿cómo se midieron esos umbrales?",
+        "La duplicación del SOM año 1→2→3 se apoya en recompra ≥15%, pero ese dato aún no existe operativamente; ¿qué benchmark de mercado sustenta ese supuesto?"
+      ],
+      "dondeApretar": "Presionar la brecha entre evidencia real disponible y métricas declaradas como alcanzadas, dado que el sitio opera en entorno de desarrollo y no hay datos reales de conversión ni recompra."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Calcularon un mercado enorme y de ahí eligieron una porción inicial bastante chica para atacar el primer año: ¿por qué decidieron arrancar con ese tamaño y no apuntar a algo mayor desde el inicio?",
+            "buscamos": "Que el grupo demuestre que la segmentación fue una decisión consciente —no arbitraria— y pueda explicar en términos simples qué limitaciones propias (capacidad productiva, inversión, canales disponibles) justifican ese punto de partida conservador dentro de un TAM tan amplio.",
+            "evasiva": "Repetir los números del TAM, SAM y SOM como si la secuencia se explicara sola, sin poder articular por qué ese SOM año 1 y no otro."
+          },
+          {
+            "pregunta": "El proyecto apuesta fuerte a que los clientes vuelvan a comprar desde el tercer mes: ¿en qué se basaron para creer que eso iba a pasar, siendo que todavía no tienen ventas reales que lo confirmen?",
+            "buscamos": "Que el grupo reconozca honestamente que ese dato de recompra no existe aún en su propio negocio, y que pueda nombrar algún referente de mercado, dato sectorial o lógica del producto (ticket accesible, producto de regalo, coleccionabilidad) que lo respalde aunque sea de forma aproximada.",
+            "evasiva": "Afirmar que 'está en los KPIs del informe' o que 'es una meta que nos pusimos', sin reconocer que es un supuesto aún no validado y sin ofrecer ningún ancla externa que lo sostenga."
+          },
+          {
+            "pregunta": "Eligieron diferenciarse por la durabilidad técnica del acero 316L con PVD, en lugar de competir por precio o diseño: ¿por qué creen que ese diferencial les va a importar a los clientes que están apuntando?",
+            "buscamos": "Que el grupo vincule el diferencial técnico con el perfil de cliente que definieron —mostrando que hay una coherencia entre a quién le hablan y qué problema concreto ese cliente tiene con la joyería común— y no solo que el material es objetivamente mejor.",
+            "evasiva": "Explicar las propiedades del acero 316L o del PVD como si la pregunta fuera técnica, sin conectar esas características con una necesidad o dolor real del segmento al que apuntan."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "Eligieron WordPress con WooCommerce para el sitio, descartando Tiendanube y Shopify que son plataformas pensadas específicamente para vender online. ¿Por qué les pareció que esa era la mejor decisión para este proyecto?",
+            "buscamos": "Que expliquen el razonamiento detrás de la elección: mayor control, flexibilidad, costos, o cualquier argumento concreto vinculado a las necesidades del proyecto. No importa si la respuesta es perfecta, importa que puedan defender que fue una decisión pensada y no tomada al azar.",
+            "evasiva": "Decir que WordPress 'es el más conocido' o 'el más usado en el mundo' sin explicar por qué se ajusta mejor a este proyecto puntual que las alternativas descartadas."
+          },
+          {
+            "pregunta": "El sitio está diseñado para que cualquier producto esté a no más de dos clics desde la página de inicio. ¿Qué problema concreto de la experiencia del usuario estaban intentando resolver con esa decisión?",
+            "buscamos": "Que conecten la decisión de arquitectura con el comportamiento esperado del usuario: reducir fricción, bajar el abandono, mejorar la tasa de conversión. Que entiendan que la profundidad de navegación no es un capricho técnico sino una decisión con impacto directo en ventas.",
+            "evasiva": "Responder que 'es bueno que sea fácil de navegar' o 'para que sea más cómodo' sin articular la relación entre esa decisión y los KPIs de conversión o abandono de carrito que el propio trabajo plantea."
+          },
+          {
+            "pregunta": "El tablero de indicadores del trabajo muestra todas las metas como alcanzadas, pero el sitio todavía no estuvo en producción con tráfico real. ¿Cómo explicarían esa diferencia a alguien que lee el informe?",
+            "buscamos": "Que reconozcan con honestidad que esos valores son metas proyectadas o resultados de un entorno de prueba, no de operación real. Una buena respuesta muestra que el grupo entiende la diferencia entre una meta y un logro, y puede explicarlo sin esquivar el punto.",
+            "evasiva": "Defender que las metas 'se cumplieron' sin aclarar el contexto, o desviar la respuesta hacia los objetivos del proyecto en lugar de reconocer que el tablero refleja un estado que aún no ocurrió en la práctica."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo describe una arquitectura de hosting en Hostinger, pero el sitio que pudimos ver está publicado en otro entorno: ¿cómo explican esa diferencia y qué implicaría migrar al entorno que describen en el informe?",
+            "buscamos": "Que reconozcan honestamente que el sitio está en Pantheon (entorno de desarrollo) y no en la arquitectura productiva descrita, que entiendan que eso es una brecha real, y que puedan explicar en términos generales qué pasos faltarían para completar esa migración (dominio, CDN, caché, pruebas de carga).",
+            "evasiva": "Explicar las ventajas de Hostinger o LiteSpeed Cache sin reconocer que hoy el sitio no está ahí, o decir que 'está en proceso' sin poder precisar qué le falta."
+          },
+          {
+            "pregunta": "Ustedes fijaron metas de rendimiento muy concretas para el sitio, como tiempo de carga y tasa de rebote, y en el tablero de KPIs figura que esas metas están alcanzadas: ¿cómo midieron eso si el sitio todavía no recibió tráfico real?",
+            "buscamos": "Que admitan con honestidad que las metas del tablero no están verificadas con datos reales, que puedan distinguir entre una proyección o simulación y una medición efectiva, y que entiendan por qué eso importa: sin tráfico real, los umbrales de conversión y rebote no pueden estar genuinamente alcanzados.",
+            "evasiva": "Defender los números del tablero como si fueran mediciones reales, o argumentar que las pruebas en desarrollo son equivalentes a las de producción sin explicar por qué."
+          },
+          {
+            "pregunta": "Eligieron WordPress con WooCommerce descartando plataformas como Tiendanube o Shopify: ¿qué fue lo más importante que los llevó a esa decisión para un negocio que recién arranca?",
+            "buscamos": "Que puedan defender la elección con argumentos propios del proyecto: control sobre el sitio, flexibilidad para mostrar el diferencial técnico del producto, costos a largo plazo, o la posibilidad de personalizar la experiencia; no que reciten ventajas genéricas de WordPress, sino que conecten la decisión con las necesidades concretas de Venika.",
+            "evasiva": "Listar características de WordPress en abstracto sin vincularlas al tipo de producto que venden, al diferencial que quieren comunicar, o al perfil del negocio que describieron en el trabajo."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo proyectan que las ventas se van a duplicar cada año durante tres años seguidos, y eso depende mucho de que los clientes vuelvan a comprar. ¿En qué se basaron para confiar en que eso iba a pasar, si el negocio todavía no empezó a funcionar?",
+            "buscamos": "Que el grupo reconozca que el dato de recompra no es propio sino un supuesto, que idealmente lo anclen a algún benchmark del sector o a la lógica del producto (joyería de calidad demostrable genera fidelización), y que sean honestos sobre la fragilidad del número si no tienen referencia de mercado que lo sostenga.",
+            "evasiva": "Explicar qué es la tasa de recompra o repetir el porcentaje del trabajo sin admitir que es un supuesto sin respaldo operativo propio."
+          },
+          {
+            "pregunta": "El trabajo muestra un tablero con todos los KPIs de lanzamiento marcados como 'meta alcanzada', pero el sitio todavía está en un entorno de desarrollo sin tráfico real. ¿Cómo llegaron a esos resultados y qué significa eso para la validez de esos datos?",
+            "buscamos": "Que el grupo admita la contradicción: no es posible medir conversión, rebote ni ticket promedio reales sin tráfico real, y que los valores del tablero son metas o estimaciones, no resultados verificados. Una buena respuesta distingue entre 'lo que queremos lograr' y 'lo que ya medimos'.",
+            "evasiva": "Explicar qué mide cada KPI o describir cómo funciona el tablero sin reconocer que los datos no pueden ser reales dado que el sitio no está en producción."
+          },
+          {
+            "pregunta": "El negocio apuesta fuerte a que el margen alto les da colchón frente a problemas, pero después del ajuste de costos que tuvieron que hacer, ese margen se achicó y la inversión inicial también subió bastante. ¿Cómo evalúan hoy la solidez financiera del proyecto con esos cambios incorporados?",
+            "buscamos": "Que el grupo pueda explicar con sus palabras que el negocio sigue siendo viable después de los ajustes, reconociendo que el ROI bajó y que el punto de equilibrio subió, pero argumentando por qué el margen sostenido sigue siendo un respaldo razonable. Se valora que muestren que entienden el impacto real de una crisis de costos sobre la proyección.",
+            "evasiva": "Afirmar que 'el margen sigue siendo alto' o que 'el ROI sigue siendo bueno' sin reconocer el impacto concreto de las correcciones ni demostrar que comprenden por qué esos cambios importan."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando se dieron cuenta de que el sitio estaba caído y no estaban generando ninguna venta, ¿cómo decidieron quién hacía qué dentro del equipo y cómo se aseguraron de que todos estuvieran alineados en ese momento de presión?",
+            "buscamos": "Que describan un reparto de roles concreto durante la crisis (ERR-501), aunque sea informal: quién coordinó, quién ejecutó, cómo se comunicaron. Lo ideal es que mencionen que la resolución en 12 horas requirió una decisión rápida y que expliquen cómo la tomaron en equipo.",
+            "evasiva": "Responder en términos generales sobre 'comunicación' o 'trabajo en equipo' sin anclar la respuesta a lo que pasó puntualmente con la caída del sitio."
+          },
+          {
+            "pregunta": "Ustedes definieron que si a las 48 horas de resolver la crisis el rebote seguía alto y la conversión no levantaba, iban a actuar: ¿qué habrían hecho concretamente si esos umbrales no se cumplían, y por qué eligieron ese plazo y no uno más corto o más largo?",
+            "buscamos": "Que defiendan la lógica del plazo de 48 horas como balance entre dar tiempo real de medición y no prolongar el daño, y que anticipen al menos una acción de contingencia concreta si los indicadores no mejoraban. Se valora que reconozcan que el sitio estaba en desarrollo y que eso condiciona la medición.",
+            "evasiva": "Repetir los umbrales como si fueran metas cumplidas sin explicar el razonamiento detrás del plazo ni qué pasaba si no se alcanzaban."
+          },
+          {
+            "pregunta": "Para protegerse de una nueva ruptura de stock como la que ya tuvieron, decidieron trabajar siempre con al menos dos proveedores homologados: ¿por qué dos y no uno o tres, y cómo piensan mantener esa política cuando los márgenes son ajustados y homologar proveedores tiene un costo?",
+            "buscamos": "Que justifiquen el número dos como un equilibrio razonable entre redundancia y costo de gestión, y que demuestren conciencia de la tensión real entre el margen que manejan y el costo de sostener esa política. No se espera un número exacto, sino una defensa coherente de la decisión.",
+            "evasiva": "Decir que 'dos proveedores es lo estándar' o que 'así lo indica la bibliografía' sin conectarlo con la realidad de costos y márgenes del propio proyecto."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "59",
+    "proyecto": "SATHANE",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1Op_ih_UwL1ene52b1vTnx71utQ-H69QT/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1zUtgN9zgGvIMtMli81KwWEAfTjLLiVFv/preview",
+    "informe": {
+      "resumen": "El trabajo muestra consistencia estratégica notable y autocrítica real en crisis, aunque presenta supuestos financieros optimistas sin validación empírica propia.",
+      "queEs": "E-commerce de perfumería de autor Invite-Only, cuyo diferencial es convertir la barrera de acceso por código en activo de marketing y crecimiento orgánico.",
+      "fortalezas": [
+        "La decisión Go/No-Go de validar la capa pública antes de invertir el total Pre-Seed de USD 50.000 demuestra coherencia ágil documentada.",
+        "El análisis de causa raíz de ambas crisis (5 Whys) identifica responsabilidades estructurales, no solo errores de ejecución puntuales.",
+        "La arquitectura de dos capas pública/privada está justificada estratégicamente y conectada con el buyer persona y el sitemap de forma trazable."
+      ],
+      "interrogar": [
+        "Contradicción: el SOM proyecta USD 225.000 en el año 1 (1.500 unidades) pero el lanzamiento parte de solo 50 códigos semilla; no se explica el puente entre ambas cifras.",
+        "Supuesto sin evidencia: el margen bruto del 75% y el ROI del 112% se declaran como alcanzables, pero no hay estructura de costos unitaria ni precio final en pesos publicado en el sitio.",
+        "Brecha declarado/implementado: los wireframes 3, 4 y 5 (capa privada, checkout y confirmación) están marcados como 'PROPUESTA A FUTURO — NO IMPLEMENTADO AÚN', por lo que el MVP funcional real se limita a la capa pública."
+      ],
+      "dondeApretar": "Presionar sobre cómo piensan escalar de 50 códigos semilla a 1.500 ventas anuales sin pauta paga activa, y qué evidencia real recogieron durante la Fase 1 del MVP ya desplegado."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El plan proyecta vender 1.500 unidades en el primer año, pero el lanzamiento arranca con solo 50 códigos semilla entregados a mano: ¿cómo explican el puente entre esos dos puntos?",
+            "buscamos": "Que el grupo articule un mecanismo concreto de crecimiento viral: cuántos ciclos de invitación necesitan, qué tasa de conversión o expansión asumen en cada ronda, y por qué consideran que el sistema orgánico de invitaciones puede sostener esa escala en doce meses. No se exige el número exacto, sino que justifiquen la lógica de crecimiento.",
+            "evasiva": "Responder que '1.500 unidades es el 1% del mercado accesible y por eso es conservador' sin explicar el mecanismo que conecta 50 códigos iniciales con esa cifra."
+          },
+          {
+            "pregunta": "Declaran un margen bruto del 75% como alcanzable, pero en el trabajo no aparece ni el costo unitario de cada fragancia ni el precio final en pesos publicado en el sitio: ¿sobre qué base calcularon ese margen?",
+            "buscamos": "Que el grupo reconozca la brecha entre el supuesto declarado y la evidencia presentada, y pueda explicar al menos los componentes de costo que consideraron (producción, logística, plataforma, etc.) aunque no estén desagregados en el informe. Una buena respuesta también puede admitir que es una estimación de referencia que requiere validación con proveedores reales.",
+            "evasiva": "Repetir que '75% es el margen típico del sector de perfumería de autor' sin dar ningún detalle sobre cómo se llega a ese número en el contexto específico de este proyecto."
+          },
+          {
+            "pregunta": "El buyer persona Valentina Russo está declarado explícitamente como hipótesis de trabajo sin validación empírica previa: ¿qué decisiones estratégicas concretas del plan apoyaron en ese perfil, y qué pasa si los primeros datos reales muestran que el usuario real es distinto?",
+            "buscamos": "Que el grupo identifique al menos dos decisiones ancladas en el perfil de Valentina (canal exclusivo en Instagram, ticket promedio, tono de comunicación, etc.) y que expliquen cómo el KPI de contraste incorporado al plan les permitiría detectar una desviación y ajustar sin desarmar la estrategia entera.",
+            "evasiva": "Decir que 'todo buyer persona es una hipótesis' de manera genérica sin conectar la respuesta con ninguna decisión específica del propio trabajo ni con el mecanismo de validación que el plan incluye."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El checkout que implementaron en WooCommerce termina siendo una sola página con todos los campos juntos, pero en el trabajo declararon un diseño de tres pasos con indicador de progreso y badge SSL visible. ¿Por qué quedó así y qué impacto tiene esa diferencia en la experiencia del usuario que están intentando atraer?",
+            "buscamos": "Que reconozcan la brecha entre lo declarado y lo implementado, expliquen si fue una decisión deliberada o una limitación técnica/temporal, y conecten el impacto con su buyer persona o con la percepción de confianza en un e-commerce de ticket promedio alto.",
+            "evasiva": "Describir qué es un checkout de un solo paso o explicar las ventajas generales de simplificar el proceso de compra, sin hacerse cargo de la contradicción con lo que ellos mismos diseñaron."
+          },
+          {
+            "pregunta": "Tres de sus wireframes, incluyendo la ficha de producto y el checkout, están marcados como propuesta a futuro y no están implementados. ¿Cómo definen entonces qué es el MVP de Invite-Only y qué puede hacer realmente un usuario hoy dentro del sitio?",
+            "buscamos": "Que delimiten con honestidad el alcance real del MVP funcional, que es la capa pública, y que justifiquen esa delimitación en términos de lo que querían validar en esta etapa, reconociendo que la experiencia de compra completa todavía no existe.",
+            "evasiva": "Explicar el concepto de MVP o hablar del roadmap futuro sin definir con claridad cuál es el límite de lo que el usuario puede hacer hoy en el sitio."
+          },
+          {
+            "pregunta": "Eligieron poner etiquetas noindex en toda la capa privada, que es donde están las fichas de fragancias y el checkout, para proteger el misterio de la marca. ¿Cómo midieron o piensan medir el rendimiento de esas páginas si por diseño propio son invisibles para los buscadores y para sus propios KPIs de SEO?",
+            "buscamos": "Que reconozcan la tensión entre la decisión de exclusividad y la medición del catálogo, que expliquen qué señales alternativas usarían para evaluar esas páginas, como comportamiento interno, tiempo en página o tasa de conversión desde la capa privada, y que demuestren que la decisión fue consciente y no un punto ciego.",
+            "evasiva": "Explicar para qué sirve el noindex o hablar del branded search como si cubriera el rendimiento del catálogo, sin abordar que el desempeño SEO de las fichas de producto es estructuralmente no medible con el plan de medición que presentaron."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El checkout que implementaron en WooCommerce termina siendo una sola página con todo junto, pero en el trabajo ustedes describen un diseño de tres pasos con indicador de progreso y badge SSL visible. ¿Por qué quedó así y qué impacto tiene esa diferencia para el usuario que está por comprar?",
+            "buscamos": "Que reconozcan la brecha entre lo declarado y lo implementado, que expliquen si fue una decisión deliberada (tiempo, recursos del MVP) o un error de ejecución, y que conecten la ausencia de indicador de progreso y badge SSL con la fricción en conversión y la confianza del comprador, especialmente en un sitio nuevo y de acceso restringido.",
+            "evasiva": "Decir que WooCommerce 'lo hace así por defecto' o que 'igual funciona', sin reconocer la contradicción con el diseño declarado ni reflexionar sobre el efecto en la experiencia de compra."
+          },
+          {
+            "pregunta": "Decidieron poner etiquetas noindex en toda la capa privada para proteger el misterio de la marca, pero al mismo tiempo tienen como KPI el volumen de búsqueda de marca medido solo sobre la capa pública. ¿Cómo van a saber si el catálogo de fragancias está rindiendo en términos de visibilidad, si por diseño ese contenido no puede aparecer en Google?",
+            "buscamos": "Que entiendan que la decisión de noindex tiene un costo medible: el rendimiento SEO del catálogo es estructuralmente invisible por diseño, y que el KPI de branded search no cubre esa brecha. Una buena respuesta reconoce la tensión entre proteger el misterio y medir resultados, y propone alguna alternativa (métricas internas, comportamiento dentro del sitio, tráfico directo) para compensar lo que no se puede ver desde fuera.",
+            "evasiva": "Decir que 'el SEO no es el canal principal porque usan Instagram' sin abordar que ellos mismos incluyeron branded search como KPI, o no reconocer que hay contenido valioso del negocio que queda fuera de cualquier medición externa."
+          },
+          {
+            "pregunta": "En el Go-Live las imágenes se rompieron en mobile porque nadie había documentado cómo Pantheon maneja las URLs al migrar, y eso generó una tasa de rebote proyectada altísima justo el día de lanzamiento. ¿Qué protocolo concreto deberían haber tenido antes de salir a producción para que eso no pasara?",
+            "buscamos": "Que demuestren que entienden la causa raíz: un supuesto no documentado sobre el comportamiento del servidor de hosting. Una buena respuesta menciona alguna práctica de preproducción concreta: entorno de staging, checklist de QA mobile antes del deploy, prueba de rutas de imágenes post-migración, o al menos un responsable designado para validar el sitio antes del go-live.",
+            "evasiva": "Decir que 'son cosas que pasan' o que 'se resolvió en 12 horas' sin reflexionar sobre qué proceso preventivo faltó ni quién debería haber sido responsable de esa verificación."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo proyecta vender 1.500 unidades en el primer año, pero el lanzamiento arranca con solo 50 códigos semilla entregados a mano: ¿cómo explican ese salto, dado que el crecimiento es exclusivamente orgánico y sin inversión publicitaria adicional?",
+            "buscamos": "Que el grupo articule el mecanismo concreto de viralidad del sistema de invitaciones: cada portador de código invita a otros, esos nuevos usuarios generan nuevos códigos, y así sucesivamente. Una buena respuesta estima cuántos niveles de expansión o tasa de reenvío se necesitarían para alcanzar 1.500 unidades, reconociendo que ese puente no está documentado en el trabajo y que es una hipótesis optimista.",
+            "evasiva": "Decir que 'el boca a boca y la exclusividad generan demanda' sin explicar el ritmo de expansión ni admitir que el trabajo no cierra esa brecha entre 50 códigos y 1.500 unidades."
+          },
+          {
+            "pregunta": "Declaran un margen bruto del 75% y un ROI del 112%, pero en el trabajo no figura ni la estructura de costos por unidad ni el precio final en pesos: ¿cómo defienden esos números si un evaluador o inversor no puede verificarlos con lo que está publicado?",
+            "buscamos": "Que el grupo reconozca la ausencia de la estructura de costos unitaria como una limitación real del trabajo, explique qué componentes de costo consideraron (fragancia, envase, logística, plataforma) aunque no estén desagregados en el informe, y proponga cómo subsanarlo, por ejemplo incluyendo un cuadro de costo unitario en una versión revisada.",
+            "evasiva": "Repetir que '75% es el margen estándar del sector' o que 'el modelo es similar al de otras perfumerías de autor' sin reconocer que el trabajo propio no ofrece la desagregación que sustenta esa afirmación."
+          },
+          {
+            "pregunta": "El plan de medición incluye el volumen de búsqueda de marca como KPI de SEO, pero por diseño todas las fichas de producto están indexadas con noindex para proteger el misterio de la capa privada: ¿cómo piensan medir si el SEO está funcionando si el catálogo completo es estructuralmente invisible para los buscadores?",
+            "buscamos": "Que el grupo entienda la contradicción: elegir noindex fue una decisión de producto deliberada, pero eso hace que el KPI de branded search solo refleje notoriedad de marca, no rendimiento SEO del catálogo. Una buena respuesta propone métricas alternativas coherentes con esa decisión, como tráfico directo, menciones sociales o búsquedas de marca en Google Search Console, y reconoce que el plan de medición original no resuelve esa brecha.",
+            "evasiva": "Explicar qué es noindex o para qué sirve el branded search por separado, sin conectar por qué un KPI de SEO de catálogo es imposible de medir cuando ese catálogo está intencionalmente oculto a los buscadores."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Con la crisis de las imágenes rotas en el día de lanzamiento, el equipo asumió que Pantheon iba a actualizar las URLs automáticamente sin dejarlo documentado en ningún protocolo. ¿Qué cambiarían hoy en la forma de preparar ese go-live para que ese supuesto no quede flotando en el aire?",
+            "buscamos": "Que el grupo reconozca que el error fue asumir sin validar y sin dejar constancia escrita, y que proponga algo concreto: un checklist pre-lanzamiento, un responsable designado para migraciones de assets, o una prueba en staging antes de publicar. No se busca que reciten las 12 horas de resolución, sino que demuestren que aprendieron sobre gestión de supuestos no documentados.",
+            "evasiva": "Decir que 'fue un error técnico que se resolvió rápido' o explicar qué es Pantheon sin conectar la respuesta con la falta de protocolo y la asignación de responsabilidades."
+          },
+          {
+            "pregunta": "Cuando apareció el problema de accesibilidad WCAG, detectaron que ningún rol del equipo tenía asignada esa auditoría normativa. ¿Cómo justifican esa decisión de diseño organizacional, o reconocen que fue una omisión, y qué consecuencia concreta tuvo para el proyecto?",
+            "buscamos": "Que el grupo distinga entre una decisión consciente y una omisión real, y que pueda articular la consecuencia tangible: el impacto sobre el ROI proyectado y el corrimiento del break-even. No hace falta que citen los porcentajes exactos, pero sí que demuestren que entienden que la falta de un rol responsable tuvo un efecto medible sobre la viabilidad financiera del proyecto.",
+            "evasiva": "Decir que 'la accesibilidad es importante' o comprometerse a 'incluirla en la próxima iteración' sin reconocer que fue una omisión de planificación y sin vincularla al impacto concreto que tuvo en los números del proyecto."
+          },
+          {
+            "pregunta": "En el trabajo conviven dos momentos que parecen contradecirse: una sección habla de pausar la pauta digital paga, y otra desarrolla en detalle campañas activas de Meta Ads con TOFU y retargeting. Si el tribunal les pregunta cuál es la estrategia real de medios pagos del proyecto, ¿cómo la describen?",
+            "buscamos": "Que el grupo sea capaz de aclarar la secuencia o la lógica detrás de los dos momentos, explicando si la pausa es anterior al despliegue de Meta Ads, si son etapas distintas, o si reconocen que quedó como una inconsistencia no resuelta en el informe. Una buena respuesta muestra capacidad de lectura crítica del propio trabajo, no una defensa a ultranza de algo que no está bien articulado.",
+            "evasiva": "Elegir solo uno de los dos fragmentos y hablar de ese como si el otro no existiera, o describir Meta Ads en abstracto sin abordar la tensión que genera la mención de la pausa en la sección anterior."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "60",
+    "proyecto": "Home Tex",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1PLR2tskfcK4AKVnvzoh06mAhLHU5_Imf/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1tl5gv2dz-YDtYJ9hmyNA4xqbRCg4ez-A/preview",
+    "informe": {
+      "resumen": "El trabajo muestra consistencia entre diagnóstico, diseño y decisiones técnicas, con proyecciones financieras articuladas al SOM y fundamentación estratégica evolutiva documentada.",
+      "queEs": "E-commerce híbrido para venta minorista de telas por metro en AMBA, con catálogo WooCommerce y cierre conversacional vía WhatsApp Business como diferencial de confianza.",
+      "fortalezas": [
+        "ROI e-commerce del 1.278% en Año 1 calculado sobre inversión declarada de $1.045.000 vs ingresos de $14.400.000.",
+        "Decisión de alcance híbrido justificada con restricción real: límite de 15 plugins impuesto por la cátedra.",
+        "Buyer Persona 'Carla' tradujo en decisiones UX concretas: zoom interactivo, fichas técnicas con gramaje y usos sugeridos."
+      ],
+      "interrogar": [
+        "El documento repite íntegra la sección SEO dos veces (págs. 15-16) con texto idéntico; el apartado 'Plan de contenidos' no tiene contenido propio.",
+        "Se declara ROI del e-commerce del 1.278% y ROI del negocio del 28.5% para el mismo año; los porcentajes son inconsistentes entre sí sin explicación.",
+        "Crisis 2 describe falla en pasarela de pagos automatizada, pero el alcance declarado excluye expresamente pasarela nativa en esta fase."
+      ],
+      "dondeApretar": "Interrogar la inconsistencia entre las dos crisis simuladas y el modelo híbrido sin checkout real, exigiendo que el grupo defienda la coherencia de los supuestos financieros proyectados."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes arrancan con un universo enorme de compradores online en Argentina, pero el negocio apunta a gente que compra telas para decoración o confección, que es un segmento mucho más chico. ¿Cómo justifican ese recorte para llegar a los 600 clientes del primer año?",
+            "buscamos": "Que el grupo reconozca que el TAM declarado es demasiado amplio para el rubro y que el camino correcto era acotar el mercado a la demanda específica de decoración y confección antes de proyectar clientes. No se espera un número nuevo, sino que entiendan por qué el recorte importa.",
+            "evasiva": "Explicar qué es TAM, SAM y SOM de memoria sin vincularlos al producto concreto, o decir que '600 clientes es poco así que el TAM grande no afecta'."
+          },
+          {
+            "pregunta": "El cierre de la venta pasa por WhatsApp y el pago se hace por transferencia bancaria, sin pasarela integrada. ¿Por qué eligieron ese camino y qué ventaja le ven frente a tener el pago dentro del sitio?",
+            "buscamos": "Que defiendan la decisión con argumentos propios del negocio: confianza en la primera compra, confirmación de disponibilidad de tela por metro, personalización del pedido. Y que puedan nombrar, aunque sea brevemente, la restricción técnica que también condicionó esa elección.",
+            "evasiva": "Decir únicamente que 'era más fácil de implementar' o que 'los clientes ya usan WhatsApp', sin conectarlo con el diferencial de confianza ni con las limitaciones del proyecto."
+          },
+          {
+            "pregunta": "Concentraron casi todo el presupuesto publicitario en Meta, con muy poco en WhatsApp Business. Dado que el cierre de la venta depende justamente de WhatsApp, ¿cómo piensan que funciona esa combinación?",
+            "buscamos": "Que expliquen la lógica del embudo: Meta atrae y genera interés, WhatsApp cierra la confianza y la venta. Se valora que puedan articular por qué tiene sentido invertir más en captación si el canal de cierre ya está integrado al flujo natural del cliente.",
+            "evasiva": "Repetir la distribución porcentual sin explicar por qué esa proporción tiene sentido para este modelo de negocio, o decir que 'Meta llega a más gente' como única justificación."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes eligieron cerrar la venta por WhatsApp en lugar de tener una pasarela de pagos integrada en el sitio: ¿por qué creen que esa decisión es un punto a favor del negocio y no una limitación que le resta profesionalismo?",
+            "buscamos": "Que el grupo defienda la decisión como estrategia de confianza para un producto que requiere consulta (textura, metraje, colores), no como parche técnico; y que mencionen el contexto del cliente minorista de telas que necesita asesoramiento antes de comprar.",
+            "evasiva": "Decir que 'se hizo así por el límite de plugins' o repetir que WhatsApp es popular, sin explicar por qué ese canal específicamente genera confianza en este rubro."
+          },
+          {
+            "pregunta": "El catálogo está en WooCommerce pero el cierre ocurre en otro canal: ¿cómo pensaron la experiencia del cliente para que ese salto entre el sitio y WhatsApp no se sienta como una interrupción o un abandono?",
+            "buscamos": "Que expliquen algún recurso de diseño o comunicación que acompañe ese traspaso —por ejemplo, un llamado a la acción claro, un botón visible, un mensaje de bienvenida que retome el contexto— demostrando que pensaron el recorrido completo del usuario.",
+            "evasiva": "Describir las funciones de WhatsApp Business en abstracto o decir que el botón está en el sitio, sin hablar de qué pasa desde el punto de vista del cliente que hace ese pasaje."
+          },
+          {
+            "pregunta": "En el plan de contenidos no llegaron a desarrollar propuestas concretas: si tuvieran que elegir un solo tipo de contenido para arrancar en Instagram con este negocio de telas, ¿cuál elegiría el grupo y por qué?",
+            "buscamos": "Que reconozcan sin rodeos que esa sección quedó incompleta y, aun así, demuestren criterio: por ejemplo, elegir contenido visual que muestre texturas y combinaciones porque el producto lo exige, conectando con el 80% del presupuesto volcado a Meta Ads.",
+            "evasiva": "Hablar de 'publicar regularmente' o 'generar engagement' sin mencionar el producto concreto ni por qué ese formato encaja con el cliente que compra telas."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El proyecto tiene un límite fijo de plugins en el servidor que usaron, y eso los obligó a tomar decisiones sobre qué incluir y qué dejar afuera. ¿Cómo influyó esa restricción concretamente en lo que terminó quedando en el alcance del proyecto?",
+            "buscamos": "Que el grupo demuestre que la restricción de 15 plugins fue una decisión de diseño real y no un dato copiado: debería poder explicar que esa limitación condicionó qué funcionalidades priorizaron y cuáles descartaron, incluyendo la pasarela de pagos nativa, y que el cierre por WhatsApp fue en parte una respuesta a ese límite.",
+            "evasiva": "Mencionar el límite de plugins como dato técnico sin conectarlo con ninguna decisión concreta del proyecto, o decir que 'estaba en las condiciones del servidor' sin poder explicar qué impacto tuvo."
+          },
+          {
+            "pregunta": "En el documento hay una sección que, en lugar de desarrollar el plan de contenidos, repite el texto de otra sección. ¿Qué pasó ahí y qué tendría que haber incluido esa parte del trabajo?",
+            "buscamos": "Que el grupo reconozca honestamente que fue un error o una omisión, sin intentar justificarlo como intencional. Una buena respuesta nombra qué debería haber contenido un plan de contenidos real: tipos de publicaciones, frecuencia, canales, vínculo con la estrategia de Meta Ads y WhatsApp.",
+            "evasiva": "Esquivar la pregunta hablando de SEO en general, o decir que 'el contenido estaba integrado en otras secciones' sin reconocer que la sección específica quedó vacía."
+          },
+          {
+            "pregunta": "Una de las crisis que simularon involucra problemas con pagos con tarjeta, pero el proyecto tal como lo definieron no incluye una pasarela de pagos implementada. ¿Cómo explican esa diferencia?",
+            "buscamos": "Que el grupo note la inconsistencia y pueda explicarla con honestidad: o bien reconocen que la crisis quedó mal planteada respecto al alcance real del proyecto, o pueden argumentar que la incluyeron como ejercicio prospectivo para una fase futura, aclarando que en la fase actual los pagos se coordinan por transferencia bancaria vía WhatsApp.",
+            "evasiva": "Defender la crisis como válida sin advertir la contradicción con el alcance, o confundir el escenario simulado con una funcionalidad que el proyecto efectivamente tiene implementada."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo declaran dos ROI distintos para el mismo año: uno para el e-commerce y otro para el negocio en general, y la diferencia entre los dos es muy grande. ¿Cómo explicarían esa diferencia?",
+            "buscamos": "Que el grupo reconozca que ambos números miden cosas distintas (el ROI digital toma solo la inversión digital, el del negocio incluye todos los costos), y que pueda articular en qué basan cada cálculo aunque admita que la presentación en el documento no lo dejó claro.",
+            "evasiva": "Repetir los porcentajes o decir que 'el e-commerce tiene mayor potencial de crecimiento' sin explicar por qué las bases de cálculo son distintas."
+          },
+          {
+            "pregunta": "Proyectan 600 clientes en el primer año con un ticket promedio de $24.000. ¿Por qué eligieron esa cantidad de clientes como meta y no más, considerando que el mercado que declaran como referencia es mucho más grande?",
+            "buscamos": "Que el grupo entienda la diferencia entre el mercado total y el segmento realmente alcanzable para un negocio local de telas en AMBA, y que pueda justificar la cifra con algún argumento concreto como capacidad operativa, presupuesto publicitario o características del producto.",
+            "evasiva": "Decir que 'empezamos conservadores' o que 'es la primera fase' sin relacionar la meta con ningún dato del negocio."
+          },
+          {
+            "pregunta": "Uno de sus KPIs es el porcentaje de rebote, pero en el trabajo no definen a partir de qué valor considerarían que hay un problema. ¿Cómo decidirían en la práctica si ese indicador les está dando bien o mal?",
+            "buscamos": "Que el grupo reconozca que faltó definir un umbral y proponga un criterio razonable, aunque sea básico: por ejemplo, comparar contra promedios del sector, establecer una meta propia o usar los primeros meses como línea de base.",
+            "evasiva": "Describir qué acción tomarían si el rebote es alto sin reconocer que el número concreto de referencia no está definido en el trabajo."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo plantean una crisis donde el sistema de cobro falla y muchas tarjetas son rechazadas, pero si entiendo bien, el proyecto tal como lo diseñaron no incluye una pasarela de pagos propia. ¿Cómo se relaciona esa crisis con lo que realmente construyeron?",
+            "buscamos": "Que el grupo reconozca la inconsistencia entre el alcance declarado y el escenario de crisis, y que pueda explicar por qué igual tiene valor pensar en ese riesgo aunque no sea parte de esta fase, o que admita honestamente que fue un error de coherencia en el documento.",
+            "evasiva": "Describir cómo se resuelve la crisis técnica sin tocar que esa situación no puede ocurrir en el sistema que ellos diseñaron, o decir que 'igual es útil practicar' sin reconocer la contradicción."
+          },
+          {
+            "pregunta": "Si mañana una publicación de Instagram de un cliente enojado viraliza que 'nunca llegó su tela', ¿cómo respondería el equipo considerando que todo el cierre de venta pasa por WhatsApp con un número personal?",
+            "buscamos": "Que conecten el diferencial conversacional del modelo con su lado vulnerable: si el canal de confianza es un número personal de WhatsApp, una crisis de reputación pública en redes no tiene un circuito formal de respuesta institucional. Se valora que reconozcan esa tensión y propongan algo concreto.",
+            "evasiva": "Hablar en abstracto de 'gestionar las redes sociales' o 'responder rápido' sin vincular la respuesta al hecho de que el canal principal es un número de WhatsApp no institucional, ni mencionar el riesgo que eso implica para la imagen de marca."
+          },
+          {
+            "pregunta": "Durante el proyecto seguramente hubo momentos en que el equipo tuvo que dejar algo afuera o simplificar algo que originalmente querían incluir. ¿Pueden contarme una decisión así y explicar por qué la tomaron?",
+            "buscamos": "Que demuestren consciencia real sobre las restricciones que condicionaron el alcance, como el límite de plugins o la decisión de no integrar pasarela nativa, y que puedan defender esa decisión como una elección fundamentada y no como un olvido.",
+            "evasiva": "Dar una respuesta vaga como 'el tiempo no alcanzó' o 'lo dejamos para una segunda fase' sin explicar qué restricción concreta llevó a esa decisión ni qué implicó dejarla afuera."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "61",
+    "proyecto": "Eunoia Agency - Maxing Home",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1squ4XA1Pw91YBze0sR1fRG4_G6R2wBGa/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1QGD_g6nnUMpwbG9pH1RlNBTDJTpl2MUc/preview",
+    "informe": {
+      "resumen": "El trabajo articula consistentemente análisis estratégico, diseño UX y gestión de crisis con datos verificables, aunque la brecha entre sitio funcional y métricas reales es estructural.",
+      "queEs": "E-commerce de accesorios tecnológicos para hogar/home office en WordPress+WooCommerce, diferenciado por acompañamiento al usuario y contenido explicativo en lugar de precio.",
+      "fortalezas": [
+        "PESTEL aplicado con fuentes datadas (CACE 2025, Infozona 2026) y respuestas conductuales concretas por factor.",
+        "SOM operativo (645 unidades, $41.925.000 ARS) distinguido explícitamente del SOM teórico 1%, con justificación de la brecha.",
+        "Gestión de dos crisis con causa raíz (5 Whys), umbrales de resolución cuantificados y protocolos incorporados a la operación."
+      ],
+      "interrogar": [
+        "El sitio publicado existe (URL citada) pero no hay métricas reales: tasa de conversión, CAC y abandono de carrito son proyecciones, nunca mediciones.",
+        "El presupuesto de marketing ($3.500.000 ARS) se distribuye en pauta digital, pero el documento no incluye el cálculo de CPC ni el embudo que lleva a las 1.750 visitas iniciales proyectadas.",
+        "La Crisis 1 (competidor chino en abril 2026) se trata como hecho real con impacto proyectado del -30% de conversión, pero está referenciada como 'documento interno de cátedra', sin evidencia de que ocurrió realmente."
+      ],
+      "dondeApretar": "Presionar la coherencia entre los supuestos financieros (visitas, conversión, ticket) y la ausencia de datos reales del sitio publicado."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El buyer persona que construyeron, Franco, está pensado para alguien que trabaja de forma remota o híbrida. Sabiendo que hoy la gran mayoría de los argentinos va a la oficina todos los días, ¿cómo justifican que ese perfil es suficientemente grande para sostener el negocio?",
+            "buscamos": "Que reconozcan la tensión entre el dato de mercado laboral y su segmento elegido, y que defiendan la elección con algún argumento concreto: por ejemplo, que el segmento remoto/híbrido, aunque minoritario, está concentrado en perfiles con mayor poder adquisitivo, o que el home office como tendencia sigue creciendo en ciertos sectores. Lo importante es que muestren que conocen el riesgo y tienen una postura, no que lo esquiven.",
+            "evasiva": "Decir que 'el trabajo remoto creció mucho' o que 'Franco representa a muchos usuarios' sin reconocer que los datos disponibles muestran que ese segmento es más chico de lo que el trabajo asume."
+          },
+          {
+            "pregunta": "Eligieron diferenciarse por acompañamiento y contenido explicativo en lugar de competir por precio. ¿Por qué creen que eso alcanza para retener a un cliente cuando aparece alguien que vende un producto muy similar a la mitad del valor?",
+            "buscamos": "Que defiendan la propuesta de valor con argumentos de fidelización, experiencia de compra o confianza, y que reconozcan honestamente que el diferencial por servicio tiene un límite cuando la brecha de precio es muy grande. Una buena respuesta no niega el problema, sino que explica qué debería pasar para que el cliente igual los elija a ellos.",
+            "evasiva": "Responder que 'el cliente valora la calidad' o que 'no todo es precio' sin explicar concretamente qué ofrece el sitio que justifique pagar el doble, o sin reconocer que la situación planteada pone en riesgo real la propuesta."
+          },
+          {
+            "pregunta": "El ticket promedio que proyectaron está bastante por debajo de lo que muestran los promedios del e-commerce en Argentina hoy. ¿Eso fue una decisión estratégica o una limitación del catálogo, y cómo impacta en la cantidad de ventas que necesitan para que el negocio cierre?",
+            "buscamos": "Que distingan entre una decisión consciente de posicionamiento accesible y una limitación del mix de productos elegido, y que entiendan que un ticket más bajo obliga a vender más unidades para alcanzar los mismos ingresos. No hace falta que den el número exacto, pero sí que muestren que entienden la relación entre ticket, volumen y rentabilidad.",
+            "evasiva": "Decir que el precio bajo es una ventaja competitiva sin conectarlo con el volumen necesario, o afirmar que van a subir el ticket 'en el futuro' sin explicar cómo cambia eso el modelo actual."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El negocio apuesta fuerte a acompañar al usuario y explicarle el producto, pero el sitio está publicado en un dominio de desarrollo, no en uno propio: ¿cómo impacta eso en la confianza del cliente que llega por primera vez?",
+            "buscamos": "Que el grupo reconozca que un dominio de desarrollo (Pantheon) puede generar desconfianza o confusión en el usuario final, que eso contradice la propuesta de valor de cercanía y acompañamiento, y que idealmente debería haberse migrado a un dominio propio antes del Go-Live.",
+            "evasiva": "Explicar las funcionalidades del sitio o hablar de la experiencia de compra sin mencionar el problema del dominio."
+          },
+          {
+            "pregunta": "El buyer persona 'Franco' está pensado para alguien que trabaja de forma remota o híbrida, pero los datos actuales muestran que la gran mayoría de los trabajadores argentinos va presencialmente a la oficina: ¿cómo afecta eso al tamaño real del público al que le están hablando?",
+            "buscamos": "Que el grupo admita que el segmento objetivo puede ser más chico de lo que asumieron, que eso tiene consecuencias en la proyección de visitas y ventas, y que idealmente habría que ajustar el perfil o ampliar el buyer persona.",
+            "evasiva": "Defender la vigencia del trabajo remoto sin reconocer la tensión con los datos citados, o describir a 'Franco' sin vincular el punto a las proyecciones comerciales."
+          },
+          {
+            "pregunta": "La Crisis 2 plantea que el cupón de bienvenida no funciona justo el día del lanzamiento: más allá de la solución técnica, ¿qué dice ese escenario sobre cómo diseñaron el proceso de prueba del checkout antes de salir al público?",
+            "buscamos": "Que el grupo pueda reflexionar sobre la importancia de testear el flujo completo de compra, incluyendo descuentos y códigos, en un entorno de staging antes del Go-Live, y que reconozcan que ese paso faltó o fue insuficiente en el plan.",
+            "evasiva": "Contar cómo se resolvería el error técnico sin mencionar por qué no se detectó antes, o derivar la responsabilidad a un problema de plataforma sin autocrítica sobre el proceso."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que nos mostraron está publicado en un dominio de desarrollo, no en un dominio propio de producción: ¿por qué eligieron ese camino y qué implicaría el pasaje a un entorno real antes de empezar a vender?",
+            "buscamos": "Que el grupo reconozca que Pantheon es un entorno de staging o prueba, que entienda la diferencia con un dominio de producción propio, y que pueda mencionar al menos un paso concreto del proceso de migración (apuntar DNS, configurar SSL, revisar permalinks, etc.). Se valora que sean honestos si no llegaron a completar ese paso.",
+            "evasiva": "Decir que 'el sitio ya está funcionando y se puede ver' sin distinguir entre un entorno de desarrollo y uno productivo, o desviar hacia las funcionalidades del sitio sin responder la pregunta de la infraestructura."
+          },
+          {
+            "pregunta": "Construyeron toda la estrategia alrededor de un comprador que trabaja de forma remota o híbrida, pero hoy la mayoría de los trabajadores argentinos va a la oficina de forma presencial: ¿cómo defienden que ese perfil de cliente tiene el tamaño suficiente para sostener el negocio?",
+            "buscamos": "Que el grupo reconozca la tensión entre el buyer persona elegido y el dato de contexto, y que pueda argumentar por qué el segmento remoto/híbrido sigue siendo viable para ellos aunque no sea mayoría: por ejemplo, que ese nicho concentra mayor poder adquisitivo, que la tendencia puede revertirse, o que apuntan a una porción acotada del mercado. Se valora la honestidad si admiten que es una hipótesis que requeriría validación.",
+            "evasiva": "Ignorar el dato de presencialidad y repetir la descripción del buyer persona como si el contexto no presentara ningún desafío, o responder que 'igual hay gente que trabaja desde casa' sin cuantificar ni argumentar."
+          },
+          {
+            "pregunta": "La crisis del cupón que no funcionó el día del lanzamiento les generó una caída proyectada importante en conversiones: técnicamente, ¿qué debería haber existido antes del Go-Live para detectar ese error a tiempo?",
+            "buscamos": "Que el grupo pueda nombrar algún proceso de control previo al lanzamiento: un checklist de pruebas funcionales, una etapa de testing del checkout con distintos escenarios, o una revisión de los códigos de descuento en un entorno de staging. No se espera terminología técnica avanzada, sino que demuestren que entienden que ese tipo de error es prevenible con una revisión sistemática antes de salir al público.",
+            "evasiva": "Culpar a la plataforma o a un error puntual sin reflexionar sobre la ausencia de un proceso de prueba previo, o limitarse a explicar qué pasó durante la crisis sin responder cómo se podría haber evitado."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo muestran proyecciones de cuántos clientes van a captar y a qué costo, pero el sitio ya está publicado: ¿por qué decidieron trabajar con esos números proyectados en lugar de medir lo que realmente está pasando en el sitio?",
+            "buscamos": "Que el grupo reconozca con honestidad que las métricas son proyecciones y no mediciones reales, que explique por qué no pudieron o no llegaron a relevar datos reales (tiempo, etapa del proyecto, falta de tráfico), y que muestre que entiende la diferencia entre planificar y validar.",
+            "evasiva": "Explicar qué es una tasa de conversión o un CAC en general, o defender las proyecciones como si fueran datos reales sin reconocer que el sitio no tiene tráfico medido todavía."
+          },
+          {
+            "pregunta": "Eligieron distribuir el presupuesto de publicidad entre tres plataformas distintas: ¿cómo llegaron a esa repartición y qué criterio usaron para decidir cuánto poner en cada una?",
+            "buscamos": "Que el grupo pueda justificar la lógica detrás de la distribución entre Meta, TikTok y Google más allá de reproducirla: por ejemplo, a qué audiencia apunta cada canal, qué tipo de resultado esperan de cada uno, o al menos reconocer honestamente si la distribución fue una decisión razonada o una estimación orientativa.",
+            "evasiva": "Repetir los porcentajes del documento sin explicar el razonamiento, o describir en qué consiste cada plataforma sin conectarlo con la estrategia del negocio."
+          },
+          {
+            "pregunta": "El margen entre lo que el negocio rinde y lo que les cuesta el capital es bastante ajustado: si alguna de las variables que proyectaron se mueve un poco —el precio de venta, el volumen de unidades, los costos de pauta— ¿cómo afecta eso la viabilidad del proyecto?",
+            "buscamos": "Que el grupo muestre que entiende la fragilidad del escenario financiero: que con ese margen estrecho cualquier desvío tiene impacto real, y que pueda nombrar al menos una variable concreta que, si cambia, complica la ecuación. No se espera que reciten la TIR ni la tasa de descuento, sino que demuestren conciencia del riesgo.",
+            "evasiva": "Decir que el proyecto 'igual es viable' sin reconocer la estrechez del margen, o hablar de resiliencia y adaptabilidad en términos genéricos sin anclar la respuesta en ninguna variable concreta del trabajo."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo plantean una crisis donde un competidor chino entra al mercado con un producto muy similar a la mitad del precio: ¿cómo justifican que la diferenciación por acompañamiento y contenido explicativo alcanza para sostener ventas cuando el precio duplica al de ese competidor?",
+            "buscamos": "Que el grupo defienda con convicción la propuesta de valor —no el precio, sino el servicio, la confianza y el contenido— y reconozca que ese argumento funciona si el buyer persona realmente prioriza esas cosas por encima del costo. Que puedan nombrar al menos una acción concreta que tomarían (reforzar canales de contenido, activar reseñas, campaña de diferenciación) en vez de quedarse en lo conceptual.",
+            "evasiva": "Repetir que 'la calidad es mejor' o 'el cliente fiel no se va' sin explicar por qué ese cliente específico elegiría pagar el doble ni qué harían en concreto para retenerlo."
+          },
+          {
+            "pregunta": "El día del lanzamiento el cupón de bienvenida no funcionaba en el checkout: ¿qué les dice ese error sobre cómo estaba organizado el equipo para el Go-Live, y qué cambiarían en el proceso si tuvieran que volver a lanzar?",
+            "buscamos": "Que reflexionen sobre la falta de una prueba funcional previa al lanzamiento (un checklist, un testeo en staging) y que asuman responsabilidad colectiva sin buscar culpables. Lo valioso es que describan una mejora de proceso real: testear el flujo completo de compra antes de publicar, asignar un responsable de QA, etc.",
+            "evasiva": "Decir que 'fue un error técnico que puede pasarle a cualquiera' o atribuirlo a la plataforma sin identificar ninguna falla propia en la planificación previa al lanzamiento."
+          },
+          {
+            "pregunta": "El trabajo proyecta un impacto bastante serio en el margen si se junta la crisis del competidor con cualquier otro problema operativo: ¿en qué momento del año decidirían activar una alerta y cambiar el rumbo, y quién dentro del equipo tendría esa responsabilidad?",
+            "buscamos": "Que definan un criterio concreto de activación —aunque sea aproximado— como 'si las ventas caen dos meses seguidos' o 'si el margen baja de cierto umbral', y que nombren un rol o mecanismo de decisión dentro del equipo. Muestra madurez que reconozcan que no basta con detectar el problema, sino que alguien tiene que estar autorizado para tomar la decisión de cambiar el plan.",
+            "evasiva": "Responder que 'estarían atentos a los números' o que 'reunirían al equipo' sin precisar ningún criterio de cuándo ni quién tiene la última palabra."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "62",
+    "proyecto": "Coty John",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/13CRpET_20HTqTmex-DDFgufvHL4a_g3j/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1yuaKVREz1oBw1haXUVbceAhax7rELbww/preview",
+    "informe": {
+      "resumen": "El trabajo muestra análisis estratégico correcto pero la implementación técnica es declarativa sin evidencia verificable de funcionamiento real.",
+      "queEs": "E-commerce para emprendimiento de cotillón sanjuanino; diferencial: kits listos para eventos frente a competidores que venden productos sueltos.",
+      "fortalezas": [
+        "Análisis FODA y PESTEL coherentes con el contexto económico argentino y el rubro estacional.",
+        "Buyer Persona detallado (Laura Gómez) consistente con la estrategia de kits y canales elegidos.",
+        "Identificación y respuesta a dos crisis concretas: presión competitiva de precios y falla en GA4."
+      ],
+      "interrogar": [
+        "La URL del sitio funcional figura como enlace vacío 'COTY JOHN TODO PARA TU FIESTA' sin URL real: ¿el sitio existe o solo es prototipo?",
+        "Se declara WordPress + WooCommerce en Pantheon pero no hay capturas, métricas reales ni evidencia de configuración; brecha total entre lo planificado y lo demostrado.",
+        "Los KPIs listados (tráfico, conversión, ticket, recompra) no tienen valores base ni metas numéricas; el TAM/SAM/SOM tampoco incluye cifras concretas."
+      ],
+      "dondeApretar": "Presionar sobre la brecha entre diseño declarado e implementación real: qué funciona efectivamente, qué se midió y con qué resultados."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo describe el mercado —quiénes compran cotillón en San Juan, cuánto gastan, qué tan grande es el segmento— de forma cualitativa, sin ningún número concreto en ninguno de los tres niveles de mercado que analizan. ¿Cómo justifican haber tomado decisiones de producto y precio sin saber siquiera de forma aproximada el tamaño del mercado al que apuntan?",
+            "buscamos": "Que reconozcan la limitación sin evasivas, expliquen con qué información sí contaban para orientar decisiones (observación local, competencia, demanda percibida) y demuestren entender que sin cifras las proyecciones son frágiles. Bonus si proponen cómo lo corregirían.",
+            "evasiva": "Describir nuevamente qué son TAM, SAM y SOM, o decir que 'el mercado de cotillón es amplio' sin admitir que no tienen datos que lo respalden."
+          },
+          {
+            "pregunta": "Su buyer persona Laura Gómez compra desde el celular por WhatsApp, pero el trabajo apuesta a un sitio WordPress con WooCommerce como canal de venta principal. ¿Por qué diseñaron la solución alrededor de un e-commerce si su propio perfil de cliente ideal no compra por ese canal?",
+            "buscamos": "Que defiendan la tensión entre el canal actual de Laura y el canal propuesto: ya sea argumentando que el sitio busca cambiar ese hábito, que WhatsApp y WooCommerce conviven, o que Laura es representativa solo de una parte del segmento. Lo importante es que no ignoren la contradicción.",
+            "evasiva": "Repetir las características de Laura sin tocar el canal, o decir que 'el sitio también funciona en celular' sin abordar por qué alguien que compra por WhatsApp migraría a un checkout de WooCommerce."
+          },
+          {
+            "pregunta": "Ante la crisis de competidores con precios más bajos, el trabajo propone reforzar la identidad de marca y desarrollar kits, pero no analiza márgenes ni evalúa si ese diferencial de valor es suficiente para sostener un precio mayor. ¿Cómo saben que el cliente está dispuesto a pagar más por un kit armado si no tienen ningún dato de sensibilidad al precio ni de estructura de costos?",
+            "buscamos": "Que asuman que es una hipótesis no validada y expliquen en qué se basan para sostenerla: entrevistas, comportamiento observado, benchmark de otros rubros con lógica similar. Una buena respuesta admite el riesgo y propone cómo validarlo antes de escalar.",
+            "evasiva": "Insistir en que 'el diferencial es la comodidad' o 'la gente valora el tiempo' sin ningún respaldo concreto, o desviar la respuesta hacia las características del kit sin tocar el precio."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitemap incluye una sección de 'Promociones estacionales' pero los wireframes no la describen funcionalmente: ¿cómo pensaron que iba a funcionar esa sección para el usuario que llega al sitio buscando, por ejemplo, el Kit Mundial?",
+            "buscamos": "Que el grupo explique el flujo concreto que imaginaron: cómo el usuario descubre la promoción, qué ve, qué acción puede tomar, y por qué decidieron incluirla en el sitemap si no llegaron a wireframearla. Una buena respuesta reconoce la brecha y la justifica o propone cómo se resolvería.",
+            "evasiva": "Describir qué son las promociones estacionales en general o hablar del Kit Mundial como concepto de negocio sin explicar ningún paso de la experiencia del usuario dentro del sitio."
+          },
+          {
+            "pregunta": "Su buyer persona Laura Gómez compra desde el celular por WhatsApp: ¿por qué entonces diseñaron un e-commerce con carrito y checkout si el canal de compra preferido de su cliente principal es una conversación de chat?",
+            "buscamos": "Que el grupo defienda la convivencia de ambos canales con una lógica clara: por ejemplo, que el sitio cumple una función de vitrina o catálogo y WhatsApp cierra la venta, o que el objetivo es migrar a Laura hacia el checkout propio. Se espera que reconozcan la tensión y la resuelvan con argumentos, no que la ignoren.",
+            "evasiva": "Decir que WhatsApp 'complementa' al sitio sin explicar cómo se articula ese flujo ni qué hace Laura exactamente en cada canal antes de concretar la compra."
+          },
+          {
+            "pregunta": "Identificaron que el evento de compra no se registraba en GA4 porque no habían hecho pruebas completas antes del lanzamiento: si tuvieran que volver a hacer el proyecto, ¿en qué momento del proceso habrían corrido esa prueba y qué habrían verificado puntualmente?",
+            "buscamos": "Que el grupo muestre que entienden la causa real del error y puedan ubicarla en una etapa concreta del desarrollo, por ejemplo antes de publicar el sitio, después de configurar el tag en la página de confirmación de compra. Una respuesta sólida nombra qué condición tendrían que haber chequeado y por qué eso garantizaría que el dato llegara bien a GA4.",
+            "evasiva": "Responder que 'harían más pruebas' o que 'revisarían mejor la configuración' sin especificar qué se prueba, cuándo y con qué criterio de éxito."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El informe indica que eligieron WordPress alojado en Pantheon con WooCommerce y descartaron WordPress.com gratuito, pero los Anexos están vacíos y no hay capturas ni métricas del sitio: ¿cómo pueden demostrarle al tribunal hoy que esa plataforma existe y funciona, más allá de lo que dice el documento?",
+            "buscamos": "Que el grupo reconozca la brecha entre lo planificado y lo evidenciado, y ofrezca algo concreto: mostrar el sitio en vivo, una URL real, capturas guardadas, o al menos explicar por qué no hay evidencia y qué harían diferente para documentarlo. Una buena respuesta admite la debilidad sin evasivas.",
+            "evasiva": "Explicar las ventajas técnicas de Pantheon sobre WordPress.com o describir cómo funciona WooCommerce en general, sin nunca mostrar ni referir ninguna evidencia concreta del sitio propio."
+          },
+          {
+            "pregunta": "En el informe describen una crisis donde el evento de compra no se registraba correctamente en GA4 en la página de confirmación, y la causa identificada fue la falta de pruebas completas antes del lanzamiento: ¿qué cambio concreto en el proceso de trabajo implementaron o implementarían para que eso no vuelva a ocurrir en una segunda etapa del proyecto?",
+            "buscamos": "Que el grupo vaya más allá de enunciar la causa y describa una medida de proceso real: un checklist de QA antes de publicar, pruebas en entorno de staging, validación del dataLayer con Tag Assistant, o similar. Se valora que demuestren aprendizaje operativo, no solo que identificaron el problema.",
+            "evasiva": "Repetir que la causa fue no haber testeado suficiente, o decir que 'la próxima vez se van a fijar mejor', sin especificar ningún mecanismo, herramienta o paso concreto que lo garantice."
+          },
+          {
+            "pregunta": "El sitemap del proyecto incluye una sección de 'Promociones estacionales' y mencionan un 'Kit Mundial' como ejemplo, pero los wireframes no describen cómo funcionaría esa sección: ¿cómo pensaron gestionar operativamente esas promociones dentro de WooCommerce, considerando que su buyer persona compra desde el celular?",
+            "buscamos": "Que el grupo conecte la decisión de diseño con la realidad operativa: cómo se crearían y activarían los descuentos o kits en WooCommerce, cómo se verían en móvil, y si consideraron el esfuerzo de actualización periódica. Una respuesta sólida muestra que pensaron la sección más allá de nombrarla.",
+            "evasiva": "Describir qué es una promoción estacional en términos generales o hablar del Kit Mundial como concepto de negocio, sin explicar ningún aspecto de su implementación técnica ni de la experiencia en dispositivo móvil."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo definen la tasa de conversión como el porcentaje de visitas que terminan en compra, pero no dan ningún número objetivo: ¿cuánto esperaban lograr en los primeros tres meses y cómo llegaron a ese valor?",
+            "buscamos": "Que el grupo reconozca la ausencia del valor numérico y lo justifique o corrija en el momento: por ejemplo, cite un benchmark de referencia para e-commerce de nicho (1-3%), lo adapte al contexto local y explique por qué ese rango era o no era realista para un emprendimiento nuevo en San Juan.",
+            "evasiva": "Repetir la definición de tasa de conversión o decir que 'estaba en proceso de definirse', sin proponer ningún número ni criterio concreto para establecerlo."
+          },
+          {
+            "pregunta": "Describieron el TAM, SAM y SOM del mercado de cotillón sanjuanino, pero sin ninguna cifra en ninguno de los tres niveles: ¿cómo tomaron decisiones de inversión o de escala si no tenían estimado de qué porción del mercado querían capturar?",
+            "buscamos": "Que el grupo admita la debilidad y explique qué datos sí tenían disponibles (censos, competidores observados, pedidos propios) y cómo podrían haberlos usado para armar aunque sea una estimación de orden de magnitud, demostrando razonamiento financiero básico.",
+            "evasiva": "Explicar qué significan TAM, SAM y SOM como conceptos, o decir que 'el mercado es amplio' sin intentar cuantificar ni justificar por qué se omitió la cifra."
+          },
+          {
+            "pregunta": "Cuando los competidores con precios más bajos generaron comparaciones desfavorables, la solución que propusieron fue reforzar la identidad de marca y desarrollar los kits, pero no analizaron márgenes ni consideraron ajuste de precios: ¿cómo se sostiene esa decisión si no saben si el precio de los kits cubre los costos y deja ganancia?",
+            "buscamos": "Que el grupo defienda la lógica de diferenciación por valor agregado (el kit como propuesta única) pero reconozca que esa estrategia requiere validar que el margen sea positivo, y que explique, aunque sea a grandes rasgos, cómo pensaban estructurar el precio del kit para que fuera rentable frente a los competidores que venden suelto.",
+            "evasiva": "Decir que 'la diferenciación es suficiente' o que 'el cliente que valora la comodidad paga más', sin tocar en ningún momento la estructura de costos ni la viabilidad financiera de la propuesta."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo describe que durante la cursada el grupo pasó de cuatro integrantes a dos, pero no explica en qué momento ocurrió ni qué pasó con el trabajo que esas personas ya habían hecho: ¿cómo gestionaron ese quiebre y qué decisiones tomaron para que no afectara la calidad del proyecto?",
+            "buscamos": "Que el grupo reconozca el impacto real de la reducción, describa cómo redistribuyeron tareas, qué descartaron o priorizaron, y que asuman responsabilidad sobre los vacíos que quedaron en el documento en lugar de minimizarlos.",
+            "evasiva": "Decir que 'nos dividimos el trabajo entre los dos que quedamos' sin explicar qué tareas quedaron sin cobertura, qué se perdió del trabajo previo ni cómo eso afectó entregas específicas como los anexos vacíos o las métricas sin completar."
+          },
+          {
+            "pregunta": "Frente a la Crisis 1, la solución propuesta fue reforzar la identidad de marca y apostar a los kits diferenciados, sin mencionar ningún análisis de margen ni ajuste de precios: ¿por qué descartaron la variable precio como palanca y cómo saben que el diferencial de los kits es suficiente para sostener esa decisión frente a competidores más baratos?",
+            "buscamos": "Que el grupo defienda activamente la elección de no bajar precios con algún argumento de valor percibido, posicionamiento o margen, y que reconozcan que si no tienen cifras de costo o margen esa decisión fue tomada sin respaldo cuantitativo, lo cual es una debilidad que deben admitir.",
+            "evasiva": "Repetir que 'los kits son el diferencial' o que 'el cliente valora la comodidad' sin reconocer que en ningún momento del trabajo se analizó si el precio de los kits es competitivo ni cuánto margen tendrían para sostener esa postura."
+          },
+          {
+            "pregunta": "La Crisis 2, donde el evento de compra no se registraba en GA4, fue causada por no haber hecho pruebas completas antes del lanzamiento: ¿qué cambiarían en el proceso si tuvieran que volver a lanzar el sitio, y cómo impacta ese error en la confiabilidad de los datos de conversión que presentan en el trabajo?",
+            "buscamos": "Que el grupo conecte la causa técnica con la consecuencia directa sobre sus propios datos: si GA4 no registraba bien las compras, los datos de conversión que citan son poco confiables o directamente inválidos, y deben reconocerlo en lugar de tratar la crisis como algo ya resuelto y sin consecuencias.",
+            "evasiva": "Describir la crisis como un problema técnico que 'ya se solucionó' sin asumir que afectó retroactivamente la calidad de la medición ni proponer ningún protocolo concreto de testing que aplicarían en el futuro."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "62bis",
+    "proyecto": "Coty John - Eventos & Cotillón Online",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/11Gn8OvCaDoSuv5Zxhs0t-Zmg6B7sYLdW/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1hs1kSsO_eqYfo-uuTht-bsHqt6p2WpLW/preview",
+    "informe": {
+      "resumen": "El trabajo muestra coherencia narrativa y vocabulario técnico correcto, pero sus cifras de mercado carecen de fuente verificable, la implementación evidencia fallas críticas no resueltas antes del Go-Live, y el checkout capturado muestra ausencia de métodos de pago habilitados.",
+      "queEs": "E-commerce WordPress/WooCommerce en Pantheon para venta de kits de cotillón cerrados en San Juan, diferencial: combos listos que eliminan la fatiga de decisión del comprador.",
+      "fortalezas": [
+        "Estrategia de pivotaje a combos cerrados como respuesta documentada ante competencia low-cost (Crisis 1).",
+        "Elección técnica justificada: WordPress sobre SaaS para evitar comisiones por transacción y dependencia de plataforma.",
+        "Customer Journey mapeado con canales concretos: Instagram como descubrimiento, WhatsApp Business para NPS postventa."
+      ],
+      "interrogar": [
+        "El checkout capturado (Anexo 3) muestra 'no available payment methods': ¿cómo se completó alguna venta real si no hay pasarela configurada?",
+        "El SOM proyecta capturar 7-8% del SAM (USD 250-300K/año) con presupuesto de USD 3.000-3.500 y punto de equilibrio de 30 pedidos/mes a USD 20: las cifras son internamente incompatibles.",
+        "Crisis 1 redujo conversiones de 100 a 80 pedidos, pero el punto de equilibrio declarado es 30 pedidos: ¿de dónde provienen los 100 pedidos si el sitio acababa de lanzar?"
+      ],
+      "dondeApretar": "Presionar sobre la brecha entre lo declarado como implementado y lo evidenciado en los anexos: ausencia de pasarela de pago activa y métricas de arranque sin respaldo empírico real."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo proyecta capturar entre el 7 y el 8% del mercado provincial en tres años con un presupuesto de implementación de entre tres mil y tres mil quinientos dólares: ¿cómo justifican que ese presupuesto alcanza para sostener la inversión en medios y operación necesaria para llegar a esa participación?",
+            "buscamos": "Que el grupo reconozca la tensión entre el SOM proyectado (USD 250.000-300.000 anuales) y el presupuesto declarado, y explique si hay fuentes de financiamiento adicionales, si el presupuesto cubre solo la etapa inicial, o que admitan que la cifra de mercado es aspiracional y no respaldada por el plan de medios disponible.",
+            "evasiva": "Repetir que el mercado provincial es grande y que los combos cerrados son un diferencial, sin tocar la relación concreta entre lo que se va a gastar y lo que se proyecta capturar."
+          },
+          {
+            "pregunta": "El plan de medios concentra el 70% del presupuesto en Meta Ads: ¿por qué eligieron esa distribución para un producto de cotillón en San Juan, y qué evidencia del trabajo respalda que ese canal es el más eficiente para llegar a su comprador objetivo?",
+            "buscamos": "Una defensa fundamentada en el comportamiento del público objetivo local, ya sea por datos del sector, por pruebas propias del sitio o por características del producto, no una justificación genérica de que 'Meta tiene mucho alcance'. Idealmente que vinculen la decisión con alguna métrica o hallazgo propio del trabajo.",
+            "evasiva": "Decir que Meta Ads es la plataforma más popular o que la competencia también la usa, sin explicar por qué ese porcentaje tiene sentido para este negocio y este mercado específico."
+          },
+          {
+            "pregunta": "El SAM que calcularon para San Juan representa el 5% del TAM nacional: ¿en qué criterios basaron esa segmentación provincial, y por qué ese recorte es razonable para proyectar su mercado disponible real?",
+            "buscamos": "Que justifiquen el criterio de segmentación geográfica con algún argumento concreto, como participación poblacional, capacidad logística, penetración de e-commerce en la provincia o datos del sector, y no que simplemente dividieron el TAM por un número redondo sin respaldo metodológico.",
+            "evasiva": "Explicar qué es el SAM en términos teóricos o decir que San Juan es una provincia importante sin fundamentar por qué le corresponde ese porcentaje del mercado nacional."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitemap del trabajo declara seis pantallas, pero ni el checkout ni la Thank You Page aparecen en ese mapa: ¿cómo justifican que el funnel de conversión está completo si dos de sus páginas más críticas no existen formalmente en la arquitectura del sitio?",
+            "buscamos": "Que el grupo reconozca la omisión y explique si fue un error de documentación o una decisión de diseño, y que pueda argumentar qué impacto tiene esa ausencia en la experiencia real del usuario que intenta comprar.",
+            "evasiva": "Hablar en general sobre la importancia del funnel o decir que 'el sitio igual funciona' sin abordar por qué esas páginas no están en el sitemap presentado."
+          },
+          {
+            "pregunta": "El Anexo 3 muestra una captura del checkout con el mensaje 'no hay métodos de pago disponibles': si ese era el estado real del sitio, ¿qué experiencia vivió concretamente un cliente que intentó comprar en ese momento, y cómo encaja eso con la promesa de un 'flujo de checkout optimizado y seguro' que describe el trabajo?",
+            "buscamos": "Que el grupo admita la contradicción entre lo documentado y lo afirmado, explique en qué etapa estaba el sitio cuando se tomó esa captura y proponga cómo debería haberse presentado ese estado en el informe para ser honesto con el tribunal.",
+            "evasiva": "Decir que era 'un momento puntual de prueba' o que 'después se resolvió' sin explicar por qué se incluyó como evidencia de un checkout funcional ni qué vio el usuario en ese estado."
+          },
+          {
+            "pregunta": "El diferencial central del proyecto es eliminar la fatiga de decisión del comprador ofreciendo combos cerrados: ¿de qué manera el diseño concreto de las seis pantallas declaradas refuerza ese diferencial, o quedó solo como concepto en el texto sin traducirse en decisiones de UX visibles?",
+            "buscamos": "Que el grupo conecte la propuesta de valor con al menos una decisión de diseño concreta —estructura de la página de producto, jerarquía visual, ausencia de opciones a elegir— y pueda defender por qué esa decisión reduce la fricción del comprador.",
+            "evasiva": "Repetir que 'los combos simplifican la compra' en términos abstractos sin señalar ningún elemento de diseño específico que lo ejecute dentro de las pantallas presentadas."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el Anexo 3 del trabajo aparece una captura del checkout con el mensaje 'Sorry, it seems that there are no available payment methods', pero el informe describe ese mismo flujo como optimizado y seguro: ¿cómo explican esa contradicción y cómo se completó alguna venta real con ese estado del sitio?",
+            "buscamos": "Que reconozcan la inconsistencia sin evasivas: si la captura es de un entorno de staging sin pasarela configurada, deben decirlo y explicar en qué momento se integró el medio de pago real y bajo qué condiciones se registraron ventas efectivas. Una buena respuesta separa claramente el estado del entorno de prueba del estado productivo y muestra conciencia de que la documentación presentada no lo aclaró.",
+            "evasiva": "Decir que 'fue un problema temporal que ya se resolvió' o que 'WooCommerce a veces da ese error' sin explicar cuándo se configuró la pasarela, en qué entorno se tomó la captura ni cómo se validó que el flujo de pago funcionara antes del Go-Live."
+          },
+          {
+            "pregunta": "El sitemap del trabajo declara seis pantallas y no incluye ni el checkout ni la Thank You Page, que son las páginas donde ocurren la conversión y el disparo del evento de compra en GA4: ¿cómo justifican haber documentado el funnel de conversión si las páginas críticas de ese funnel no están en la arquitectura declarada?",
+            "buscamos": "Que admitan que el sitemap está incompleto y expliquen si esas páginas existen en el sitio real aunque no figuren en el documento, o si directamente no fueron contempladas en la planificación. Una respuesta sólida muestra que entienden la diferencia entre arquitectura de contenido y flujo de conversión, y reconoce el impacto de esa omisión en la crisis ERR-504, donde el evento 'purchase' no se disparaba en la Thank You Page.",
+            "evasiva": "Responder que el sitemap 'muestra las páginas principales' o que el checkout 'es parte de WooCommerce y no necesita documentarse', sin conectar esa omisión con el problema de tracking que reportó GA4 en cero conversiones durante el Go-Live."
+          },
+          {
+            "pregunta": "Durante el Go-Live del 15 de junio GA4 reportó cero conversiones mientras WooCommerce sí registraba cobros: ¿qué diagnóstico técnico hicieron para identificar por qué el evento de compra no se disparaba, y qué cambio concreto resolvió el problema?",
+            "buscamos": "Que describan un proceso de diagnóstico real: verificar si el tag de GA4 estaba presente en la Thank You Page, si el evento 'purchase' estaba configurado en GTM o en el código, y qué herramienta usaron para confirmarlo (GTM Preview, DebugView de GA4, inspección del DOM). Una respuesta de nivel técnico nombra la causa raíz, no solo el síntoma.",
+            "evasiva": "Decir que 'reinstalaron el plugin de GA4' o que 'esperaron unas horas y se corrigió solo', sin demostrar que entendieron por qué el evento no se disparaba ni qué diferencia hay entre que WooCommerce registre un pago y que GA4 reciba el evento correspondiente."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El plan de medios destina el 70% del presupuesto a Meta Ads y solo el 10% a remarketing por WhatsApp y CRM: ¿por qué eligieron priorizar así la distribución cuando el producto —kits de cotillón para San Juan— apunta a un mercado local donde el contacto directo suele cerrar más ventas?",
+            "buscamos": "Que el grupo defienda la lógica de adquisición versus retención, reconozca que Meta es costo por alcance masivo en la etapa de lanzamiento, y muestre que entienden el trade-off: llegar a nuevos compradores versus trabajar una base instalada que en un mercado chico puede ser muy rentable.",
+            "evasiva": "Repetir que Meta tiene mucho alcance o que es la plataforma más usada sin justificar por qué ese porcentaje tiene sentido para un negocio local de ticket bajo y producto estacional."
+          },
+          {
+            "pregunta": "El trabajo proyecta un ROI de entre 25% y 30% al tercer año con un presupuesto de implementación de USD 3.000 a 3.500, pero al mismo tiempo fija el punto de equilibrio en 30 pedidos mensuales a un ticket de USD 20: ¿pueden explicar cómo un volumen tan pequeño de ventas genera el retorno proyectado, o dónde está la palanca que hace crecer esas cifras hasta el tercer año?",
+            "buscamos": "Que el grupo identifique y nombre la variable que conecta esos números —ya sea aumento de ticket promedio, volumen de pedidos muy superior al punto de equilibrio, reducción de costos variables, o una combinación— y que reconozcan si esa palanca está explícita en el trabajo o si es una brecha que no desarrollaron.",
+            "evasiva": "Decir que el ROI se alcanza 'con el tiempo' o 'a medida que crece la marca' sin señalar qué métrica concreta tiene que moverse y en qué magnitud para cerrar la brecha entre 30 pedidos mensuales y un retorno del 25-30%."
+          },
+          {
+            "pregunta": "La crisis ERR-437 documenta una caída del 20% en las conversiones, pasando de 100 a 80 pedidos, pero el punto de equilibrio declarado en el mismo trabajo es de 30 pedidos mensuales: si el negocio recién lanzaba, ¿de dónde venían esos 100 pedidos iniciales, y por qué la crisis se trata como algo grave si incluso con la caída el volumen casi triplicaba el umbral de equilibrio?",
+            "buscamos": "Que el grupo reconozca la inconsistencia temporal y conceptual: o bien los 100 pedidos corresponden a una proyección o escenario hipotético que no estaba claramente señalado como tal, o bien hay datos reales de ventas que no fueron contextualizados correctamente en el trabajo, y que puedan explicar cómo se articula eso con el umbral declarado.",
+            "evasiva": "Confirmar que eran 100 pedidos reales sin explicar cómo llegaron a ese volumen en el lanzamiento, o esquivar la contradicción con el punto de equilibrio diciendo que igual fue una crisis porque 'cualquier caída es mala'."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo documentan que la Crisis ERR-437 redujo sus conversiones de 100 a 80 pedidos mensuales, pero también declaran que el punto de equilibrio del negocio son 30 pedidos por mes: si ya estaban operando tres veces por encima del punto de equilibrio cuando recién habían lanzado el sitio, ¿cómo explican esa diferencia y qué dice eso de la solidez de sus proyecciones?",
+            "buscamos": "Que el grupo reconozca la contradicción interna: un sitio recién lanzado no puede tener 100 pedidos reales si las proyecciones parten de un punto de equilibrio de 30. Una buena respuesta distingue entre pedidos simulados, pedidos de prueba o datos hipotéticos usados para modelar la crisis, y asume la inconsistencia con honestidad en vez de tratarla como un dato válido.",
+            "evasiva": "Explicar en qué consiste la Crisis ERR-437, describir las acciones correctivas tomadas o hablar de la importancia del monitoreo sin tocar en ningún momento por qué los 100 pedidos de base son incompatibles con el punto de equilibrio declarado."
+          },
+          {
+            "pregunta": "La Crisis ERR-504 del Go-Live del 15 de junio revela que GA4 reportaba 0 conversiones mientras WooCommerce sí registraba cobros: más allá de cómo lo resolvieron técnicamente, ¿qué decisión de negocio tomaron o deberían haber tomado en las horas en que no sabían cuál de los dos sistemas decía la verdad?",
+            "buscamos": "Que el grupo demuestre pensamiento de gestión bajo incertidumbre: ¿pausaron campañas pagas para no gastar sin datos confiables? ¿comunicaron algo a los clientes? ¿definieron quién tomaba la decisión final? Una respuesta sólida muestra criterio de liderazgo y priorización, no solo el fix técnico del evento 'purchase' en la Thank You Page.",
+            "evasiva": "Describir el problema técnico de por qué el evento 'purchase' no se disparaba y cómo se corrigió el tag en GA4, sin mencionar ninguna decisión de negocio, comunicación al equipo o criterio de priorización tomado durante la ventana de incertidumbre."
+          },
+          {
+            "pregunta": "El informe fue presentado como Grupo 62bis pero el reporte del incidente ERR-437 en el Anexo 5 figura bajo el nombre 'GRUPO-69': ¿cómo ocurrió esa inconsistencia y qué nos dice sobre el proceso de revisión y control interno que el equipo aplicó antes de entregar el trabajo?",
+            "buscamos": "Que el grupo no minimice el error ni lo atribuya solo a un descuido de copia y pega, sino que reflexione sobre qué proceso de revisión final faltó: una lectura cruzada, un responsable de coherencia del documento, o una checklist de entrega. La respuesta debe mostrar aprendizaje sobre gobernanza del equipo, no solo disculparse.",
+            "evasiva": "Reconocer que fue un error de tipeo o de edición y pedir disculpas sin explicar qué control de calidad existía, quién era responsable de la revisión final del documento y qué harían diferente para evitarlo en un entorno profesional real."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "63",
+    "proyecto": "SastreCo",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/19cfabuHhgn-WTLpQ6yfD0g9syeB5sOg5/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1EIVWDANVPFcgHaw9-uqsDjxeEqwqwZVt/preview",
+    "informe": {
+      "resumen": "El trabajo tiene estructura completa pero presenta brechas significativas entre proyecciones financieras no respaldadas, un SOM inconsistente entre el cuerpo y los anexos, y escasa evidencia de implementación real más allá de capturas.",
+      "queEs": "Ecommerce de muebles y decoración para el hogar en Argentina, diferenciado por asesoría técnica online y trazabilidad de materiales.",
+      "fortalezas": [
+        "Análisis estratégico coherente: FODA, PESTEL y TAM/SAM/SOM articulados con la propuesta de valor.",
+        "Buyer persona y customer journey concretos, con friccciones identificadas y decisiones UX/UI trazables al documento.",
+        "Gestión de dos crisis simuladas documentadas en Miro con responsables, fechas y KPIs de umbral definidos."
+      ],
+      "interrogar": [
+        "Inconsistencia en SOM: el cuerpo dice 2.611 clientes (0,2% del SAM), pero el anexo Miro muestra 9.141 clientes potenciales sin explicación.",
+        "Proyecciones financieras sin soporte: se declaran ingresos de $70.497.000 con inversión de $50.000.000 y ROI 42%, pero no hay datos reales de proveedores según el propio anexo.",
+        "Brecha declarado/implementado: el diferencial central es la asesoría técnica online, pero el sitio funcional solo muestra un botón de WhatsApp; no hay sistema de asesoría implementado."
+      ],
+      "dondeApretar": "Cuestionar la viabilidad real del diferencial de asesoría online y la solidez de las proyecciones financieras, que son el núcleo de la propuesta de valor y la factibilidad económica."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo aparecen dos números distintos para el mercado al que apuntan: uno en el texto principal y otro en el tablero de Miro, y la diferencia es bastante grande. ¿A qué se debe esa diferencia y con cuál se quedan?",
+            "buscamos": "Que el grupo reconozca la inconsistencia con honestidad, explique si fue un error de versiones, un cambio de criterio en el proceso o una definición distinta del segmento, y tome posición sobre cuál número consideran válido y por qué.",
+            "evasiva": "Defender uno de los dos números sin reconocer que existe la contradicción, o decir que 'son lo mismo expresado de otra forma' sin explicar por qué difieren tanto."
+          },
+          {
+            "pregunta": "Eligieron a Pedro Martínez, un abogado de 35 años, como el perfil central del cliente. ¿Por qué un solo perfil masculino alcanza para representar a todo el segmento que definieron, que incluye hombres y mujeres de entre 33 y 44 años?",
+            "buscamos": "Que el grupo defienda la decisión metodológica con algún argumento (por ejemplo, que fue el perfil más representativo del mercado de muebles de alta gama en Argentina) o bien reconozca que fue una limitación y explique qué perfil complementario agregarían y por qué.",
+            "evasiva": "Explicar qué es un buyer persona en general o decir que 'Pedro representa a todos' sin dar ningún argumento sobre por qué ese perfil en particular captura la diversidad del segmento."
+          },
+          {
+            "pregunta": "El diferencial que más destacan es la asesoría técnica online, pero si alguien entra hoy al sitio y quiere asesorarse, lo único que encuentra es un botón de WhatsApp. ¿Cómo explican esa brecha entre lo que proponen como valor central y lo que el cliente realmente experimenta al entrar a la tienda?",
+            "buscamos": "Que el grupo reconozca que el diferencial está declarado pero no implementado, explique si fue una decisión de priorización (lanzar primero y construir después), una limitación de tiempo o recursos, y diga concretamente qué tendría que existir en el sitio para que la promesa sea real.",
+            "evasiva": "Describir cómo funciona la asesoría técnica como si ya estuviera operativa, o justificar que WhatsApp 'es suficiente' sin reconocer que el trabajo mismo propone algo más estructurado que eso."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El diferencial más importante que proponen es la asesoría técnica online, pero si alguien entra hoy al sitio lo único que encuentra es un botón de WhatsApp. ¿Cómo explican esa distancia entre lo que prometieron y lo que efectivamente construyeron?",
+            "buscamos": "Que el grupo reconozca honestamente la brecha entre lo declarado y lo implementado, explique por qué no llegaron a desarrollar la funcionalidad completa (recursos, tiempo, alcance del MVP) y muestre que entienden que eso es un riesgo real para la propuesta de valor.",
+            "evasiva": "Decir que WhatsApp 'es suficiente por ahora' o que 'está en los planes' sin reconocer que el diferencial central del negocio no está funcionando en el sitio real."
+          },
+          {
+            "pregunta": "Para todo el trabajo usaron un único buyer persona, Pedro Martínez, un abogado de 35 años. ¿Por qué eligieron representar con un solo perfil masculino a un segmento que ustedes mismos definieron como de ambos sexos y con un rango de edad bastante amplio?",
+            "buscamos": "Que reflexionen sobre la limitación de usar un único perfil para representar un segmento diverso, que puedan reconocer si fue una decisión consciente o una simplificación no explorada, y que entiendan cómo eso puede afectar decisiones de comunicación y diseño del sitio.",
+            "evasiva": "Justificar que Pedro 'es representativo' sin poder explicar por qué ni reconocer que el segmento incluye perfiles distintos que podrían tener necesidades o comportamientos de compra diferentes."
+          },
+          {
+            "pregunta": "Eligieron WordPress y WooCommerce por sobre Shopify y Tienda Nube, y la justificación que dan es que Shopify es caro y Tienda Nube tiene menos personalización. ¿Qué consideraron concretamente para llegar a esa conclusión, más allá de esas dos ideas generales?",
+            "buscamos": "Que puedan explicar el razonamiento detrás de la elección con algo más de sustancia: qué necesidades del proyecto los llevaron a priorizar personalización, qué limitaciones tiene WordPress que no mencionaron, o al menos que reconozcan que la comparativa quedó poco desarrollada en el trabajo.",
+            "evasiva": "Repetir exactamente lo que dice el informe (costo elevado, menor personalización) sin poder agregar ningún argumento propio ni reconocer que no hicieron una comparativa más rigurosa."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El diferencial más importante que proponen es la asesoría técnica online, pero si hoy alguien entra al sitio y quiere esa asesoría, ¿con qué se encuentra y qué piensan hacer al respecto?",
+            "buscamos": "Que el grupo reconozca abiertamente que hoy el sitio solo tiene un botón de WhatsApp, que eso no es el sistema de asesoría que describieron en el trabajo, y que pueda explicar —aunque sea a grandes rasgos— cómo planean cerrar esa brecha: por ejemplo, con un chat integrado, un formulario específico o un flujo de atención definido.",
+            "evasiva": "Decir que 'la asesoría se hace por WhatsApp' como si eso resolviera la pregunta, sin reconocer que falta toda la arquitectura detrás: el protocolo de atención, los tiempos de respuesta, quién responde y cómo se diferencia eso de cualquier negocio que tenga un número de WhatsApp."
+          },
+          {
+            "pregunta": "Eligieron WordPress y WooCommerce por sobre otras plataformas como Shopify o Tienda Nube: ¿pueden contarme en qué se basaron para tomar esa decisión y qué sacrificaron al elegir ese camino?",
+            "buscamos": "Que puedan sostener la decisión con argumentos propios más allá de lo que escribieron en el trabajo —flexibilidad, control, personalización— y que reconozcan honestamente las contrapartidas: mayor carga técnica de mantenimiento, necesidad de plugins, curva de aprendizaje. Se valora que admitan que no hicieron una comparativa de costos detallada.",
+            "evasiva": "Repetir literalmente que 'Shopify es caro y Tienda Nube tiene menos personalización' sin poder explicar qué significa eso en la práctica para su proyecto ni qué implicancias tiene haber elegido una plataforma que requiere más gestión técnica."
+          },
+          {
+            "pregunta": "En la crisis del cupón de descuento, lanzaron una campaña sin verificar antes que el cupón funcionara en el checkout: ¿qué aprendieron de eso y qué cambiarían en el proceso antes de lanzar la próxima acción de marketing?",
+            "buscamos": "Que el grupo muestre aprendizaje real: identificar que faltó un paso de prueba o validación previa al lanzamiento, y proponer algo concreto —aunque simple— como un checklist, una prueba en entorno de staging o una revisión antes de publicar. Se valora la honestidad sobre el error más que la sofisticación de la solución.",
+            "evasiva": "Minimizar el episodio diciendo que 'fue un error puntual' o que 'ya lo corregimos', sin reflexionar sobre qué proceso sistemático evitaría que vuelva a pasar con otras campañas o funcionalidades del sitio."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo proyectan ingresos para el primer año que están por debajo de la inversión que declaran: ¿cómo explican eso y qué implica para la viabilidad del negocio en ese período inicial?",
+            "buscamos": "Que el grupo reconozca que el primer año operan a pérdida o con recupero parcial, que lo enmarquen como una etapa de tracción normal en un ecommerce nuevo, y que muestren conciencia de que las proyecciones necesitaban mayor respaldo de datos reales de proveedores para ser creíbles.",
+            "evasiva": "Decir que igual el ROI es positivo o que el negocio es rentable sin explicar la brecha entre inversión e ingreso proyectado en el mismo período."
+          },
+          {
+            "pregunta": "El diferencial más importante que proponen es la asesoría técnica online, pero en el sitio funcional eso se resuelve con un botón de WhatsApp: ¿qué faltó para que ese diferencial quedara realmente implementado?",
+            "buscamos": "Que el grupo admita que hay una brecha entre lo que declaran como propuesta de valor y lo que efectivamente construyeron, que identifiquen qué habría hecho falta (protocolo de atención, horarios, capacitación, integración con el flujo de compra) y que lo enmarquen como deuda de implementación, no como algo ya resuelto.",
+            "evasiva": "Defender que WhatsApp es suficiente sin reconocer que en el trabajo se presenta como un sistema diferencial más robusto, o desviar la respuesta hacia las ventajas del canal sin tocar la brecha."
+          },
+          {
+            "pregunta": "Construyeron el buyer persona alrededor de un único perfil masculino, pero el segmento que definen incluye hombres y mujeres de un rango amplio de edades y perfiles: ¿qué decisiones de marketing podrían haberse tomado diferente si hubieran trabajado con más de un perfil?",
+            "buscamos": "Que el grupo entienda que un solo perfil limita la lectura del segmento y puede sesgar el tono, los canales y los contenidos, y que propongan al menos un ejemplo concreto de cómo un segundo perfil (por ejemplo una mujer del mismo rango etario) habría modificado alguna decisión de campaña o comunicación.",
+            "evasiva": "Defender que Pedro es representativo de todo el segmento sin reconocer la limitación, o responder en abstracto sobre qué es un buyer persona sin aterrizar en las decisiones propias del trabajo."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo cuentan que lanzaron una campaña con un cupón de descuento y después descubrieron que el cupón no funcionaba en el checkout: ¿qué cambiarían en el proceso para que eso no vuelva a pasar antes de salir al aire con una promoción?",
+            "buscamos": "Que el grupo reconozca que faltó una instancia de prueba o validación antes del lanzamiento, y que proponga algo concreto aunque sea simple: testear el cupón en un pedido de prueba, tener un checklist mínimo, designar a alguien responsable de verificar antes de publicar. Lo importante es que muestren aprendizaje real y no solo describan lo que pasó.",
+            "evasiva": "Explicar el incidente en detalle (qué pasó, cómo lo resolvieron) sin llegar a decir qué harían diferente la próxima vez, o dar una respuesta genérica tipo 'prestaríamos más atención' sin mencionar ningún cambio concreto en el proceso."
+          },
+          {
+            "pregunta": "La asesoría técnica online es el diferencial central que proponen, pero hoy el sitio tiene solo un botón de WhatsApp: ¿cómo explican esa diferencia entre lo que presentan como propuesta y lo que el cliente realmente encontraría si entra al sitio ahora?",
+            "buscamos": "Que el grupo sea honesto sobre la brecha entre lo declarado y lo implementado, que la expliquen como una limitación de la etapa actual (MVP, tiempo, recursos) y que puedan describir aunque sea brevemente cómo piensan cerrar esa brecha: qué tendría que existir para que la asesoría sea real y no solo un botón de contacto.",
+            "evasiva": "Defender que WhatsApp sí es un canal de asesoría válido sin reconocer que en los wireframes figura como sección independiente y que no está especificado el proceso de atención, o cambiar de tema hacia otras funcionalidades del sitio sin abordar la diferencia directamente."
+          },
+          {
+            "pregunta": "Si mañana un proveedor clave les avisa que no puede cumplir con un pedido grande ya confirmado, ¿cómo manejarían esa situación con el cliente y qué aprendizaje del trabajo los ayudaría a anticipar ese riesgo?",
+            "buscamos": "Que conecten la respuesta con algo concreto del proyecto: por ejemplo, que las proyecciones financieras dependen de proveedores cuyos datos reales no están validados, lo que hace que ese riesgo sea especialmente relevante para ellos. Se espera que piensen en comunicación con el cliente, en tener proveedores alternativos o stock de contingencia, y que demuestren que entienden que la solidez operativa es una condición para sostener la propuesta de valor.",
+            "evasiva": "Dar una respuesta genérica de gestión de crisis ('hablaríamos con el cliente y buscaríamos una solución') sin conectarla con la situación real del proyecto ni reconocer que la falta de datos validados de proveedores es precisamente una de las fragilidades que identificaron."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "64",
+    "proyecto": "CAPILUX",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/105TWmDlAM2vVxmLdyOwrtANZd3mJXQKL/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1I0gr4hlaI32a7f-17R2ptgpBEUmuoL76/preview",
+    "informe": {
+      "resumen": "El trabajo presenta consistencia interna sólida, fundamentación estratégica articulada y evidencia de implementación real, aunque con algunas contradicciones cuantitativas menores.",
+      "queEs": "Clínica digital DNVB sobre WordPress/WooCommerce para tricología en Argentina, diferenciada por autoridad médica y transparencia monetaria en pesos.",
+      "fortalezas": [
+        "Gestión de crisis documentada con clasificación ERR-501, SLA definido y plan de tres etapas concreto.",
+        "Buyer persona 'Claudia' coherentemente vinculada al TAM/SAM y al diseño UX/UI del funnel.",
+        "Modelo financiero con costos, márgenes e ingresos desglosados: USD 394.000 facturación, 35,7% margen neto, punto de equilibrio en 14 procedimientos."
+      ],
+      "interrogar": [
+        "Contradicción interna: tasa de conversión objetivo figura como ≥1,5% en sección 1 y como 3,3% en el dashboard de KPIs; el propio documento lo señala como 'nota interna' sin resolverlo.",
+        "Supuesto sin evidencia: el TAM de 9,2M se calcula asumiendo que el 40% de la población de 25-55 años tiene afecciones capilares, sin citar fuente epidemiológica o estadística que respalde ese porcentaje.",
+        "Brecha declarado/implementado: el ROI proyectado es 235% pero el documento no muestra el cálculo que lo sustenta; tampoco se indica la inversión inicial total sobre la que se calcula ese retorno."
+      ],
+      "dondeApretar": "Presionar sobre la consistencia del KPI de conversión (1,5% vs 3,3%), la fuente del 40% epidemiológico y la fórmula del ROI del 235%, los tres puntos donde la solidez analítica está incompleta o es contradictoria."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo asumen que una parte importante de la población argentina en cierto rango de edad tiene alguna afección capilar: ¿cómo llegaron a ese porcentaje y qué harían si alguien les pregunta de dónde viene ese dato?",
+            "buscamos": "Que el grupo reconozca que ese porcentaje no tiene una fuente epidemiológica citada y que pueda proponer cómo se podría validar, por ejemplo con estudios médicos, datos de INDEC o estadísticas de dermatología. La honestidad sobre la limitación vale más que una justificación forzada.",
+            "evasiva": "Repetir el cálculo del TAM (46 millones, 50%, 40%) como si el número justificara el supuesto, sin admitir que el 40% de afecciones capilares no tiene respaldo citado en el documento."
+          },
+          {
+            "pregunta": "Ustedes decidieron no bajar precios cuando apareció un competidor más agresivo y apostaron a diferenciarse por la autoridad médica visible: ¿por qué consideran que ese argumento es suficiente para que un paciente elija pagarles más a ustedes?",
+            "buscamos": "Que defiendan la lógica de posicionamiento por confianza y autoridad en un servicio de salud: el paciente que busca un procedimiento capilar le da peso a las matrículas, los avales y la transparencia, y no toma la decisión solo por precio. Que conecten esa lógica con el perfil del cliente que eligieron ir a buscar.",
+            "evasiva": "Decir genéricamente que 'la calidad se diferencia sola' o que 'el cliente siempre busca lo mejor' sin anclarlo en por qué ese cliente específico, en ese servicio específico, puede estar dispuesto a pagar más."
+          },
+          {
+            "pregunta": "El trabajo proyecta un retorno sobre la inversión bastante optimista, pero al leer el documento no queda claro sobre qué inversión inicial se calculó ese porcentaje: ¿pueden explicar aunque sea en términos generales cómo razonaron ese número?",
+            "buscamos": "Que el grupo pueda reconstruir la lógica del ROI aunque sea conceptualmente: qué consideraron como inversión base y qué como retorno esperado. Si reconocen que el cálculo no quedó bien documentado en el informe, eso también es una respuesta válida y honesta.",
+            "evasiva": "Mencionar el porcentaje de ROI que figura en el documento como si eso respondiera la pregunta, sin poder explicar de dónde surge ni sobre qué monto se aplica."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que presentaron todavía corre en una URL de desarrollo, no en un dominio propio. ¿Cómo justifican haber recomendado el lanzamiento a producción si el entorno todavía no está en producción?",
+            "buscamos": "Que el grupo reconozca la contradicción honestamente y explique qué faltó para cerrar ese paso: dominio final, migración, pruebas en entorno real. Una buena respuesta admite la brecha y propone cómo resolverla antes de un lanzamiento real.",
+            "evasiva": "Decir que 'el sitio ya funciona' o que 'es solo una cuestión técnica menor', sin reconocer que la decisión GO a producción no estaba respaldada por el estado real del entorno."
+          },
+          {
+            "pregunta": "Cuando el plugin de geolocalización mostró los precios en dólares en lugar de pesos, ¿qué impacto concreto tuvo eso en la experiencia del usuario que llega al checkout, y por qué eligieron ese indicador de las cinco consultas diarias para saber si el problema estaba bajo control?",
+            "buscamos": "Que entiendan que un error de moneda en el checkout genera desconfianza inmediata y abandono, especialmente en el contexto de transparencia en pesos que es parte central del posicionamiento. Que puedan explicar con sus palabras por qué ese límite de consultas sirve como señal de alerta operativa.",
+            "evasiva": "Describir el error en términos técnicos sin conectarlo con la experiencia del usuario ni con el posicionamiento de precio transparente en pesos que el propio trabajo defiende."
+          },
+          {
+            "pregunta": "Ustedes definieron objetivos de tasa de rebote y de abandono de checkout como indicadores clave de la experiencia digital. ¿Qué les diría a los médicos del equipo si esos números estuvieran mal y hubiera que cambiar algo del sitio para mejorarlos?",
+            "buscamos": "Que el grupo pueda conectar los KPIs de comportamiento con decisiones concretas de diseño o contenido: velocidad de carga, claridad del precio, jerarquía de la información médica, flujo del checkout. El punto es que demuestren que esos números no son decorativos sino que guían acciones.",
+            "evasiva": "Responder que 'habría que revisar el sitio' o que 'lo ve el desarrollador', sin poder nombrar al menos una variable de experiencia que movería esa métrica."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo menciona un incidente con el plugin de geolocalización que hizo que los precios se mostraran en dólares en lugar de pesos, lo cual afectó las conversiones. ¿Qué aprendieron de esa crisis y cómo se aseguran de que algo así no vuelva a pasar?",
+            "buscamos": "Que el grupo reconozca la ERR-501 como un riesgo real de plataforma, explique qué tipo de control o monitoreo implementaron a partir de ahí, y mencione el indicador de tope de consultas diarias como señal de alerta temprana, sin necesidad de citar cifras exactas.",
+            "evasiva": "Describir qué fue el error técnicamente sin explicar qué cambió en el proceso para prevenirlo, o decir que 'se resolvió' sin mostrar que hay un mecanismo de control instalado."
+          },
+          {
+            "pregunta": "La URL que figura en el trabajo es claramente un entorno de desarrollo, no un dominio de producción definitivo. ¿Cómo justifican que el proyecto haya recibido una evaluación 'GO' a producción si el sitio todavía no tiene un dominio propio?",
+            "buscamos": "Que el grupo reconozca abiertamente la contradicción, explique qué criterios usaron para dar el GO y admita que la URL de producción es una tarea pendiente o un punto de mejora que quedó fuera del alcance del TFI.",
+            "evasiva": "Minimizar el punto diciendo que 'es solo un detalle técnico' o que 'el dominio se compra después', sin reconocer que esto contradice la evaluación de lanzamiento incluida en el propio documento."
+          },
+          {
+            "pregunta": "Decidieron no bajar precios cuando apareció un competidor agresivo, apostando a diferenciarse por la autoridad médica del equipo. ¿Qué elementos concretos del sitio sostienen esa diferenciación en la práctica, más allá de la decisión estratégica en sí?",
+            "buscamos": "Que el grupo conecte la decisión estratégica con elementos reales de implementación: mostrar matrículas, avales visibles, transparencia en precios en pesos, o cualquier elemento del sitio que le dé sustancia a ese posicionamiento ante un usuario que llega por primera vez.",
+            "evasiva": "Reafirmar que la decisión fue correcta porque 'la autoridad médica es el diferencial' sin poder señalar ningún elemento concreto del sitio que lo demuestre al visitante."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo aparecen dos metas distintas para la tasa de conversión: una en la sección inicial y otra en el dashboard interno del equipo. ¿Cómo explican esa diferencia y cuál es la que realmente guía las decisiones del proyecto?",
+            "buscamos": "Que el grupo reconozca la contradicción sin esquivarla, explique por qué surgió (por ejemplo, que una era una estimación conservadora y la otra una meta interna más ambiciosa) y diga claramente cuál adoptarían como KPI oficial y por qué.",
+            "evasiva": "Responder que 'son rangos distintos para distintas etapas' sin reconocer que el documento no lo aclara, o desviar la respuesta hacia la importancia general de medir conversiones."
+          },
+          {
+            "pregunta": "Proyectan un ROI muy positivo, pero cuando el tribunal busca en el documento el cálculo que lo respalda no aparece. ¿Qué inversión inicial tuvieron en cuenta para llegar a ese número y qué pasaría con ese retorno si esa inversión resultara más alta de lo estimado?",
+            "buscamos": "Que el grupo admita que el cálculo no quedó explicitado en el documento, intente reconstruir los componentes principales de la inversión que consideraron, y demuestre que entiende que un ROI depende directamente de cuánto se invierte: a mayor inversión inicial, menor retorno porcentual.",
+            "evasiva": "Repetir que el ROI proyectado es alto como si eso fuera suficiente, o describir qué es el ROI en términos generales sin abordar la ausencia del cálculo."
+          },
+          {
+            "pregunta": "Cuando el plugin mostró los precios en dólares en lugar de pesos, ¿por qué decidieron que la respuesta tenía que ser inmediata y no podía esperar, y qué nos dice eso sobre el tipo de cliente que están buscando captar?",
+            "buscamos": "Que el grupo vincule el impacto de ver precios en una moneda inesperada con la pérdida de confianza del usuario argentino, entienda que en e-commerce ese tipo de error rompe la credibilidad en segundos y que la urgencia de la respuesta refleja que su propuesta de valor se apoya justamente en la transparencia y la confianza.",
+            "evasiva": "Explicar el problema técnico del plugin sin conectarlo con el comportamiento del usuario o con la propuesta de valor del proyecto."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando detectaron que el sitio estaba mostrando los precios en dólares en lugar de pesos, ¿cómo tomaron la decisión de qué hacer primero y quién se hizo cargo?",
+            "buscamos": "Que el grupo describa un proceso real de toma de decisión bajo presión: quién lideró, cómo priorizaron (contener el daño antes que buscar culpables), y que entiendan que el impacto en checkout justificaba respuesta inmediata. No se necesita citar el porcentaje exacto de caída.",
+            "evasiva": "Decir genéricamente 'lo resolvimos entre todos' o 'arreglamos el plugin' sin explicar cómo se organizaron ni por qué era urgente actuar rápido."
+          },
+          {
+            "pregunta": "Cuando apareció un competidor bajando precios, ustedes decidieron no bajar los suyos. ¿Cómo le explicarían esa decisión a alguien que les dice que están perdiendo clientes por ser más caros?",
+            "buscamos": "Que defiendan con convicción el posicionamiento por autoridad médica: las matrículas visibles y los avales como diferenciador real, y que entiendan que competir por precio en este segmento erosiona la propuesta de valor. No hace falta que citen números, sí que argumenten la lógica.",
+            "evasiva": "Repetir 'nos diferenciamos por calidad' sin explicar qué elemento concreto del proyecto sostiene esa diferenciación frente al cliente que solo ve el precio."
+          },
+          {
+            "pregunta": "El documento fija un tope de cinco consultas diarias por errores de plataforma como indicador de control: ¿por qué eligieron ese número como señal de alerta y no otro?",
+            "buscamos": "Que expliquen la lógica detrás del umbral: que es un indicador operativo, no arbitrario, y que refleja el volumen de operación esperado del negocio. Si no tienen una justificación sólida, se espera que lo reconozcan con honestidad y digan qué habría que revisar.",
+            "evasiva": "Decir que 'cinco es un número razonable' o leer lo que dice el documento sin poder explicar el criterio que llevó a elegirlo."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "65",
+    "proyecto": "Yerba Mate María Epul",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1jEIxQzJcDdZgftVBulCVfjfngVPhwI3q/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1-7FFFtbZdkoquhMFIaousy4NiqLb2YIk/preview",
+    "informe": {
+      "resumen": "El trabajo integra análisis estratégico, implementación técnica real, gestión de crisis documentada y reflexión crítica con consistencia interna notable para una tecnicatura.",
+      "queEs": "E-commerce de yerba mate compuesta inspirado en saberes mapuche, posicionado en nicho premium por identidad cultural, storytelling y sustentabilidad, operando en WordPress/WooCommerce.",
+      "fortalezas": [
+        "Sitio funcional real desplegado en Pantheon con URL verificable y stack técnico detallado (plugins, hosting, SSL, backups).",
+        "Dos crisis simuladas con tickets, métricas de impacto concretas y protocolos de mitigación documentados.",
+        "Fichas de producto con advertencias sanitarias explícitas, alineadas con regulación ANMAT sin atribuir propiedades medicinales."
+      ],
+      "interrogar": [
+        "El documento describe canal físico como fuera de alcance inicial, pero el plan de lanzamiento del 1° semestre incluye posicionamiento en dietéticas y delicatessen: ¿cuál es el alcance real?",
+        "La integración de Mercado Pago y PayPal se declara fallida sin resolución; Braintree figura como alternativa pero no se acredita que procese pagos en producción: ¿el checkout funciona efectivamente?",
+        "El SOM proyecta capturar 1% del SAM al tercer año (≈$1.304.100.000 ARS), pero los KPIs apuntan solo a 2.000 usuarios únicos mensuales en el mes 3: la brecha entre ambas metas no está reconciliada."
+      ],
+      "dondeApretar": "Presionar sobre la coherencia entre las metas financieras del TAM/SAM/SOM, los KPIs digitales declarados y la operatividad real del checkout, que es el cuello de botella no resuelto del proyecto."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo dicen que el negocio arranca solo en el canal online, pero en el plan del primer semestre también aparece la intención de estar en dietéticas y tiendas de delicatessen. ¿Cómo explican esa diferencia y cuál es realmente el alcance del proyecto?",
+            "buscamos": "Que el grupo reconozca abiertamente la contradicción entre la sección de alcance y el plan de lanzamiento, que explique si fue una decisión que evolucionó durante el proceso o un error de redacción, y que pueda decir con claridad qué canal rige como punto de partida real y por qué.",
+            "evasiva": "Responder que 'el canal físico es complementario' o 'está previsto a futuro' sin reconocer que los dos apartados del mismo documento se contradicen entre sí."
+          },
+          {
+            "pregunta": "Ustedes proyectan llegar a un volumen de ventas muy importante al tercer año, pero los KPIs del arranque apuntan a una cantidad de usuarios bastante más modesta. ¿Cómo conectan esos dos horizontes, o reconocen que en el trabajo esa brecha no quedó resuelta?",
+            "buscamos": "Que el grupo muestre que entiende que hay una distancia grande entre la meta financiera a tres años y los indicadores operativos del lanzamiento, que pueda intentar explicar el puente lógico entre ambos o, con honestidad, admitir que la reconciliación entre esas dos metas no fue desarrollada en el documento.",
+            "evasiva": "Repetir las cifras o los porcentajes de memoria sin explicar el razonamiento que une los KPIs de tráfico inicial con la proyección de facturación a largo plazo."
+          },
+          {
+            "pregunta": "El proyecto apuesta fuerte por la identidad cultural mapuche y el storytelling como diferencial premium, pero en términos de mercado eso también implica competir por un comprador muy específico. ¿Por qué creen que ese posicionamiento justifica el precio y sostiene el negocio frente a marcas de yerba más conocidas?",
+            "buscamos": "Que el grupo defienda la lógica del nicho premium con argumentos propios: por qué el valor simbólico y cultural genera disposición a pagar más, quién es ese comprador, y por qué esa diferenciación es difícil de copiar; se valora que conecten el posicionamiento con la sustentabilidad y el storytelling como ventaja competitiva real.",
+            "evasiva": "Decir que 'es un producto único' o que 'la gente valora lo artesanal' sin explicar por qué ese comprador específico elegiría esta marca sobre alternativas ya instaladas en el mercado premium."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio tardaba mucho en cargar en celulares con datos móviles y eso les generó una tasa de rebote altísima: ¿qué decisiones tomaron para resolverlo y cómo saben si funcionó?",
+            "buscamos": "Que el grupo reconozca la Crisis ERR-503, describa las acciones de optimización que implementaron (imágenes, caché, hosting, etc.) y sea honesto en admitir que no presentan una medición real post-optimización que confirme haber alcanzado el objetivo de velocidad declarado.",
+            "evasiva": "Responder que 'optimizaron el sitio y mejoró la velocidad' sin reconocer que no hay evidencia medida de que los valores objetivo se hayan alcanzado efectivamente después de los cambios."
+          },
+          {
+            "pregunta": "Tuvieron problemas para integrar los medios de pago principales y terminaron adoptando una solución alternativa: ¿cómo afecta eso a la experiencia del usuario en el momento del checkout y qué riesgos implica dejar ese punto sin resolver?",
+            "buscamos": "Que el grupo reconozca que la integración de Mercado Pago y PayPal quedó pendiente, explique el impacto concreto en la experiencia de compra (fricción, desconfianza, abandono del carrito) y muestre conciencia de que tener el checkout en estado no resuelto es un riesgo operativo real, no solo técnico.",
+            "evasiva": "Justificar la decisión solo como 'una limitación de tiempo del proyecto' sin reflexionar sobre qué significa para un usuario real intentar pagar y no encontrar los métodos que espera."
+          },
+          {
+            "pregunta": "Una de las crisis que describen en el trabajo implicaba una filtración de datos en el checkout: ¿qué nos pueden decir sobre cómo pensaron la seguridad y la confianza del usuario como parte del diseño del sitio, más allá de resolver el incidente puntual?",
+            "buscamos": "Que el grupo conecte la crisis de seguridad con decisiones de diseño de experiencia (comunicación de confianza, certificados, señales visuales de seguridad, política de privacidad visible) y muestre que entienden que la confianza se construye en el diseño, no solo en el backend.",
+            "evasiva": "Responder en términos puramente técnicos ('instalamos SSL', 'cambiamos el plugin') sin ninguna mención a cómo esa situación impacta en la percepción y la experiencia del usuario que tiene que ingresar sus datos."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio tuvo un problema serio de velocidad en celular que les generó una tasa de rebote altísima y perdieron conversiones ese primer mes. ¿Cómo lo resolvieron y cómo saben hoy que el problema está efectivamente solucionado?",
+            "buscamos": "Que el grupo reconozca que la Crisis ERR-503 impactó de forma concreta en los resultados, explique qué acciones técnicas tomaron para mejorar el tiempo de carga, y sea honesto si no tienen una medición real post-optimización que confirme que se alcanzó el objetivo de PageSpeed declarado. Una buena respuesta admite que esa validación quedó pendiente.",
+            "evasiva": "Describir en qué consiste el problema de velocidad o listar buenas prácticas de optimización en general, sin explicar qué hicieron puntualmente ni reconocer que no hay evidencia medida de que el sitio hoy cumpla el objetivo que ellos mismos se fijaron."
+          },
+          {
+            "pregunta": "En el trabajo declaran que el proyecto no iba a abrir canal físico en la primera etapa, pero en el plan de lanzamiento del primer semestre aparece el posicionamiento en dietéticas y tiendas de delicatessen. ¿Cómo nos explican esa diferencia y cuál es el alcance real del proyecto?",
+            "buscamos": "Que el grupo reconozca la contradicción entre las dos secciones del documento, explique si fue un error de redacción, un cambio de decisión no actualizado, o una distinción que intentaron hacer entre 'venta directa' y 'presencia de marca', y que dejen claro cuál es la postura que efectivamente sostienen.",
+            "evasiva": "Explicar la importancia de los canales físicos para el nicho premium o hablar del perfil del consumidor de delicatessen sin reconocer ni resolver la contradicción que existe dentro del propio documento."
+          },
+          {
+            "pregunta": "Los medios de pago que tenían previstos no funcionaron dentro de los tiempos del proyecto y el checkout quedó registrado como un pendiente operativo. ¿Cómo está funcionando hoy el proceso de compra y qué riesgo implica eso para el negocio mientras no esté resuelto?",
+            "buscamos": "Que el grupo sea transparente sobre el estado real del checkout, explique qué alternativa están usando mientras tanto y demuestre que entienden que un proceso de pago sin resolver es un problema crítico de operación, no solo técnico, porque afecta directamente la capacidad de generar ingresos y la confianza del cliente.",
+            "evasiva": "Describir las características de Braintree como solución de pago o hablar de la importancia de ofrecer múltiples medios de pago, sin reconocer que la situación actual no está cerrada ni explicar cómo están gestionando esa limitación en la práctica."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo proyectan un crecimiento financiero muy importante para el segundo y tercer año, pero los datos del primer mes muestran resultados bastante más modestos: ¿cómo explican esa diferencia y qué tendría que pasar para que la proyección se cumpla?",
+            "buscamos": "Que el grupo reconozca la brecha entre el SOM proyectado al tercer año y los KPIs del mes 3 (2.000 usuarios únicos, tasa de conversión del 1,5%), y que pueda articular qué condiciones o hitos intermedios harían posible ese salto, sin necesidad de recitar cifras exactas.",
+            "evasiva": "Repetir que 'el mercado de yerba mate es muy grande' o citar el TAM sin explicar el camino concreto desde donde están hoy hasta la meta."
+          },
+          {
+            "pregunta": "La inversión en marketing es el gasto más alto del negocio durante el primer año, y el ROI de ese año es negativo: ¿cómo justifican esa apuesta y qué indicadores van a mirar para saber si ese gasto está funcionando antes de comprometer más presupuesto?",
+            "buscamos": "Que el grupo demuestre que entiende que el año 1 es de construcción de marca y captación, que ese ROI negativo es una decisión estratégica deliberada, y que mencione KPIs concretos del trabajo (reseñas, posicionamiento SEO, usuarios únicos) como señales tempranas de que la inversión está rindiendo.",
+            "evasiva": "Decir genéricamente que 'en todo negocio nuevo se pierde al principio' sin conectarlo con ningún indicador concreto que les permita tomar decisiones."
+          },
+          {
+            "pregunta": "Cuando el sitio tuvo el problema de velocidad de carga en el primer mes, la tasa de conversión cayó a una fracción de lo esperado: ¿qué aprendieron de esa crisis para proteger las metas de los meses siguientes, y cómo sabrían hoy si el sitio está realmente dentro del objetivo de rendimiento que declararon?",
+            "buscamos": "Que el grupo reconozca que la Crisis ERR-503 impactó directamente en las conversiones y en los ingresos, que puedan nombrar el objetivo de performance que se fijaron (LCP y PageSpeed mobile), y que sean honestos sobre si lograron o no medirlo post-resolución, mostrando conciencia de esa deuda pendiente.",
+            "evasiva": "Decir que 'se resolvió el problema técnico y ya está' sin poder explicar cómo verificarían que el sitio cumple el objetivo ni qué harían si vuelve a ocurrir."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Durante la Crisis 2, el sitio tardaba mucho en cargar en celular y eso les generó una tasa de rebote altísima y casi no hubo conversiones ese mes: ¿qué decisión tomaron en ese momento y por qué eligieron ese camino y no otro?",
+            "buscamos": "Que el grupo describa la lógica detrás de la respuesta operativa: qué priorizaron, cómo se organizaron para actuar y qué trade-offs reconocen (por ejemplo, si sacrificaron funcionalidades para ganar velocidad, o si delegaron en un tercero). Se valoriza que sean honestos sobre el impacto real que tuvo en el negocio ese mes.",
+            "evasiva": "Explicar qué es el tiempo de carga o la tasa de rebote en abstracto, sin contar qué hicieron ellos ni por qué tomaron esa decisión en particular."
+          },
+          {
+            "pregunta": "La Crisis 3, la del checkout con filtración de datos, la modelaron como escenario de riesgo pero no ocurrió de verdad: ¿cómo decidieron armarla como crisis y qué aprendió el equipo de trabajarla aunque fuera hipotética?",
+            "buscamos": "Que el grupo muestre que entiende por qué es relevante anticipar ese riesgo para un e-commerce que maneja pagos, que pueda conectar ese escenario con las dificultades reales que tuvieron con Mercado Pago y PayPal, y que refleje alguna lección genuina sobre gestión de crisis más allá de repetir los números del impacto proyectado.",
+            "evasiva": "Recitar los porcentajes de caída de conversión o abandono del escenario sin explicar por qué ese riesgo era relevante para su proyecto ni qué implicó trabajarlo como equipo."
+          },
+          {
+            "pregunta": "A lo largo del proyecto tuvieron al menos dos situaciones críticas reales que los obligaron a cambiar el plan sobre la marcha: mirando para atrás, ¿qué cambiarían en la forma en que el equipo se organizó para responder a esas crisis?",
+            "buscamos": "Una reflexión honesta sobre el proceso de toma de decisiones bajo presión: quién lideró, cómo se distribuyó la carga, si hubo momentos de desacuerdo o de parálisis, y qué harían diferente. No se espera una respuesta perfecta sino una que muestre autoconocimiento del equipo.",
+            "evasiva": "Describir las crisis en términos técnicos o listar las soluciones implementadas sin hablar del funcionamiento real del equipo ni de lo que mejorarían."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "67",
+    "proyecto": "Senza Gluten Free",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1hb786oGcZg5tLI8OopP1IeL-YGM389F7/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/167Dj2WyYqo1b3slKadb4ibMhGnfA4pWv/preview",
+    "informe": {
+      "resumen": "El trabajo demuestra consistencia entre análisis estratégico, diseño UX y gestión de crisis, con fundamentación cuantitativa y aprendizajes institucionalizados, aunque la implementación real es solo un entorno de desarrollo inaccesible a Google.",
+      "queEs": "E-commerce especializado en productos certificados Sin TACC con distribución Hub and Spoke nacional, diferenciado por seguridad alimentaria y cobertura del interior argentino.",
+      "fortalezas": [
+        "Gestión de crisis documentada con causa raíz (5 Whys), impacto financiero concreto y protocolos institucionalizados resultantes.",
+        "Customer Journey articulado en 4 etapas con decisiones UX/UI justificadas por objeciones específicas del buyer persona celíaco.",
+        "Segmentación TAM/SAM/SOM con criterios explícitos y proyección conservadora (SOM 0,8%) coherente con recursos declarados."
+      ],
+      "interrogar": [
+        "El SOM proyecta ingresos de $103.680.000 anuales, pero la Crisis 2 reajustó las metas a $92.188.800 con punto de equilibrio de 29.100 unidades: ¿cómo se reconcilian ambas cifras y qué margen queda tras los costos fijos de la Crisis 1 ($85.536/mes)?",
+        "Se declara ROI estimado del 7,52% y margen neto anual de $3.733.680, pero no se detalla la estructura de costos completa ni el capital inicial invertido: ¿de dónde surgen esos porcentajes?",
+        "El sitio funcional presentado es un entorno de desarrollo Pantheon bloqueado por robots.txt, sin dominio propio ni indexación real: ¿en qué estado concreto está la implementación y qué falta para el Go-Live comercial?"
+      ],
+      "dondeApretar": "Presionar sobre la brecha entre lo planificado y lo efectivamente implementado, y sobre la consistencia de las proyecciones financieras tras las dos crisis."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes proyectan capturar menos del 1% del mercado accesible, pero ese mercado lo definen como consumidores celíacos que ya buscan productos certificados. ¿Por qué creen que ese porcentaje refleja una oportunidad real y no simplemente una cifra conservadora para que los números cierren?",
+            "buscamos": "Que el grupo defienda la lógica detrás del SOM con argumentos de negocio: por qué el canal digital, la distribución hub and spoke y el nicho Sin TACC justifican que ese porcentaje es alcanzable, no arbitrario. Idealmente mencionan barreras reales del mercado (dispersión geográfica, falta de oferta certificada en el interior) que hacen creíble la estimación.",
+            "evasiva": "Repetir que '0,8% del SAM es un número conservador' sin explicar por qué el modelo de negocio tiene chances reales de capturarlo, o describir el tamaño del mercado en lugar de justificar la participación proyectada."
+          },
+          {
+            "pregunta": "El presupuesto publicitario está concentrado fuertemente en Google Shopping y Meta Ads. Después de lo que les pasó con la Crisis 2, ¿cómo justifican seguir apostando tan fuerte a esos canales sabiendo el impacto diario que puede tener una interrupción?",
+            "buscamos": "Que el grupo reconozca la dependencia real que genera esa concentración y argumente con criterio por qué igual la sostienen: puede ser por costo-eficiencia, por el perfil del consumidor celíaco, o por limitaciones de presupuesto. Lo valioso es que muestren conciencia del riesgo y alguna noción de cómo mitigarlo, aunque sea parcialmente.",
+            "evasiva": "Defender los canales solo porque 'tienen buen alcance' o 'son los más usados en e-commerce' sin reconocer en ningún momento que la Crisis 2 demostró que esa concentración es una vulnerabilidad concreta para este negocio."
+          },
+          {
+            "pregunta": "Ustedes identifican la tasa de recompra mensual como un indicador prioritario, pero en el trabajo no fijan ninguna meta numérica para ese indicador. ¿Cómo piensan medir el éxito del negocio en ese punto si no tienen un número contra el que comparar los resultados?",
+            "buscamos": "Que el grupo reconozca honestamente que esa definición quedó incompleta y explique por qué es crítica para un negocio de consumo recurrente como este, idealmente proponiendo en el momento algún criterio razonable: un porcentaje, un plazo, o al menos cómo lo calcularían. La honestidad sobre lo que faltó suma tanto como la propuesta.",
+            "evasiva": "Describir en qué consiste la tasa de recompra o explicar por qué es importante sin asumir que el documento la dejó sin definir, o prometer que 'se va a monitorear' sin dar ningún criterio concreto de éxito."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que presentaron hoy funciona bajo un subdominio de prueba y tiene configurado el robots.txt para que los buscadores no lo rastreen: ¿cómo explican esa situación y qué pasos concretos faltan para que el e-commerce esté realmente operativo y visible en Google?",
+            "buscamos": "Que el grupo reconozca sin rodeos que el sitio está en entorno de desarrollo y no en producción, que entienda qué implica el bloqueo de robots.txt para el SEO que declararon como objetivo, y que pueda enumerar al menos dos o tres pasos reales hacia el Go-Live: dominio propio, levantar el bloqueo de indexación, pasaje a entorno productivo.",
+            "evasiva": "Decir que 'el sitio ya está funcionando', describir funcionalidades del diseño sin tocar el tema del subdominio o el robots.txt, o prometer que 'se arregla fácil' sin explicar cómo ni cuándo."
+          },
+          {
+            "pregunta": "Ustedes identificaron la tasa de recompra mensual como un indicador prioritario para el negocio: ¿por qué eligieron ese indicador por sobre otros y qué les impidió definir una meta numérica concreta para él dentro del trabajo?",
+            "buscamos": "Que defiendan con criterio por qué la recompra importa en un producto de consumo habitual como el Sin TACC, mostrando que entienden la lógica de retención. Y que sean honestos sobre la brecha: reconocer que quedó sin meta cuantificada y explicar si fue por falta de datos de referencia, por tiempo, o por una decisión consciente.",
+            "evasiva": "Definir qué es la tasa de recompra en abstracto, hablar de la importancia de fidelizar clientes en general, o esquivar la ausencia de meta diciendo que 'se medirá con el tiempo' sin reconocer que faltó completarla en el documento."
+          },
+          {
+            "pregunta": "Cuando ocurrió la Crisis 2 y tuvieron que reajustar las metas del negocio, ¿qué cambio hicieron puntualmente en la experiencia o en el producto digital para responder a ese impacto, más allá del ajuste de números?",
+            "buscamos": "Que el grupo pueda conectar el evento de crisis con una decisión de diseño o de producto: por ejemplo, si replantearon el mix de canales, si ajustaron el flujo de compra, si reforzaron algún canal alternativo al Google Shopping afectado. La mención de la Pre-Go-Live Checklist como medida preventiva es válida si la explican con algo de contenido.",
+            "evasiva": "Repetir los números del impacto económico sin explicar ninguna acción concreta sobre el sitio o la experiencia, o describir la checklist como solución sin poder decir qué incluye ni quién es responsable de cada punto."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que nos mostraron hoy funciona bajo un subdominio de desarrollo y tiene configurado un bloqueo que le impide aparecer en Google: ¿qué pasos concretos faltan para que el e-commerce esté realmente operativo y visible para los clientes?",
+            "buscamos": "Que el grupo reconozca honestamente que el sitio está en etapa de desarrollo y no en producción, identifique al menos dos acciones pendientes claras (dominio propio, levantar el bloqueo de robots.txt, hosting productivo) y muestre que entiende la diferencia entre tener un sitio funcional y tener un sitio listo para vender.",
+            "evasiva": "Decir que 'el sitio ya está desarrollado y solo falta publicarlo' sin nombrar qué implica ese paso, o hablar de funcionalidades del diseño sin tocar el problema de la indexación y el dominio."
+          },
+          {
+            "pregunta": "Ustedes declaran la tasa de recompra como uno de sus indicadores prioritarios, pero en el trabajo no aparece ninguna meta numérica para ese indicador: ¿por qué eligieron priorizarlo y cómo van a saber si lo están alcanzando?",
+            "buscamos": "Que el grupo defienda el criterio de elección del indicador (fidelización en nicho celíaco, compra repetida de productos de consumo regular) y reconozca abiertamente que quedó pendiente definirle una meta concreta, idealmente proponiendo en el momento un valor de referencia razonable o explicando cómo lo fijarían.",
+            "evasiva": "Explicar qué es la tasa de recompra en términos generales o decir que 'es importante para cualquier e-commerce' sin responder por qué no tiene meta y qué harían para medirla."
+          },
+          {
+            "pregunta": "La Crisis 2 les mostró lo que puede pasar si una canal de venta falla de golpe: ¿qué aprendieron de eso para la etapa de lanzamiento real, más allá de la checklist que mencionan en el trabajo?",
+            "buscamos": "Que el grupo conecte el impacto de la crisis con decisiones operativas concretas hacia adelante: diversificación de canales, validación técnica antes del go-live, no depender de un solo canal de captación. Se valora que reconozcan las limitaciones de la checklist tal como quedó documentada (sin responsables ni contenido detallado) y que propongan algo más sólido.",
+            "evasiva": "Mencionar la checklist como solución suficiente sin poder explicar qué contiene o quién la ejecuta, o responder en abstracto sobre la importancia de tener planes de contingencia."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo proyectan dos números distintos de ingresos anuales y terminan usando el más bajo como meta real: ¿por qué tomaron esa decisión y qué les dice esa diferencia sobre el negocio?",
+            "buscamos": "Que el grupo reconozca que la Crisis 2 obligó a bajar las metas y que entienda que trabajar con el número más conservador es una decisión de gestión de riesgo, no un error. Que puedan explicar en sus palabras que prefirieron ser realistas antes que optimistas.",
+            "evasiva": "Repetir los dos números sin explicar por qué existe la diferencia o decir que 'es lo que calculó la planilla' sin mostrar que hubo una decisión consciente detrás."
+          },
+          {
+            "pregunta": "Declaran un ROI y un margen neto para el primer año, pero en el documento no se ve de forma clara cuánto capital inicial pusieron sobre la mesa: ¿cómo justifican esos porcentajes si el punto de partida no está del todo explicado?",
+            "buscamos": "Que el grupo reconozca honestamente que la estructura de costos completa y el capital inicial invertido no quedaron suficientemente desarrollados en el documento, y que expliquen qué información usaron para llegar a esas cifras o qué les faltó incluir.",
+            "evasiva": "Repetir el porcentaje de ROI como si eso respondiera la pregunta, o derivar la explicación a otra sección del trabajo sin admitir que hay información que no está detallada."
+          },
+          {
+            "pregunta": "Marcan la tasa de recompra mensual como su indicador más importante, pero en ningún momento del documento fijan una meta concreta para ese número: ¿cómo van a saber si el negocio está yendo bien si no tienen un piso contra el cual medir?",
+            "buscamos": "Que el grupo reconozca que dejaron el KPI sin valor de referencia y que puedan proponer en el momento, aunque sea de forma aproximada, qué meta tendría sentido fijar y por qué ese indicador es clave para un negocio de producto de consumo recurrente como el de ellos.",
+            "evasiva": "Describir qué es la tasa de recompra o explicar por qué es importante en abstracto, sin abordar la ausencia del valor meta ni intentar proponer uno."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando apareció la Crisis 2 y vieron que el impacto económico diario era importante, ¿cómo tomaron la decisión de ajustar las metas anuales en lugar de, por ejemplo, buscar compensar esa pérdida con otro canal?",
+            "buscamos": "Que expliquen el razonamiento detrás del reajuste: entendieron que era más realista reducir la proyección que asumir que otro canal podía absorber la caída a corto plazo, y que esa decisión fue consciente y fundamentada en los datos disponibles.",
+            "evasiva": "Describir qué es una crisis o listar los pasos genéricos de gestión de riesgos sin explicar por qué eligieron recalibrar las metas en lugar de tomar otra medida compensatoria."
+          },
+          {
+            "pregunta": "La Pre-Go-Live Checklist que mencionan como medida preventiva post-Crisis 2 nos quedó un poco en el aire en el informe: ¿pueden contarnos qué incluiría concretamente y quién del equipo sería responsable de cada parte?",
+            "buscamos": "Que reconozcan honestamente que el documento no desarrolló ese punto y que puedan improvisar con criterio al menos dos o tres ítems concretos y lógicos, como verificación del dominio, prueba de indexación, o revisión de integraciones de pago, asignando algún rol.",
+            "evasiva": "Repetir que la checklist existe como medida preventiva y que es importante firmarla conjuntamente, sin poder nombrar ni un solo ítem concreto o responsable."
+          },
+          {
+            "pregunta": "Tuvieron dos crisis en el proyecto y el margen con el que terminaron operando es bastante ajustado: mirando para atrás, ¿qué cambiarían en cómo organizaron el equipo o las decisiones para haber detectado esos problemas antes?",
+            "buscamos": "Que muestren reflexión genuina sobre el proceso: identificar un momento concreto donde la comunicación falló, donde una decisión se tomó tarde, o donde no había un responsable claro, y proponer algo específico que harían diferente.",
+            "evasiva": "Responder que todo el equipo trabajó bien y que las crisis eran imprevisibles, sin ninguna autocrítica ni señal de aprendizaje sobre el proceso interno."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "68",
+    "proyecto": "Red Pink",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1Kot0I66kX8V-lVX57Y8wJYB1lHPvFKDQ/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1Ah3RWNpHOgXmecVKJfkNOry6C4P713Zv/preview",
+    "informe": {
+      "resumen": "Alta consistencia interna entre estrategia, implementación y análisis de crisis, con fundamentación cuantificada y autocrítica documentada.",
+      "queEs": "Marketplace que conecta mujeres técnicas verificadas con clientes en CABA/GBA, diferencial: género + identidad validada + reputación atada a transacciones reales.",
+      "fortalezas": [
+        "Simulacros de crisis con causas raíz, métricas de impacto y criterios de resolución explícitos (ERR-507 y ERR-411).",
+        "Decisiones UX/UI justificadas estratégicamente y contrastadas contra lo planificado en entregables previos.",
+        "Modelo económico con punto de equilibrio (678), meta (950) y margen de seguridad del 40% explicitados."
+      ],
+      "interrogar": [
+        "SAM calculado sobre 35% del TAM geográfico sin citar fuente: ¿de dónde sale ese 35% de actividad económica concentrada en CABA/GBA?",
+        "Se declara tasa de conversión del 2,5% como meta validable, pero el sitio beta no tiene pagos integrados: ¿qué convierte exactamente — formulario de contacto o reserva efectiva?",
+        "ERR-411 simula churn del 18% en mes 3 con 950 suscriptoras activas previas, pero la beta no llegó a esa escala: ¿en qué datos reales se basa el escenario del incidente?"
+      ],
+      "dondeApretar": "Presionar la viabilidad del modelo de ingresos en ausencia de pagos integrados: sin cobro interno, el diferencial de retención declarado no existe en la beta real."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo define que el mercado relevante se concentra en CABA y GBA y a partir de eso calculan el SAM, pero ¿de dónde sale ese criterio de concentración geográfica? ¿Qué fuente o razonamiento lo respalda?",
+            "buscamos": "Que el grupo admita si existe una fuente concreta (INDEC, informes sectoriales, dato propio) o reconozca que es un supuesto de diseño que debería haberse citado. Una buena respuesta nombra la limitación, la defiende con lógica (densidad poblacional, actividad económica relativa) y propone cómo validarla. Muestra conciencia metodológica, no solo la cifra resultante.",
+            "evasiva": "Repetir que CABA y GBA concentran mucha actividad económica sin citar ninguna fuente ni admitir que el porcentaje usado es un supuesto sin respaldo documentado en el informe."
+          },
+          {
+            "pregunta": "En el Go-Live midieron una conversión de entre 0,2% y 0,4%, muy por debajo de la meta del 2,5%, y el sitio beta no tenía pagos integrados: entonces, ¿qué estaban midiendo exactamente como 'conversión' en esa etapa, y eso es comparable con la meta que proyectaron?",
+            "buscamos": "Que el grupo distinga claramente entre conversión blanda (formulario, clic, registro) y conversión dura (transacción real o reserva efectiva), y que reconozca que comparar ambas métricas como si fueran equivalentes es un problema de definición que afecta la validez de toda la proyección de ingresos. Una respuesta sólida propone cómo redefinir el KPI para cuando existan pagos integrados.",
+            "evasiva": "Decir que la conversión era 'el interés del usuario' o 'los registros' sin nombrar la ausencia de pagos ni reconocer que la meta del 2,5% asume una funcionalidad que todavía no estaba implementada."
+          },
+          {
+            "pregunta": "El ERR-411 simula un escenario con 950 suscriptoras activas y un churn que sube al 18%, pero la beta nunca llegó a esa escala: ¿en qué se basaron para construir ese escenario de estrés, y cómo le darían credibilidad a ese número frente a un potencial inversor?",
+            "buscamos": "Que el grupo explique el origen del supuesto: benchmarks del sector, analogías con plataformas similares, proyección teórica, o simplemente un escenario hipotético para testear el modelo financiero. Una respuesta honesta reconoce la limitación de no tener datos propios a esa escala y propone qué indicadores tempranos de la beta podrían funcionar como señales de alerta de churn antes de llegar a ese volumen.",
+            "evasiva": "Describir qué pasó en el escenario ERR-411 (la caída de suscriptoras, el margen negativo) sin responder de dónde salió el 18% ni cómo se justificaría ese supuesto con evidencia real o externa."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el sitio, el acceso para prestadoras está en el footer en lugar del header: ¿por qué tomaron esa decisión y qué riesgo concreto introduce esa elección cuando la tasa de rebote ya fue del 90% en el Go-Live?",
+            "buscamos": "Que el grupo defienda la lógica de separación de audiencias (evitar que Valentina se cruce con contenido que no le corresponde) pero reconozca la tensión real: si el 90% de las visitas se van sin convertir, esconder el acceso para prestadoras puede estar agravando el problema de captación por el lado de la oferta, no solo de la demanda.",
+            "evasiva": "Explicar que la decisión fue de UX para separar perfiles sin conectarlo en ningún momento con el ERR-507 ni con el impacto que eso pudo tener sobre la captación de prestadoras."
+          },
+          {
+            "pregunta": "El trabajo declara una meta de conversión del 2,5% pero en el Go-Live la conversión real fue de entre 0,2% y 0,4%, y el sitio beta no tiene pagos integrados: ¿qué acción concreta estaban midiendo cuando hablan de 'conversión', y cómo justifican comparar esa cifra con una meta que el propio diseño del producto todavía no puede cumplir?",
+            "buscamos": "Que el grupo sea preciso sobre qué evento llaman conversión (completar un formulario, hacer una reserva, iniciar contacto) y que reconozca abiertamente que sin pagos integrados la métrica que están midiendo no es la misma que la meta proyectada, lo cual invalida la comparación directa.",
+            "evasiva": "Decir que la conversión es 'cuando el usuario completa el proceso' sin definir cuál es ese proceso, o justificar el gap diciendo que la beta 'era solo una prueba' sin cuestionar la validez de la cifra meta."
+          },
+          {
+            "pregunta": "El checklist de Go-Live solo verificaba estabilidad funcional del sitio y no coherencia narrativa entre canales: ¿qué debería haber incluido ese checklist para que el lanzamiento fuera consistente, y por qué ese criterio quedó afuera de la versión que usaron?",
+            "buscamos": "Que el grupo identifique con criterio qué significa coherencia narrativa en la práctica (que el mensaje de los anuncios coincida con lo que el usuario encuentra al llegar al sitio) y que ofrezca una hipótesis honesta sobre por qué no estaba contemplado, ya sea por foco en lo técnico, por falta de tiempo o por una definición incompleta de 'listo para lanzar'.",
+            "evasiva": "Reconocer que fue un error sin explicar qué habría cambiado en el checklist ni por qué ese tipo de criterio suele quedar fuera del control funcional estándar."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El checklist de Go-Live que usaron antes del lanzamiento contemplaba estabilidad funcional del sitio, pero no verificaba que el mensaje fuera coherente entre los distintos canales donde estaban presentes: ¿qué proceso concreto van a incorporar en el próximo lanzamiento para que eso no vuelva a pasar?",
+            "buscamos": "Que el grupo reconozca que la causa raíz del ERR-507 fue operativa, no técnica, y proponga un control específico —por ejemplo, un responsable designado que valide la narrativa de cada canal antes del go-live, o un ítem explícito de coherencia en el checklist. Buena señal si muestran aprendizaje sistemático, no solo 'vamos a revisarlo mejor'.",
+            "evasiva": "Responden que van a mejorar la comunicación del equipo o que la próxima vez van a testear más, sin describir ningún cambio concreto al proceso de aprobación previo al lanzamiento."
+          },
+          {
+            "pregunta": "El presupuesto de marketing está dividido en partes iguales entre Meta Ads y Google Ads, pero el trabajo no menciona ningún presupuesto para canal orgánico ni SEO: dado que el negocio depende de que las prestadoras y los clientes encuentren la plataforma, ¿cómo justifican esa decisión?",
+            "buscamos": "Que defiendan la elección con argumentos reales: por ejemplo, que en etapa de validación temprana los canales pagos dan velocidad y datos medibles que el SEO no puede dar en el corto plazo. Mejor aún si reconocen que es una decisión de fase y no una postura definitiva, y esbozan cuándo o bajo qué condición incorporarían orgánico.",
+            "evasiva": "Dicen que el SEO 'también es importante' o que 'lo van a considerar más adelante' sin explicar por qué fue excluido ahora ni qué trade-off evaluaron al tomar esa decisión."
+          },
+          {
+            "pregunta": "La verificación de identidad de las prestadoras es manual en la beta y el propio trabajo la señala como un cuello de botella si la captación crece rápido, pero no define ningún umbral ni plazo para automatizarla: ¿en qué momento o bajo qué condición se vuelve insostenible ese proceso manual, y qué harían en ese punto?",
+            "buscamos": "Que el grupo sea capaz de poner un número o criterio propio —aunque sea estimado— que marque el límite operativo del proceso manual: cantidad de solicitudes por día, tiempo de respuesta tolerable para la prestadora, o porcentaje de caída en la tasa de alta. Y que describan una respuesta concreta, no solo 'automatizarlo', sino cómo y con qué.",
+            "evasiva": "Repiten que la verificación manual es un cuello de botella reconocido y que 'en el futuro se automatizaría', sin proponer ningún umbral que dispare esa decisión ni ninguna solución técnica u operativa específica."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El Go-Live mostró una tasa de rebote del 90% y una conversión efectiva muy por debajo de la meta, y el análisis del trabajo identifica como causa raíz que el checklist solo verificaba estabilidad técnica pero no coherencia narrativa entre canales. ¿Qué debería haber incluido ese checklist para que el lanzamiento terminara distinto?",
+            "buscamos": "Que el grupo entienda que el problema no fue técnico sino de alineación entre el mensaje en pauta y lo que el usuario encontraba al llegar al sitio. Una buena respuesta nombra al menos una verificación concreta que faltó: por ejemplo, revisar si el copy de los anuncios prometía algo que la landing no entregaba, o si el flujo de conversión era legible para alguien que llegaba por primera vez desde un anuncio frío.",
+            "evasiva": "Decir que 'habría que haber hecho más pruebas' o que 'el sitio no estaba listo' sin identificar qué verificación específica de coherencia narrativa estaba ausente en el checklist documentado."
+          },
+          {
+            "pregunta": "El trabajo destina el presupuesto de marketing completo entre Meta Ads y Google Ads, sin asignar nada a canal orgánico ni SEO. Después del ERR-507, donde cada hora de pauta activa tuvo un costo sin retorno medible, ¿cómo defienden esa distribución presupuestaria?",
+            "buscamos": "Que el grupo pueda argumentar una razón estratégica real para priorizar pauta paga en etapa de lanzamiento, reconociendo al mismo tiempo el riesgo que el propio ERR-507 expuso. Una respuesta sólida menciona velocidad de testeo, necesidad de tracción rápida para llegar al punto de equilibrio, o la dificultad de posicionar orgánicamente un marketplace nuevo, pero también reconoce que sin canal propio la dependencia del paid media es un riesgo no cubierto.",
+            "evasiva": "Justificar la decisión diciendo que Meta y Google son 'los canales más usados' sin vincular esa elección al contexto específico del negocio ni a lo que el ERR-507 reveló sobre el costo por resultado."
+          },
+          {
+            "pregunta": "El trabajo declara una meta de conversión del 2,5% para el año 1, pero la beta no tiene pagos integrados. ¿Qué está midiendo exactamente esa tasa de conversión: un formulario de contacto, una reserva confirmada, o algo diferente?",
+            "buscamos": "Que el grupo defienda con precisión qué evento define la conversión en su modelo, y que reconozca la brecha entre lo que la beta puede medir hoy y lo que el escenario proyectado supone. Una buena respuesta distingue entre intención de contacto y transacción real, y explica cómo planean cerrar esa brecha antes de que la métrica tenga validez financiera real.",
+            "evasiva": "Responder que la tasa de conversión es 'cuando el cliente contrata a la prestadora' sin explicar cómo el sistema actual registra o valida ese evento si los pagos no están integrados en la plataforma."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el ERR-411 el churn se disparó muy por encima del umbral que ustedes mismos habían definido como máximo aceptable, y la plataforma pasó de ganancias a pérdidas en ese mismo mes: ¿qué señal concreta tendría que haber disparado una acción de retención antes de llegar a ese punto, y por qué el sistema de monitoreo no la capturó a tiempo?",
+            "buscamos": "Que el grupo identifique la ausencia de alertas tempranas o KPIs de churn intermedios (por ejemplo, caída de actividad o de renovaciones antes de la baja definitiva), reconozca que el modelo no tenía un mecanismo de detección proactiva y proponga qué métrica o umbral previo habría permitido intervenir. Una buena respuesta nombra el problema de diseño del sistema de alertas, no solo describe lo que pasó.",
+            "evasiva": "Decir que 'el churn fue alto porque la plataforma estaba en etapa beta' o enumerar acciones de retención genéricas sin explicar por qué el equipo no las activó antes de que las suscriptoras cayeran de 950 a 570."
+          },
+          {
+            "pregunta": "El checklist de Go-Live que usaron para el lanzamiento solo verificaba estabilidad funcional del sitio, y eso quedó documentado como la causa raíz del ERR-507: ¿quién en el equipo era responsable de aprobar ese checklist, y cómo cambiarían el proceso de decisión para que una brecha así no llegue al día del lanzamiento?",
+            "buscamos": "Que el grupo asuma la responsabilidad de diseño del proceso —no que culpen a un rol externo— y explique concretamente qué criterio faltaba en el checklist (la coherencia narrativa entre canales) y cómo estructurarían la aprobación de lanzamiento para incluir ese criterio en el futuro. Se valora que nombren quién tiene autoridad para frenar un Go-Live.",
+            "evasiva": "Decir que 'en el futuro harían pruebas más completas' sin explicar qué falló en la cadena de decisión ni quién tenía la responsabilidad de validar que los canales de comunicación estaban alineados antes de lanzar."
+          },
+          {
+            "pregunta": "La verificación manual de identidad de las prestadoras está identificada en el propio trabajo como un cuello de botella insostenible si la captación crece rápido, pero no definen ni un umbral ni un plazo concreto para automatizarla: ¿cómo liderarían la decisión de cuándo escalar ese proceso, y qué pasaría con el diferencial de identidad validada que es el corazón de su propuesta de valor si ese cuello de botella los frena?",
+            "buscamos": "Que el grupo defienda una lógica de decisión concreta —por ejemplo, un volumen de solicitudes por semana o un tiempo de espera máximo para la prestadora— y reconozca la tensión real entre velocidad de crecimiento y calidad de la verificación. Una buena respuesta conecta el riesgo operativo con el riesgo estratégico: si la verificación falla o se demora, el diferencial competitivo se erosiona.",
+            "evasiva": "Decir que 'en el futuro se automatizaría con tecnología' sin poder explicar en qué momento tomarían esa decisión, con qué criterio, ni qué impacto tendría un cuello de botella en la promesa central de la plataforma."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "69",
+    "proyecto": "Bariloche Bike",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1yBJQfY9Ax9_eeS7iirhBTduipQi5qE2r/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/175i1PIfsLYXUDXlOJwwish-5iOqZ0R34/preview",
+    "informe": {
+      "resumen": "El trabajo articula coherentemente diagnóstico, diseño e implementación, aunque la pasarela de pago —central en las proyecciones financieras— no fue implementada en el MVP.",
+      "queEs": "Alquiler online de bicicletas eléctricas y tradicionales en Bariloche; diferencial: buscador de disponibilidad integrado en el hero, inexistente en la competencia local.",
+      "fortalezas": [
+        "Cada decisión de diseño UX/UI está explícitamente anclada a un hallazgo del FODA, PESTEL o customer journey.",
+        "Factibilidad financiera con VAN, TIR ≈165% y payback ≈8,3 meses justifica coherentemente el go-live y la escala de flota de 10 bicis.",
+        "Dos crisis simuladas (ERR-653 SSL y ERR-508 moneda) generaron protocolos concretos integrados al plan de lanzamiento."
+      ],
+      "interrogar": [
+        "El SOM proyecta 165–197 clientes/mes y el ticket promedio sustenta el VAN, pero la pasarela de pago que cierra esa conversión no está activa en el MVP; ¿cómo se validan las proyecciones sin el flujo de cobro real?",
+        "Los testimonios de clientes en la home (figura 9) no pueden ser reales para una marca nueva aún no lanzada; el documento no aclara si son ficticios o de prueba, lo que contradice el argumento de 'prueba social'.",
+        "El filtro geográfico del 25% para calcular el SAM se atribuye a 'información del Gobierno de Bariloche [6]', pero la referencia [6] es un documento del IMTVHS sobre vivienda, no sobre alcance turístico de servicios de bicicletas."
+      ],
+      "dondeApretar": "Presionar la brecha entre el modelo financiero (basado en reservas pagadas) y el MVP sin pasarela activa, y la trazabilidad de los supuestos del TAM/SAM/SOM a sus fuentes reales."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Para calcular cuántos usuarios de todo Bariloche realmente podrían alquilar su bicicleta, ustedes acotaron el universo total usando un filtro geográfico del 25%. ¿De dónde sale ese 25% y por qué les parece un criterio válido para este negocio?",
+            "buscamos": "Que el grupo reconozca que la fuente citada en el trabajo es un documento sobre vivienda del IMTVHS, que no respalda directamente el alcance turístico de un servicio de bicicletas, y que puedan proponer qué fuente hubiera sido más adecuada (estadísticas de turismo, datos de movilidad, encuestas propias, etc.) o justificar por qué ese número sigue siendo razonable como proxy conservador.",
+            "evasiva": "Repetir que el SAM es 98.280 usuarios sin cuestionar de dónde sale el 25%, o decir 'lo sacamos de una fuente oficial' sin poder explicar por qué esa fuente aplica al caso."
+          },
+          {
+            "pregunta": "En la home del sitio incluyeron testimonios de clientes reales como prueba social, pero el negocio todavía no está lanzado. ¿Cómo defienden esa decisión y qué riesgo implica para la credibilidad del proyecto?",
+            "buscamos": "Que el grupo reconozca explícitamente que los testimonios no pueden ser de clientes reales de la marca, aclare si son ficticios, de prueba o de un servicio previo relacionado, y que entienda la tensión entre la buena práctica de diseño (incluir prueba social) y la falta de transparencia sobre el origen de esos testimonios.",
+            "evasiva": "Decir que 'los testimonios generan confianza' o mencionar el valor de la prueba social sin reconocer el problema concreto de que la marca no tiene clientes todavía."
+          },
+          {
+            "pregunta": "El modelo financiero muestra que necesitan alrededor de 45 clientes por mes para cubrir costos, y proyectan llegar a más del triple en el primer año. ¿Cómo justifican esa proyección si la pasarela de pago no estaba activa en el MVP y nunca procesaron una reserva real?",
+            "buscamos": "Que el grupo reconozca la brecha entre lo proyectado y lo validado, explique qué otras señales usaron para sostener esa proyección (demanda observada, benchmarks del sector, capacidad de flota, etc.) y muestre conciencia de que sin conversión real el número es una estimación con riesgo no cuantificado.",
+            "evasiva": "Limitarse a describir la lógica del cálculo del break-even o repetir el VAN positivo sin abordar el problema de que el flujo de cobro que sustenta esas cifras nunca se probó en condiciones reales."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo decidieron mover el buscador de disponibilidad a la home en lugar de dejarlo en una página de checkout separada como estaba en los wireframes originales. ¿Por qué tomaron esa decisión y qué problema concreto del negocio resuelve esa ubicación?",
+            "buscamos": "Que expliquen que el diferencial competitivo del proyecto es precisamente la visibilidad inmediata de disponibilidad, algo que la competencia local no ofrece, y que colocarlo en el hero reduce la fricción del usuario turista que llega al sitio sin intención de navegar profundo. Una buena respuesta conecta la decisión de arquitectura con la propuesta de valor, no con una preferencia estética.",
+            "evasiva": "Decir que 'queda mejor en la home' o que 'es más fácil de encontrar' sin vincular esa decisión al diferencial competitivo declarado ni al comportamiento esperado del usuario turista que visita el sitio."
+          },
+          {
+            "pregunta": "Los wireframes incluían un paso de confirmación y pago en el checkout, pero la pasarela no se activó en el MVP. ¿Cómo afecta esa brecha a lo que efectivamente pudieron validar con la demo, y qué parte del flujo de conversión quedó sin probar?",
+            "buscamos": "Que reconozcan que sin el flujo de cobro activo no pudieron validar la conversión real, que el MVP demuestra navegación y experiencia pero no la transacción completa, y que idealmente expliciten qué sí pudieron testear y qué queda pendiente para una siguiente iteración. Se valora que no esquiven la limitación sino que la encuadren con honestidad.",
+            "evasiva": "Justificarse solo con la restricción técnica del entorno Pantheon sin reconocer el impacto que eso tiene sobre la validación de las proyecciones de clientes y la experiencia completa del usuario."
+          },
+          {
+            "pregunta": "En la home aparecen testimonios de clientes, pero el emprendimiento todavía no fue lanzado. ¿Qué decisión de diseño tomaron ahí y cómo lo justifican dentro de un MVP que todavía no tiene usuarios reales?",
+            "buscamos": "Que sean capaces de nombrar la tensión: los testimonios buscan generar prueba social, pero no pueden ser reales para una marca nueva. Una buena respuesta aclara si son ficticios, de prueba o representativos, reconoce que el documento no lo especificó con claridad, y puede proponer cómo resolverlo en una versión real del sitio, por ejemplo con testimonios de beta users o dejando la sección vacía hasta tener reseñas genuinas.",
+            "evasiva": "Decir que 'son testimonios de ejemplo' sin reconocer la contradicción con el argumento de prueba social que el propio trabajo usa para justificar esa sección de la home."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El buscador de disponibilidad terminó funcionando directamente en la home en lugar de derivar a una página de checkout separada como estaba previsto en los wireframes. ¿Por qué tomaron esa decisión y qué impacto tuvo en la experiencia del usuario?",
+            "buscamos": "Que expliquen que la decisión fue intencional y fundamentada, no solo un workaround: que concentrar el buscador en el hero acorta el funnel, reduce fricción y encima se convirtió en el diferencial frente a la competencia local. Idealmente que reconozcan la tensión con el diseño original y la justifiquen en términos de conversión.",
+            "evasiva": "Decir que 'el diseño cambió por cuestiones técnicas' sin explicar qué ganaron con ese cambio ni por qué fue una mejora para el negocio."
+          },
+          {
+            "pregunta": "Tuvieron una crisis donde el sitio mostraba los precios en dólares en lugar de pesos por un problema de geolocalización. ¿Cómo diagnosticaron esa falla y qué aprendieron de ese incidente para la operación real del negocio?",
+            "buscamos": "Que describan el proceso de detección y resolución del error ERR-508, y que conecten ese aprendizaje con algo concreto: por ejemplo, la necesidad de testear con distintas configuraciones regionales antes del lanzamiento, o la fragilidad de depender de plugins de geolocalización en un stack como WordPress + Pantheon.",
+            "evasiva": "Describir el problema sin explicar cómo lo resolvieron, o no extraer ningún aprendizaje aplicable más allá de 'hay que revisar los plugins'."
+          },
+          {
+            "pregunta": "El checkout de su MVP muestra el paso de 'Confirmación y pago' en los wireframes, pero la pasarela de pago no llegó a activarse en la demo. ¿Cómo justifican incluir proyecciones de ingresos y validar la conversión si ese flujo nunca se completó en un entorno real?",
+            "buscamos": "Que reconozcan honestamente la limitación técnica impuesta por el entorno de prueba de Pantheon, que expliquen que la restricción fue académica y no una omisión de diseño, y que propongan cómo validarían ese flujo en una fase siguiente: por ejemplo, activando la pasarela en un entorno productivo o usando una herramienta de pago compatible antes del lanzamiento real.",
+            "evasiva": "Minimizar el punto diciendo que 'el pago es un detalle técnico que se resuelve después' sin reconocer que es la pieza que cierra la conversión y que su ausencia deja sin validación empírica las proyecciones del SOM."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El modelo financiero muestra números muy atractivos, pero la pasarela de pago no llegó a activarse en el MVP. ¿Cómo justifican que las proyecciones de clientes mensuales sean válidas si todavía no pudieron probar el flujo de cobro real?",
+            "buscamos": "Que reconozcan la limitación honestamente y expliquen cómo piensan validar esa conversión antes de lanzar: por ejemplo, mencionando que el break-even es bajo (45 clientes/mes) respecto al SOM proyectado, o que el paso siguiente sería activar la pasarela en un entorno productivo real. Lo importante es que no traten el VAN como certeza sino como proyección condicionada.",
+            "evasiva": "Decir que 'el modelo financiero fue validado con datos del mercado' o explicar cómo funciona el VAN en general, sin abordar que la conversión online —el punto crítico del negocio— nunca se probó de punta a punta."
+          },
+          {
+            "pregunta": "En la home aparecen testimonios de clientes que aportan prueba social, pero el emprendimiento todavía no fue lanzado. ¿Cómo defienden haber incluido ese recurso y qué deberían haber aclarado en el documento para que no genere dudas?",
+            "buscamos": "Que reconozcan que los testimonios no pueden ser reales en este estadio y expliquen si son ficticios, de usuarios de prueba o de referentes del rubro, y por qué eligieron incluirlos de todas formas. Una buena respuesta también propone cómo resolverlo en la versión real: testimonios de beta testers, reseñas de Google, etcétera.",
+            "evasiva": "Justificar la decisión diciendo que 'es una práctica común en diseño web' o que 'se usaron para mostrar cómo quedaría el diseño', sin asumir que el documento debería haberlo aclarado explícitamente para no contradecir el argumento de prueba social."
+          },
+          {
+            "pregunta": "Para calcular el SAM aplicaron un filtro del 25% sobre el TAM argumentando el alcance geográfico del negocio, pero la fuente que citaron para ese filtro es un documento sobre vivienda, no sobre turismo ni uso de bicicletas. ¿Cómo sostienen ese número si la referencia no lo respalda?",
+            "buscamos": "Que admitan que la cita es débil o incorrecta para ese propósito y propongan qué fuente hubiera sido más adecuada, o cómo podrían haber estimado ese porcentaje de otra manera, por ejemplo con datos de flujo turístico, encuestas, o información del ente de turismo de Bariloche. La honestidad metodológica suma mucho más que defender el número a cualquier costo.",
+            "evasiva": "Insistir en que 'el 25% es un estimado razonable para la zona' sin reconocer el problema de la cita, o desviar la respuesta hacia explicar qué es el SAM como concepto."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando detectaron que el sitio estaba mostrando los precios en dólares en lugar de pesos, ¿cómo tomaron la decisión de actuar y qué criterio usaron para priorizar esa solución por encima de otras tareas que tenían pendientes?",
+            "buscamos": "Que describan un proceso real de triage: quién identificó el problema, cómo evaluaron el impacto sobre la experiencia del usuario o la credibilidad del sitio, y por qué lo priorizaron. Una buena respuesta conecta la urgencia con el contexto de un negocio que apunta al turista y donde mostrar precios en moneda equivocada destruye la confianza antes del primer clic.",
+            "evasiva": "Decir genéricamente 'lo solucionamos rápido porque era importante' sin explicar cómo llegaron a esa decisión ni qué dejaron de hacer mientras lo resolvían."
+          },
+          {
+            "pregunta": "La caída del SSL fue una crisis con impacto estimado en la conversión del sitio. ¿Qué aprendizaje concreto llevaron de ese episodio al resto del proyecto, y cómo cambió o debería haber cambiado algo en la forma en que gestionaban el entorno técnico?",
+            "buscamos": "Que vayan más allá de 'lo arreglamos' y articulen una lección operativa: monitoreo proactivo, checklist de estabilidad antes de publicar cambios, responsable designado, o cualquier ajuste de proceso que muestre que la crisis generó aprendizaje y no solo una solución puntual.",
+            "evasiva": "Explicar qué es un certificado SSL o describir el síntoma técnico sin decir nada sobre cómo el equipo modificó su manera de trabajar a partir de ese momento."
+          },
+          {
+            "pregunta": "El plugin de reservas con selección de fecha y hora era una pieza clave del flujo de usuario, pero resultó ser pago y quedó fuera del MVP. ¿Cómo gestionaron internamente esa limitación con el equipo y cómo lo comunicaron en el trabajo para que no pareciera simplemente una función que faltó?",
+            "buscamos": "Que muestren que la decisión fue deliberada y documentada: reconocer la restricción académica, evaluar alternativas, y enmarcar la limitación como una deuda técnica consciente con impacto claro sobre el flujo de cobro, no como un olvido. Un punto extra si conectan esto con la brecha entre wireframes y el MVP real.",
+            "evasiva": "Decir que 'no había presupuesto' o que 'era para la academia' sin explicar cómo lo justificaron dentro del proyecto ni qué consecuencias reconocen que tuvo esa decisión sobre la validación del modelo."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "70",
+    "proyecto": "Suelo Gamer",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1qwvy5FmPvy-CWMtpL81pPu8rGV7xFw6-/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1UL7nO8kfgdvaN4k8WUNa_sc1pKQtsasX/preview",
+    "informe": {
+      "resumen": "El trabajo presenta estructura completa y evidencias reales de implementación, pero las proyecciones económicas carecen de fundamentación metodológica explícita y los análisis estratégicos son superficiales.",
+      "queEs": "E-commerce WordPress/WooCommerce de productos gamer argentino, diferenciado por asesoramiento personalizado y construcción de comunidad sobre precio.",
+      "fortalezas": [
+        "Sitio funcional evidenciado con capturas en Pantheon, catálogo WooCommerce, checkout y medios de pago integrados.",
+        "Gestión de dos crisis documentadas con causa raíz, plan de acción en tres ejes y KPIs de cierre definidos.",
+        "KPIs alineados al Customer Journey con herramienta y frecuencia de medición especificadas por etapa."
+      ],
+      "interrogar": [
+        "ROI 116,1% e ingresos $491.250.000 ARS declarados sin fórmula, precio promedio de venta ni detalle de costos que los sustenten.",
+        "SOM de 750-1.000 ventas anuales se reduce a ~450 por crisis de bots (40% tráfico inválido), pero el punto de equilibrio sigue declarado en 275 ventas sin recalcular escenario real.",
+        "PESTEL menciona 'buenas prácticas ambientales' y 'reducción de materiales impresos', pero el proyecto no describe ninguna acción concreta que lo respalde."
+      ],
+      "dondeApretar": "Presionar sobre la consistencia financiera: cómo calcularon ingresos, margen y ROI, y si el modelo sigue siendo viable con la tasa de conversión real del 1,5% post-crisis."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Arrancaron con una meta de entre 750 y 1.000 ventas anuales, pero después descubrieron que casi el 40% de su tráfico era inválido y las ventas estimadas cayeron a unas 450: ¿cómo impacta eso en la viabilidad del negocio que plantearon?",
+            "buscamos": "Que el grupo reconozca que el escenario de partida cambió significativamente, que el punto de equilibrio declarado de 275 ventas ya no refleja la realidad del tráfico real, y que entienda que una buena estrategia implica revisar proyecciones cuando aparece información nueva.",
+            "evasiva": "Decir que igual superan el punto de equilibrio porque 450 es mayor que 275, sin advertir que los costos, el SOM y el margen necesitan revisarse bajo el nuevo escenario."
+          },
+          {
+            "pregunta": "Declararon un mercado objetivo de 4 millones de usuarios de consolas en Argentina, pero eligieron diferenciarse por asesoramiento personalizado y comunidad en lugar de por precio: ¿qué parte de ese mercado es la que realmente les interesa capturar y por qué esa propuesta de valor tiene sentido para ese segmento?",
+            "buscamos": "Que el grupo justifique que no van a todo el SAM sino a un perfil específico de comprador que valora la experiencia sobre el precio, y que puedan describir aunque sea de forma general quién es ese comprador y por qué el asesoramiento le resulta relevante.",
+            "evasiva": "Repetir los números del TAM y el SAM como si fueran un logro en sí mismos, sin explicar qué tipo de gamer es el que elige pagar más a cambio de acompañamiento."
+          },
+          {
+            "pregunta": "La identidad de marca que construyeron gira en torno a ser un 'experto cercano' para su comunidad: ¿cómo validaron que esa personalidad realmente conecta con el público al que le quieren vender?",
+            "buscamos": "Que el grupo sea honesto sobre si realizaron o no alguna forma de validación con usuarios reales, ya sea entrevistas, encuestas o testeo, y que pueda explicar qué harían diferente para corroborarlo, mostrando que entienden la diferencia entre una decisión fundamentada y una intuición.",
+            "evasiva": "Justificar la decisión diciendo que 'se investigó el mercado gamer' o que 'es lo que pide el público' sin poder describir ninguna instancia concreta de contacto con el usuario objetivo."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo declaran que el sitio está pensado para mobile primero, pero los wireframes que presentaron muestran pantallas de escritorio. ¿Cómo explican esa diferencia?",
+            "buscamos": "Que el grupo reconozca la inconsistencia con honestidad, explique si fue una decisión práctica o un error de proceso, y demuestre que entiende qué implica realmente un enfoque mobile-first en términos de diseño y priorización de contenido.",
+            "evasiva": "Decir que 'se tuvo en cuenta lo mobile' o que 'WooCommerce ya es responsivo' sin reconocer que los wireframes no reflejan esa decisión ni explicar por qué."
+          },
+          {
+            "pregunta": "Ustedes definen la personalidad de marca como 'experto cercano' y usan el slogan 'Tu base para gaming'. ¿En qué momento del proceso validaron que eso realmente le resuena a su público objetivo?",
+            "buscamos": "Que el grupo admita que no se hizo investigación de usuario ni testeo formal, y que pueda reflexionar sobre qué herramienta concreta habrían podido usar para validarlo, como una encuesta, entrevistas o un test de concepto simple.",
+            "evasiva": "Argumentar que la decisión 'se basó en el conocimiento del mercado gamer' o que 'es lo que busca el cliente' sin mencionar ningún método de validación con usuarios reales."
+          },
+          {
+            "pregunta": "Tuvieron un problema real donde las imágenes del sitio no cargaban porque las URLs apuntaban al entorno de desarrollo en lugar del de producción. ¿Qué aprendizaje concreto se llevan de eso para un lanzamiento futuro?",
+            "buscamos": "Que el grupo mencione la necesidad de un checklist de verificación post Go-Live, demuestre que entienden la diferencia entre entorno de desarrollo y producción, y pueda nombrar al menos un punto de control que habría evitado el error.",
+            "evasiva": "Decir que 'fue un error técnico que ya se corrigió' o culpar a la herramienta de migración sin extraer ningún aprendizaje de proceso ni proponer una medida preventiva."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio quedó funcionando en un entorno de desarrollo, no en producción. ¿Por qué tomaron esa decisión, o qué pasó para que el proyecto quedara en ese estado?",
+            "buscamos": "Que el grupo reconozca honestamente que el entorno de producción no está activo, que explique la migración de Hostinger a Pantheon como proceso en curso, y que entienda la diferencia entre un entorno de desarrollo y uno productivo aunque sea en términos simples.",
+            "evasiva": "Hablar de las ventajas de Pantheon o del plugin de migración sin reconocer que el sitio no está en producción, o afirmar que el entorno actual es válido para operar comercialmente."
+          },
+          {
+            "pregunta": "Tuvieron un problema donde las imágenes del sitio dejaron de cargar después del lanzamiento. ¿Qué aprendieron de eso en términos de proceso, y qué harían diferente antes de volver a poner un sitio en vivo?",
+            "buscamos": "Que identifiquen la causa raíz real —las URLs apuntaban al entorno de desarrollo y no había un checklist post Go-Live— y que propongan una práctica concreta de verificación antes del lanzamiento, demostrando que extrajeron aprendizaje operativo del incidente.",
+            "evasiva": "Describir el error técnico sin mencionar la causa raíz ni proponer ninguna mejora de proceso, o atribuir el problema a factores externos sin asumir responsabilidad sobre la ausencia de verificación."
+          },
+          {
+            "pregunta": "En el trabajo describen el SEO como prácticas básicas —títulos, URLs amigables, imágenes optimizadas— pero no muestran ningún resultado de posicionamiento. ¿Cómo sabrían hoy si esas acciones están funcionando o no?",
+            "buscamos": "Que el grupo reconozca que no tienen métricas de posicionamiento documentadas, que mencionen herramientas concretas como Google Search Console o Google Analytics para medirlo, y que demuestren entender que el SEO sin medición no permite tomar decisiones.",
+            "evasiva": "Enumerar nuevamente las prácticas de SEO aplicadas como si eso respondiera la pregunta, o afirmar que el posicionamiento mejorará con el tiempo sin explicar cómo lo van a medir."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo muestra ingresos y un ROI muy positivo para el primer año, pero no queda claro cómo llegaron a esos números: ¿pueden explicar, aunque sea a grandes rasgos, de qué depende que esa proyección se cumpla o no?",
+            "buscamos": "Que el grupo reconozca que la proyección está atada a un volumen de ventas y a un precio promedio que no están desagregados en el informe, y que admita esa limitación con honestidad. Idealmente mencionan que sin un precio promedio sustentado ni un detalle de costos, el número es una estimación frágil.",
+            "evasiva": "Repetir el porcentaje de ROI o el monto de ingresos como si eso respondiera la pregunta, sin explicar los supuestos detrás."
+          },
+          {
+            "pregunta": "Ustedes arrancaron con una meta de ventas anuales que después tuvieron que revisar para abajo por el problema con el tráfico de bots: ¿cómo impacta ese ajuste en la viabilidad del negocio si el punto de equilibrio que declararon quedó calculado sobre la meta original?",
+            "buscamos": "Que el grupo entienda que el punto de equilibrio perdió validez al cambiar el escenario de ventas, y que reconozca que debería haberse recalculado con el volumen reducido. No se espera el número exacto, sino conciencia de que hay una inconsistencia entre ambas cifras.",
+            "evasiva": "Explicar qué son los bots o describir la crisis técnica sin conectarla al impacto financiero ni mencionar que el punto de equilibrio quedó desactualizado."
+          },
+          {
+            "pregunta": "Uno de los KPIs que definen es el valor de vida del cliente, medido a través del CRM, pero en las herramientas que documentaron para la implementación no aparece ningún CRM integrado: ¿cómo planean medir ese indicador en la práctica?",
+            "buscamos": "Que el grupo admita la brecha entre lo que declararon medir y las herramientas que realmente configuraron, y que proponga alguna alternativa concreta aunque sea básica, como usar los reportes nativos de WooCommerce o una hoja de cálculo en una etapa inicial.",
+            "evasiva": "Definir qué es el CLV o explicar por qué es importante sin abordar la ausencia de la herramienta que lo haría posible."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando se dieron cuenta de que el tráfico de bots estaba afectando las visitas y las ventas proyectadas, ¿qué hicieron o qué hubieran hecho para que esa situación no paralizara el negocio?",
+            "buscamos": "Que el grupo reconozca que la crisis de bots impactó las proyecciones reales y pueda describir, aunque sea en términos generales, una respuesta concreta: bloqueo de IPs, herramientas anti-bot, ajuste de metas o comunicación al equipo. Lo importante es que demuestren que entendieron el problema y reaccionaron (o saben cómo reaccionar) en lugar de ignorarlo.",
+            "evasiva": "Explicar qué son los bots o mencionar que 'es un problema común en e-commerce' sin decir qué hizo o haría el equipo puntualmente para mitigarlo."
+          },
+          {
+            "pregunta": "El error ERR-507, donde las imágenes del sitio no cargaban justo después del lanzamiento, ¿cómo lo resolvieron en el momento y qué cambiarían en el proceso para que no vuelva a pasar?",
+            "buscamos": "Que identifiquen la causa raíz (URLs apuntando al entorno de desarrollo en lugar de producción) y propongan una mejora de proceso concreta, como un checklist de verificación post Go-Live. No se busca el término técnico exacto sino que demuestren aprendizaje real sobre la gestión del incidente.",
+            "evasiva": "Decir que 'se corrigió el error' o que 'se revisó la configuración' sin explicar qué cambio de proceso incorporarían para evitar que una situación similar se repita en un lanzamiento futuro."
+          },
+          {
+            "pregunta": "Durante el proyecto tuvieron al menos dos crisis importantes al mismo tiempo: el problema del tráfico inválido y el error de imágenes en el sitio. ¿Cómo organizaron al equipo para atender esas situaciones sin que todo cayera sobre una sola persona?",
+            "buscamos": "Que describan cómo distribuyeron responsabilidades, priorizaron qué resolver primero o cómo se comunicaron internamente bajo presión. No se espera un protocolo formal, sino evidencia de que hubo coordinación real y aprendizaje sobre liderazgo de equipo en contexto de crisis.",
+            "evasiva": "Responder en genérico sobre trabajo en equipo o metodologías ágiles sin anclar la respuesta a lo que efectivamente pasó durante estas dos crisis concretas del proyecto."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "71",
+    "proyecto": "VITALAGE",
+    "nivel": "Regular",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1T9tzfTmrvGRKuqq6I9xW4sqbg3zFBaX2/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1GICZZm6gndL1gYOnNq3urSx6EkFKVjLp/preview",
+    "informe": {
+      "resumen": "El trabajo tiene coherencia narrativa pero las proyecciones financieras carecen de metodología visible y la implementación real mostrada es mínima.",
+      "queEs": "Ecommerce WordPress/WooCommerce de tecnología para adultos mayores, diferenciado por asesoramiento y soporte postventa en lugar de precio o catálogo amplio.",
+      "fortalezas": [
+        "Categorización semántica por beneficio ('seguridad y emergencias') en vez de tipo de dispositivo, justificada con reducción de fricción cognitiva.",
+        "Dos crisis simuladas documentadas con causa raíz, acciones correctivas y aprendizaje estratégico explícito.",
+        "KPIs definidos con valores objetivo concretos, alineados a áreas distintas: tráfico, conversión, soporte y satisfacción."
+      ],
+      "interrogar": [
+        "Ingresos estimados en ARS 84 millones y ROI de 29,8% pero el documento no muestra ningún cálculo, supuesto de precio ni volumen de ventas que lo respalde.",
+        "El checkout se describe como 'tres pasos claramente numerados' pero las capturas del Anexo A muestran solo un formulario estándar de WooCommerce sin evidencia de esa simplificación.",
+        "El SOM de ARS 900 millones se define como 0,2% del SAM pero el SAM de ARS 450.000 millones no tiene fuente primaria citada, solo se menciona AMBA con acceso digital sin dato base."
+      ],
+      "dondeApretar": "Presionar sobre la validación real de los números financieros y la brecha entre las decisiones UX declaradas y lo efectivamente implementado en el sitio funcional."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Eligieron enfocarse en un segmento muy específico del mercado total, adultos mayores en el AMBA con acceso digital: ¿por qué ese recorte y no apuntar a un público más amplio desde el arranque?",
+            "buscamos": "Que el grupo defienda la lógica de foco: recursos limitados, propuesta de valor diferenciada por asesoramiento y soporte, y que un segmento más ancho requeriría otra estructura de atención. No importa si usan la palabra SAM; importa que entiendan por qué acotar es una decisión estratégica y no una limitación.",
+            "evasiva": "Explicar qué es una segmentación de mercado en abstracto, o listar características del buyer persona sin justificar por qué ese segmento en particular conecta con el modelo de asesoramiento que proponen."
+          },
+          {
+            "pregunta": "El trabajo proyecta ingresos anuales bastante concretos, pero en el documento no aparece explicado cómo llegaron a ese número: ¿qué variables tuvieron en cuenta para estimarlo y qué reconocen que les faltó mostrar?",
+            "buscamos": "Que el grupo identifique al menos las variables básicas (precio por producto, volumen de ventas estimado, ticket promedio) y que sea honesto sobre el hecho de que los supuestos no quedaron documentados en el informe. La honestidad sobre la brecha es tan valiosa como la explicación técnica.",
+            "evasiva": "Repetir el número proyectado o mencionar que calcularon el ROI sin explicar de dónde vienen las variables que lo componen, ni reconocer que esa cadena de razonamiento no está visible en el documento."
+          },
+          {
+            "pregunta": "Se posicionaron por asesoramiento y soporte postventa en lugar de por precio o variedad de catálogo: ¿cómo sostienen ese diferencial si aparece un competidor grande que decide ofrecer también atención personalizada?",
+            "buscamos": "Que el grupo muestre que entendió que el diferencial no es solo una característica del servicio sino que tiene que estar anclado en algo difícil de replicar: conocimiento del segmento, procesos de soporte concretos (como el KPI de resolución en menos de 24 horas), confianza construida. No necesitan una respuesta perfecta, pero sí demostrar que pensaron en la sostenibilidad del posicionamiento.",
+            "evasiva": "Decir que 'ellos se enfocan en adultos mayores y los grandes no' sin explicar qué hace que esa ventaja sea duradera o qué tendría que hacer la empresa para defenderla ante una amenaza concreta."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo describen que el checkout tiene tres pasos bien diferenciados, pero mirando las capturas que incluyeron en el Anexo A no queda del todo claro cómo se ve esa simplificación en pantalla. ¿Pueden contarme qué decisiones tomaron concretamente para que el proceso de compra fuera más fácil para un adulto mayor?",
+            "buscamos": "Que el grupo reconozca la tensión entre lo que describe el texto y lo que muestran las capturas, y que pueda explicar con sus palabras al menos una decisión de diseño concreta: página única, supresión del menú de navegación global, numeración visible de los pasos. Que demuestren que entienden el por qué de esas decisiones (reducir abandonos, evitar distracciones) y no solo que las enumeran.",
+            "evasiva": "Repetir que 'el checkout tiene tres pasos' sin poder explicar qué cambio visible genera eso en la experiencia del usuario ni por qué beneficia específicamente al público adulto mayor."
+          },
+          {
+            "pregunta": "Ustedes le pusieron un límite de cuatro clics a la profundidad de navegación del sitio. ¿Por qué eligieron ese número y cómo se relaciona esa decisión con el perfil del cliente al que apuntan?",
+            "buscamos": "Que conecten la decisión técnica con el usuario concreto: adultos mayores que pueden tener menos familiaridad con la navegación web, mayor riesgo de abandono ante estructuras complejas. Una buena respuesta muestra que el límite no fue arbitrario sino que responde a reducir la fricción para ese perfil específico. Si mencionan que también refuerza el diferencial de simpleza frente a marketplaces grandes, es un plus.",
+            "evasiva": "Decir que 'cuatro clics es una buena práctica general de UX' sin anclarlo en ningún momento al perfil del usuario ni a la propuesta de valor del proyecto."
+          },
+          {
+            "pregunta": "Se fijaron como meta que el abandono de carrito se mantenga por debajo de un número bastante alto, que está cerca del promedio del sector. Dado que el diferencial del negocio pasa por el asesoramiento y no por el precio, ¿qué pensaron hacer dentro del sitio para que alguien que está a punto de irse igual termine comprando?",
+            "buscamos": "Que el grupo pueda articular al menos una táctica concreta vinculada a la experiencia en el sitio: chat de soporte visible, garantía de asesoramiento postventa como elemento de confianza, información clara sobre tiempos de entrega o medios de pago. Lo importante es que conecten la estrategia de retención con el diferencial del negocio (asesoramiento), no con el precio.",
+            "evasiva": "Mencionar descuentos o cupones como principal herramienta de retención, que contradiría el posicionamiento del proyecto, o dar una respuesta genérica sobre 'mejorar la experiencia' sin ningún mecanismo concreto."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "Antes de salir al aire con el sitio, hubo un problema con los correos electrónicos que no llegaban bien a los clientes. ¿Por qué creen que pasó eso y qué aprendieron de haberlo detectado después del lanzamiento?",
+            "buscamos": "Que el grupo explique que los registros de autenticación de correo (SPF, DKIM, DMARC) no fueron validados antes del Go-Live, que entienda que eso afecta la entrega de emails transaccionales y la reputación del dominio, y que reconozca que el error fue no incluir esa validación como parte del checklist previo al lanzamiento.",
+            "evasiva": "Decir que 'fue un problema técnico que se resolvió' o mencionar los nombres de los registros sin explicar qué consecuencia concreta tuvo sobre la experiencia del cliente o por qué importaba validarlos antes."
+          },
+          {
+            "pregunta": "Ustedes tomaron la decisión de que al llegar al checkout el cliente ya no ve el menú principal del sitio. ¿Por qué tomaron esa decisión y qué riesgo asumieron con ella?",
+            "buscamos": "Que el grupo defienda que suprimir la navegación global en el checkout apunta a reducir abandonos accidentales, y que reconozca el riesgo inverso: un cliente que se siente 'atrapado' o necesita volver al catálogo podría frustrarse, lo que es especialmente sensible en un público de adultos mayores menos familiarizado con la navegación web.",
+            "evasiva": "Repetir que 'es una buena práctica de UX' o que 'lo recomiendan los expertos' sin vincular la decisión al perfil específico de su usuario ni mostrar que pensaron en el riesgo."
+          },
+          {
+            "pregunta": "Se propusieron que casi todas las consultas de soporte se resuelvan en menos de 24 horas. Dado que el público son adultos mayores y que la propuesta de valor del negocio se apoya justamente en el acompañamiento, ¿qué pasa con el negocio si ese tiempo de respuesta no se sostiene?",
+            "buscamos": "Que el grupo conecte el KPI de soporte directamente con la propuesta de valor diferencial del proyecto: si el negocio no compite por precio ni por catálogo sino por asesoramiento, incumplir ese tiempo destruye el único argumento de compra frente a competidores más grandes. Una buena respuesta menciona impacto en reputación, devoluciones o recomendación boca a boca en un segmento etario donde ese canal es clave.",
+            "evasiva": "Decir que 'se contrataría más personal' o que 'se usaría un chatbot' sin explicar por qué ese KPI es existencial para este modelo de negocio en particular, a diferencia de un ecommerce genérico."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo proyecta ingresos importantes y un ROI positivo, pero en ninguna parte del documento aparece cuántos productos esperan vender ni a qué precio promedio. ¿Cómo llegaron a esos números?",
+            "buscamos": "Que el grupo reconozca honestamente que los cálculos no quedaron explicitados en el informe y pueda reconstruir la lógica mínima: un volumen estimado de pedidos multiplicado por el valor promedio de pedido objetivo que sí figura en el trabajo. Se valora que admitan la omisión y expliquen de dónde partieron, aunque sea en términos generales.",
+            "evasiva": "Repetir que el ROI es 29,8% o que el margen es 23% sin explicar ningún supuesto de base, o derivar la pregunta hacia la metodología de proyección sin reconocer que los cálculos no están en el documento."
+          },
+          {
+            "pregunta": "Ustedes eligieron un ROAS objetivo de 4 como indicador de éxito publicitario. Dado que su diferencial no es el precio sino el asesoramiento y el soporte, ¿por qué ese número y no otro, y qué pasaría con la estrategia si en los primeros meses no lo alcanzan?",
+            "buscamos": "Que el grupo conecte el ROAS con la lógica de negocio: un margen ajustado exige que cada peso invertido en publicidad rinda lo suficiente para ser sostenible. Se valora que piensen qué harían si el indicador no se cumple, por ejemplo ajustar la segmentación, reducir pauta o reforzar el canal orgánico, mostrando que entienden el KPI como herramienta de decisión y no solo como meta decorativa.",
+            "evasiva": "Definir qué es el ROAS o decir que es un estándar del mercado sin justificar por qué ese valor es coherente con su propuesta de valor ni mencionar ningún plan de contingencia."
+          },
+          {
+            "pregunta": "El SOM que calcularon representa el 0,2% de un mercado muy grande, lo que parece conservador. ¿Cómo justifican que esa porción es realista y alcanzable para un emprendimiento nuevo, y qué tiene que pasar para que efectivamente la capturen?",
+            "buscamos": "Que el grupo defienda la coherencia entre el SOM y su capacidad operativa real: equipo pequeño, diferencial de servicio personalizado, recursos de marketing limitados. Se valora que vinculen ese porcentaje con acciones concretas del plan, como la tasa de conversión objetivo o la inversión en soporte, y que muestren que eligieron ese número con criterio y no al azar.",
+            "evasiva": "Decir solo que es un número conservador o que el mercado es grande, sin ningún argumento que conecte el SOM con lo que el emprendimiento puede hacer concretamente en sus primeros meses."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo mencionan que hubo un problema con los registros de autenticación del correo electrónico que no estaban configurados antes de salir al aire: ¿cómo manejaron esa situación y qué aprendieron de no haberlo detectado antes?",
+            "buscamos": "Que el grupo reconozca que los registros SPF, DKIM y DMARC no se validaron antes del Go-Live, explique qué consecuencia concreta tuvo eso (correos que podían caer en spam, daño a la reputación del dominio, comunicaciones con clientes afectadas) y muestre que incorporaron algún aprendizaje real: un checklist, una instancia de revisión previa, o simplemente la conciencia de que la infraestructura de comunicación es crítica antes del lanzamiento.",
+            "evasiva": "Decir que 'hubo un inconveniente técnico que se resolvió' sin explicar qué pasó ni por qué no se detectó antes, o derivar la responsabilidad exclusivamente al área técnica sin mostrar ninguna reflexión del equipo."
+          },
+          {
+            "pregunta": "Si justo después del lanzamiento detectan que los clientes están abandonando el proceso de compra a mitad de camino mucho más de lo que esperaban, ¿qué haría el equipo: esperaría a tener más datos o tomaría alguna acción inmediata, y por qué?",
+            "buscamos": "Que el grupo conecte la respuesta con el KPI de abandono de carrito que definieron (mantenerlo por debajo del 65%) y demuestre que saben qué significa ese número en la práctica: si lo superan, algo en el proceso de compra no está funcionando. Se espera que propongan una reacción concreta y razonada, por ejemplo revisar el flujo del checkout, consultar grabaciones de sesión, o contactar a usuarios. Lo que importa es la lógica de tomar decisiones a partir de un indicador, no recitar el número.",
+            "evasiva": "Responder de forma genérica que 'analizarían los datos y harían mejoras' sin mencionar que ya tienen un umbral definido para ese indicador ni explicar qué acción concreta dispararía ese umbral."
+          },
+          {
+            "pregunta": "El trabajo propone que la diferenciación del negocio pasa por el asesoramiento y el soporte postventa, no por el precio: si en una semana de mucho volumen el equipo de soporte no puede responder a todos los clientes en el tiempo que se comprometieron, ¿cómo priorizarían y qué riesgo ven para el negocio si eso se repite?",
+            "buscamos": "Que el grupo entienda que el KPI de soporte (resolver al menos el 95% de las consultas en menos de 24 horas) es central porque es la promesa diferencial del negocio, no un dato más. Una buena respuesta muestra conciencia de que fallar ahí golpea directamente la propuesta de valor para adultos mayores, que son un público que depende especialmente de ese acompañamiento. Se valorará que propongan algún mecanismo de priorización o escalamiento, aunque sea básico.",
+            "evasiva": "Decir que 'contratarían más personal' o que 'usarían un chatbot' sin conectar la respuesta con el hecho de que la velocidad de atención es lo que distingue al negocio, o sin reconocer el riesgo reputacional concreto de no cumplir ese compromiso con ese perfil de cliente."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "72",
+    "proyecto": "Crumb Club by Second Byte Agency",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1Tgrb25IhQccpcVJMkUWKvayMTinMOg9x/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1mxGwTLouqWNARNW4TAzqzyDkBkdcR2RJ/preview",
+    "informe": {
+      "resumen": "El trabajo muestra evolución documentada, autocrítica metodológica explícita y gestión de crisis con impacto cuantificado, aunque varias hipótesis centrales permanecen sin validación real.",
+      "queEs": "Marketplace bilateral food-waste en CABA que comercializa excedentes de panaderías mediante combos predecibles con 55-60% de descuento, diferenciándose del modelo caja sorpresa.",
+      "fortalezas": [
+        "Break-even demostrado matemáticamente: Q = $4.838.400 / (84 trans/mes × $1.202,40) = 48 comercios.",
+        "Clasificación honesta de afirmaciones: hipótesis vs. proyección vs. dato verificado, a pedido del tutor.",
+        "Crisis ERR-379 y ERR-503 documentadas con causa raíz, plan de acción y KPIs de resultado concretos."
+      ],
+      "interrogar": [
+        "Tasa de conversión 32% es hipótesis sin datos propios, pero el documento la usa como KPI principal y umbral de validación del MVP.",
+        "Margen bruto original 85% reconocido como 'irreal'; el actual 74% usa fórmula propia sin benchmark externo que lo respalde.",
+        "SOM declarado como '80 socios activos / Año 1' pero el break-even usa 48: la diferencia de 32 comercios no se fundamenta en el documento."
+      ],
+      "dondeApretar": "Presionar sobre qué evidencia real de mercado —más allá de benchmarks externos y analogías— sustenta las hipótesis de conversión, CAC y oferta consistente de excedentes."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes arrancan con una estimación de mercado muy grande y después la bajan bastante en versiones posteriores del trabajo: ¿qué fue lo que aprendieron en ese proceso y por qué creen que fue importante hacerlo?",
+            "buscamos": "Que el grupo reconozca que el TAM inicial estaba construido sobre supuestos ideales y que recalibrarlo fue un ejercicio de honestidad metodológica, no un fracaso; que entiendan la diferencia entre un número aspiracional y uno útil para tomar decisiones.",
+            "evasiva": "Decir que 'los números cambiaron porque conseguimos más información' sin explicar qué estaba mal en la lógica original ni por qué eso importa para validar el modelo."
+          },
+          {
+            "pregunta": "En el trabajo definen cuántos comercios necesitan para que el negocio se sostenga solo, pero también proyectan llegar a bastantes más en el Año 1: ¿cómo explican esa diferencia y qué rol cumple cada número en la estrategia?",
+            "buscamos": "Que distingan el break-even como piso de viabilidad (48 comercios) del SOM como objetivo comercial ambicioso (80 comercios), y que puedan justificar por qué los 32 comercios adicionales son razonables o reconocer que esa fundamentación quedó pendiente.",
+            "evasiva": "Repetir los dos números sin explicar la relación entre ellos, o decir simplemente que 'el break-even es lo mínimo y lo otro es la meta' sin dar ningún argumento de por qué esa meta es alcanzable."
+          },
+          {
+            "pregunta": "La tasa de conversión que usan como indicador clave del MVP no viene de datos propios sino de benchmarks externos: ¿por qué eligieron ese número como referencia y qué tendría que pasar durante el MVP para que lo den por válido o lo descarten?",
+            "buscamos": "Que expliquen que es una hipótesis de partida apoyada en referencias de UX y que entiendan que el MVP existe precisamente para contrastarla con datos reales; que puedan describir, aunque sea en términos generales, qué evidencia los haría ajustarla.",
+            "evasiva": "Defender el número como si fuera un dato confirmado, o reconocer que es una hipótesis pero no tener ninguna idea de cómo se validaría en la práctica."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el lanzamiento del 9 de junio mandaron todo el tráfico, tanto el de comercios como el de consumidores, a una misma dirección web sin distinguir de dónde venía cada visita: ¿por qué tomaron esa decisión y qué cambiarían hoy?",
+            "buscamos": "Que el grupo reconozca que la URL única sin parametrización UTM fue un error de configuración que les impidió medir correctamente y disparó el costo de adquisición, y que proponga una solución concreta como separar las URLs o usar parámetros diferenciados por segmento.",
+            "evasiva": "Explicar qué son las UTM o los segmentos B2B y B2C en abstracto, sin asumir la responsabilidad de que ese error estuvo presente desde el primer día del Go-Live."
+          },
+          {
+            "pregunta": "Ustedes eligieron mostrarle al consumidor exactamente qué productos lleva el combo en vez de mandarlo una caja sorpresa: ¿cómo impacta esa decisión de diseño en la experiencia del usuario y qué riesgo trae consigo?",
+            "buscamos": "Que el grupo defienda que la previsibilidad reduce la fricción de compra y genera confianza, pero también reconozca que pone más presión sobre la panadería para cumplir lo prometido y puede complejizar la gestión del inventario excedente.",
+            "evasiva": "Decir que 'es mejor para el cliente saber lo que compra' sin explorar ninguna tensión operativa ni el impacto en la relación con los socios comerciales."
+          },
+          {
+            "pregunta": "Al medir el desempeño de la plataforma usaron una tasa de conversión del 32%, pero en el propio trabajo aclaran que eso no es lo mismo que la conversión transaccional real: ¿qué estaban midiendo entonces y por qué es importante no confundir esos dos números?",
+            "buscamos": "Que el grupo distinga entre una métrica de intención o engagement basada en benchmarks de UX y la conversión transaccional efectiva, y que reconozca honestamente que la segunda no tiene datos propios todavía y queda pendiente de validación.",
+            "evasiva": "Defender el 32% como un dato sólido o citar el benchmark sin explicar la diferencia conceptual entre los dos tipos de conversión."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El día del lanzamiento derivaron todo el tráfico a una sola URL sin separar las campañas de comercios y de consumidores. ¿Por qué tomaron esa decisión y qué consecuencias les trajo?",
+            "buscamos": "Que el grupo reconozca que fue un error de configuración que les impidió medir qué estaba pasando, que disparó el costo de adquisición muy por encima del objetivo y que generó una tasa de rebote altísima. Que puedan explicar en sus propias palabras qué significa no tener datos limpios y por qué eso les complica saber si el problema ya se resolvió.",
+            "evasiva": "Hablar de la plataforma en términos generales, mencionar que 'hubo un problema técnico' sin explicar qué lo causó ni qué medían antes versus después, o derivar la respuesta a que 'el equipo de desarrollo lo solucionó'."
+          },
+          {
+            "pregunta": "Al cierre del trabajo dicen que la tasa de rebote mejoró bastante después de resolver la crisis, pero también aclaran que esa mejora todavía no está confirmada con datos. ¿Cómo manejaron esa incertidumbre en el informe y qué habría hecho falta para poder afirmarla con más solidez?",
+            "buscamos": "Que el grupo sea honesto sobre el límite de lo que pueden afirmar: que proyectaron una mejora pero que al cierre del TFI no tenían dos semanas de datos limpios para validarla. Una buena respuesta muestra que entienden la diferencia entre una proyección y un dato real, y que saben qué deberían medir para confirmarlo.",
+            "evasiva": "Presentar la mejora proyectada como si ya fuera un hecho comprobado, o no poder explicar por qué necesitaban más tiempo de datos antes de sacar conclusiones."
+          },
+          {
+            "pregunta": "Tuvieron también una crisis de marca que les generó un costo importante y les postergó el punto de equilibrio. ¿Qué aprendizaje operativo les dejó eso para la etapa que viene?",
+            "buscamos": "Que identifiquen qué proceso o validación previa al lanzamiento les faltó, que puedan vincular esa crisis con un impacto concreto en el cronograma del negocio, y que muestren que incorporaron ese aprendizaje de manera genuina más allá de describir lo que pasó.",
+            "evasiva": "Describir los hechos de la crisis sin reflexionar sobre qué cambiarían, o dar una respuesta genérica sobre 'validar antes de lanzar' sin conectarla con lo que específicamente falló en su caso."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo mencionan una tasa de conversión del 32% como uno de los indicadores clave para validar el MVP, pero también aclaran que es una hipótesis. ¿Por qué eligieron ese número como referencia central si todavía no tienen datos propios que lo respalden?",
+            "buscamos": "Que el grupo reconozca honestamente que el 32% viene de benchmarks externos de UX y no de comportamiento real de sus usuarios, que distingan entre hipótesis de trabajo y dato validado, y que expliquen qué tendría que pasar en el MVP para confirmarla o descartarla.",
+            "evasiva": "Repetir que '32% es la tasa de conversión del proyecto' sin aclarar que es una hipótesis, o justificarla solo diciendo que 'viene de benchmarks' sin explicar por qué la adoptaron como umbral de validación."
+          },
+          {
+            "pregunta": "El trabajo arranca con un margen bruto del 85% y termina corrigiéndolo al 74% porque el primero era, según sus propias palabras, irreal. ¿Qué aprendieron de ese ajuste y cómo se aseguran de que el 74% actual sea un número en el que confiar?",
+            "buscamos": "Que el grupo muestre madurez para reconocer el error inicial sin minimizarlo, que expliquen qué variables incorporaron en la corrección, y que sean honestos si el 74% todavía depende de supuestos propios sin benchmark externo que lo valide.",
+            "evasiva": "Defender el 74% como definitivo y correcto sin mencionar que sigue sin respaldo de datos de mercado, o justificar el 85% original como 'un punto de partida normal en todo proyecto'."
+          },
+          {
+            "pregunta": "La crisis del lanzamiento del 9 de junio les disparó un costo de adquisición de clientes muy por encima del objetivo, y el documento lo vincula a haber concentrado todo el tráfico pago en una sola URL sin la configuración necesaria. ¿Por qué esa configuración no estaba lista desde el día cero si el propio trabajo la describe como un requisito estructural del modelo de negocio?",
+            "buscamos": "Que el grupo pueda explicar qué decisión operativa o técnica llevó a ese desfasaje entre lo que el modelo requería y lo que se ejecutó, que asuman la responsabilidad sin excusas, y que articulen qué cambiarían en la planificación del lanzamiento.",
+            "evasiva": "Atribuir el problema exclusivamente a factores externos o técnicos sin reconocer que fue una decisión de implementación propia, o limitarse a describir los síntomas de la crisis sin reflexionar sobre la causa raíz."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "El día del lanzamiento tuvieron una tasa de rebote muy alta y el costo de adquirir un cliente se disparó muchísimo por encima de lo que habían proyectado. ¿Qué pasó exactamente ese día y cómo tomaron la decisión de qué hacer primero?",
+            "buscamos": "Que el grupo pueda explicar con sus palabras que todo el tráfico pago fue a una sola URL sin distinción entre el canal B2C y B2B, que eso imposibilitó medir bien qué estaba fallando, y que describan el criterio con el que priorizaron la respuesta, aunque hayan cometido errores. Se valora honestidad sobre el caos inicial.",
+            "evasiva": "Hablar en abstracto de 'fallas técnicas' o 'problemas de configuración' sin explicar qué decisión concreta generó el problema ni quién o cómo se coordinó la salida de la crisis."
+          },
+          {
+            "pregunta": "Tuvieron dos crisis importantes durante el proyecto: una relacionada con la identidad de marca y otra con el lanzamiento digital. Si tuvieran que volver atrás, ¿cuál hubieran atacado distinto y por qué?",
+            "buscamos": "Que el grupo demuestre que reflexionó genuinamente sobre ambas crisis, que puede comparar el impacto concreto de cada una (una costó dinero real y postergó el break-even; la otra arruinó el Go-Live), y que la respuesta revela aprendizaje real y no solo una justificación de lo que ya hicieron.",
+            "evasiva": "Decir que 'las dos estaban fuera de su control' o que 'igual el proceso fue bueno' sin señalar ninguna decisión propia que hubieran tomado diferente."
+          },
+          {
+            "pregunta": "Después de la crisis del lanzamiento, proyectaron que la tasa de rebote iba a bajar bastante, pero al cierre del trabajo eso todavía no estaba confirmado con datos reales. ¿Cómo manejaron esa incertidumbre dentro del equipo y cómo lo comunicaron en el informe?",
+            "buscamos": "Que el grupo reconozca explícitamente que al cierre del TFI ese dato estaba pendiente, que explique por qué decidieron incluir la proyección de todas formas (por ejemplo, para mostrar el plan de recuperación) y que describan cómo acordaron internamente ser transparentes sobre lo que era dato real versus estimación.",
+            "evasiva": "Presentar la proyección de rebote como si fuera un resultado ya validado, o justificar la falta de datos diciendo simplemente que 'no hubo tiempo', sin explicar cómo el equipo tomó la decisión editorial de incluirlo igual."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "73",
+    "proyecto": "Quedá Bien",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/14YZvik0zMxMrFQ2F9-DEs0yGOaLb0U6L/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1C1WBWvbgZ1FGUFxDmtngi0JewknDTpRW/preview",
+    "informe": {
+      "resumen": "Presenta coherencia estratégica-técnica sólida, fundamentación cruzada entre FODA/PESTEL/financiero y evidencias reales de implementación en WordPress/Pantheon.",
+      "queEs": "Q-Commerce de regalería express desde dark store en Parque Patricios, con entrega en menos de 120 minutos y catálogo curado por ocasión.",
+      "fortalezas": [
+        "Financiero robusto: punto de equilibrio calculado (59 pedidos), margen bruto 55%, payback 1,89 meses y ROI 634,2% documentados.",
+        "Infraestructura técnica real demostrada: Pantheon, WordPress+WooCommerce, Mercado Pago sandbox y JSON-LD validado con DevTools.",
+        "FODA cruzado operativo: cada cuadrante vincula variable interna con acción concreta, evitando la enumeración vacía."
+      ],
+      "interrogar": [
+        "ROI 634,2% con payback 57 días resulta extraordinario para Argentina inflacionaria; ¿qué supuestos de tipo de cambio y precios de proveedores lo sostienen?",
+        "Uber Direct se declara integrado vía API pero en sandbox se simuló manualmente con tarifas fijas en WooCommerce: ¿existe algún webhook real probado?",
+        "SOM proyecta 1.200–3.600 clientes anuales pero el modelo financiero usa 1.440 pedidos/año a $80.000 ticket: ¿pedido = cliente único o incluye recompra?"
+      ],
+      "dondeApretar": "Exigir que justifiquen los supuestos financieros optimistas y la brecha entre logística 'integrada' declarada y la simulación manual realmente ejecutada."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes proyectan captar entre 1.200 y 3.600 clientes en los primeros tres años, pero a la hora de calcular los números del negocio usaron una base mucho más chica. ¿Por qué tomaron esa decisión y qué significa eso para la solidez del plan?",
+            "buscamos": "Que el grupo reconozca la tensión entre el SOM declarado y los 1.440 pedidos anuales del modelo financiero, y que pueda explicar si esa base conservadora fue una decisión consciente de prudencia o una inconsistencia no resuelta. Idealmente, que aclaren si 'pedido' equivale a cliente único o contempla recompra, y que demuestren que entienden el impacto de esa diferencia en la proyección.",
+            "evasiva": "Repetir los números del informe sin explicar la brecha, o justificar con frases genéricas como 'quisimos ser conservadores' sin poder decir qué implicancia tiene eso para la viabilidad real del negocio."
+          },
+          {
+            "pregunta": "El modelo les da un retorno sobre la inversión altísimo y recuperan lo invertido en menos de dos meses. En el contexto económico argentino, ¿qué es lo que más podría hacer que ese número no se cumpla en la práctica?",
+            "buscamos": "Que el grupo identifique al menos un supuesto frágil detrás del ROI —variación del tipo de cambio, precios de proveedores que se actualizan con inflación, o ticket promedio que puede caer— y que demuestren conciencia de que ese resultado extraordinario depende de condiciones que en Argentina son inestables. No hace falta que citen la cifra exacta, sino que muestren pensamiento crítico sobre sus propios supuestos.",
+            "evasiva": "Defender el número sin cuestionarlo, o atribuir el resultado solo a la eficiencia del modelo sin mencionar ningún factor de riesgo del contexto macroeconómico."
+          },
+          {
+            "pregunta": "Cuando simularon la crisis de guerra de precios y el volumen de ventas cayó fuerte en 48 horas, eligieron responder con una estrategia de bundling. ¿Por qué esa respuesta tiene sentido para el tipo de cliente y la propuesta de valor que eligieron?",
+            "buscamos": "Que el grupo conecte la decisión táctica con la propuesta de valor del negocio: el bundling protege el margen y refuerza la lógica de 'regalo completo por ocasión' que es central en un catálogo curado, en lugar de competir directamente por precio. Una buena respuesta muestra que la solución no fue aleatoria sino coherente con el posicionamiento elegido.",
+            "evasiva": "Explicar qué es el bundling en abstracto o decir que 'ayuda a vender más' sin vincularlo con el cliente objetivo, el catálogo curado por ocasión ni la razón por la que bajar el precio no era la respuesta adecuada para este modelo."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "En el sitio publicado aparece la promesa de entrega en 90 minutos, pero el objetivo logístico que definen en el trabajo es llegar en menos de 120 minutos: ¿por qué decidieron mostrarle ese número al cliente y cómo impacta esa diferencia en la experiencia si no se cumple?",
+            "buscamos": "Que el grupo reconozca la tensión entre la promesa comercial visible y el objetivo operativo interno, que entienda que el banner genera una expectativa más exigente que el propio modelo soporta, y que pueda explicar qué pensaron al tomar esa decisión —o que admitan honestamente que es una inconsistencia que no resolvieron.",
+            "evasiva": "Responder que '90 minutos es el objetivo real y 120 es solo un margen de seguridad' sin explicar cómo garantizan eso operativamente, o hablar en abstracto de la importancia de la rapidez en el q-commerce sin tocar la contradicción específica."
+          },
+          {
+            "pregunta": "Se propusieron que el cliente llegue al checkout en no más de 4 clics y con una tasa de abandono de carrito baja: ¿qué decisiones concretas de diseño tomaron para lograr eso en un catálogo organizado por ocasión de regalo?",
+            "buscamos": "Que el grupo pueda vincular una decisión de diseño real —navegación por ocasión, filtros, flujo de checkout, cantidad de pasos— con el objetivo de conversión que ellos mismos se fijaron, mostrando que el número de clics no fue arbitrario sino que respondió a algo que pensaron en el flujo.",
+            "evasiva": "Hablar de UX en términos generales ('buscamos que sea intuitivo y amigable') sin poder decir qué pantallas o pasos componen ese recorrido de 4 clics, o confundir el objetivo con un resultado ya medido."
+          },
+          {
+            "pregunta": "El catálogo está curado por ocasión de regalo: ¿por qué eligieron esa lógica de organización en lugar de, por ejemplo, ordenar por precio o por categoría de producto, y qué efecto esperaban que tuviera en la decisión de compra del usuario?",
+            "buscamos": "Que el grupo defienda la elección con un argumento centrado en el usuario —que quien compra un regalo no sabe qué producto quiere, sino para qué momento lo necesita— y que puedan conectar esa decisión con la propuesta de valor de inmediatez y conveniencia que define al negocio.",
+            "evasiva": "Responder que 'es lo que hacen los e-commerce de regalos' o que 'lo vimos en referencias del mercado' sin explicar por qué esa lógica es coherente con el perfil de usuario que comprará en menos de 120 minutos bajo presión de tiempo."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo declaran que la integración con Uber Direct está automatizada, pero en la práctica la simularon ingresando las tarifas a mano dentro de WooCommerce: ¿por qué tomaron esa decisión y qué implicaría pasar de eso a una integración real?",
+            "buscamos": "Que reconozcan honestamente la brecha entre lo declarado y lo implementado, expliquen que el sandbox no permitía webhooks reales, y muestren conciencia de que en producción habría que desarrollar o contratar la integración API efectiva con manejo de errores y tarifas dinámicas.",
+            "evasiva": "Describir cómo funciona una API en general o hablar de las ventajas de Uber Direct sin reconocer que lo que mostraron fue una simulación manual, ni mencionar qué faltaría para que funcione de verdad."
+          },
+          {
+            "pregunta": "El sitio estuvo alojado en un entorno Sandbox de Pantheon y llegó a caerse por exceso de tráfico: si este proyecto pasara a operar realmente, ¿qué es lo primero que cambiarían en la infraestructura técnica y por qué?",
+            "buscamos": "Que entiendan que un entorno sandbox no está pensado para tráfico real ni para alta disponibilidad, y que puedan mencionar, aunque sea en términos generales, la necesidad de migrar a un hosting de producción con capacidad de escala, SLA garantizado y monitoreo, especialmente crítico para un modelo de entrega express.",
+            "evasiva": "Decir que 'habría que mejorar el servidor' sin demostrar comprensión de por qué el sandbox es inadecuado para operación real, o desviar la respuesta hacia el diseño del sitio o el SEO."
+          },
+          {
+            "pregunta": "El banner del sitio promete entrega en 90 minutos, pero el objetivo logístico del trabajo establece un límite de 120 minutos: ¿cómo justifican esa diferencia y qué riesgo concreto genera para el negocio?",
+            "buscamos": "Que identifiquen la contradicción entre lo que se comunica al cliente y lo que el modelo operativo garantiza, y que puedan explicar el riesgo reputacional y de confianza que implica publicar un compromiso más exigente que el que el sistema está diseñado para cumplir, especialmente sin proveedores ni dark store física confirmada.",
+            "evasiva": "Defender los 90 minutos como 'aspiracional' o 'una meta más alta' sin reconocer que existe una brecha real entre la promesa pública y la capacidad operativa declarada en el propio trabajo."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El retorno sobre la inversión que proyectan es extraordinariamente alto y el payback muy corto para el contexto económico argentino: ¿qué condiciones del mercado tuvieron que asumir para que esos números se sostengan, y qué pasaría si esas condiciones cambian?",
+            "buscamos": "Que el grupo reconozca que el ROI y el payback descansan sobre supuestos de estabilidad de precios, tipo de cambio y margen bruto que en Argentina son volátiles, y que pueda nombrar al menos una variable sensible (costo de proveedor, inflación, tipo de cambio) y cómo afectaría el modelo si se mueve.",
+            "evasiva": "Repetir el porcentaje de ROI o el período de payback como si la cifra en sí fuera la respuesta, sin discutir los supuestos que la hacen posible ni reconocer su fragilidad."
+          },
+          {
+            "pregunta": "En el trabajo hablan de llegar a entre 1.200 y 3.600 clientes en los primeros tres años, pero el modelo financiero trabaja con 1.440 pedidos anuales: ¿un pedido representa un cliente nuevo cada vez, o están contemplando que un mismo cliente vuelva a comprar?",
+            "buscamos": "Que el grupo distinga entre clientes únicos y pedidos totales, reconozca que si el número incluye recompra el modelo de captación necesario es menor, y que si no la incluye la proyección de mercado y la financiera no están hablando de lo mismo. Lo valioso es que sean honestos sobre si esa distinción fue resuelta o quedó pendiente.",
+            "evasiva": "Decir que los números 'están alineados' o parafrasear ambas cifras sin explicar si pedido y cliente son lo mismo en su modelo, evitando reconocer la inconsistencia."
+          },
+          {
+            "pregunta": "Eligieron el rojo y el amarillo como colores principales del sitio con intenciones muy específicas para cada uno: ¿cómo justifican esa elección en función del tipo de producto que venden y del perfil del cliente al que apuntan?",
+            "buscamos": "Que el grupo pueda conectar la decisión cromática con la propuesta de valor: el rojo para impulsar la acción de compra en un contexto de urgencia o regalo, el amarillo para reforzar la promesa de inmediatez, y que lo anclen al perfil de su segmento objetivo (personas de 20 a 45 años, NSE medio-alto). Se valora que muestren que fue una decisión consciente y no solo estética.",
+            "evasiva": "Decir que 'son colores llamativos' o que 'representan la marca' sin vincular la elección al modelo de negocio, a la ocasión de compra o al comportamiento esperado del usuario."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En la crisis de precios que simularon, el volumen de ventas cayó bastante fuerte en muy poco tiempo y eligieron resolver con una estrategia de bundling: ¿por qué esa decisión y no bajar los precios para competir?",
+            "buscamos": "Que el grupo pueda argumentar que bajar precios en un modelo de margen ajustado y ticket promedio alto compromete la ecuación financiera del negocio, y que el bundling protege el valor percibido del producto sin erosionar el margen. Idealmente conectan la decisión con el posicionamiento premium que eligieron.",
+            "evasiva": "Decir que el bundling 'es lo que se usa en e-commerce' o describir qué es el bundling sin explicar por qué fue la opción correcta para este negocio específico."
+          },
+          {
+            "pregunta": "El sitio estuvo hosteado en un entorno sandbox y durante el go-live simulado se cayó por exceso de tráfico: ¿qué aprendieron de eso y qué cambiarían antes de un lanzamiento real?",
+            "buscamos": "Que el grupo reconozca honestamente que el entorno de prueba no estaba dimensionado para tráfico real, y que pueda identificar al menos una acción concreta para un escenario productivo: migrar a hosting en producción, hacer pruebas de carga, contratar un plan escalable, etc. Se valora la honestidad sobre las limitaciones del trabajo.",
+            "evasiva": "Minimizar la caída diciendo que 'fue solo una simulación' sin reflexionar sobre qué implicaría en un lanzamiento real con clientes esperando un envío en menos de 90 minutos."
+          },
+          {
+            "pregunta": "Su propuesta promete entrega en 90 minutos, pero el objetivo logístico que definieron internamente es de hasta 120 minutos: si en la operación real no llegaran a cumplir los 90 minutos, ¿cómo gestionarían esa situación con el cliente?",
+            "buscamos": "Que el grupo note la tensión entre lo que comunica el sitio y el objetivo operativo real, y que pueda proponer algún mecanismo de gestión de expectativas o plan de contingencia: comunicación proactiva, compensación, política de garantía, etc. No se espera que resuelvan el problema, sino que lo reconozcan y piensen en el cliente.",
+            "evasiva": "Responder solo sobre cómo mejorarían la logística para cumplir los 90 minutos, sin abordar qué pasa con el cliente en el mientras tanto o sin reconocer que hay una inconsistencia entre lo prometido y lo planificado."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "74",
+    "proyecto": "MateMío",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1jnpU0lWGxNprGTf518bKmZa97-gmxk7_/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1HqltXqTz88-tG-sBj8FPwdmvDb2Oqg9_/preview",
+    "informe": {
+      "resumen": "El trabajo integra análisis estratégico, implementación técnica real y gestión de crisis con metodología profesional, aunque algunas cifras financieras clave carecen de sustento desagregado.",
+      "queEs": "E-commerce B2C de mates artesanales personalizados para regalar, diferenciado por proceso de compra en 3 pasos y posicionamiento emocional en AMBA.",
+      "fortalezas": [
+        "Sitio funcional real en Pantheon con stack completo documentado (WordPress, WooCommerce, Elementor Pro, Yoast, ClickCease).",
+        "Dos crisis gestionadas con metodología 5 Whys y planes concretos de contención/corrección/prevención.",
+        "FODA cruzado decisional con acciones estratégicas concretas por cuadrante, no solo descriptivo."
+      ],
+      "interrogar": [
+        "El margen bruto del 39,7% y margen neto del 9,5% se declaran pero no hay desagregación de costos unitarios ni estructura de P&L en el documento.",
+        "La tasa de conversión objetivo del 1,3% en Año 1 se fija como meta pero el punto de equilibrio usa 603 ventas/mes mientras otro KPI de Año 1 proyecta 650 ventas/mes: hay inconsistencia numérica interna.",
+        "El SOM Año 1 (0,5% del SAM = 7.875 clientes) implica 656 ventas/mes según el documento, pero el punto de equilibrio declarado es 603: no se explica la diferencia ni qué ocurre operativamente entre esos valores."
+      ],
+      "dondeApretar": "Concentrar la defensa en la consistencia entre las cifras financieras (margen, punto de equilibrio, ventas proyectadas) y la ausencia de un P&L desagregado que las sostenga."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Eligieron posicionarse emocionalmente en el mercado del regalo en AMBA y acotaron el catálogo a un número máximo fijo de productos como decisión estratégica: ¿por qué ese límite les parece una ventaja y no una restricción para crecer en el Año 1?",
+            "buscamos": "Que el grupo defienda la decisión de foco: limitar el catálogo reduce complejidad operativa, protege la experiencia de personalización y es coherente con un posicionamiento emocional diferenciado; idealmente vinculan esa restricción al proceso de compra en 3 pasos como argumento de coherencia estratégica.",
+            "evasiva": "Decir que 'más productos generan más ventas' o que el límite fue por tiempo o recursos, sin explicar cómo esa decisión cuida el posicionamiento emocional ni qué problema operativo o de experiencia de usuario resolvería agregar productos."
+          },
+          {
+            "pregunta": "Proyectaron capturar una porción muy pequeña del mercado disponible en el primer año, con una meta de ventas mensuales que supera el punto de equilibrio por apenas un margen estrecho: ¿qué razonamiento usaron para llegar a esa participación de mercado y por qué consideran que ese colchón sobre el equilibrio es suficiente para sostener el negocio?",
+            "buscamos": "Que el grupo explique la lógica de entrada conservadora al mercado: justifiquen el porcentaje elegido del SAM en función del posicionamiento de nicho, los recursos de marketing disponibles y el contexto AMBA; y que reconozcan que el margen sobre el punto de equilibrio es ajustado, argumentando por qué aun así es viable en lugar de esquivar la tensión.",
+            "evasiva": "Repetir el número del SOM o del punto de equilibrio sin explicar el criterio detrás de la captura elegida, o afirmar que el margen es suficiente porque 'es lo que proyecta el modelo' sin fundamentar qué los llevaría a sostenerlo ante una variación de demanda."
+          },
+          {
+            "pregunta": "El proceso de compra en 3 pasos es uno de los diferenciadores que mencionan para el mercado de regalos personalizados en AMBA: ¿cómo conecta esa decisión de UX con la tasa de conversión que se fijaron como objetivo para el primer año y por qué esperan que funcione mejor que un proceso de compra estándar?",
+            "buscamos": "Que el grupo articule la cadena lógica entre la simplificación del proceso de compra, la reducción de fricción en el funnel y el impacto esperado en conversión; deben demostrar que el diferenciador no es solo una elección estética sino una palanca estratégica orientada a un segmento que compra con carga emocional y necesita claridad en la personalización.",
+            "evasiva": "Describir cómo funciona técnicamente el proceso de 3 pasos sin vincularlo a la decisión de mercado ni explicar por qué ese flujo es más adecuado para el comprador de regalos que para otro tipo de comprador."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El catálogo quedó cerrado en exactamente 17 SKUs sin margen para agregar productos nuevos durante el Año 1: ¿por qué eligieron ese límite y qué riesgos concretos ven en esa decisión para el negocio?",
+            "buscamos": "Que expliquen la lógica estratégica detrás del límite (foco, operación artesanal, personalización, capacidad productiva) y que reconozcan al menos un riesgo real: no poder responder a demanda estacional, falta de flexibilidad ante una línea que no vende, o la tensión entre catálogo cerrado y objetivo de crecimiento de ventas.",
+            "evasiva": "Decir que 'es un catálogo acotado para no abrumar al usuario' sin vincular esa decisión a la capacidad operativa real ni reconocer ninguna limitación concreta del modelo."
+          },
+          {
+            "pregunta": "El proceso de compra en 3 pasos es uno de los diferenciadores centrales que declaran: ¿qué problema específico del usuario comprando un regalo online intentaron resolver con ese diseño, y cómo saben que esos 3 pasos son suficientes y no demasiados?",
+            "buscamos": "Que conecten el diseño del flujo con una fricción real del comprador de regalos (incertidumbre sobre la personalización, miedo a equivocarse, necesidad de guía) y que justifiquen la cantidad de pasos con algún criterio: benchmarking, reducción de abandono, coherencia con el LCP que optimizaron. No es necesario que citen el número de LCP, pero sí que muestren que el diseño tiene una razón más allá de 'es simple'.",
+            "evasiva": "Describir los 3 pasos uno por uno como si fuera una presentación del producto, sin explicar qué problema del usuario resuelve esa estructura ni por qué 3 y no 2 o 4."
+          },
+          {
+            "pregunta": "En el Go Live detectaron que el píxel de seguimiento no se ejecutaba en la página de confirmación de compra, lo que dejó a GA4 registrando cero conversiones aunque los pedidos entraban bien: ¿qué cambiarían en el proceso de lanzamiento para que eso no vuelva a ocurrir en una nueva funcionalidad o en un rediseño?",
+            "buscamos": "Que identifiquen la causa raíz que ellos mismos declaran (ausencia de QA formal previo al Go Live) y propongan algo concreto y realista: un checklist de verificación pre-lanzamiento, pruebas end-to-end en staging, validar el disparo del píxel en cada paso del funnel antes de publicar. Se valora que distingan entre 'revisar el código' y tener un proceso sistemático.",
+            "evasiva": "Decir que 'lo detectaron rápido y lo corrigieron' o que 'hay que hacer más pruebas', sin proponer ningún mecanismo concreto que institucionalice el control de calidad antes del próximo despliegue."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el Go Live del 15 de junio tuvieron un problema donde WooCommerce recibía pedidos correctamente pero GA4 no registraba ninguna conversión: ¿qué los llevó a esa situación y qué proceso cambiarían antes de un próximo lanzamiento?",
+            "buscamos": "Que identifiquen la causa raíz concreta (el píxel no se ejecutaba en la Thank You Page) y que puedan articular que la lección aprendida fue la ausencia de un proceso formal de QA previo al Go Live, explicando qué implicaría ese proceso en la práctica.",
+            "evasiva": "Hablar en general de 'la importancia del testing' o 'verificar que todo funcione antes de lanzar' sin vincular la respuesta al problema específico del píxel y la Thank You Page, ni a por qué ese error no fue detectado antes del Go Live."
+          },
+          {
+            "pregunta": "Lograron bajar el LCP en mobile de casi 5 segundos a 2,3 segundos con WP Rocket e imágenes WebP, lo cual es una mejora real, pero su propia meta para el Año 1 es llegar a menos de 2 segundos: ¿cómo justifican ese gap y qué harían para cerrarlo?",
+            "buscamos": "Que reconozcan abiertamente que el valor implementado (2,3s) no cumple aún el KPI declarado (<2s) y que puedan proponer acciones técnicas concretas y razonables para seguir optimizando, sin minimizar la brecha ni tratarla como un detalle menor.",
+            "evasiva": "Defender que 2,3 segundos 'está bien' o 'es muy cercano' sin reconocer que no cumple el propio KPI del trabajo, o listar herramientas de optimización de forma genérica sin explicar por qué no se llegó a la meta con lo ya implementado."
+          },
+          {
+            "pregunta": "Klaviyo aparece en el trabajo como herramienta de email marketing y también como responsable de los mensajes de seguimiento por WhatsApp post-compra: ¿pueden explicar cómo resolvieron técnicamente esa integración con WhatsApp?",
+            "buscamos": "Que demuestren que conocen las capacidades reales de Klaviyo y puedan aclarar si hubo una imprecisión en la documentación, explicando cuál sería la solución técnica correcta para el canal WhatsApp (por ejemplo, una integración vía terceros o una herramienta diferente) en lugar de sostener algo que no es técnicamente preciso.",
+            "evasiva": "Confirmar sin cuestionamiento que Klaviyo envía WhatsApp de forma nativa, o cambiar de tema hablando de la estrategia de comunicación post-compra sin abordar la viabilidad técnica concreta de la integración declarada."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El presupuesto de marketing arranca con Paid Ads como canal dominante, pero después de la crisis de tráfico fraudulento tuvieron que rebalancear la distribución e incorporar una partida nueva. ¿Por qué tomaron esa decisión y qué lógica tiene el nuevo esquema?",
+            "buscamos": "Que expliquen que la caída drástica de conversiones los llevó a reducir la dependencia de Paid Ads (de 55% a 45%) y que la partida de Anti-fraude/Analítica (10%) nació directamente de esa experiencia, mostrando que la estructura presupuestaria responde a aprendizajes reales y no es arbitraria.",
+            "evasiva": "Describir en qué consiste cada canal sin explicar por qué cambió la proporción ni qué disparó la incorporación de la partida anti-fraude."
+          },
+          {
+            "pregunta": "El punto de equilibrio que declaran y la meta de ventas para el cierre del Año 1 quedan muy cerca uno del otro, con muy poco margen entre ambos. ¿Cómo justifican que esa brecha sea suficiente para considerar el negocio viable?",
+            "buscamos": "Que reconozcan la estrechez del margen operativo, la justifiquen con algún argumento concreto (estrategia de escalado, control de costos, crecimiento de conversión) y demuestren que son conscientes del riesgo que implica operar tan cerca del equilibrio en un primer año.",
+            "evasiva": "Repetir los números sin discutir el riesgo, o afirmar que 'está bien porque se supera el equilibrio' sin argumentar por qué ese colchón es suficiente."
+          },
+          {
+            "pregunta": "Declaran un ROI estimado a dos años del 113% sobre una inversión inicial de $3.000.000 ARS, pero los costos operativos proyectados para el Año 1 son muchísimo más altos que esa cifra. ¿Cómo se explica esa diferencia y qué representa realmente esa inversión inicial dentro del modelo financiero?",
+            "buscamos": "Que distingan entre inversión inicial (capital de arranque o activos fijos iniciales) y costos operativos corrientes, y que expliquen sobre qué base calcularon el ROI, reconociendo que la inversión inicial cubre solo una fracción mínima del costo operativo anual y que el grueso del financiamiento tiene otro origen que deberían poder nombrar.",
+            "evasiva": "Citar el porcentaje de ROI como si eso respondiera la pregunta, sin explicar la composición del financiamiento operativo ni la diferencia conceptual entre inversión inicial y costo corriente."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando detectaron que el tráfico fraudulento había llevado la tasa de conversión prácticamente a cero en menos de tres días, ¿qué criterio usaron para decidir reasignar el presupuesto de Paid Ads y crear una partida de anti-fraude, en lugar de simplemente pausar la campaña y esperar?",
+            "buscamos": "Que expliquen la lógica detrás de la decisión: por qué sostener la inversión en paid media rediseñando su distribución en vez de cortar el gasto, qué riesgo evaluaron al pausar (pérdida de posicionamiento, estacionalidad, momentum de lanzamiento) y cómo la nueva partida de anti-fraude responde estructuralmente al problema y no solo lo parchea.",
+            "evasiva": "Decir que 'implementaron herramientas de anti-fraude porque era lo correcto' o describir qué es el tráfico fraudulento sin explicar por qué eligieron esa reconfiguración presupuestaria específica en lugar de otras alternativas."
+          },
+          {
+            "pregunta": "En el Go Live del 15 de junio, los pedidos entraban bien a WooCommerce pero GA4 no registraba ninguna conversión porque el píxel no estaba disparando en la Thank You Page: ¿cómo explican que ese error pasó los controles previos al lanzamiento y qué cambio concreto introdujeron en el proceso para que no vuelva a ocurrir?",
+            "buscamos": "Que reconozcan que la causa raíz declarada en el trabajo es la ausencia de un proceso formal de QA previo al Go Live, que expliquen qué implicaba esa ausencia en la práctica (quién debía verificar qué y no lo hizo), y que describan el proceso o checklist que incorporaron como aprendizaje, más allá de nombrar el problema.",
+            "evasiva": "Explicar qué es un píxel de conversión o qué hace GA4, sin abordar por qué el error no fue detectado antes del lanzamiento ni qué cambio de proceso introdujeron como respuesta."
+          },
+          {
+            "pregunta": "Su punto de equilibrio y su meta de ventas del Año 1 quedaron separados por un margen muy ajustado: si durante la Crisis 1 las ventas cayeron a cero por semanas, ¿cómo sostuvieron la viabilidad del proyecto frente al equipo y qué argumento usaron para justificar continuar en lugar de replantear el modelo?",
+            "buscamos": "Que conecten la presión financiera real (un colchón operativo muy estrecho sobre el punto de equilibrio) con una decisión de liderazgo concreta: cómo comunicaron la situación al equipo, qué información usaron para evaluar si seguir era razonable, y si consideraron o descartaron replantear el mix de canales o el modelo de costos.",
+            "evasiva": "Responder en términos generales sobre resiliencia o trabajo en equipo sin vincular la decisión al contexto específico del margen estrecho entre equilibrio y meta, ni explicar con qué dato o razonamiento sostuvieron la continuidad del proyecto."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "75",
+    "proyecto": "EscalaControl",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/14L78QyYeY99PfFlYJR3-FiedibQE23Q0/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1SmY6hUqIQ6-FRUUhvdn7nI1ueySFT0f4/preview",
+    "informe": {
+      "resumen": "El trabajo muestra consistencia estratégica, análisis de crisis riguroso con datos cuantificados y autocrítica honesta sobre supuestos iniciales sobreoptimistas.",
+      "queEs": "SaaS B2B vertical para control de gastos en constructoras PyME argentinas, diferenciado por modo offline, interfaz tipo WhatsApp y precios en pesos.",
+      "fortalezas": [
+        "Crisis 1 y 2 analizadas con impacto cuantificado (CAC +83%, ingresos Año 1 -43%) y lecciones institucionalizadas.",
+        "TAM/SAM/SOM metodológicamente trazados con fuentes nombradas (CEP-XXI, IERIC) y punto de equilibrio explícito: 230 clientes = 2,1% SAM.",
+        "Buyer persona 'Santiago' articulado con dolores operativos específicos del sector y motivaciones emocionales concretas."
+      ],
+      "interrogar": [
+        "KPI 'Clientes Activos Año 1' declara 30+ en sección KPIs pero el plan de lanzamiento y la evaluación post-crisis bajan el objetivo a 20-25: ¿cuál es el número real comprometido?",
+        "El sitio funcional existe en pantheonsite.io (entorno de desarrollo Pantheon), no en escalacontrol.com: ¿el dominio registrado ya está operativo o es solo un registro sin despliegue real?",
+        "El Set Up Fee se declara 'absorbido' (USD 303,80 por cliente) pero no se explica cómo ese costo está cubierto en el modelo financiero sin afectar el margen bruto declarado del 70,01%."
+      ],
+      "dondeApretar": "Presionar la brecha entre lo estratégico bien documentado y la implementación real: qué está genuinamente construido versus planificado en papel."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo calcula que el mercado latinoamericano tiene 251.110 constructoras partiendo de las argentinas como si fueran el 10% del total: ¿por qué eligieron ese método para estimar el TAM y qué riesgos le ven a esa suposición?",
+            "buscamos": "Que reconozcan que la extrapolación es una estimación de trabajo y no un dato validado, que puedan nombrar al menos un riesgo concreto (heterogeneidad de mercados, distinta penetración de software, diferencias regulatorias), y que defiendan por qué igual sirve como orden de magnitud para una etapa inicial.",
+            "evasiva": "Explicar cómo se calcula un TAM en general, o decir que 'es la metodología estándar' sin cuestionar si el 10% tiene respaldo real."
+          },
+          {
+            "pregunta": "El documento posiciona el modo offline como diferenciador clave frente a competidores, pero también reconoce que la integración con ARCA recién llega en 2027 y que otros jugadores ya la tienen: ¿cómo justifican que el offline compensa esa desventaja en la decisión de compra de una constructora PyME hoy?",
+            "buscamos": "Que conecten el diferenciador offline con un problema operativo real del cliente objetivo (obra sin conectividad, registro en campo, contexto argentino de cortes de servicio), y que admitan que la brecha con ARCA es real pero acotada en el tiempo o secundaria para el segmento elegido.",
+            "evasiva": "Repetir que el offline es un diferenciador sin explicar por qué pesa más que la integración fiscal para este tipo de empresa, o decir que 'ARCA igual no es tan importante'."
+          },
+          {
+            "pregunta": "En el trabajo aparecen tres objetivos distintos para el Año 1: uno en los KPIs, otro en el plan de lanzamiento y otro en la evaluación post-crisis, y no son el mismo número: si el tribunal les preguntara a cuántos clientes se comprometieron realmente para el primer año, ¿cuál es la cifra que defienden y por qué esa y no las otras?",
+            "buscamos": "Que elijan una cifra con criterio (idealmente la más conservadora, post-crisis, con argumentación estratégica), que expliquen qué generó la inconsistencia y que demuestren haber revisado el documento con sentido crítico en lugar de ignorar la contradicción.",
+            "evasiva": "Decir que 'son distintas etapas del documento' sin resolver cuál es el número vigente, o prometer que en el anexo está aclarado sin explicar el criterio de elección."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que nos van a mostrar hoy está publicado en un entorno de desarrollo, no en el dominio escalacontrol.com: ¿por qué decidieron presentar eso como sitio funcional del producto y qué le faltaría para considerarlo realmente operativo?",
+            "buscamos": "Que distingan con claridad entre sitio comercial WordPress/WooCommerce y el producto SaaS que describen como propuesta de valor, reconozcan que el alcance del proyecto excluyó el desarrollo del backend, y justifiquen esa decisión de scope sin confundir las dos cosas.",
+            "evasiva": "Decir que 'el sitio está funcionando y se puede navegar' o que 'falta solo migrar el dominio', sin reconocer que lo presentado es un sitio comercial y no el producto SaaS descrito en el trabajo."
+          },
+          {
+            "pregunta": "El sitio tenía un problema de carga importante en la sección principal, causado por un video de fondo, y el trabajo declara esa crisis como resuelta: ¿cómo saben que efectivamente quedó resuelto si el documento no muestra una medición posterior a la corrección?",
+            "buscamos": "Que reconozcan la ausencia de evidencia post-corrección en el documento, expliquen qué habrían necesitado medir para cerrar realmente la crisis, y muestren entender que declarar una crisis 'resuelta' sin datos de seguimiento es un punto débil del informe.",
+            "evasiva": "Repetir que 'se sacó el video y se resolvió el problema' sin mencionar que no hay métricas posteriores que lo confirmen, o describir la solución técnica sin abordar la falta de validación."
+          },
+          {
+            "pregunta": "Eligieron una interfaz con estética tipo WhatsApp como diferencial para constructoras PyME: ¿qué problema concreto de ese usuario les hizo tomar esa decisión de diseño en lugar de una interfaz de gestión más tradicional?",
+            "buscamos": "Que conecten la decisión de diseño con el perfil real del usuario objetivo, por ejemplo capataces o dueños de PyME constructoras que operan desde el campo y priorizan herramientas familiares, y que además vinculen esa elección con el diferencial del modo offline mencionado en el trabajo.",
+            "evasiva": "Dar una respuesta genérica sobre usabilidad o decir que 'WhatsApp lo usa todo el mundo' sin relacionarlo con las necesidades específicas del usuario de una constructora PyME argentina ni con el contexto de uso en obra."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que nos van a mostrar hoy está alojado en un entorno de desarrollo, no en el dominio escalacontrol.com: ¿por qué tomaron esa decisión y qué implicaría pasarlo al dominio definitivo antes de empezar a captar clientes reales?",
+            "buscamos": "Que el grupo distinga entre un entorno de staging/desarrollo y un despliegue productivo, reconozca que el dominio registrado no está operativo todavía, y explique qué pasos concretos (migración, DNS, SSL, pruebas) serían necesarios para que el sitio esté realmente disponible para prospectos.",
+            "evasiva": "Decir que 'el dominio ya está registrado' o que 'es lo mismo' sin explicar la diferencia entre tener el dominio y tener el sitio desplegado y accesible en ese dominio."
+          },
+          {
+            "pregunta": "En el documento detectaron que el video de fondo en la sección Hero generaba un tiempo de carga muy por encima del umbral recomendado, y declararon la crisis resuelta bajo una condición específica: ¿cómo saben hoy que el problema quedó efectivamente corregido, si el documento no muestra medición posterior a la corrección?",
+            "buscamos": "Que el grupo reconozca abiertamente que falta evidencia post-corrección en el documento, que sepa nombrar una herramienta con la que podrían haberla medido (PageSpeed Insights, Lighthouse, GTmetrix), y que entienda por qué declarar una crisis resuelta requiere datos reales y no solo la ejecución de la corrección.",
+            "evasiva": "Afirmar que 'el video se sacó y con eso alcanza' o describir la corrección técnica sin reconocer que el documento no prueba el resultado final con ninguna métrica."
+          },
+          {
+            "pregunta": "El trabajo es claro en que el desarrollo del backend y la base de datos del SaaS quedan fuera del alcance del proyecto: entonces, ¿cómo le explicarían a un prospecto que llega al sitio la diferencia entre lo que puede probar hoy y el producto final que le están vendiendo?",
+            "buscamos": "Que el grupo entienda y defienda conscientemente la distinción entre el sitio comercial WordPress/WooCommerce que presentan y el producto SaaS real, y que pueda articular cómo se gestiona esa brecha con un prospecto sin generar falsas expectativas, por ejemplo mediante demos controladas, capturas, prototipos o comunicación transparente del roadmap.",
+            "evasiva": "Confundir el sitio comercial con el producto SaaS, o decir que 'el sitio muestra todo lo que necesita ver el cliente' sin reconocer que el software de control de gastos en sí no está construido ni disponible para uso real."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo aparecen tres números distintos para el mismo objetivo de clientes en el Año 1: uno en la sección de KPIs, otro en el plan de lanzamiento y otro en la evaluación post-crisis. ¿Cuál es el número al que el equipo realmente se compromete y por qué los otros quedaron sin actualizar?",
+            "buscamos": "Que el grupo reconozca la inconsistencia sin esquivarla, explique cuál cifra consideran la vigente (idealmente la post-diagnóstico de 20-25), y justifique por qué el KPI operativo no fue corregido en consecuencia. Una buena respuesta asume la contradicción como un error de edición o de proceso y propone cómo debería resolverse.",
+            "evasiva": "Decir que 'los tres números son compatibles porque dependen del escenario' sin explicar cuál es el compromiso real, o citar solo uno de los números como si los otros no existieran en el documento."
+          },
+          {
+            "pregunta": "El trabajo declara un margen bruto del 70% pero al mismo tiempo dice que el costo de implementación por cliente, que ronda los USD 300, lo absorbe la empresa sin cobrárselo al cliente. ¿Cómo explicarían que ese costo está cubierto sin que el margen declarado quede inflado?",
+            "buscamos": "Que el grupo explique si el Set Up Fee está incluido como costo operativo en el modelo financiero o si efectivamente quedó fuera del cálculo visible. Una buena respuesta reconoce que si ese costo no está desglosado en el cuerpo del documento, el margen puede estar sobreestimado, y propone dónde debería aparecer.",
+            "evasiva": "Decir que 'absorbido significa que ya está dentro del precio mensual' sin mostrar en qué línea del modelo financiero figura, o afirmar que no afecta el margen sin explicar por qué."
+          },
+          {
+            "pregunta": "La crisis de performance del sitio se dio por resuelta cuando se cumplan 14 días consecutivos con todos los KPIs en verde, pero el documento no muestra ninguna medición posterior a la corrección del video de fondo. ¿Cómo justificarían ante un inversor que esa crisis efectivamente está cerrada?",
+            "buscamos": "Que el grupo reconozca que la resolución declarada es una condición futura y no un hecho documentado, y que expliquen qué evidencia concreta faltaría para cerrar formalmente esa crisis: una captura de herramienta de medición, un reporte de LCP post-corrección, o similar.",
+            "evasiva": "Decir que 'el video se sacó y eso resuelve el problema' sin reconocer que el documento no evidencia la mejora medida, o confundir la acción correctiva con la verificación de su resultado."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando recibieron la carta documento por el nombre ObraControl, decidieron comunicar el cambio a EscalaControl como una 'evolución y no como un error': ¿qué riesgo concreto estaban manejando con esa decisión y cómo se aseguraron de que esa narrativa llegara efectivamente a sus prospectos?",
+            "buscamos": "Que el grupo reconozca el riesgo de pérdida de confianza o confusión de marca en una base de prospectos que ya conocía el nombre anterior, y que pueda explicar —aunque sea en términos generales— algún canal o acción concreta de comunicación hacia esos contactos. No se espera un protocolo detallado, sino que demuestren haber pensado en el impacto real sobre clientes y leads, no solo en el mensaje hacia afuera.",
+            "evasiva": "Responder que 'el cambio de nombre fue positivo porque EscalaControl comunica mejor el crecimiento' sin mencionar en ningún momento cómo ni a quién se comunicó, o qué pasaba si un prospecto ya conocía el nombre anterior y de repente encontraba una marca distinta."
+          },
+          {
+            "pregunta": "La crisis de performance del sitio —ese video de fondo que hacía cargar la página muy lento— la declararon resuelta cuando se cumplieran 14 días consecutivos con todos los KPIs en verde: ¿por qué eligieron ese criterio de cierre y no simplemente una medición puntual el día de la corrección?",
+            "buscamos": "Que el grupo entienda y defienda la lógica detrás de un criterio de estabilidad sostenida versus una medición de momento: que una sola medición favorable no garantiza que el problema esté realmente resuelto en condiciones reales de tráfico y uso. Se valorará que mencionen la diferencia entre 'arreglado' y 'estable', aunque no reciten el número de días ni el umbral técnico exacto.",
+            "evasiva": "Decir que '14 días es el estándar de la industria' o que 'lo pusimos para asegurarnos' sin poder explicar qué riesgo específico cubre ese período de seguimiento, o qué pasaría si hubieran cerrado la crisis con una sola medición positiva."
+          },
+          {
+            "pregunta": "La crisis de rendimiento del sitio terminó postergando el punto de equilibrio del proyecto un año entero y redujo los ingresos proyectados del Año 1 casi a la mitad: mirando atrás, ¿qué señal de alerta temprana podrían haber detectado antes de que eso impactara en los números, y qué harían distinto?",
+            "buscamos": "Que el grupo demuestre capacidad de reflexión crítica sobre su propio proceso: identificar un momento concreto donde pudieron haber detectado el problema antes (por ejemplo, al incorporar el video, al hacer las primeras pruebas del sitio, al revisar métricas de carga) y proponer una acción preventiva realista. No se espera perfección, sino honestidad sobre el aprendizaje.",
+            "evasiva": "Responder genéricamente que 'hay que monitorear los KPIs continuamente' o que 'fue un imprevisto que no se podía anticipar', sin intentar identificar ningún punto específico del proceso donde la señal estuvo disponible antes de que el daño fuera visible en los ingresos."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "76",
+    "proyecto": "Rutargenta — Agencia Hornero Digital",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1eXz35YqBX6OxoXlCq-_y_Me7PtOPn2RV/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1j7tmBNuBZRkf_7KYIZZN69yPG3O1Ue38/preview",
+    "informe": {
+      "resumen": "El trabajo muestra consistencia interna notable, autocorrección documentada de contradicciones propias y un MVP funcional publicado, aunque varias cifras financieras clave carecen de respaldo metodológico explícito.",
+      "queEs": "Marketplace B2B2C de campings en Argentina con diferencial en onboarding humano territorial y modo offline post-reserva frente a directorios no transaccionales.",
+      "fortalezas": [
+        "Autocorrección documentada: comisión del 4% al 15%, SOM reancado a 140/200 campings reales con break-even en mes 22.",
+        "MVP funcional publicado en Pantheon con flujo de reserva, seña en escrow y panel B2B operativo en sandbox.",
+        "Estrategia 'Puente Analógico' coherente con el problema central: bot WhatsApp + onboarding 1 a 1 + freemium como sistema integrado."
+      ],
+      "interrogar": [
+        "El OPEX año 1 es ARS 18.600.000 pero el stack tecnológico completo declarado suma menos de USD 400/año; ¿dónde están los salarios y cuánto cuesta realmente el onboarding 1 a 1 de 1.200 fichas?",
+        "Se declara 'catálogo nacional desde el día uno' y simultáneamente estrategia de cold-start regional secuencial: ¿cuántas fichas estarán activas al lanzamiento de diciembre y en qué corredores exactamente?",
+        "El bot transaccional de WhatsApp que 'traduce mensajes en actualizaciones del backend' es el pilar del Puente Analógico, pero no aparece en el stack tecnológico ni en el presupuesto; ¿existe o es un feature planificado?"
+      ],
+      "dondeApretar": "Presionar sobre la viabilidad operativa real del año 1: si el equipo puede sostener simultáneamente carga editorial de 1.200 fichas, onboarding humano 1 a 1 y atención B2B con dos personas part-time y USD 25.000 de capital."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes plantean salir con un catálogo nacional desde el día uno, pero al mismo tiempo explican que van a arrancar por corredores puntuales para no dispersarse: ¿cómo conviven esas dos ideas en la práctica y qué van a mostrarle al primer usuario que entre al sitio en diciembre?",
+            "buscamos": "Que el grupo reconozca la tensión entre ambas promesas, que pueda explicar cuántas fichas reales estarán activas al lanzamiento y en qué zonas concretas, y que justifique por qué esa escala inicial alcanza para dar una experiencia útil al visitante.",
+            "evasiva": "Hablar en general de 'cobertura nacional gradual' o de 'estrategia de expansión' sin aclarar qué va a ver el usuario el primer día ni por qué eso es suficiente para no decepcionar a quien llegue buscando una zona que no está cargada todavía."
+          },
+          {
+            "pregunta": "El onboarding uno a uno con cada camping es uno de los grandes diferenciales que defienden, pero ese proceso tiene un costo real en tiempo y personas: ¿cómo contemplaron ese costo dentro de lo que planificaron para el primer año?",
+            "buscamos": "Que el grupo muestre que entiende que visitar o asistir a más de mil establecimientos tiene un costo humano concreto, que pueda explicar cómo está cubierto ese costo en el presupuesto aunque sea en términos generales, y que sea honesto si ese punto quedó subestimado o pendiente de ajuste.",
+            "evasiva": "Describir el onboarding como un proceso sencillo o automático, o derivar la respuesta al diferencial competitivo sin reconocer que escalar ese proceso a cientos de fichas requiere personas, tiempo y presupuesto que tienen que aparecer en algún lado."
+          },
+          {
+            "pregunta": "Eligieron apuntar a un segmento del mercado que hoy no usa plataformas transaccionales, lo cual es una oportunidad, pero también significa que tienen que convencer a campings que nunca vendieron online de que vale la pena el cambio: ¿qué argumento concreto usarían con un dueño de camping que les dice 'yo me arreglo con el teléfono y WhatsApp'?",
+            "buscamos": "Que el grupo pueda articular la propuesta de valor en términos prácticos y honestos para un interlocutor escéptico, mostrando que entienden la resistencia real del mercado y que tienen una respuesta que va más allá de las bondades generales de la digitalización.",
+            "evasiva": "Repetir las ventajas del marketplace en abstracto sin ponerse en el lugar del camping reticente, o asumir que el argumento se sostiene solo con mostrar el producto sin explicar por qué ese camping debería cambiar algo que para él hoy funciona."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo propone un 'Puente Analógico' apoyado en un bot de WhatsApp que actualiza el sistema en tiempo real, pero cuando miramos el stack tecnológico ese bot no aparece: ¿cómo nos explican esa diferencia y en qué punto del proyecto está esa herramienta hoy?",
+            "buscamos": "Que el grupo reconozca honestamente que el bot es un feature planificado y no una pieza funcional actual, que pueda distinguir entre lo que se diseñó conceptualmente y lo que se implementó, y que explique por qué igual consideran válido el diferencial de experiencia aunque esa pieza no esté operativa todavía.",
+            "evasiva": "Hablar en abstracto de la importancia de WhatsApp para los campings o describir cómo funcionaría el bot sin reconocer que no está construido ni presupuestado."
+          },
+          {
+            "pregunta": "Ustedes plantean que el camping carga su propia ficha, pero también mencionan más de mil fichas de contenido editorial que tiene que producir el equipo: ¿cómo pensaron la experiencia del camping que recibe el onboarding uno a uno y hasta dónde llega su autonomía real en ese proceso?",
+            "buscamos": "Que el grupo muestre que entendió la tensión entre el modelo de autogestión del proveedor y la carga editorial centralizada, que pueda explicar qué parte hace el camping y qué hace el equipo, y que sea honesto si ese flujo quedó poco definido en el trabajo.",
+            "evasiva": "Repetir que el onboarding es 'humano y territorial' como si eso respondiera la pregunta, sin explicar concretamente qué hace el camping y qué hace el equipo en el proceso de carga."
+          },
+          {
+            "pregunta": "El trabajo detecta que una ficha con menos de cierta cantidad de palabras queda en borrador y no aparece en el buscador: ¿qué pasa con la experiencia del camping que cargó su perfil y no entiende por qué no lo encuentran los turistas?",
+            "buscamos": "Que el grupo piense en la experiencia desde el punto de vista del proveedor, que identifique la fricción que genera esa regla invisible para alguien no técnico, y que pueda proponer o reconocer la necesidad de un aviso claro, un estado visible o algún acompañamiento que cierre esa brecha.",
+            "evasiva": "Defender la regla de las 250 palabras como decisión de SEO sin considerar en ningún momento cómo la vive el camping que está del otro lado."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo describen un bot de WhatsApp como una pieza clave para que los campings sin internet puedan operar la plataforma, pero cuando revisamos el presupuesto y la lista de herramientas ese bot no aparece: ¿cómo lo explican?",
+            "buscamos": "Que el grupo reconozca abiertamente que el bot es una funcionalidad planificada y no algo ya implementado o presupuestado, y que pueda explicar qué habría que hacer para construirlo (costo, proveedor de API, integración con el backend). Una buena respuesta admite la brecha y dice cómo se cerraría.",
+            "evasiva": "Describir cómo funcionaría el bot en detalle o insistir en que 'ya está contemplado en el desarrollo' sin poder señalar dónde aparece en el stack ni cuánto costaría."
+          },
+          {
+            "pregunta": "Ustedes plantean que cualquier ficha con menos de 250 palabras no aparece en el buscador y se queda en modo borrador, y al mismo tiempo se proponen cargar más de mil fichas en el primer año de forma editorial: ¿cómo piensan sostener esa carga de trabajo con el equipo y el presupuesto que tienen?",
+            "buscamos": "Que el grupo muestre que entiende que cargar mil fichas con contenido mínimo de calidad implica un costo real en tiempo humano o en redactores, y que reconozca si ese costo está o no reflejado en el presupuesto operativo. No hace falta que citen el número exacto, sino que entiendan la tensión entre escala y calidad de contenido.",
+            "evasiva": "Decir que 'los propios campings van a completar sus fichas' sin explicar qué pasa si no lo hacen, o afirmar que el equipo lo puede absorber sin ninguna referencia a cómo."
+          },
+          {
+            "pregunta": "Durante el desarrollo detectaron un error de reservas duplicadas que se podía producir justo el día del lanzamiento: ¿qué decisión tomaron para manejarlo y por qué eligieron ese camino en lugar de resolverlo antes de salir al aire?",
+            "buscamos": "Que el grupo explique la lógica detrás del SLA de 4 horas: por qué optaron por un protocolo de resolución rápida en lugar de posponer el go-live, y que muestren que entienden el riesgo que esa decisión implicaba para la confianza del usuario y para los ingresos del primer día.",
+            "evasiva": "Explicar solo qué es una race condition en términos técnicos sin abordar la decisión operativa ni reconocer por qué salir con ese riesgo activo era una apuesta con consecuencias reales."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes arrancaron con una comisión más baja y la corrigieron hacia arriba antes de lanzar: ¿por qué tomaron esa decisión y qué riesgo implica cobrarle más al camping desde el principio?",
+            "buscamos": "Que expliquen que la comisión original no cubría los costos de adquisición y operación, que la nueva tasa los alinea con competidores como Airbnb y Booking, y que reconozcan la tensión real: una comisión más alta puede frenar la adopción en la etapa donde más necesitan sumar campings al catálogo.",
+            "evasiva": "Decir solo que 'la corregimos porque era baja' o comparar con Airbnb sin explicar qué problema concreto resolvía el cambio ni qué costo tiene para la tracción inicial."
+          },
+          {
+            "pregunta": "El modelo proyecta alcanzar el equilibrio operativo recién cerca del mes 22: ¿qué es lo que hace que el negocio tarde tanto en cubrir sus costos y qué pasa si ese punto se demora más de lo esperado?",
+            "buscamos": "Que identifiquen que el costo de incorporar cada camping (visita presencial, carga de ficha, onboarding humano) es alto y que los ingresos por comisión solo se acumulan cuando hay volumen de reservas, lo que tarda. Y que si el crecimiento es más lento, el capital inicial de USD 25.000 puede no alcanzar.",
+            "evasiva": "Repetir el número de meses o de campings necesarios sin explicar la lógica detrás, o decir que 'el mercado es grande' sin reconocer que el costo de adquisición B2B es el principal cuello de botella."
+          },
+          {
+            "pregunta": "Ustedes calcularon dos costos de adquisición muy distintos según si están captando un turista o un camping: ¿por qué esa diferencia es tan grande y cómo afecta eso a la forma en que piensan crecer?",
+            "buscamos": "Que distingan que captar un turista se apoya en canales orgánicos y digitales de bajo costo, mientras que sumar un camping requiere visita territorial, carga editorial y acompañamiento personal, lo que multiplica el costo. Y que esa asimetría condiciona el ritmo de expansión: el límite no es la demanda sino la capacidad de hacer onboarding.",
+            "evasiva": "Confundir los dos lados del marketplace, decir que 'uno es más fácil que el otro' sin explicar por qué, o no conectar la diferencia de costos con la decisión de crecer de forma regional y secuencial."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Cuando descubrieron que el error ERR-378 podía tirar abajo buena parte de los ingresos del primer año, ¿cómo decidieron qué hacer primero y quién tomó esa decisión dentro del equipo?",
+            "buscamos": "Que el grupo explique el criterio de priorización real: por qué reasignaron ese porcentaje del presupuesto a ese problema y no a otro, quién lideró la decisión y cómo lo coordinaron. Una buena respuesta muestra proceso de toma de decisión, no solo el resultado.",
+            "evasiva": "Decir 'reasignamos el presupuesto y lo resolvimos' sin explicar cómo llegaron a esa decisión, quién la tomó ni qué alternativas descartaron."
+          },
+          {
+            "pregunta": "Cuando Yamila Silva dejó el equipo, sus tareas no desaparecieron sino que alguien tuvo que absorberlas. ¿Cómo reorganizaron el trabajo y qué impacto tuvo eso en el avance del proyecto?",
+            "buscamos": "Que el grupo reconozca honestamente el impacto real de la baja, explique cómo distribuyeron las responsabilidades entre Andrea e Aldo, y muestre que hubo una decisión consciente y documentada, no solo una reacción informal.",
+            "evasiva": "Minimizar el impacto diciendo que 'se repartió el trabajo y listo', sin mencionar qué se resignó, qué se postergó o cómo afectó la carga de los demás integrantes."
+          },
+          {
+            "pregunta": "En el trabajo identificaron un bug que podía generar reservas duplicadas el mismo día del lanzamiento. ¿Qué les dice ese tipo de error sobre cómo habían planificado las pruebas antes del go-live, y qué cambiarían en esa etapa si tuvieran que arrancar de nuevo?",
+            "buscamos": "Que el grupo reflexione sobre el proceso de testing y no solo sobre el bug en sí: qué faltó prever, por qué no se detectó antes, y qué aprendizaje concreto sacan sobre la validación técnica previa al lanzamiento.",
+            "evasiva": "Explicar cómo se resuelve el bug técnicamente o repetir el SLA de resolución, sin reflexionar sobre qué falló en la planificación que permitió que ese error llegara al día del go-live."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "77",
+    "proyecto": "Garritas Club",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/11CUq6Lj9kS9JqHzR_YH2kO7IChp2FQOK/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1nyTLHbRveVZLYAUOV9Ib6a5vPCJIawnd/preview",
+    "informe": {
+      "resumen": "El trabajo muestra consistencia interna entre análisis, finanzas y diseño digital, con fundamentación cuantitativa detallada y simulación de crisis reales.",
+      "queEs": "E-commerce D2C de nutrición animal premium en Bahía Blanca con modelo híbrido: venta directa + recompra programada con 10% OFF permanente.",
+      "fortalezas": [
+        "Modelado financiero en tres escenarios (base/optimista/pesimista) con cifras concretas y punto de equilibrio definido en mes 18.",
+        "Customer Journey de 5 etapas con unhappy paths identificados y estrategias de mitigación específicas para cada uno.",
+        "Crisis 2 técnica (GA4/GTM) con resolución documentada paso a paso, incluyendo exclusiones de caché y extracción manual MySQL."
+      ],
+      "interrogar": [
+        "El FODA confunde Oportunidades con Debilidades: el párrafo 'oportunidades son relevantes' copia textualmente el párrafo de debilidades.",
+        "SOM Año 1 declara ~80 pedidos/mes en el cuerpo pero Anexo B registra 960 ventas totales anuales (80/mes promedio); sin embargo el texto de KPIs habla de 89 pedidos/mes: tres cifras distintas para el mismo dato.",
+        "El 10% OFF prometido como descuento permanente no tiene respaldo de viabilidad financiera desagregada: el CMV del Año 1 ya es 56% y el ticket es $70.000 ARS, pero no se muestra el margen unitario neto con el descuento aplicado."
+      ],
+      "dondeApretar": "Presionar sobre la consistencia entre las tres versiones del volumen de pedidos Año 1 y exigir que demuestren el margen unitario real con el 10% OFF aplicado sobre un CMV del 56%."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El SAM que calcularon multiplica hogares por ticket y por frecuencia de compra anual: ¿por qué eligieron ese recorte del mercado y no uno más amplio o más chico?",
+            "buscamos": "Que el grupo explique la lógica detrás de los parámetros elegidos (hogares con mascotas, penetración online del 8%, frecuencia de 8 compras anuales), mostrando que hubo una decisión consciente y no un número bajado de algún lado sin criterio.",
+            "evasiva": "Repetir la fórmula o el resultado en pesos sin justificar por qué esos parámetros son razonables para Bahía Blanca y el segmento premium."
+          },
+          {
+            "pregunta": "Ustedes ofrecen un 10% de descuento permanente como propuesta central de recompra: ¿cómo se sostiene ese beneficio sin que le coma el margen al negocio, considerando que el primer año ya cierra en rojo?",
+            "buscamos": "Que el grupo reconozca que el descuento tiene un costo real sobre el margen y que intente explicar con qué lógica lo absorbe el modelo (volumen, retención, LTV, reducción de CAC en recompra), aunque no tengan el número exacto. Se valora honestidad si detectan que faltó ese análisis.",
+            "evasiva": "Decir que el descuento 'fideliza al cliente' o que 'se recupera con el volumen' sin explicar mínimamente cómo eso cierra en los números proyectados."
+          },
+          {
+            "pregunta": "Proyectaron tráfico orgánico como el 30% de las visitas del primer año, pero en el trabajo no aparece un blog ni una estrategia de contenidos: ¿en qué se basaron para sostener ese número?",
+            "buscamos": "Que el grupo defienda la proyección con algún argumento concreto (SEO on-page, intención de búsqueda del nicho, benchmarks del rubro) o bien reconozca que fue una estimación optimista que debería haberse respaldado mejor con acciones editoriales.",
+            "evasiva": "Hablar de SEO en general o decir que 'Google va a indexar el sitio' sin reconocer que el 30% orgánico sin estrategia de contenidos es difícil de justificar en el corto plazo."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "La plataforma que nos mostraron en el trabajo está alojada en un entorno de desarrollo, no en el dominio público definitivo. ¿Cómo justifican haber tomado esa decisión y qué implicancias tiene para el lanzamiento real?",
+            "buscamos": "Que reconozcan la situación (dominio dev vs. dominio definitivo), expliquen si fue una decisión consciente de etapa o una limitación técnica, y que dimensionen el riesgo: migración pendiente, posible pérdida de configuraciones, SEO que no acumula sobre el dominio real.",
+            "evasiva": "Responder que 'la plataforma está funcional y tiene todo lo necesario' sin mencionar el dominio dev, o decir que 'se va a resolver antes del lanzamiento' sin explicar cómo ni qué implica esa migración."
+          },
+          {
+            "pregunta": "En un momento del trabajo mencionan un bug de GA4 donde las conversiones aparecían en cero porque el trigger de la Thank You Page no se ejecutaba. ¿Qué aprendizaje se llevaron de eso en términos de cómo van a validar que el seguimiento de ventas funciona correctamente desde el día uno?",
+            "buscamos": "Que entiendan que ese error no fue trivial: implicó que no había datos de conversión reales durante ese período, lo que distorsiona todo el análisis de performance. Una buena respuesta describe algún protocolo de verificación antes del lanzamiento y explica por qué ese dato es crítico para tomar decisiones de pauta.",
+            "evasiva": "Contar la anécdota del bug como si fuera una curiosidad técnica ya resuelta, sin conectar el impacto que tuvo sobre la lectura de costos de adquisición ni proponer ninguna medida de control futura."
+          },
+          {
+            "pregunta": "Proyectan un tráfico orgánico importante desde el primer año, pero en ningún momento del trabajo aparece un blog editorial ni una estrategia de contenidos. ¿Cómo esperan generar ese tráfico orgánico sostenido si el SEO on-page solo no alcanza para posicionar una marca nueva en un nicho competitivo?",
+            "buscamos": "Que diferencien SEO on-page de una estrategia de contenidos real, reconozcan la brecha entre lo proyectado y lo planificado, y ya sea que defiendan la decisión con algún argumento sólido (por ejemplo, priorizar pauta en Año 1 y diferir el contenido) o admitan que es una debilidad del plan.",
+            "evasiva": "Explicar qué es el SEO on-page o listar buenas prácticas técnicas sin nunca responder de dónde va a venir concretamente ese volumen de visitas orgánicas proyectado."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "La plataforma que desarrollaron está funcionando en un entorno de desarrollo de Pantheon, no en el dominio final del proyecto. ¿Por qué tomaron esa decisión y qué implicancias tiene para el lanzamiento real?",
+            "buscamos": "Que reconozcan que el entorno de desarrollo no es el sitio productivo, que expliquen si fue una decisión deliberada de etapas (MVP primero, luego migración) o una limitación del proceso, y que mencionen qué pasos concretos faltan para operar en el dominio declarado.",
+            "evasiva": "Decir que 'la plataforma está lista y funcionando' sin distinguir entre entorno de desarrollo y producción, o justificarlo solo con que 'es lo que usamos para trabajar'."
+          },
+          {
+            "pregunta": "El plan proyecta un volumen importante de tráfico orgánico desde el primer año, pero el trabajo no describe un blog ni una estrategia de contenidos. ¿Cómo justifican esa proyección de tráfico apoyándose únicamente en SEO on-page?",
+            "buscamos": "Que reconozcan la limitación: el SEO on-page solo (metaetiquetas, estructura, velocidad) no genera el volumen de tráfico orgánico que proyectan sin contenido que posicione. Una buena respuesta admite la debilidad y propone cómo compensarla o ajustar la proyección.",
+            "evasiva": "Responder que 'el SEO es importante para el posicionamiento' sin explicar de dónde vendría el volumen proyectado ni qué palabras clave o piezas de contenido lo sustentarían."
+          },
+          {
+            "pregunta": "En el trabajo describen una situación donde GA4 dejó de registrar conversiones correctamente por un problema con el trigger de la Thank You Page. ¿Qué aprendizaje concreto se llevan de ese episodio para la operación real del negocio?",
+            "buscamos": "Que conecten el episodio con el riesgo operativo real: tomar decisiones de inversión en pauta sin datos confiables infla el costo de adquisición y puede descapitalizar el proyecto en días. Una buena respuesta menciona validación del tracking antes de activar campañas pagas y algún mecanismo de alerta o revisión periódica.",
+            "evasiva": "Describir técnicamente qué es GA4 o cómo funciona un trigger, sin explicar por qué ese tipo de error es crítico en un modelo que depende de la pauta pagada para generar ventas."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El descuento permanente del 10% es uno de los pilares del modelo de recompra programada, pero en el trabajo no vemos cuánto queda de margen una vez que ese descuento se aplica sobre el ticket: ¿cómo justifican que ese beneficio sea sostenible financieramente en el Año 1?",
+            "buscamos": "Que el grupo reconozca que el CMV del Año 1 ya es alto y que el descuento reduce aún más un margen ajustado, y que proponga cómo habrían calculado o mitigado ese impacto (por ejemplo ajustando precio base, volumen mínimo de recompra o escalonando el descuento).",
+            "evasiva": "Decir que el 10% es 'un descuento razonable para fidelizar' o que 'está justificado por el LTV del cliente' sin explicar de dónde sale el margen que lo absorbe."
+          },
+          {
+            "pregunta": "A lo largo del trabajo aparecen tres valores distintos para los pedidos del Año 1: uno en el cuerpo del texto, otro en el Anexo B y un tercero en la sección de KPIs. ¿Cuál es el número que el equipo considera correcto y cómo impacta esa discrepancia en el punto de equilibrio que proyectaron?",
+            "buscamos": "Que el grupo identifique cuál de los tres valores es el que usaron como base real del modelo, explique por qué los otros difieren (error de edición, distintos períodos, distintas métricas) y conecte ese número con la brecha que existe hasta alcanzar el punto de equilibrio.",
+            "evasiva": "Decir que 'son aproximaciones' o que 'los tres dicen más o menos lo mismo' sin elegir un valor ni explicar cómo afecta la proyección financiera."
+          },
+          {
+            "pregunta": "En el Año 1 proyectaron que un 30% del tráfico iba a venir de búsqueda orgánica, pero el trabajo no describe ninguna estrategia de contenidos ni blog editorial para generarlo: ¿en qué se basaron para asumir ese tráfico orgánico y qué riesgo representa para el CAC si esas visitas no llegan?",
+            "buscamos": "Que el grupo admita que el tráfico orgánico está sobredimensionado sin respaldo táctico, explique qué supuesto usaron (SEO on-page, dominio nuevo, etc.) y concluya que si ese tráfico no se materializa, la carga sobre la pauta paga sube y el CAC blended se deteriora.",
+            "evasiva": "Hablar de 'posicionamiento orgánico a largo plazo' o 'buenas prácticas de SEO' sin reconocer que un dominio nuevo sin contenido difícilmente alcanza ese porcentaje en el primer año."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo mencionan que en menos de 48 horas detectaron que GA4 no estaba registrando correctamente las conversiones porque el trigger de la Thank You Page no se ejecutaba: ¿cómo manejaron esa crisis operativa y qué decisión tomó el equipo para resolverla?",
+            "buscamos": "Que describan el proceso de detección, quién tomó la iniciativa, cómo se coordinaron para corregir el tracking y qué aprendieron sobre monitoreo temprano. Bonus si mencionan el impacto directo que tenía sobre el costo por adquisición y la urgencia que eso generó.",
+            "evasiva": "Explicar qué es GA4 o hablar genéricamente de 'hacer pruebas antes de lanzar', sin abordar cómo se organizaron como equipo frente a una falla real con consecuencias financieras concretas."
+          },
+          {
+            "pregunta": "La plataforma funcional quedó alojada en un entorno de desarrollo y no en el dominio definitivo declarado en el trabajo: ¿qué riesgo representa eso para el lanzamiento real y cómo lo contemplaron como equipo?",
+            "buscamos": "Que reconozcan honestamente la brecha entre el entorno de desarrollo y la operación real, expliquen por qué quedó así y demuestren conciencia del riesgo técnico y de credibilidad que implica lanzar con un dominio no consolidado. Se valora que propongan cómo lo resolverían antes de ir a producción.",
+            "evasiva": "Decir que 'es solo una cuestión técnica menor' o que 'lo arregla el desarrollador', sin asumir la implicancia operativa ni el riesgo de imagen frente al cliente final."
+          },
+          {
+            "pregunta": "Si en los primeros meses detectan que el costo de adquirir cada cliente está consumiendo más de la mitad del ticket promedio, ¿qué palanca concreta dentro del plan usarían primero para revertir eso sin desfinanciar la operación?",
+            "buscamos": "Que conecten el problema con las herramientas que ya tienen en el plan: el modelo de recompra programada como vía para reducir el CAC en clientes recurrentes, la revisión de la distribución de pauta entre Meta y Google, o el buffer CRO como recurso para mejorar conversión sin subir inversión. Se busca que defiendan una decisión priorizada, no que listen todas las opciones.",
+            "evasiva": "Hablar de 'optimizar campañas' o 'revisar el targeting' de forma vaga, sin anclar la respuesta a ningún elemento concreto del modelo de negocio o del presupuesto que ellos mismos diseñaron."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "78",
+    "proyecto": "GastroLogic Digital",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/19tO60LrHyLmD56aC0ZlYyGB3bPupJZqn/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1LlbMTzLW6dElq1GhqzjstH3t4dLtoZCg/preview",
+    "informe": {
+      "resumen": "El trabajo muestra consistencia interna sólida, fundamentación estratégica bien articulada y un prototipo funcional implementado, aunque con algunas brechas entre lo planificado y lo evidenciado.",
+      "queEs": "DNVB de infoproductos (eBooks y plantillas) para dueños de PyMEs gastronómicas en Argentina; diferencial: combina gestión técnica con dimensión emocional y bajo ticket de implementación inmediata.",
+      "fortalezas": [
+        "Coherencia entre buyer persona ('Martín L.') y todas las decisiones UX, canal, tono y producto declaradas en el documento.",
+        "Modelo financiero explícito: break-even en 56 ventas, margen bruto 92,6%, margen neto 48,1%, CAC ≤ $8.100 ARS.",
+        "Las dos crisis simuladas derivaron en ajustes estructurales documentados: protección de activos digitales, DMCA, monitoreo reputacional."
+      ],
+      "interrogar": [
+        "El SOM proyecta 2.160 clientes en 18 meses (90 ventas/mes en mes 6), pero el tráfico orgánico objetivo es solo 500 sesiones/mes con conversión 1,5%: matemáticamente insuficiente para sostener ese volumen sin detallar aporte real de pauta paga.",
+        "Se declara un sitio funcional (URL Pantheon) pero no se evidencia en el documento ningún dato real de tráfico, conversión ni ventas; toda la métrica presentada es proyectada, no observada.",
+        "El lead magnet 'Las 10 fugas de dinero' se menciona como herramienta central de captación, pero no se muestra ni describe su contenido, formato ni mecanismo de entrega real."
+      ],
+      "dondeApretar": "Presionar sobre la brecha entre proyecciones financieras/métricas y evidencia real del sitio funcional, exigiendo que el grupo demuestre qué datos concretos obtuvieron de la implementación."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes proyectan llegar a casi 2.000 clientes en año y medio, pero el tráfico orgánico que declaran como objetivo es de 500 visitas mensuales: ¿cómo explican de dónde va a venir el volumen de clientes que necesitan para sostener ese número?",
+            "buscamos": "Que el grupo reconozca la brecha entre tráfico orgánico y volumen proyectado, y que identifique a la pauta paga (Meta Ads y Google Ads, con distribución 70/30) como el canal que debe compensar esa diferencia; idealmente que articulen cómo ambos canales se complementan en la estrategia.",
+            "evasiva": "Hablar en abstracto de 'redes sociales', 'contenido de valor' o 'boca en boca' sin conectarlo con los canales pagos declarados ni reconocer que el orgánico solo no alcanza."
+          },
+          {
+            "pregunta": "Eligieron enfocarse en dueños de PyMEs gastronómicas y definieron un segmento bastante acotado dentro de un mercado grande: ¿qué los llevó a esa decisión y cómo la justifican en relación al problema que el producto resuelve?",
+            "buscamos": "Que conecten la elección del segmento con el diferencial del producto: la combinación de gestión técnica con la dimensión emocional del dueño gastronómico y el bajo ticket de implementación inmediata, mostrando que el segmento no fue elegido al azar sino por afinidad con el problema real.",
+            "evasiva": "Responder que 'la gastronomía es un mercado grande' o citar el TAM sin explicar por qué ese perfil de cliente específico es el más adecuado para lo que el producto ofrece."
+          },
+          {
+            "pregunta": "El lead magnet 'Las 10 fugas de dinero' aparece como la herramienta central para captar leads, pero en el trabajo no queda del todo claro cómo funciona en la práctica: ¿pueden explicar cómo llega ese recurso al potencial cliente y qué pasa después de que lo descarga?",
+            "buscamos": "Que describan el mecanismo real o previsto de entrega (formulario, email, WhatsApp), cómo ese lead entra al embudo y qué acción de seguimiento está planificada para convertirlo en comprador, conectando con el objetivo de 1.200 registros en seis meses.",
+            "evasiva": "Decir que 'se descarga del sitio' o que 'queda en la base de datos' sin describir el flujo concreto ni cómo ese contacto avanza hacia la compra."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo describe dos formas distintas de entregar los productos al comprador: una vía WhatsApp con enlaces de descarga y otra entrega automática desde el sitio en WordPress y WooCommerce. ¿Por qué eligieron tener esos dos mecanismos y cómo resuelven que el cliente no se confunda?",
+            "buscamos": "Que el grupo reconozca la tensión entre ambos canales, justifique cuál es el principal y cuál es el de respaldo, y explique cómo eso impacta en la experiencia post-compra del dueño de restaurante que probablemente no es muy técnico.",
+            "evasiva": "Responder que WhatsApp es más cercano y WooCommerce es el sistema, sin explicar qué pasa cuando ambos coexisten ni quién toma el control si algo falla."
+          },
+          {
+            "pregunta": "El lead magnet 'Las 10 fugas de dinero' está planteado como la puerta de entrada principal para captar leads, pero en el documento no se describe cómo se ve ni cómo llega a la persona que lo pide. ¿Cómo está pensada esa experiencia concretamente, desde que alguien lo solicita hasta que lo tiene en la mano?",
+            "buscamos": "Que describan el flujo real: formulario o landing, entrega automática o manual, formato del archivo, y que conecten eso con el objetivo de captar 1.200 leads en seis meses, mostrando que pensaron en la fricción que puede haber en cada paso.",
+            "evasiva": "Explicar qué es un lead magnet en general o decir que 'se entrega por email o WhatsApp' sin detallar el mecanismo ni vincular esa experiencia con la conversión esperada."
+          },
+          {
+            "pregunta": "Eligieron tipografías y colores específicos para la marca, y los precios de los eBooks ya están visibles en el sitio. ¿Cómo tomaron esas decisiones de identidad visual pensando en el dueño de una PyME gastronómica argentina que tiene que confiar en un producto que nunca va a poder hojear antes de comprarlo?",
+            "buscamos": "Que expliquen el vínculo entre las decisiones estéticas y la confianza del público objetivo: por qué esa paleta y esas tipografías transmiten seriedad o calidez para alguien del rubro gastronómico, y cómo eso reduce la barrera de compra de un infoproducto que no se puede previsualizar.",
+            "evasiva": "Describir los colores o las fuentes sin conectarlos con el comportamiento del comprador ni con el problema de confianza propio de los productos digitales."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio ya está publicado y funciona con WooCommerce, que entrega los productos automáticamente al momento de la compra. ¿Por qué entonces eligieron sumar el onboarding por WhatsApp en lugar de confiar solo en esa entrega automática?",
+            "buscamos": "Que el grupo reconozca la tensión entre ambos mecanismos y justifique el WhatsApp como capa de contención humana para un cliente con poca experiencia digital, reduciendo fricciones postventa y aumentando percepción de valor sin elevar costos operativos significativos.",
+            "evasiva": "Decir que WhatsApp es más cómodo o que el cliente lo prefiere sin explicar qué problema concreto resuelve ni por qué WooCommerce solo no alcanzaría para su público objetivo."
+          },
+          {
+            "pregunta": "En el sitemap el blog aparece como algo que van a hacer 'en un futuro', pero la estrategia SEO ya lo presenta como operativo con tres categorías definidas. ¿Cómo piensan que esa diferencia afecta el tráfico orgánico que proyectaron para los primeros meses?",
+            "buscamos": "Que el grupo admita la inconsistencia y explique cómo piensan cerrarla: qué se publica primero, en qué plazo se activa el blog, o cómo compensan esa ausencia de contenido en el arranque para no comprometer el objetivo de tráfico orgánico declarado.",
+            "evasiva": "Responder que el SEO lleva tiempo y que por eso lo dejaron para después, sin conectar esa demora con el impacto real en las sesiones mensuales proyectadas ni proponer ninguna alternativa concreta para el período de lanzamiento."
+          },
+          {
+            "pregunta": "El lead magnet 'Las 10 fugas de dinero' es la pieza central de captación de leads en la estrategia, pero en el documento no se ve cómo llega al usuario ni en qué formato está. ¿Cómo funciona en la práctica ese mecanismo de entrega?",
+            "buscamos": "Que el grupo describa el flujo real: dónde se ofrece el lead magnet, qué deja el usuario para recibirlo, por qué canal se entrega y qué pasa después con ese contacto, mostrando que hay un proceso pensado detrás de la herramienta y no solo una mención en el documento.",
+            "evasiva": "Decir que es un PDF gratuito que se descarga desde el sitio sin explicar el formulario de captura, la automatización de entrega, ni el paso siguiente en el embudo hacia la primera compra."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El plan proyecta llegar a 90 ventas mensuales en el mes seis, pero el tráfico orgánico que se plantea generar por mes no alcanzaría para eso solo con la conversión declarada: ¿cómo explican que esos números cierren?",
+            "buscamos": "Que el grupo reconozca la brecha entre tráfico orgánico proyectado (500 sesiones/mes al 1,5% = ~7-8 ventas) y el volumen objetivo, y explique qué rol cumple la pauta paga (70% Meta Ads / 30% Google Ads) para cerrar esa diferencia, aunque no hayan detallado el aporte exacto de cada canal en el documento.",
+            "evasiva": "Explicar qué es la tasa de conversión o hablar genéricamente de que 'el orgánico lleva tiempo' sin reconocer la inconsistencia ni mencionar que la pauta paga es quien sostiene el grueso del volumen proyectado."
+          },
+          {
+            "pregunta": "El lead magnet 'Las 10 fugas de dinero' aparece como la principal herramienta para captar leads, pero en el trabajo no se describe cómo llega realmente al usuario: ¿qué decisión tomaron sobre eso y por qué?",
+            "buscamos": "Que el grupo explique el mecanismo concreto de entrega del lead magnet (formulario, email, WhatsApp, descarga directa, etc.), justifique por qué eligieron ese canal para el perfil del dueño de PyME gastronómica, y muestre que pensaron la experiencia del usuario desde la captación hasta la descarga.",
+            "evasiva": "Describir qué es un lead magnet o explicar por qué el tema del contenido es relevante para el público, sin decir nada sobre cómo se entrega ni por qué ese mecanismo encaja con el cliente al que apuntan."
+          },
+          {
+            "pregunta": "El trabajo muestra un margen neto que cae casi a la mitad si el CAC se duplica: ¿qué decisión tomarían primero si en los primeros meses el costo de adquisición empieza a subirse de esa manera?",
+            "buscamos": "Que el grupo conecte el escenario pesimista con una acción concreta y justificada: por ejemplo, reasignar presupuesto entre Meta y Google según performance, activar el canal orgánico para bajar dependencia de pauta, ajustar el funnel del lead magnet para mejorar conversión antes de escalar inversión, o revisar el ticket promedio. Lo importante es que defiendan una lógica de decisión, no que reciten el número del margen.",
+            "evasiva": "Mencionar que 'habría que revisar las métricas' o 'optimizar las campañas' sin explicar qué variable tocarían primero ni por qué esa palanca es la más efectiva dado cómo está estructurado su modelo de costos."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En su trabajo proyectan vender bastante más de lo que el tráfico orgánico solo podría sostener: si en algún momento Meta Ads o Google Ads se encarecen o directamente dejan de funcionar, ¿cómo protegerían el negocio para no depender solo de pauta paga?",
+            "buscamos": "Que reconozcan la tensión real entre el volumen de ventas proyectado y el tráfico orgánico limitado, y propongan al menos una acción concreta de mitigación: acelerar el SEO, construir la lista de leads, activar el blog antes de lo planeado, o diversificar canales. No se busca el número exacto de sesiones, sino que demuestren haber pensado en la vulnerabilidad.",
+            "evasiva": "Responder que 'siempre hay que diversificar los canales' o que 'el SEO es importante' sin vincularlo al desequilibrio concreto entre tráfico orgánico y las metas de venta del propio trabajo."
+          },
+          {
+            "pregunta": "Ustedes trabajan en un mercado que depende mucho del tipo de cambio y la inflación en Argentina: si los costos fijos o el costo de adquirir cada cliente suben de forma importante, ¿qué palanca tienen para mantener el negocio sin tener que cerrar o paralizar operaciones?",
+            "buscamos": "Que mencionen el margen bruto alto como colchón inicial, reconozcan el escenario pesimista que ya contemplaron con CAC duplicado, y expliquen qué harían en la práctica: ajustar precios, reducir inversión publicitaria, priorizar canales orgánicos o reconfigurar la oferta. Se valora que conecten la respuesta con decisiones reales del trabajo.",
+            "evasiva": "Decir que 'los infoproductos tienen costos bajos' sin explicar qué pasa cuando el CAC sube o cómo reaccionarían operativamente, ni referirse al escenario que ellos mismos incluyeron."
+          },
+          {
+            "pregunta": "Si el lead magnet 'Las 10 fugas de dinero' no convierte como esperan y los registros de leads quedan muy por debajo del objetivo que se plantearon para los primeros seis meses, ¿cómo lo detectarían a tiempo y qué harían con esa información?",
+            "buscamos": "Que expliquen un mecanismo de seguimiento concreto (revisión periódica de métricas, ajuste del copy o del formato del lead magnet, prueba A/B, cambio de canal de captación) y que demuestren entender que ese activo es central para toda la estrategia de adquisición. No se exige el número exacto de registros, sino criterio para actuar ante la señal de alerta.",
+            "evasiva": "Responder que 'lo mejorarían' o que 'harían marketing de contenidos' sin decir cómo sabrían que algo está fallando ni qué decisión tomarían primero."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "79",
+    "proyecto": "ICE FIT",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1OGldCDlNbAB8FoRKWCYH-9htsaNc_-yU/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1RblA60fF9JbhaotXzlmFC5ROcwyA7WKE/preview",
+    "informe": {
+      "resumen": "El trabajo integra consistentemente análisis estratégico, financiero, operativo y digital con cruces FODA accionables y protocolos de crisis con causa raíz documentada.",
+      "queEs": "Marca D2C de helado artesanal premium por suscripción mensual personalizable, con entregas refrigeradas en CABA/GBA y diferencial en conveniencia y atributos saludables.",
+      "fortalezas": [
+        "Escenario ajustado post-crisis con CAC USD 30-75 y punto de equilibrio 65-75 suscriptores, más robusto que el base.",
+        "Protocolo de decisión ante churn crítico diferencia causa logística, económica, de adquisición y de frecuencia con KPIs distintos.",
+        "Crisis 1 y 2 analizadas con 5 Porqués identificando causa raíz sistémica, no el incidente puntual."
+      ],
+      "interrogar": [
+        "Se declara Andreani Frío como operador principal pero no se evidencia contrato, cotización ni validación real de cobertura en GBA zona 1.",
+        "El ticket promedio es USD 110 pero los planes del sitio muestran precios en pesos ($60.000/$110.000/$150.000) sin tipo de cambio ni paridad declarada que justifique la equivalencia.",
+        "Se afirma LTV/CAC ≥3 en todos los escenarios incluyendo el pesimista (churn 15%, LTV USD 460, CAC USD 30), pero no se contempla el CAC de USD 75 en escenario pesimista, donde la ratio cae a ~6, cerca del umbral mínimo."
+      ],
+      "dondeApretar": "Presionar la brecha entre lo diseñado y lo implementado: qué del sitio funcional en Pantheon opera realmente (suscripciones, cobros recurrentes, cupones) versus lo que es prototipo o declaración de intención."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "El trabajo construye toda la estrategia de mercado sobre una estimación de mercado accesible que el propio documento reconoce como un supuesto a validar recién en la etapa piloto: ¿cómo justifican haber tomado decisiones de inversión y escala sobre una base que todavía no está confirmada?",
+            "buscamos": "Que el grupo reconozca la limitación con honestidad, explique por qué usaron esa estimación provisional (falta de datos sectoriales locales, dificultad de acceso a fuentes primarias en etapa pre-lanzamiento) y describan qué harían para validarla durante el piloto. Una buena respuesta muestra conciencia del riesgo, no lo niega.",
+            "evasiva": "Citar el número del SAM o del TAM como si la cifra en sí fuera la validación, o afirmar que 'está basado en datos del mercado' sin explicar de dónde vienen esos datos ni por qué el propio documento los marca como supuestos."
+          },
+          {
+            "pregunta": "La buyer persona 'Camila Romero' es el centro de toda la segmentación y la propuesta de valor del trabajo: ¿en qué información concreta se basaron para construirla y qué limitaciones reconocen en ese proceso?",
+            "buscamos": "Que el grupo admita que no realizaron investigación primaria (encuestas, entrevistas, observación) y expliquen qué fuentes secundarias usaron en su lugar. Una respuesta sólida también señala qué deberían hacer en la etapa piloto para validar o corregir los atributos de Camila con datos reales.",
+            "evasiva": "Describir los atributos de Camila con detalle (edad, hábitos, valores) como si la riqueza de la descripción fuera evidencia de que está bien fundamentada, sin mencionar en ningún momento de dónde proviene esa información."
+          },
+          {
+            "pregunta": "El plan proyecta llegar a entre 600 y 900 suscriptores activos en tres años, pero el lanzamiento apunta a entre 55 y 65 suscriptores en los primeros 45 días: ¿cómo explican el camino de uno a otro, considerando que el documento no detalla ese proceso de escala?",
+            "buscamos": "Que el grupo reconozca la brecha entre el punto de partida y la proyección a tres años, y ofrezcan aunque sea una lógica de crecimiento: hitos intermedios, palancas previstas (referidos, expansión de canales, reinversión del margen), o reconocimiento explícito de que ese roadmap es una deuda pendiente del trabajo.",
+            "evasiva": "Repetir las cifras de ambos extremos o hablar en términos generales de 'crecimiento orgánico' y 'boca a boca' sin conectar eso con ninguna palanca concreta ni con la distribución de medios que el propio trabajo define."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El sitio de IceFit está publicado en un entorno de desarrollo, no en el entorno live definitivo. ¿Cómo justifican esa decisión y qué implicancias tiene para la experiencia de un potencial suscriptor que llegue al sitio hoy?",
+            "buscamos": "Que el grupo reconozca la brecha entre lo declarado en el informe (secuencia Dev/Test/Live como etapas de madurez) y el estado real del sitio, y que expliquen si es una decisión deliberada de etapa o una deuda técnica pendiente, evaluando el impacto concreto en confianza, conversión y percepción de marca premium.",
+            "evasiva": "Decir que 'el sitio funciona bien igual' o que 'es solo una cuestión técnica menor', sin vincular el estado del entorno con la propuesta de valor premium ni con los objetivos de conversión del lanzamiento."
+          },
+          {
+            "pregunta": "La buyer persona Camila Romero es el centro de todas sus decisiones de producto y comunicación. ¿Qué tipo de investigación realizaron para construirla y cómo se aseguran de que refleja a una persona real y no a una hipótesis?",
+            "buscamos": "Que el grupo sea transparente sobre la ausencia de investigación primaria documentada, y que justifiquen cómo piensan validar o ajustar esa persona durante la etapa piloto, mostrando conciencia de que decisiones de diseño y segmentación apoyadas en supuestos no validados representan un riesgo real.",
+            "evasiva": "Describir las características de Camila con detalle (edad, hábitos, motivaciones) como si fueran datos confirmados, sin mencionar de dónde provienen ni cómo planean contrastarlos con usuarios reales."
+          },
+          {
+            "pregunta": "Definieron umbrales muy precisos para considerar que una crisis está resuelta, como una conversión mínima del sitio y un NPS mínimo, pero el sitio todavía no tiene operación real. ¿En qué se basaron para fijar esos valores y cómo los van a calibrar cuando empiecen a tener datos propios?",
+            "buscamos": "Que el grupo explique el razonamiento detrás de esos umbrales, reconozcan que son parámetros de referencia aún no contrastados con operación propia, y propongan un mecanismo concreto para revisarlos y ajustarlos una vez que el sitio esté en producción y acumulando datos reales.",
+            "evasiva": "Repetir los valores del umbral como si fueran metas validadas o citar benchmarks genéricos de la industria sin reconocer que, al no tener datos propios aún, esos números son supuestos que necesitan ser puestos a prueba."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El sitio que presentaron está publicado en un entorno de desarrollo, no en producción: ¿cómo explican esa situación y qué implicaría pasarlo a entorno live antes del lanzamiento real?",
+            "buscamos": "Que reconozcan la brecha entre lo presentado y un entorno productivo real, que expliquen qué pasos faltan (configuración de dominio, pruebas en staging, revisión de seguridad/rendimiento) y que demuestren entender que 'dev' no es equivalente a infraestructura operativa lista para clientes.",
+            "evasiva": "Decir que 'el sitio funciona igual' o que 'es solo una cuestión de nombre de dominio', sin mostrar comprensión de qué diferencia un entorno de desarrollo de uno productivo ni qué riesgos concretos implica lanzar sin ese paso."
+          },
+          {
+            "pregunta": "Ustedes proyectan llegar a varios cientos de suscriptores activos en tres años, pero el plan de lanzamiento apunta a entre 55 y 65 suscriptores en los primeros 45 días: ¿cómo piensan cubrir esa brecha de crecimiento sin un roadmap explícito que lo explique?",
+            "buscamos": "Que identifiquen la tensión entre la proyección de SOM y el arranque modesto, y que propongan aunque sea en líneas generales un mecanismo de escalado: hitos intermedios, canales que se activan por etapas, reinversión de márgenes, expansión de zonas de entrega u otras palancas concretas.",
+            "evasiva": "Apelar a que 'el crecimiento es orgánico' o que 'los números son proyecciones', sin ofrecer ningún puente lógico entre el punto de partida y el objetivo a tres años."
+          },
+          {
+            "pregunta": "Definieron que un incidente logístico se resuelve con reposición en menos de 48 horas y un crédito o reembolso, pero el costo de reponer un pedido representa casi un tercio del ticket promedio: ¿cómo sostienen que ese protocolo es viable operativamente si la tasa de incidentes escala aunque sea un poco?",
+            "buscamos": "Que demuestren haber pensado en el impacto financiero del protocolo y no solo en su valor como promesa al cliente: por ejemplo, que el fondo de contingencia contempla esos costos, que la tasa tolerable del menos del 1% por ciclo está pensada justamente para contener el impacto, o que la selección del operador logístico es clave para no llegar a ese escenario.",
+            "evasiva": "Limitarse a explicar en qué consiste el protocolo o decir que 'el cliente queda satisfecho', sin abordar el peso económico que cada reposición implica sobre el margen del negocio."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "Los planes del sitio muestran precios en pesos, pero en el trabajo hablan de un ticket promedio en dólares: ¿cómo le explicarían a un suscriptor real cuánto va a pagar cada mes y por qué eligieron no declarar el tipo de cambio que usaron?",
+            "buscamos": "Que reconozcan la tensión entre cotizar en pesos (accesibilidad, regulación) y referenciar en dólares (estabilidad del modelo), y que justifiquen una postura consciente: paridad oficial, MEP, precio fijo revisable, o reconozcan que es un punto a resolver antes del lanzamiento real.",
+            "evasiva": "Decir que 'los precios en pesos son para el mercado local' sin explicar cómo se mantiene la equivalencia ni qué pasa si el tipo de cambio se mueve."
+          },
+          {
+            "pregunta": "En el trabajo construyeron el perfil de su cliente ideal, Camila Romero, con bastante detalle: ¿qué información real usaron para armar ese perfil y cómo sabrían, antes de lanzar, que Camila efectivamente existe en el mercado al que apuntan?",
+            "buscamos": "Que distingan entre supuestos razonables y validación real, reconozcan que el perfil fue construido sin investigación primaria propia, y propongan cómo validarlo: encuestas, entrevistas, prueba de concepto, datos de redes sociales, etc.",
+            "evasiva": "Describir los atributos de Camila como si fueran datos comprobados, sin mencionar de dónde vienen ni cómo se podrían contrastar."
+          },
+          {
+            "pregunta": "El trabajo proyecta llegar a entre 600 y 900 suscriptores activos en tres años, pero el plan de lanzamiento apunta a entre 55 y 65 en los primeros 45 días: ¿qué tendría que pasar en el medio para que ese salto sea posible y por qué no lo incluyeron en el documento?",
+            "buscamos": "Que reconozcan la brecha entre el arranque y el SOM proyectado, y ofrezcan aunque sea una lógica de escala: hitos de crecimiento, canales que se activan en fases, reinversión del margen, boca a boca del programa de referidos, o admitan que es una deuda del trabajo que habría que desarrollar.",
+            "evasiva": "Responder que 'el crecimiento va a ser orgánico' o 'vamos a invertir más en publicidad' sin ninguna lógica que conecte los 65 suscriptores iniciales con los cientos proyectados."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "En el trabajo fijan que una crisis logística queda resuelta recién cuando catorce días seguidos se cumplen cuatro métricas al mismo tiempo, pero el sitio todavía no tiene operación real. ¿Cómo piensan validar esos umbrales si nunca los midieron con clientes propios?",
+            "buscamos": "Que reconozcan la limitación honestamente: los umbrales son hipótesis razonables pero sin datos propios que los respalden, y que propongan una forma concreta de contrastarlos durante el piloto (por ejemplo, monitoreo semanal, ajuste tras los primeros dos o tres ciclos, o un umbral provisorio más flexible al inicio).",
+            "evasiva": "Explicar qué significa cada métrica (conversión, abandono, NPS) sin tocar el problema central: que ninguna de esas métricas fue medida todavía y que el criterio de 'crisis resuelta' puede ser arbitrario."
+          },
+          {
+            "pregunta": "El protocolo ante un incidente logístico prevé reponer el pedido y además darle al suscriptor un crédito o devolución, pero el costo de esa reposición representa casi un tercio del ticket. ¿Cómo afecta eso a la viabilidad del negocio si los incidentes superan el umbral que se fijaron?",
+            "buscamos": "Que conecten el costo de reposición con el margen: si el umbral tolerado es menor al uno por ciento por ciclo ese costo es manejable, pero si se lo supera —especialmente en los primeros meses con pocos suscriptores— puede erosionar rápidamente el margen. Se espera que mencionen el fondo de contingencia del cinco por ciento o algún mecanismo de absorción, y que reconozcan que con una base pequeña de suscriptores cada incidente pesa mucho más.",
+            "evasiva": "Describir el protocolo paso a paso (reposición en cuarenta y ocho horas, crédito, reembolso) sin analizar el impacto económico real de que eso ocurra más de lo esperado."
+          },
+          {
+            "pregunta": "Detectaron costos que no estaban en el plan original —packaging térmico, reposiciones, control de calidad— y los incorporaron en el escenario ajustado. ¿Qué proceso usaron para identificarlos y cómo se aseguran de que no haya otros costos ocultos que todavía no ven?",
+            "buscamos": "Que expliquen cómo llegaron a esos ajustes: si fue por investigación de proveedores, benchmarks del sector, simulaciones u otras fuentes. Y que muestren conciencia de que el fondo de contingencia del cinco por ciento es justamente la red de seguridad para lo que no se puede anticipar, reconociendo que la incertidumbre no desaparece sino que se gestiona.",
+            "evasiva": "Listar los costos que sí detectaron sin explicar cómo los encontraron ni qué harían si aparece uno nuevo que el fondo de contingencia no alcanza a cubrir."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "80",
+    "proyecto": "Academia Cumbre",
+    "nivel": "Muy Bueno",
+    "integrantes": [],
+    "tribunal": [],
+    "linkTrabajo": "https://drive.google.com/file/d/1QjY21vJc5_63i1uOLtwLx_gDXBncBDpn/preview",
+    "linkPreguntas": "https://drive.google.com/file/d/1NJGwN7tfCGvRWsbtdsr-tAUuFqIElpcF/preview",
+    "informe": {
+      "resumen": "Consistencia estratégica sólida y fundamentación multicapa, aunque con brechas entre proyecciones financieras y capacidad operativa real demostrada.",
+      "queEs": "Plataforma e-learning de formación técnica para minería argentina, diferencial: especialización sectorial + checkout sin fricción + comunicación orientada al ingresante sin experiencia.",
+      "fortalezas": [
+        "SOM reformulado con lógica bottom-up B2C/B2B, con supuestos explícitos y tasas conservadoras documentadas.",
+        "Customer Journey de 5 etapas con métricas por etapa definidas y vinculadas a decisiones UX/UI concretas.",
+        "Gestión de crisis con dos escenarios simulados que derivaron en acciones preventivas implementables y medibles."
+      ],
+      "interrogar": [
+        "El tráfico B2C se proyecta igual los 3 años (2.040 visitas/año) pese a inversión en SEO y marketing creciente: ¿por qué no escala?",
+        "Se declara WordPress+WooCommerce+MercadoPago como stack, pero el campus funcional se muestra en Canva (canva.site), no en el sitio Pantheon: ¿LearnDash está efectivamente integrado?",
+        "Las alianzas con SEGEMAR, CONICET y sindicatos se presentan como estrategia clave de legitimidad, pero no hay ninguna evidencia de contacto, respuesta o avance concreto en el documento."
+      ],
+      "dondeApretar": "Presionar la brecha entre el campus declarado en WordPress/LearnDash y el prototipo real en Canva, y la ausencia total de evidencia de alianzas institucionales que son el eje de credibilidad del modelo."
+    },
+    "bloques": [
+      {
+        "titulo": "A. Estrategia de Mercado y Fundamentación",
+        "preguntas": [
+          {
+            "pregunta": "Ustedes proyectan el mismo volumen de visitas B2C los tres años, pero al mismo tiempo declaran una inversión creciente en marketing y SEO: ¿cómo justifican que más inversión no se traduzca en más tráfico?",
+            "buscamos": "Que el grupo reconozca la inconsistencia y la explique con algún criterio real: saturación del nicho, curva de adopción lenta, decisión conservadora deliberada, o que admitan que fue un error de modelado y lo corrijan sobre la marcha. Lo importante es que no evadan la contradicción.",
+            "evasiva": "Hablar en general sobre cómo funciona el SEO o decir que 'el mercado minero es chico' sin conectarlo al número proyectado ni a la inversión declarada."
+          },
+          {
+            "pregunta": "En el documento presentan a SEGEMAR, CONICET y sindicatos como alianzas estratégicas clave para darle legitimidad a la plataforma, pero no aparece ninguna evidencia de contacto ni respuesta de esas instituciones: ¿qué peso real tiene esa estrategia hoy, y cómo pensaron avanzar en ella?",
+            "buscamos": "Que distingan entre una alianza proyectada y una alianza concretada, que expliquen por qué la incluyeron sin respaldo todavía, y que propongan algún paso concreto y realista para iniciar esos contactos. No se espera que tengan firmado un convenio, sí que tengan claro que es una hipótesis, no un hecho.",
+            "evasiva": "Reiterar la importancia de las alianzas para el sector minero sin reconocer que aún no existe ningún avance ni ningún contacto documentado."
+          },
+          {
+            "pregunta": "El SOM que proyectan a tres años representa menos del 1% del mercado total que ustedes mismos calcularon: ¿fue una decisión conservadora deliberada o simplemente el resultado de trabajar con los recursos disponibles, y cómo lo justifican?",
+            "buscamos": "Que el grupo demuestre que esa brecha fue una elección consciente —por ejemplo, para ser realistas con su capacidad operativa, el presupuesto de ARS 5.000.000 o las barreras de adopción del sector— y no un número que les salió sin pensarlo. No hace falta que citen el porcentaje exacto, sí que sepan por qué capturan tan poco de lo que ellos mismos estimaron como mercado disponible.",
+            "evasiva": "Decir que 'el mercado minero es de nicho' o que 'es una startup nueva' sin conectarlo a ningún dato propio del trabajo ni a ninguna decisión de escala o presupuesto."
+          }
+        ]
+      },
+      {
+        "titulo": "B. Diseño de Experiencia y Producto Digital",
+        "preguntas": [
+          {
+            "pregunta": "El campus donde un alumno realmente entra a estudiar está en Canva, y el sitio donde pagaría está en WordPress con WooCommerce: ¿cómo se aseguran de que esa separación no rompa la experiencia del ingresante que, según el documento, no tiene experiencia previa?",
+            "buscamos": "Que reconozcan la fricción real que genera tener dos entornos distintos, expliquen cómo piensan conectar ambos (por ejemplo, redirección clara, instrucciones post-pago, onboarding guiado) y justifiquen por qué eligieron Canva como campus siendo que el stack declarado es LearnDash.",
+            "evasiva": "Responder que 'la experiencia es unificada' o que 'el usuario no lo nota' sin explicar concretamente cómo se resuelve el salto entre el checkout y el acceso al campus."
+          },
+          {
+            "pregunta": "Ustedes eligieron una paleta y tipografías con criterio sectorial, ¿cómo esas decisiones visuales les hablan específicamente a un ingresante sin experiencia en minería, que es el perfil al que apuntan?",
+            "buscamos": "Que conecten las decisiones de diseño (los colores tierra/cobre/arena y la jerarquía tipográfica Fraunces/DM Sans) con el perfil emocional del usuario objetivo: alguien que necesita sentir que el espacio es accesible y confiable, no técnico ni intimidante.",
+            "evasiva": "Describir los colores o las fuentes en abstracto ('transmiten seriedad', 'son modernas') sin anclar esa decisión al usuario concreto que definieron como ingresante sin experiencia."
+          },
+          {
+            "pregunta": "Definieron como North Star Metric la cantidad de cursos completados con certificado emitido por mes: ¿por qué esa métrica y no, por ejemplo, la cantidad de inscriptos, siendo que en el primer año proyectan solo 31 alumnos B2C?",
+            "buscamos": "Que demuestren que entendieron la diferencia entre una métrica de adquisición y una de valor real entregado, y que puedan defender que el certificado completado representa el resultado que importa para el usuario y para la reputación de la plataforma, incluso con volumen bajo al inicio.",
+            "evasiva": "Repetir la definición de North Star Metric sin explicar por qué esa métrica específica tiene sentido para este producto y este momento de la empresa."
+          }
+        ]
+      },
+      {
+        "titulo": "C. Implementación Técnica, SEO y Operaciones",
+        "preguntas": [
+          {
+            "pregunta": "El campus con los cursos está en Canva y el sitio principal con el checkout corre en WordPress: ¿cómo le explicarían a un alumno que acaba de pagar cómo pasa de uno al otro, y por qué eligieron esa arquitectura en lugar de tenerlo todo en un solo lugar?",
+            "buscamos": "Que reconozcan la fragmentación entre los dos entornos, que expliquen si hay un mecanismo concreto de acceso post-pago (link, credencial, redirección) y que justifiquen —o reconozcan como deuda técnica— por qué LearnDash no está sirviendo el contenido en el sitio Pantheon como declara el documento.",
+            "evasiva": "Responder que 'la integración está en proceso' o que 'Canva se usó para prototipado' sin explicar cómo el alumno real navega entre un entorno y el otro después de completar el pago."
+          },
+          {
+            "pregunta": "Proyectaron tráfico constante los tres años pese a que el presupuesto de marketing crece: ¿qué justifica que más inversión no genere más visitas, o es algo que revisarían si tuvieran que rehacer esa proyección?",
+            "buscamos": "Que noten la contradicción entre inversión creciente y tráfico plano, que ofrezcan alguna explicación coherente (saturación del nicho, curva de aprendizaje SEO, límite del mercado objetivo) o que admitan que fue un error de proyección y expliquen cómo lo corregirían.",
+            "evasiva": "Decir que 'el SEO lleva tiempo' sin conectarlo con por qué eso no se tradujo en un crecimiento gradual a lo largo de los tres años, o ignorar la contradicción con el presupuesto creciente."
+          },
+          {
+            "pregunta": "Declararon alianzas con organismos como SEGEMAR y sindicatos como un pilar de legitimidad para entrar al sector minero, pero en el documento no aparece ningún contacto ni respuesta concreta: ¿en qué estado real están esas gestiones y qué harían si esas instituciones no responden?",
+            "buscamos": "Que distingan entre una alianza proyectada y una alianza real, que reconozcan que el documento presenta esto como estrategia futura sin evidencia de avance, y que propongan un plan B creíble para construir legitimidad sectorial sin depender de esos acuerdos.",
+            "evasiva": "Afirmar que 'están en conversaciones' sin ningún detalle, o defender la estrategia como si las alianzas ya existieran, sin reconocer que el documento no las acredita."
+          }
+        ]
+      },
+      {
+        "titulo": "D. Marketing, Finanzas y KPIs",
+        "preguntas": [
+          {
+            "pregunta": "El plan proyecta el mismo volumen de visitas B2C los tres años, pero al mismo tiempo declara una inversión creciente en marketing y SEO: ¿cómo justifican que más inversión no genere más tráfico?",
+            "buscamos": "Que el grupo reconozca la inconsistencia y la explique con algún criterio concreto: saturación del nicho, conservadurismo intencional de la proyección, curva de aprendizaje del SEO en un mercado pequeño, o que admitan que fue un error y cómo lo corregirían.",
+            "evasiva": "Hablar en general de que el SEO tarda en dar resultados o que el mercado minero es chico, sin conectar esa explicación con por qué eligieron mantener el número plano en lugar de ajustar la curva."
+          },
+          {
+            "pregunta": "El presupuesto de marketing para B2C es de ARS 2.000.000, pero si dividen esa cifra por el CPC que ustedes mismos estimaron, el tráfico que sale no cierra con las 2.040 visitas proyectadas: ¿de dónde viene la diferencia?",
+            "buscamos": "Que identifiquen que hay tráfico orgánico, directo o de redes sociales que complementa el pago, y que lo expliquen como una decisión de mix de canales; o que reconozcan que la proyección tiene un error de consistencia interna y expliquen cómo lo resolverían.",
+            "evasiva": "Repetir que el CPC es un promedio estimado o que los números son aproximados, sin dar ninguna explicación sobre de dónde viene el tráfico que no está cubierto por la inversión paga."
+          },
+          {
+            "pregunta": "Definieron la North Star Metric como cursos completados con certificado emitido por mes: ¿por qué eligieron ese indicador y no, por ejemplo, la facturación o la cantidad de inscriptos?",
+            "buscamos": "Que fundamenten la elección en el propósito del negocio: una plataforma de formación técnica cuya credibilidad depende de que la gente efectivamente termine y certifique, lo que también impulsa reputación, retención y boca en boca en un mercado sectorial acotado como el minero.",
+            "evasiva": "Decir que es el indicador más importante o que mide el éxito de la plataforma sin explicar por qué esa métrica refleja mejor la propuesta de valor que otras alternativas más obvias como los ingresos."
+          }
+        ]
+      },
+      {
+        "titulo": "E. Gestión de Crisis, Riesgos y Liderazgo de Equipo",
+        "preguntas": [
+          {
+            "pregunta": "Las alianzas con SEGEMAR, CONICET y sindicatos las presentan como un pilar de legitimidad del proyecto, pero si mañana les preguntamos qué pasaría si ninguna de esas organizaciones responde, ¿cómo sostienen el negocio?",
+            "buscamos": "Que reconozcan que no hay avance concreto en esas alianzas y propongan un plan B real: validación alternativa, testimoniales de profesionales del sector, certificaciones propias, o un roadmap concreto para formalizar esos vínculos. Se valora que no esquiven la fragilidad del supuesto.",
+            "evasiva": "Repetir que 'las alianzas son importantes para la legitimidad' o decir que 'están en proceso' sin explicar qué harían si ese proceso no avanza nunca."
+          },
+          {
+            "pregunta": "Si durante el primer año detectan que el campus en Canva y el sitio principal en WordPress están generando confusión en los alumnos, porque son dos entornos distintos con URLs diferentes, ¿cómo gestionarían esa crisis de experiencia de usuario sin frenar las ventas?",
+            "buscamos": "Que reconozcan la tensión real entre tener dos entornos separados y haber declarado una experiencia unificada, y que propongan una respuesta concreta: migración progresiva a LearnDash, comunicación transparente al alumno, o un criterio claro de cuándo consolidan la plataforma. Se valora que no nieguen el problema.",
+            "evasiva": "Decir que 'Canva fue solo un prototipo' sin explicar qué pasa con los alumnos que ya están usando ese entorno, o afirmar que 'no habría confusión' sin justificarlo."
+          },
+          {
+            "pregunta": "Si a mitad del primer año ven que las ventas B2C están muy por debajo de lo proyectado, ¿qué decisión tomarían primero como equipo: reasignar presupuesto de marketing, bajar el precio, o reforzar el canal B2B, y por qué?",
+            "buscamos": "Que elijan una sola acción con criterio justificado en la estructura del negocio propio: por ejemplo, que el canal B2B genera más ingreso por operación con menos volumen, o que bajar el precio afecta el posicionamiento premium del sector. Se valora que demuestren haber pensado en la lógica financiera del proyecto, no que reciten los números exactos.",
+            "evasiva": "Decir 'haríamos las tres cosas a la vez' o responder en abstracto sobre 'revisar la estrategia' sin tomar ninguna posición concreta sobre su propio modelo."
+          }
+        ]
+      }
+    ]
   }
 ];
-
-if (typeof module !== "undefined" && module.exports) { module.exports = GRUPOS; }
