@@ -1,19 +1,21 @@
-# Dashboard TFI TUCEMD — notas corregidas
+# Dashboard TFI TUCEMD — inscriptos a defensa
 
-## Fuente de integrantes
-`Cruce_defensas.xlsx` → hoja `Cruce completo`
+## Estudiantes
+Fuente exclusiva: `Estudiantes inscriptos a defensa.xlsx`.
 
-## Fuente de notas
-`Grupos_Notas(1).xlsx` → hoja `Entrega Final`
+- Estudiantes asociados: 299
+- Grupos con estudiantes: 76
+- Grupos sin estudiantes: 62
 
-## Resultado
-- Grupos: 77
-- Grupos con nota: 77
-- Integrantes asociados: 326
-- Grupos sin integrantes en el cruce: 62
-- Grupos sin nota: ninguno
+Se utiliza `Coincidencia en Excel` como nombre principal y el `ID` de la planilla.
 
-## Publicación en GitHub Pages
-Reemplazar en la raíz del repositorio:
+## Nota de defensa
+- Se eliminó el cálculo del promedio.
+- Cada estudiante tiene un selector individual.
+- Opciones: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 y `Ausente`.
+- `Ausente` se guarda como texto.
+
+## GitHub Pages
+Reemplazar:
 - `index.html`
 - `grupos.js`

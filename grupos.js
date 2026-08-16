@@ -770,24 +770,9 @@ const GRUPOS = [
     "nivel": "Regular",
     "integrantes": [
       {
-        "nombre": "Jose Castillo",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
-        "nombre": "Dylan Meyer",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
         "nombre": "Florencia Mansilla",
         "doc": "601014",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Martin Frizza",
-        "doc": "",
-        "estado": "No está en el Excel"
       },
       {
         "nombre": "Ian Marco Manfredi",
@@ -924,19 +909,9 @@ const GRUPOS = [
     "nivel": "Muy Bueno",
     "integrantes": [
       {
-        "nombre": "Bodor, Maxim",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
         "nombre": "Lara Krajcir",
         "doc": "601177",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Larrainzar Agustín",
-        "doc": "",
-        "estado": "No está en el Excel"
       },
       {
         "nombre": "Eugenia Prado",
@@ -1086,11 +1061,6 @@ const GRUPOS = [
         "nombre": "Noelia Locatelli",
         "doc": "594389",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "María Marta Fernández",
-        "doc": "",
-        "estado": "No está en el Excel"
       }
     ],
     "tribunal": [],
@@ -1529,11 +1499,6 @@ const GRUPOS = [
     "proyecto": "Pintumix",
     "nivel": "Regular",
     "integrantes": [
-      {
-        "nombre": "pablo morales",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
       {
         "nombre": "Leandro Ricca",
         "doc": "593782",
@@ -2278,11 +2243,6 @@ const GRUPOS = [
         "nombre": "Javier Agustin Lopez",
         "doc": "608229",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Lopez Mesoraca Moira",
-        "doc": "",
-        "estado": "No está en el Excel"
       },
       {
         "nombre": "Ludmila Trezza",
@@ -3497,11 +3457,6 @@ const GRUPOS = [
         "estado": "Puede defender"
       },
       {
-        "nombre": "Ailén Melina Mustafa",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
         "nombre": "Andrés Eduardo Pérez Nieto",
         "doc": "635647",
         "estado": "Puede defender"
@@ -3784,11 +3739,6 @@ const GRUPOS = [
     "proyecto": "Horizonte Bastit",
     "nivel": "Muy Bueno",
     "integrantes": [
-      {
-        "nombre": "Andrzejak, Sebastián Alejandro",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
       {
         "nombre": "Ricardo Mario Bastit",
         "doc": "596575",
@@ -4093,19 +4043,9 @@ const GRUPOS = [
         "estado": "Puede defender"
       },
       {
-        "nombre": "Rivero, Anabella Belen.",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
         "nombre": "Martina Grillo",
         "doc": "650260",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Sastre, Denise Sheila.",
-        "doc": "",
-        "estado": "No está en el Excel"
       },
       {
         "nombre": "Camila Jazmin Castro",
@@ -4841,11 +4781,6 @@ const GRUPOS = [
         "nombre": "Camila Romero",
         "doc": "637432",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Romero, Mirian",
-        "doc": "",
-        "estado": "No está en el Excel"
       },
       {
         "nombre": "Rocio Giuliana Russo",
@@ -7078,11 +7013,6 @@ const GRUPOS = [
         "estado": "Puede defender"
       },
       {
-        "nombre": "Olivia Flores Presedo",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
         "nombre": "Francisco Andrés Machicado",
         "doc": "629171",
         "estado": "Puede defender"
@@ -7091,11 +7021,6 @@ const GRUPOS = [
         "nombre": "Milagros Martinez",
         "doc": "646202",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Leticia Belén Larrea Mérida",
-        "doc": "",
-        "estado": "No está en el Excel"
       }
     ],
     "tribunal": [],
@@ -7838,11 +7763,6 @@ const GRUPOS = [
         "estado": "Puede defender"
       },
       {
-        "nombre": "Gimenez, Fernanda",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
         "nombre": "Cintia  Jimenez",
         "doc": "638620",
         "estado": "Puede defender"
@@ -8134,16 +8054,6 @@ const GRUPOS = [
         "nombre": "Claudia Veronica Rodriguez",
         "doc": "31136",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Oliva Gabriel",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
-        "nombre": "Bar Lucía",
-        "doc": "",
-        "estado": "No está en el Excel"
       }
     ],
     "tribunal": [],
@@ -8994,11 +8904,6 @@ const GRUPOS = [
     "nivel": "Regular",
     "integrantes": [
       {
-        "nombre": "Mena, Lucia",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
         "nombre": "Camila Valentina Alaya",
         "doc": "643381",
         "estado": "Puede defender"
@@ -9297,11 +9202,6 @@ const GRUPOS = [
         "estado": "Puede defender"
       },
       {
-        "nombre": "Boix Valentina.",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
         "nombre": "Martin Mino",
         "doc": "569989",
         "estado": "Puede defender"
@@ -9593,21 +9493,6 @@ const GRUPOS = [
         "nombre": "Florencia Francos",
         "doc": "623000",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Micaela Fariña Polichiso",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
-        "nombre": "Agustina Fontana",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
-        "nombre": "Carmen Ivonne Polichiso",
-        "doc": "",
-        "estado": "No está en el Excel"
       }
     ],
     "tribunal": [],
@@ -10365,11 +10250,6 @@ const GRUPOS = [
         "estado": "Puede defender"
       },
       {
-        "nombre": "Citrina Ana",
-        "doc": "",
-        "estado": "No está en el Excel"
-      },
-      {
         "nombre": "German Ariel Leicker",
         "doc": "641816",
         "estado": "Puede defender"
@@ -10522,11 +10402,6 @@ const GRUPOS = [
         "nombre": "Analia Irusta",
         "doc": "616258",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Jose Diaz",
-        "doc": "",
-        "estado": "No está en el Excel"
       }
     ],
     "tribunal": [],
@@ -11259,19 +11134,9 @@ const GRUPOS = [
     "nivel": "Muy Bueno",
     "integrantes": [
       {
-        "nombre": "Giuliana Burelli",
-        "doc": "622909",
-        "estado": "Suspendido"
-      },
-      {
         "nombre": "Vanesa Del Rosario Contrucci",
         "doc": "644153",
         "estado": "Puede defender"
-      },
-      {
-        "nombre": "Dil Fabricio",
-        "doc": "",
-        "estado": "No está en el Excel"
       },
       {
         "nombre": "Julia Freniche",

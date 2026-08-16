@@ -1,36 +1,13 @@
 {
-  "grupos": 77,
-  "notas_fuente": "Grupos_Notas(1).xlsx / Entrega Final",
-  "grupos_con_nota": 77,
-  "faltantes_nota": [],
-  "integrantes_total": 326,
-  "grupos_sin_integrantes": [
+  "grupos_dashboard": 77,
+  "grupos_con_estudiantes_inscriptos": 76,
+  "estudiantes_asociados": 299,
+  "grupos_sin_estudiantes": [
     "62"
   ],
-  "muestra": {
-    "1": {
-      "nota": 8,
-      "integrantes": 5
-    },
-    "13bis": {
-      "nota": 8,
-      "integrantes": 3
-    },
-    "26": {
-      "nota": 10,
-      "integrantes": 5
-    },
-    "62": {
-      "nota": 6,
-      "integrantes": 0
-    },
-    "62bis": {
-      "nota": 6,
-      "integrantes": 2
-    },
-    "80": {
-      "nota": 7,
-      "integrantes": 5
-    }
-  }
+  "fuente_estudiantes": "Estudiantes inscriptos a defensa.xlsx",
+  "selector_ausente": true,
+  "promedio_eliminado": true,
+  "selector_notas": true,
+  "todos_pueden_defender": true
 }

@@ -58,7 +58,7 @@
   .notas{margin-top:6px}
   .notas .nota-row{display:flex;gap:8px;align-items:center;margin:6px 0}
   .notas .nota-row span{flex:1}
-  .notas input[type=number]{width:80px;padding:7px;border:1px solid var(--line);border-radius:7px;font-size:.95rem}
+  .notas select{width:110px;padding:7px;border:1px solid var(--line);border-radius:7px;font-size:.95rem;background:#fff}
   .prom{margin-top:8px;font-weight:700;color:var(--navy)}
   .save{margin-top:10px;background:var(--ok);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-weight:600;cursor:pointer}
   .save:disabled{opacity:.5;cursor:default}
@@ -118,7 +118,7 @@
 
 <script>
 // === CONFIG: pegá acá la URL de tu Web App de Google Apps Script ===
-const API = "https://script.google.com/macros/s/AKfycbxSQv38wMhtdDiCtUiIT1XsqcLvff1dKdtveI5-lCtNB9fgmns4jnbJiASvH0BL5Nk/exec"; // ej: "https://script.google.com/macros/s/AKfy.../exec"
+const API = ""; // ej: "https://script.google.com/macros/s/AKfy.../exec"
 
 const $ = s=>document.querySelector(s);
 let levelFilter = "";
@@ -175,7 +175,7 @@ function render(){
 function integrantesHTML(g){
   const rows=(g.integrantes&&g.integrantes.length)
     ? g.integrantes.map((i,ix)=>'<tr><td>'+(ix+1)+'</td><td>'+esc(i.nombre||"")+'</td><td>'+esc(i.doc||"")+'</td></tr>').join("")
-    : '<tr><td colspan="3" class="empty">Sin integrantes registrados en Cruce_defensas.xlsx</td></tr>';
+    : '<tr><td colspan="3" class="empty">Sin estudiantes registrados en Estudiantes inscriptos a defensa.xlsx</td></tr>';
   return '<div class="integ"><table><thead><tr><th>#</th><th>Integrante</th><th>ID</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
 }
 
@@ -186,20 +186,16 @@ function tribunalHTML(g){
 
 function notasHTML(g){
   const gente=(g.integrantes&&g.integrantes.length)?g.integrantes:[];
-  if(!gente.length) return '<div class="empty">No hay integrantes registrados en Cruce_defensas.xlsx para este grupo.</div>';
-  let rows=gente.map((i,ix)=>'<div class="nota-row"><span>'+esc(i.nombre)+'</span>'+
-    '<input type="number" min="0" max="10" step="0.5" data-ix="'+ix+'" oninput="calcProm(\''+g.id+'\')"></div>').join("");
+  if(!gente.length) return '<div class="empty">No hay estudiantes inscriptos para este grupo.</div>';
+  const valores=["","1","2","3","4","5","6","7","8","9","10","Ausente"];
+  let rows=gente.map((i,ix)=>{
+    const opciones=valores.map(v=>'<option value="'+esc(v)+'">'+(v===""?"—":esc(v))+'</option>').join("");
+    return '<div class="nota-row"><span>'+esc(i.nombre)+'</span>'+
+      '<select data-ix="'+ix+'">'+opciones+'</select></div>';
+  }).join("");
   return '<div class="notas" id="notas-'+g.id+'">'+rows+
-    '<div class="prom" id="prom-'+g.id+'">Promedio: —</div>'+
     '<button class="save" id="save-'+g.id+'" onclick="guardar(\''+g.id+'\')">Guardar notas</button>'+
     '<div class="hint">'+(API?'Se guardan en la planilla del tribunal.':'⚠ Configurá la constante API en index.html para guardar en la planilla.')+'</div></div>';
-}
-
-function calcProm(id){
-  const cont=document.getElementById("notas-"+id);
-  const vals=[...cont.querySelectorAll("input")].map(i=>parseFloat(i.value)).filter(v=>!isNaN(v));
-  const p=vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length):null;
-  document.getElementById("prom-"+id).textContent="Promedio: "+(p===null?"—":p.toFixed(2));
 }
 
 function openModal(id){
@@ -257,9 +253,8 @@ async function cargarNotas(id){
       if(!cont)return;
       data.notas.forEach(n=>{
         const ix=g.integrantes.findIndex(i=>i.nombre===n.integrante);
-        if(ix>=0){const inp=cont.querySelector('input[data-ix="'+ix+'"]'); if(inp)inp.value=n.nota;}
+        if(ix>=0){const sel=cont.querySelector('select[data-ix="'+ix+'"]'); if(sel)sel.value=String(n.nota);}
       });
-      calcProm(id);
     }
   }catch(e){/* silencioso */}
 }
@@ -268,9 +263,9 @@ async function guardar(id){
   const g=GRUPOS.find(x=>x.id===id);
   const cont=document.getElementById("notas-"+id);
   const btn=document.getElementById("save-"+id);
-  const notas=[...cont.querySelectorAll("input")].map(inp=>({
-    integrante:g.integrantes[+inp.dataset.ix].nombre,
-    nota:inp.value===""?null:parseFloat(inp.value)
+  const notas=[...cont.querySelectorAll("select")].map(sel=>({
+    integrante:g.integrantes[+sel.dataset.ix].nombre,
+    nota:sel.value===""?null:(sel.value==="Ausente"?"Ausente":parseFloat(sel.value))
   })).filter(n=>n.nota!==null);
   if(!API){alert("Configurá la constante API en index.html.");return;}
   btn.disabled=true; btn.textContent="Guardando…";
