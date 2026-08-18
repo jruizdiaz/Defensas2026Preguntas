@@ -1052,6 +1052,11 @@ const GRUPOS = [
         "doc": "612385",
         "estado": "Puede defender"
       },
+       {
+        "nombre": "María Marta Fernández",
+        "doc": "00000",
+        "estado": "Puede defender"
+      },
       {
         "nombre": "Adriana Linfozzi",
         "doc": "593333",
