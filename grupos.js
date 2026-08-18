@@ -3462,6 +3462,11 @@ const GRUPOS = [
         "estado": "Puede defender"
       },
       {
+        "nombre": "Ailén Mustafá",
+        "doc": "000000",
+        "estado": "Puede defender"
+      },
+      {
         "nombre": "Veronica Shisel Zamora",
         "doc": "644927",
         "estado": "Puede defender"
